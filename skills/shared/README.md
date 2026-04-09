@@ -4,6 +4,12 @@
 
 ## 结构
 
+- `team-setup.md`
+  团队启动与 kickoff 共享入口。
+
+- `skill-protocol.md`
+  共享执行顺序、状态语义和恢复顺序。
+
 - `agents/`
   角色定义与 playbook。每个角色至少由一个 `*.md` 主规范和一个 `*.playbook.md` 执行手册组成。
 
@@ -22,6 +28,8 @@
 - `templates/project-portfolio-template.md`
 - `templates/project-kickoff-checklist-template.md`
 - `agents/process-auditor.md`
+- `team-setup.md`
+- `skill-protocol.md`
 
 ## 使用原则
 

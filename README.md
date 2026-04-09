@@ -141,6 +141,8 @@ Todo Closure / Weekly Review / Monthly Review
 - `skills/shared/agents/`
 - `skills/shared/workflows/`
 - `skills/shared/templates/`
+- `skills/shared/team-setup.md`
+- `skills/shared/skill-protocol.md`
 
 ### 3. 交付目录层
 

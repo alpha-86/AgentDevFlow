@@ -59,6 +59,8 @@ prompts/
   en/
 skills/
   shared/
+    team-setup.md
+    skill-protocol.md
     agents/
     workflows/
     templates/
