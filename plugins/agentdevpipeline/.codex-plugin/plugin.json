@@ -1,7 +1,7 @@
 {
   "name": "agentdevpipeline",
   "version": "0.1.0",
-  "description": "Product-engineering agent workflow pack extracted from hedge-ai.",
+  "description": "Independent product-engineering agent workflow package.",
   "interface": {
     "displayName": "AgentDevPipeline"
   },
@@ -9,4 +9,3 @@
     "name": "[TODO: maintainer]"
   }
 }
-

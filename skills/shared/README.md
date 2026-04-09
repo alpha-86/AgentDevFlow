@@ -38,6 +38,7 @@
 - `templates/platform-check-result-template.md`
 - `templates/agent-creation-log-template.md`
 - `templates/review-comment-checklist-template.md`
+- `templates/project-status-board-template.md`
 
 ## 使用原则
 

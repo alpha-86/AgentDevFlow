@@ -1,8 +1,8 @@
-# AgentDevPipeline Codex Plugin
+# AgentDevPipeline Codex 插件
 
-This plugin exposes AgentDevPipeline as a Codex-compatible local package.
+本插件把 AgentDevPipeline 暴露为 Codex 可使用的本地包。
 
-## Content Source
+## 内容来源
 
 - `prompts/zh-cn/`
 - `prompts/en/`
@@ -10,8 +10,8 @@ This plugin exposes AgentDevPipeline as a Codex-compatible local package.
 - `docs/zh-cn/`
 - `docs/en/`
 
-All required assets are contained in this repository.
+## 规则
 
-## Rule
-
-Chinese is the internal source of truth. English is the public release mirror.
+- 中文是内部主版本
+- 英文是对外发布镜像
+- 插件层不得改写 `skills/shared/` 的核心语义

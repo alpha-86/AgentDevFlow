@@ -35,3 +35,4 @@
 - `docs/zh-cn/governance/platform-minimum-checks.md`
 - `skills/shared/templates/platform-checklist-template.md`
 - `skills/shared/templates/platform-check-result-template.md`
+- `adapters/codex/platform-check-example.md`

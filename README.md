@@ -182,6 +182,7 @@ Todo Closure / Weekly Review / Monthly Review
 - [Agent 激活记录示例](./docs/memo/agent_activation_2026-04-09_example.md)
 - [Issue Comment Gate 示例](./docs/memo/issue_comment_gate_2026-04-09_example.md)
 - [Issue Comment 缺失阻断示例](./docs/memo/issue_comment_failure_2026-04-09_example.md)
+- [项目状态板示例](./docs/memo/project_status_board_2026-04-09_example.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
 
 ## 适用场景
