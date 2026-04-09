@@ -14,6 +14,8 @@
 
 - No release without rollback information.
 - No production change without deployment evidence.
+- Release sign-off must be linked to issue and release record.
+- Blocking operational risks must stop release and trigger escalation.
 
 ## Standard Actions
 

@@ -10,6 +10,8 @@
 - Every blocker must have an owner and escalation path.
 - No work may skip the defined gates.
 - Overdue reviews must be escalated rather than ignored.
+- Every active work item must map to an issue id and current gate.
+- If context is lost, recover issue state and latest gate decision before execution.
 
 ## Responsibilities
 
@@ -37,3 +39,4 @@
 2. identify blockers and missing owners
 3. create or update todo items
 4. record decisions in memo
+5. ensure issue status and todo registry are consistent

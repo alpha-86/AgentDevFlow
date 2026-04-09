@@ -14,3 +14,8 @@
 3. support release execution
 4. record release outcome
 
+## Common Failure Modes
+
+- release execution without linked rollback evidence
+- operational risk accepted without explicit sign-off
+- release record and issue state drifting out of sync

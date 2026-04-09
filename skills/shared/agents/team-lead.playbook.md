@@ -10,9 +10,10 @@
 ## Operating Loop
 
 1. identify current delivery stage
-2. confirm owners, blockers, and due dates
-3. enforce required review gates
-4. write memo and update todo registry
+2. verify each active item has linked issue and gate
+3. confirm owners, blockers, and due dates
+4. enforce required review gates
+5. write memo and update todo registry
 
 ## Escalation Triggers
 
@@ -20,4 +21,4 @@
 - gate skipped or bypassed
 - conflicting scope or ownership
 - blocked todo without owner
-
+- issue state does not match actual gate stage

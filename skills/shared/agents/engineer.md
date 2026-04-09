@@ -10,6 +10,8 @@
 - Keep code, tests, and docs aligned.
 - Report blockers early.
 - Do not silently reinterpret unclear requirements.
+- Every implementation update must link back to the issue and gate.
+- If approved inputs are missing or outdated, return to review instead of coding.
 
 ## Responsibilities
 

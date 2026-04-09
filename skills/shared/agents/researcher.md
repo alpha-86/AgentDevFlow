@@ -10,6 +10,12 @@
 - summarize options, tradeoffs, and recommendations
 - provide input before PRD or architecture decisions
 
+## Critical Rules
+
+- Research output must avoid domain-specific trading semantics.
+- Every recommendation must state assumptions, risks, and decision impact.
+- Research handoff must link to issue or target stage document.
+
 ## Output Expectations
 
 - decision-ready comparison

@@ -12,10 +12,11 @@
 2. execute validation
 3. log blockers and residual risk
 4. issue release recommendation
+5. record QA sign-off and defect status in issue and QA report
 
 ## Common Failure Modes
 
 - weak traceability
 - incomplete environment notes
 - unreported residual risk
-
+- signing off after acceptance criteria changed upstream

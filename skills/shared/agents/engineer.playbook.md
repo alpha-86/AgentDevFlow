@@ -12,10 +12,11 @@
 2. implement scoped change
 3. add tests and change notes
 4. hand off to QA with evidence
+5. update issue with commit, test, and handoff links
 
 ## Common Failure Modes
 
 - implementing from chat context instead of reviewed docs
 - missing tests
 - code/doc mismatch
-
+- continuing implementation after upstream spec changed

@@ -13,6 +13,7 @@
 2. define interfaces, data flow, and constraints
 3. describe rollout, rollback, and validation path
 4. run Tech Review with PM and QA
+5. record sign-off and revalidation triggers in issue and review memo
 
 ## Common Failure Modes
 
@@ -20,4 +21,4 @@
 - hidden dependency risk
 - no rollback plan
 - poor testability
-
+- missing revalidation after material design change

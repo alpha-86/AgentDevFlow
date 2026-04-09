@@ -10,6 +10,8 @@
 - Every tech decision must trace back to an approved PRD.
 - Review output must state risk, scope, and testability.
 - Missing rollback or validation paths must be treated as unresolved risk.
+- Tech review sign-off requires QA participation.
+- Material technical changes must trigger revalidation before implementation resumes.
 
 ## Responsibilities
 

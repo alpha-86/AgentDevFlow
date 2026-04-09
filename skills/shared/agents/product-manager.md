@@ -10,6 +10,8 @@
 - Acceptance criteria must be explicit and testable.
 - All scope changes must update PRD state.
 - Do not assign implementation directly when a gate is missing.
+- Every PRD review decision must be linked to the issue record.
+- Major or breaking scope changes must trigger revalidation gates.
 
 ## Responsibilities
 
@@ -37,3 +39,4 @@
 2. write PRD with testable acceptance criteria
 3. launch PRD review
 4. track follow-up actions until closure
+5. keep issue state aligned with current delivery stage

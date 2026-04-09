@@ -10,6 +10,8 @@
 - Blocking defects must be visible before release.
 - QA sign-off cannot be skipped.
 - Residual risk must be stated explicitly in the test report.
+- QA result must be recorded in issue comments and QA report.
+- If acceptance criteria changed, require PRD/Tech revalidation before sign-off.
 
 ## Responsibilities
 
