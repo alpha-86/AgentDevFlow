@@ -36,3 +36,6 @@
 - `skills/shared/workflows/todo-review.md`
 - `skills/shared/workflows/weekly-review.md`
 - `skills/shared/workflows/monthly-review.md`
+- `skills/shared/workflows/issue-lifecycle.md`
+- `skills/shared/workflows/anomaly-response.md`
+- `skills/shared/workflows/context-recovery.md`
