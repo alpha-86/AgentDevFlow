@@ -24,6 +24,7 @@ All notable changes to this project are documented here.
 - Ready-to-use delivery directories under `docs/prd`, `docs/tech`, `docs/qa`, `docs/memo`, `docs/todo`, `docs/research`, and `docs/release`
 - Example PRD, Tech, QA, memo, todo, research, and release artifacts
 - Role playbooks for Team Lead, Product Manager, Tech Lead, Engineer, QA Engineer, Researcher, and Platform/SRE
+- Root-level split README structure with `README.md` for English and `README_CN.md` for Chinese
 
 ### Changed
 
