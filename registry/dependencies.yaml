@@ -1,0 +1,32 @@
+version: 1
+project: AgentDevPipeline
+policy:
+  source_of_truth: zh-cn
+  release_language: en
+  self_contained_repository: true
+platforms:
+  claude:
+    required:
+      - local-skill-pack
+    recommended:
+      - planner@anthropic
+      - architect@anthropic
+      - code-review@anthropic
+      - tdd@anthropic
+      - verification-loop@anthropic
+      - docs-lookup@anthropic
+      - deep-research@anthropic
+  codex:
+    required:
+      - local-plugin:agentdevpipeline
+  opencode:
+    required:
+      - prompt-pack
+external_reuse:
+  recommended:
+    - name: superpowers
+      purpose: cross-platform packaging reference and reusable capabilities
+    - name: git-stack-or-gstack
+      purpose: stacked PR workflow for document PR and code PR
+    - name: gh
+      purpose: issue and pull request automation
