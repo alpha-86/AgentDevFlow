@@ -180,9 +180,13 @@ Todo Closure / Weekly Review / Monthly Review
 - [产物关联表示例](./docs/memo/artifact_linkage_2026-04-09_example.md)
 - [平台检查失败示例](./docs/memo/platform_check_failure_2026-04-09_example.md)
 - [Agent 激活记录示例](./docs/memo/agent_activation_2026-04-09_example.md)
+- [Agent 创建日志示例](./docs/memo/agent_creation_log_2026-04-09_example.md)
 - [Issue Comment Gate 示例](./docs/memo/issue_comment_gate_2026-04-09_example.md)
 - [Issue Comment 缺失阻断示例](./docs/memo/issue_comment_failure_2026-04-09_example.md)
 - [项目状态板示例](./docs/memo/project_status_board_2026-04-09_example.md)
+- [平台检查清单示例](./docs/memo/platform_checklist_2026-04-09_example.md)
+- [QA Report 示例](./docs/qa/001_user_notification_center_qa_report_2026-04-09.md)
+- [Release Record 示例](./docs/release/001_release_record_example_2026-04-09.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
 
 ## 适用场景
