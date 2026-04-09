@@ -167,6 +167,11 @@ Todo Closure / Weekly Review / Monthly Review
 4. [核心原则](./docs/zh-cn/governance/core-principles.md)
 5. `skills/shared/`
 
+## 最小可运行示例
+
+- [Kickoff 示例纪要](./docs/memo/kickoff_2026-04-09_agentdevpipeline_execution_example.md)
+- [Todo Registry](./docs/todo/TODO_REGISTRY.md)
+
 ## 适用场景
 
 - 你已经在用 Agent 做研发，但缺统一的交付流程

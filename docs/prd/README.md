@@ -1,10 +1,10 @@
-# PRD Directory
+# PRD 目录
 
-This directory stores product requirement documents owned by Product Manager.
+本目录存放由 Product Manager 维护的需求文档。
 
-## Rules
+## 规则
 
-- one feature or scoped change per PRD
-- filename: `{id}_{name}_{date}.md`
-- every PRD must contain review records and traceable acceptance criteria
-
+- 一个功能或一组边界清晰的变更，对应一份 PRD
+- 文件命名建议：`{id}_{name}_{date}.md`
+- 每份 PRD 都必须具备评审记录、验收标准和关联 issue
+- 进入 Tech Review 前，PRD 必须已有正式结论

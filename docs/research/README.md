@@ -1,4 +1,9 @@
-# Research Directory
+# Research 目录
 
-This directory stores discovery, option comparison, and technical or product research.
+本目录存放需求探索、方案对比、技术调研和流程调研材料。
 
+## 规则
+
+- 调研输出必须说明问题、选项、假设、风险和建议
+- 调研结论必须回链主 issue 或目标阶段文档
+- 调研不等于正式 PRD 或正式 Tech 结论

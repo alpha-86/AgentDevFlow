@@ -30,6 +30,8 @@
 - `agents/process-auditor.md`
 - `team-setup.md`
 - `skill-protocol.md`
+- `templates/agent-activation-template.md`
+- `templates/audit-report-template.md`
 
 ## 使用原则
 

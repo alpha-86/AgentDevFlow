@@ -6,6 +6,8 @@
 **Due**: {YYYY-MM-DD}
 **State**: Open
 **Source**: {Memo / Review / PRD / Tech}
+**Issue**: {#N}
+**Gate**: {Kickoff / PRD / Tech / Implementation / QA / Release / Governance}
 
 ## 描述
 

@@ -1,10 +1,10 @@
-# Tech Directory
+# Tech 目录
 
-This directory stores technical design documents owned by Tech Lead.
+本目录存放由 Tech Lead 维护的技术方案文档。
 
-## Rules
+## 规则
 
-- every tech spec must reference an approved PRD
-- filename: `{id}_{name}_tech_{date}.md`
-- rollout, rollback, and validation path must be explicit
-
+- 每份 Tech Spec 都必须引用已批准的 PRD
+- 文件命名建议：`{id}_{name}_tech_{date}.md`
+- 必须明确接口、依赖、验证路径、rollout 和 rollback
+- 与当前 issue、当前 gate 保持一致

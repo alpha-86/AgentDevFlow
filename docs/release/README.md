@@ -1,4 +1,9 @@
-# Release Directory
+# Release 目录
 
-This directory stores release-readiness notes and release records.
+本目录存放发布准备记录、发布决策和回滚说明。
 
+## 规则
+
+- 发布记录必须关联主 issue
+- 必须说明发布范围、已知风险、回滚路径和放行结论
+- 高风险发布应明确 Human Release Approval 结论
