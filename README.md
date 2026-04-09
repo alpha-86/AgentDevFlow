@@ -179,6 +179,8 @@ Todo Closure / Weekly Review / Monthly Review
 - [审计报告示例](./docs/memo/audit_2026-04-09_example.md)
 - [产物关联表示例](./docs/memo/artifact_linkage_2026-04-09_example.md)
 - [平台检查失败示例](./docs/memo/platform_check_failure_2026-04-09_example.md)
+- [Agent 激活记录示例](./docs/memo/agent_activation_2026-04-09_example.md)
+- [Issue Comment Gate 示例](./docs/memo/issue_comment_gate_2026-04-09_example.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
 
 ## 适用场景

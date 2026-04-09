@@ -36,6 +36,7 @@
 - `templates/release-record-template.md`
 - `templates/platform-checklist-template.md`
 - `templates/platform-check-result-template.md`
+- `templates/agent-creation-log-template.md`
 
 ## 使用原则
 
