@@ -163,6 +163,7 @@ Todo Closure / Weekly Review / Monthly Review
 ### 4. 平台适配层
 
 - `adapters/`
+- `adapters/examples/`
 - `plugins/`
 
 平台适配层至少应落地一份平台最小检查清单，而不是只写接入说明。
@@ -195,6 +196,7 @@ Todo Closure / Weekly Review / Monthly Review
 - [QA Report 示例](./docs/qa/001_user_notification_center_qa_report_2026-04-09.md)
 - [Release Record 示例](./docs/release/001_release_record_example_2026-04-09.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
+- `adapters/examples/` 下的跨平台自动化检查骨架
 
 ## 现在还缺什么
 

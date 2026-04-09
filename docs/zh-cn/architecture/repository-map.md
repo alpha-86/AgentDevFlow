@@ -68,6 +68,7 @@ skills/
     workflows/
     templates/
 adapters/
+  examples/
   claude/
   codex/
   opencode/
@@ -83,6 +84,7 @@ plugins/
 - 事件与状态同步语义写在 `skills/shared/event-bus.md`
 - 流程定义写在 `skills/shared/workflows/`
 - 模板写在 `skills/shared/templates/`
+- 跨平台自动化样例集中到 `adapters/examples/`
 - 顶层原则、边界和协议写在 `docs/zh-cn/governance/`
 - 迁移复核与对照材料写在 `docs/zh-cn/migration/` 和 `prompts/discuss/`
 - 项目可直接使用的交付目录写在 `docs/prd/`、`docs/tech/`、`docs/qa/`、`docs/release/` 等路径

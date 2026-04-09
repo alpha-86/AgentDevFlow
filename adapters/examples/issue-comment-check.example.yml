@@ -1,0 +1,26 @@
+name: issue-comment-check-example
+
+on:
+  workflow_dispatch:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  comment-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Parse comment fields
+        run: |
+          echo "示例: 解析 project_id, issue_id, current_gate, decision, artifact_links"
+
+      - name: Validate structured comment
+        run: |
+          echo "示例: 如果缺少关键字段，则写入 issue.comment_missing 事件"
+          echo "示例: 阻断当前 Gate 状态进入 completed"
+
+      - name: Update gate queue
+        run: |
+          echo "示例: 根据评论结果更新 gate queue 或 project status board"

@@ -1,0 +1,27 @@
+name: gate-check-example
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  gate-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Collect gate inputs
+        run: |
+          echo "示例: 收集 project_id, issue_id, gate, signoff, artifact linkage"
+
+      - name: Validate gate prerequisites
+        run: |
+          echo "示例: 检查 PRD/Tech/QA/Release 对应输入是否齐全"
+          echo "示例: 缺失时输出 fail 并阻断合并"
+
+      - name: Emit platform check result
+        run: |
+          echo "示例: 生成 platform-check-result-template 对应产物"
+          echo "示例: 回链到 issue comment 或 memo"
