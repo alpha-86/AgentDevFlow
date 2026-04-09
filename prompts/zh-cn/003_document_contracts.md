@@ -25,6 +25,16 @@
 - 所有关键文档必须写明创建日期和最近更新日期
 - 所有正式文档必须在文末保留 Review Record
 
+## 文档状态机（统一）
+
+- `Draft`：起草中，未进入正式评审
+- `In Review`：评审中，可能带 action items
+- `Approved`：通过当前阶段 Gate
+- `Blocked`：存在阻塞项，禁止进入下游
+- `Archived`：归档，只读保留
+
+状态变更必须记录“变更人、日期、原因”。
+
 ## 文档追溯关系
 
 ```text
@@ -63,3 +73,22 @@ Research -> PRD -> Tech Spec -> QA Case -> Test Report -> Release Record
 - 风险说明
 - 回滚方式
 - 发布结论
+
+## Review Record 最小字段
+
+- 日期
+- 阶段（PRD/Tech/QA/Release）
+- 评审人
+- 结论（Approved/Conditional/Rejected）
+- 关键意见
+- 待办与负责人
+- 下次复审时间（如有）
+
+## 重审触发条件
+
+出现以下任一情况，必须触发重审：
+
+- 需求范围或验收标准变化
+- 核心接口、数据结构、发布策略变化
+- 关键测试路径变化
+- 阻塞缺陷跨阶段传播
