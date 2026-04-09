@@ -2,6 +2,13 @@
 
 AgentDevPipeline is a self-contained product-engineering agent workflow package.
 
+## Positioning
+
+- AgentDevPipeline is a standalone project.
+- It provides a complete multi-agent product-engineering workflow.
+- Its key design goal is end-to-end automation with controllable process orchestration.
+- Critical delivery steps remain traceable through roles, gates, memos, and todo tracking.
+
 ## Source-of-Truth Policy
 
 - Chinese files in `docs/zh-cn/` and `prompts/zh-cn/` are the internal source of truth.
@@ -23,11 +30,10 @@ Excluded:
 - Trading-session schedules
 - Research, backtest, and risk workflows tied to fund operations
 
-## Self-Contained Rule
+## Repository Rule
 
 - All prompts, skills, workflows, and templates required by AgentDevPipeline must live in this repository.
-- `hedge-ai` may be referenced only as historical migration context.
-- No installation or runtime flow may depend on reading another repository.
+- No installation or runtime flow may depend on reading another project repository.
 
 ## Supporting References
 

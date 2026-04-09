@@ -39,7 +39,6 @@ docs/
   release/
   zh-cn/
     architecture/
-    migration/
     platforms/
     reference/
   en/

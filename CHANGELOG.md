@@ -30,6 +30,7 @@ All notable changes to this project are documented here.
 
 - Updated repository map to reflect project-ready delivery structure
 - Pushed AgentDevPipeline closer to a starter-kit repository rather than a spec-only repository
+- Repositioned AgentDevPipeline as a standalone project focused on automated yet controllable multi-agent R&D orchestration
 
 ## [0.1.0] - 2026-04-09
 
@@ -40,4 +41,3 @@ All notable changes to this project are documented here.
 - Shared product-engineering agent roles and workflow specifications
 - Claude, Codex, and OpenCode adapter entrypoints
 - Dependency inventory and external reuse notes
-- Historical migration notes from `hedge-ai`

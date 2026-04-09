@@ -14,11 +14,12 @@ AgentDevPipeline 是一套自包含的通用产研 Agent 能力包，面向 Clau
 - Claude、Codex、OpenCode 适配入口
 - 中文内部主版本、英文发布镜像的文档治理模型
 
-## 自包含原则
+## 核心理念
 
-- 本仓库在运行、安装、初始化和评审时不得依赖 `hedge-ai`
-- `hedge-ai` 仅允许作为历史迁移背景出现
-- 所有迁移进来的产研能力都必须维护在本仓库内
+- 建立一套全流程自动化的多 agent 研发流程编排能力
+- 通过明确的阶段、Gate、负责人、评审记录，让过程始终可控
+- 通过 prompts、workflows、templates、memo、todo 等资产，让关键交付步骤可追溯、可复盘
+- 作为独立项目，为 Claude、Codex、OpenCode 提供完整的多 agent 研发流程能力
 
 ## 文档治理
 
@@ -72,4 +73,3 @@ AgentDevPipeline/
 
 - 内部主版本：`0.3.0`
 - 对外发布版本：`0.3.0`
-

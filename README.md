@@ -14,11 +14,12 @@ AgentDevPipeline provides:
 - platform adapters for Claude, Codex, and OpenCode
 - a Chinese-first internal authoring model with an English release mirror
 
-## Self-Contained Rule
+## Core Principles
 
-- This repository must not require `hedge-ai` at runtime, install time, or review time.
-- Historical migration notes may mention `hedge-ai` only as archival context.
-- All migrated product-engineering assets must be maintained inside this repository.
+- Build an end-to-end automated multi-agent delivery workflow.
+- Keep the process controllable through explicit stages, gates, owners, and review records.
+- Make every critical delivery step traceable through prompts, workflows, templates, memos, and todo tracking.
+- Keep the package reusable across Claude, Codex, and OpenCode without depending on another project repository.
 
 ## Documentation Policy
 
@@ -72,4 +73,3 @@ AgentDevPipeline/
 
 - Internal source version: `0.3.0`
 - Public release version: `0.3.0`
-
