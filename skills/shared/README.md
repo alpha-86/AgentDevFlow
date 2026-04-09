@@ -35,6 +35,7 @@
 - `templates/qa-report-template.md`
 - `templates/release-record-template.md`
 - `templates/platform-checklist-template.md`
+- `templates/platform-check-result-template.md`
 
 ## 使用原则
 

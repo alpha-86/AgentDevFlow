@@ -178,6 +178,7 @@ Todo Closure / Weekly Review / Monthly Review
 - [上下文恢复示例](./docs/memo/context_recovery_2026-04-09_example.md)
 - [审计报告示例](./docs/memo/audit_2026-04-09_example.md)
 - [产物关联表示例](./docs/memo/artifact_linkage_2026-04-09_example.md)
+- [平台检查失败示例](./docs/memo/platform_check_failure_2026-04-09_example.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
 
 ## 适用场景

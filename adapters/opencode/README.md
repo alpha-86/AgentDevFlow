@@ -19,6 +19,7 @@
 ## 最小输出物
 
 - 一份平台最小检查清单
+- 一份平台检查结果
 - 一份接入说明
 - 一份失败处理说明
 
@@ -33,3 +34,4 @@
 
 - `docs/zh-cn/governance/platform-minimum-checks.md`
 - `skills/shared/templates/platform-checklist-template.md`
+- `skills/shared/templates/platform-check-result-template.md`
