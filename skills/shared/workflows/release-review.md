@@ -20,6 +20,12 @@
 - 关联 issue 记录
 - 需要时的 Human 放行安排
 
+## 推荐模板与输出目录
+
+- Release Record：`skills/shared/templates/release-record-template.md`
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- 推荐输出目录：`docs/release/`
+
 ## 步骤
 
 1. PM 确认业务准备情况。
@@ -29,6 +35,12 @@
 5. PM、Tech Lead 和 Platform/SRE 记录签字结论。
 6. 若项目策略要求 Human 放行，则执行最终 Human Release Approval。
 7. 把发布决定和后续动作写入关联 issue。
+
+## 阶段最小产物集合
+
+- 一份 release record
+- 一份 release 决策评论
+- 必要时的一份 Human Release Approval 结论
 
 ## 结果
 

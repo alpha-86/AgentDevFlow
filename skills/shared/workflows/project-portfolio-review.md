@@ -12,6 +12,12 @@
 - 超期 issues
 - 项目组合视图
 
+## 推荐模板与输出目录
+
+- 项目组合视图：`skills/shared/templates/project-portfolio-template.md`
+- 审计报告：`skills/shared/templates/audit-report-template.md`
+- 推荐输出目录：`docs/memo/` 或项目治理目录
+
 ## 步骤
 
 1. 汇总每个项目的活跃 issue 数量。
@@ -25,3 +31,4 @@
 - 项目组合视图更新
 - 需要升级的项目清单
 - 并发调整建议
+- 必要时的审计结论

@@ -144,6 +144,8 @@ Todo Closure / Weekly Review / Monthly Review
 - `skills/shared/team-setup.md`
 - `skills/shared/skill-protocol.md`
 
+核心阶段应优先按 workflow 绑定的模板产出正式文件，而不是自由发挥。
+
 ### 3. 交付目录层
 
 - `docs/prd/`

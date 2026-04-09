@@ -19,6 +19,13 @@
 - 关联 issue 记录
 - 必要时的 Human Review 安排
 
+## 推荐模板与输出目录
+
+- PRD：`skills/shared/templates/prd-template.md`
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- Memo：`skills/shared/templates/memo-template.md`
+- 推荐输出目录：`docs/prd/`、`docs/memo/`
+
 ## 步骤
 
 1. PM 准备 PRD 和验收标准。
@@ -28,6 +35,13 @@
 5. 若本次 PRD 属于关键需求或高风险需求，执行 Human Review。
 6. 在 memo 和关联 issue comment 中记录 review 结论。
 7. 把 action items 写入 todo 跟踪，并补充 owner 和 due date。
+
+## 阶段最小产物集合
+
+- 一份 PRD 文档
+- 一份 review 结论
+- 必要时的一份 Human Review 结论
+- 一份 memo 或等价纪要
 
 ## Review 检查清单
 

@@ -20,6 +20,13 @@
 - 关联 issue 记录
 - 必要时的 Human Review 安排
 
+## 推荐模板与输出目录
+
+- Tech Spec：`skills/shared/templates/tech-spec-template.md`
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- Artifact Linkage：`skills/shared/templates/artifact-linkage-template.md`
+- 推荐输出目录：`docs/tech/`、`docs/memo/`
+
 ## 步骤
 
 1. Tech Lead 发布 tech spec。
@@ -29,6 +36,13 @@
 5. 对关键方案、复杂方案或高风险改动执行 Human Review。
 6. 在 memo 和关联 issue comment 中记录 review 结果。
 7. 把 action items 写入 todo 跟踪，并补充 owner 和 due date。
+
+## 阶段最小产物集合
+
+- 一份 Tech Spec
+- 一份 Tech Review 结论
+- 必要时的一份 Human Review #1 结论
+- 一份产物关联表或等价链接清单
 
 ## Review 检查清单
 

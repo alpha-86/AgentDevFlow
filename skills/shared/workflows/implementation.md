@@ -20,6 +20,12 @@
 - 关联 issue 记录
 - 文档阶段 Human Review 已完成的证据
 
+## 推荐模板与输出目录
+
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- Artifact Linkage：`skills/shared/templates/artifact-linkage-template.md`
+- 推荐输出目录：代码仓库实现位置、`docs/memo/`
+
 ## 步骤
 
 1. Engineer 校验已批准输入。
@@ -28,6 +34,13 @@
 4. Engineer 记录偏差或 blocker。
 5. Engineer 在 issue 中更新实现证据。
 6. Engineer 把可追溯证据交接给 QA。
+
+## 阶段最小产物集合
+
+- 实现代码
+- 测试证据
+- implementation 交接摘要
+- issue comment 中的实现证据链接
 
 ## 退出条件
 

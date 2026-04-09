@@ -29,6 +29,12 @@
 - 上一阶段结论
 - 已知风险
 
+## 推荐模板与输出目录
+
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- Memo：`skills/shared/templates/memo-template.md`
+- 推荐输出目录：`docs/memo/` 或关联 PR / issue
+
 ## 步骤
 
 1. 明确本次 review 的对象、目的和通过条件。
@@ -36,6 +42,13 @@
 3. 由 Human 给出 `approved`、`conditional` 或 `rejected`。
 4. 在 issue、memo 或 PR 中留下正式结论。
 5. 若为 `conditional` 或 `rejected`，生成 action items 和回退路径。
+
+## 阶段最小产物集合
+
+- 一份结构化 review 结论
+- reviewer 身份
+- 证据链接
+- 是否允许进入下游阶段
 
 ## 必需输出
 

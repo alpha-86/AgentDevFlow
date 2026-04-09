@@ -32,6 +32,8 @@
 - `skill-protocol.md`
 - `templates/agent-activation-template.md`
 - `templates/audit-report-template.md`
+- `templates/qa-report-template.md`
+- `templates/release-record-template.md`
 
 ## 使用原则
 

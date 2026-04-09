@@ -21,6 +21,13 @@
 - 关联 issue 记录
 - 必要时的 Human Review #2 安排
 
+## 推荐模板与输出目录
+
+- QA Case：`skills/shared/templates/qa-case-template.md`
+- QA Report：`skills/shared/templates/qa-report-template.md`
+- Review Comment：`skills/shared/templates/review-comment-template.md`
+- 推荐输出目录：`docs/qa/`
+
 ## 步骤
 
 1. QA 派生或校验 case 集。
@@ -30,6 +37,13 @@
 5. QA 和 PM 记录签字结论。
 6. 对关键交付或高风险发布前内容执行 Human Review #2。
 7. 把发布准备状态写入关联 issue，给出 approved 或 blocked 结论。
+
+## 阶段最小产物集合
+
+- 一份 QA Case 或覆盖映射
+- 一份 QA 测试报告
+- 一份 QA 结论评论
+- 必要时的一份 Human Review #2 结论
 
 ## 退出条件
 
