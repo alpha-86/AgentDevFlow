@@ -24,6 +24,7 @@ AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编
 - 流程层：定义 PRD、Tech、Implementation、QA、Release 的阶段 Gate，以及日会、周会、月会、Todo Review 等节奏机制
 - 留痕层：统一 PRD、Tech Spec、QA Case、Memo、Todo、Change Record、Review Comment、Release Record 的结构
 - 编排层：用 Issue 驱动整个流程，把文档、评审结论、阻塞、异常、恢复动作全部串起来
+- 运行态层：用团队启动入口、统一 Agent 创建入口、事件总线和项目状态板把流程变成持续运行的系统
 - 适配层：把共享角色、workflow、template 封装成平台无关资产，再由 Claude/Codex/OpenCode 入口接入
 
 项目的目标不是让 Agent “更聪明”，而是让 Agent 参与的研发过程更稳定、更可控、更可审计。
@@ -142,7 +143,10 @@ Todo Closure / Weekly Review / Monthly Review
 - `skills/shared/workflows/`
 - `skills/shared/templates/`
 - `skills/shared/team-setup.md`
+- `skills/shared/start-agent-team.md`
+- `skills/shared/create-agent.md`
 - `skills/shared/skill-protocol.md`
+- `skills/shared/event-bus.md`
 
 核心阶段应优先按 workflow 绑定的模板产出正式文件，而不是自由发挥。
 
@@ -170,6 +174,7 @@ Todo Closure / Weekly Review / Monthly Review
 3. [仓库结构图](./docs/zh-cn/architecture/repository-map.md)
 4. [核心原则](./docs/zh-cn/governance/core-principles.md)
 5. `skills/shared/`
+6. `skills/shared/start-agent-team.md` / `skills/shared/create-agent.md`
 
 ## 最小可运行示例
 
@@ -188,6 +193,14 @@ Todo Closure / Weekly Review / Monthly Review
 - [QA Report 示例](./docs/qa/001_user_notification_center_qa_report_2026-04-09.md)
 - [Release Record 示例](./docs/release/001_release_record_example_2026-04-09.md)
 - [Todo Registry](./docs/todo/TODO_REGISTRY.md)
+
+## 现在还缺什么
+
+- 还缺真正可运行的 CI / Bot / Webhook 级自动化实现
+- 还缺把事件总线映射成平台脚本或检查器的执行样例
+- 还缺更强的实时状态同步，而不只是文档模板和示例
+
+这也是当前项目仍在持续迭代的重点方向。
 
 ## 适用场景
 

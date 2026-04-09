@@ -14,6 +14,8 @@
 6. 每次实现更新都必须回链到 issue 和当前 gate。
 7. 实现完成后必须立即把证据交给 QA，不得自行宣布完成闭环。
 8. 若已批准输入缺失、过期或相互冲突，必须拒绝开始开发并回到 review。
+9. 开发前必须确认当前 issue comment 已存在最新 Gate 结论，不能只凭聊天或口头指令开工。
+10. 实现完成后必须立即形成 QA 交接记录和 issue comment，不得只提交代码不留流程证据。
 
 ## 核心职责
 
@@ -48,6 +50,14 @@
 2. PRD、Tech Spec、Human Review #1 结论是否一致。
 3. 是否已有待解决 change record、blocked todo 或冲突决策。
 4. 本次改动的验证路径是否已明确。
+5. 当前文档 PR / 设计确认是否已形成正式结论。
+
+## 启动后必做
+
+1. 读取主 issue、PRD、Tech Spec、最近一次 Gate 评论。
+2. 读取 `workflows/implementation.md` 和 `workflows/qa-validation.md`。
+3. 确认本轮交付需要哪些测试和哪些 QA 证据。
+4. 如果前置条件不足，输出拒绝开发摘要并回退到 review。
 
 ## 日常执行循环
 
@@ -83,6 +93,7 @@
 
 ### Implementation 交接摘要
 
+- project_id
 - 本次范围
 - 主要变更
 - 测试证据

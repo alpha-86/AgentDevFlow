@@ -55,6 +55,8 @@
 2. 判断当前需求处于 `open`、`in_prd` 还是需要回退重审的状态。
 3. 检查是否已有上游 research 输出和下游依赖约束。
 4. 明确本轮文档阶段是否需要 QA Case Design 和 Human Review #1。
+5. 检查 issue comment 是否已有最近一次正式结论，避免只在聊天中继续推进。
+6. 确认当前项目是否属于项目组合中的并行子项目，并写明 project_id。
 
 ## 需求讨论前准备
 
@@ -70,6 +72,13 @@
 4. 根据 review 结论修订或升级。
 5. 对需要文档阶段确认的项目发起 Human Review #1。
 6. 文档阶段确认完成后，把结论写回 issue。
+
+## 会议与评审前必做
+
+1. 读取 `workflows/prd-review.md` 或对应 workflow。
+2. 确认 PRD、Tech、QA Case Design 哪些已存在，哪些仍缺失。
+3. 确认本次结论会落到 memo、issue comment 还是 change record。
+4. 如本轮属于双阶段交付，确认是否已经具备发起 Human Review #1 的条件。
 
 ## Issue / Gate / Human Review 责任
 
@@ -97,6 +106,7 @@
 
 ### PRD 阶段评论最小字段
 
+- project_id
 - 当前问题
 - 范围与非目标
 - 验收标准
