@@ -13,6 +13,15 @@
 - `templates/`
   正式留痕模板与交付物结构。
 
+## 最近补充的关键资产
+
+- `workflows/human-review.md`
+- `workflows/issue-routing.md`
+- `workflows/project-portfolio-review.md`
+- `templates/artifact-linkage-template.md`
+- `templates/project-portfolio-template.md`
+- `templates/project-kickoff-checklist-template.md`
+
 ## 使用原则
 
 - 平台适配层只能包装入口，不得改写这里的核心语义。

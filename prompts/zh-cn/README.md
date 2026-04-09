@@ -24,6 +24,7 @@
 - `018_issue_routing_and_project_portfolio.md`
 - `019_dual_stage_pr_and_three_layer_safeguard.md`
 - `020_issue_comment_gate_and_artifact_linkage.md`
+- `021_platform_checks_and_gate_automation.md`
 
 ## 配套共享能力
 

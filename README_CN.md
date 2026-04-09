@@ -181,6 +181,21 @@ Todo Closure / Weekly Review / Monthly Review
 - [仓库结构图](./docs/zh-cn/architecture/repository-map.md)
 - [核心原则](./docs/zh-cn/governance/core-principles.md)
 
+## 从 0 到 1 如何使用
+
+如果你要在一个真实项目里用起来，建议按这个顺序：
+
+1. 建一个主 Issue，明确 Project ID、问题描述、owner 和当前阶段。  
+2. 用 PRD / Tech / QA / Release 目录承接正式交付物。  
+3. 在文档阶段先完成 PRD、Tech 和必要的 QA Case Design。  
+4. 对文档阶段执行 Human Review，确认设计可以进入实现。  
+5. 实现完成后把代码、测试和测试报告回链主 Issue。  
+6. 对实现阶段执行 Human Review，确认代码和交付物可以进入发布或验收完成。  
+7. 用 Todo、Memo、Change Record、Issue Comment 维持过程留痕。  
+8. 用周复盘、月复盘、项目组合视图管理长期运行。  
+
+这也是 AgentDevPipeline 相比“单个 prompt”更重要的地方：它不是帮你完成某一步，而是帮你把整个交付系统稳定运转起来。
+
 ## 适用场景
 
 - 你已经在用 Agent 做研发，但缺统一的交付流程
