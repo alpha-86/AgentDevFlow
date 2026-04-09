@@ -26,6 +26,7 @@ AgentDevPipeline 是一套自包含的通用产研 Agent 能力包，面向 Clau
 - `docs/zh-cn/` 和 `prompts/zh-cn/` 是内部主版本
 - `docs/en/` 和 `prompts/en/` 是英文发布版本
 - 所有功能和流程变更必须先更新中文，再同步英文
+- 与 hedge-ai 的迁移必须遵循强约束边界，见 [迁移边界（强约束）](./docs/zh-cn/reference/migration-boundary-from-hedge-ai.md)
 
 ## 快速开始
 
