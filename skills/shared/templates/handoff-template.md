@@ -1,17 +1,17 @@
-# {Handoff Title}
+# {交接标题}
 
 **From**: {Role}
 **To**: {Role}
 **Issue**: {Issue ID}
-**Current Gate**: {Gate}
-**Date**: {YYYY-MM-DD}
+**当前 Gate**: {Gate}
+**日期**: {YYYY-MM-DD}
 
-## Completed Evidence
+## 已完成证据
 
-## Open Risks
+## 未关闭风险
 
-## Open Todos
+## 未关闭 Todos
 
-## Expected Next Action
+## 期望下一步动作
 
-## Related Links
+## 相关链接

@@ -1,10 +1,10 @@
-# Issue Lifecycle Workflow
+# Issue 生命周期 Workflow
 
-## Goal
+## 目标
 
-Use a single issue as the traceability spine across PRD, tech, implementation, QA, release, and follow-up actions.
+用单个 issue 作为 PRD、Tech、实现、QA、发布和后续动作的统一追溯主线。
 
-## States
+## 状态
 
 - open
 - in_prd
@@ -16,7 +16,7 @@ Use a single issue as the traceability spine across PRD, tech, implementation, Q
 - done
 - canceled
 
-## Required Fields
+## 必需字段
 
 - issue owner
 - current gate
@@ -25,24 +25,24 @@ Use a single issue as the traceability spine across PRD, tech, implementation, Q
 - open blockers
 - open todo items
 
-## Transition Rules
+## 状态流转规则
 
-1. `open` -> `in_prd` only after scope owner is assigned.
-2. `in_prd` -> `in_tech` only after PRD approval is recorded.
-3. `in_tech` -> `in_impl` only after tech sign-off is complete.
-4. `in_impl` -> `in_qa` only after implementation evidence is linked.
-5. `in_qa` -> `in_release` only after QA sign-off or explicit known-risk acceptance.
-6. Any state -> `blocked` when downstream work cannot safely continue.
-7. `in_release` -> `done` only after release decision is recorded.
+1. `open` -> `in_prd`：只有在范围 owner 已分配后才能进入。
+2. `in_prd` -> `in_tech`：只有在 PRD 批准已记录后才能进入。
+3. `in_tech` -> `in_impl`：只有在 tech sign-off 完成后才能进入。
+4. `in_impl` -> `in_qa`：只有在实现证据已链接后才能进入。
+5. `in_qa` -> `in_release`：只有在 QA sign-off 完成或已明确接受已知风险后才能进入。
+6. 任意状态 -> `blocked`：当下游动作无法安全继续时进入。
+7. `in_release` -> `done`：只有在发布决策已记录后才能进入。
 
-## Required Records
+## 必需记录
 
-- gate decision comment
-- linked memo or review note
-- todo updates for follow-up work
+- gate 决策评论
+- 关联 memo 或 review note
+- todo 跟进更新
 
-## Failure Modes
+## 常见失败模式
 
-- issue state drifts from actual delivery stage
-- linked documents are missing or outdated
-- state changes without recorded decision evidence
+- issue 状态和实际交付阶段漂移
+- 关联文档缺失或已过期
+- 状态变化没有决策证据

@@ -1,4 +1,4 @@
-# {Todo Title}
+# {Todo 标题}
 
 **ID**: TODO-{YYYYMMDD}-{NNN}
 **Priority**: P1
@@ -7,10 +7,10 @@
 **State**: Open
 **Source**: {Memo / Review / PRD / Tech}
 
-## Description
+## 描述
 
-## Acceptance
+## 验收标准
 
-## Closure Evidence
+## 关闭证据
 
-## Escalation
+## 升级路径

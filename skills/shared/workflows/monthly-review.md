@@ -1,34 +1,34 @@
-# Monthly Review Workflow
+# 月度复盘 Workflow
 
-## Goal
+## 目标
 
-Evaluate process quality trends and decide structural improvements for the next month.
+评估流程质量趋势，并决定下个月的结构性改进项。
 
-## Inputs
+## 输入
 
-- weekly review memos from the month
-- gate pass/fail trend summary
-- change-record summary (minor/major/breaking)
-- release incidents and rollback summary
+- 当月 weekly review memos
+- gate pass/fail 趋势摘要
+- change record 摘要（minor/major/breaking）
+- release incidents 和 rollback 摘要
 
-## Steps
+## 步骤
 
-1. Team Lead consolidates monthly workflow and compliance metrics.
-2. PM reviews requirement quality and acceptance churn.
-3. Tech Lead reviews architecture debt and rework cost.
-4. QA reviews quality trend and test-gap hotspots.
-5. Platform/SRE reviews release reliability and operational risks.
-6. Team defines next-month process improvements and owners.
+1. Team Lead 汇总月度流程与合规指标。
+2. PM 评估需求质量和验收变动。
+3. Tech Lead 评估架构债务和返工成本。
+4. QA 评估质量趋势和测试缺口热点。
+5. Platform/SRE 评估发布可靠性和运行风险。
+6. 团队定义下月流程改进项和 owner。
 
-## Review Checklist
+## 复盘检查清单
 
-- process rules are still enforceable and clear
-- gate sign-off quality is consistent
-- change revalidation is performed when required
-- recurring risks have preventative controls
+- 流程规则是否仍清晰且可执行
+- gate 签字质量是否一致
+- 需要重审的变更是否都被重审
+- 重复风险是否已有预防控制
 
-## Outputs
+## 输出
 
-- monthly process review memo
-- approved improvement backlog
-- updated standards or templates when needed
+- 月度流程复盘 memo
+- 已批准的改进 backlog
+- 必要时更新标准或模板

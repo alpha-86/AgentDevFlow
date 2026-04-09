@@ -1,46 +1,46 @@
-# Release Review Workflow
+# 发布评审 Workflow
 
-## Goal
+## 目标
 
-Decide whether the current delivery package is safe and complete enough to release.
+判断当前交付包是否足够安全、完整，可以进入发布。
 
-## Required Traceability
+## 必需追溯字段
 
-- linked issue id
-- approved QA result link
-- release plan and rollback plan links
-- release decision record link
+- 关联 issue id
+- 已批准 QA 结果链接
+- release plan 和 rollback plan 链接
+- release decision record 链接
 
-## Inputs
+## 输入
 
-- approved QA result
-- deployment plan
-- rollback plan
+- 已批准的 QA 结果
+- 部署计划
+- 回滚计划
 - release notes
-- linked issue record
+- 关联 issue 记录
 
-## Steps
+## 步骤
 
-1. PM confirms business readiness.
-2. Tech Lead confirms technical readiness.
-3. Platform/SRE confirms deployment and rollback readiness.
-4. Known risks are reviewed explicitly.
-5. PM, Tech Lead, and Platform/SRE record sign-off decision.
-6. Release decision and follow-up actions are written to linked issue.
+1. PM 确认业务准备情况。
+2. Tech Lead 确认技术准备情况。
+3. Platform/SRE 确认部署和回滚准备情况。
+4. 明确 review 已知风险。
+5. PM、Tech Lead 和 Platform/SRE 记录签字结论。
+6. 把发布决定和后续动作写入关联 issue。
 
-## Outcomes
+## 结果
 
 - approved for release
 - approved with known risk
 - blocked pending actions
 
-## Required Sign-off
+## 必需签字
 
-- PM: required
-- Tech Lead: required
-- Platform/SRE: required
+- PM：必需
+- Tech Lead：必需
+- Platform/SRE：必需
 
-## Re-entry Rules
+## 回退规则
 
-- blocked pending actions: keep issue state at `in_release` or `blocked`
-- release scope changed materially: return to QA validation or tech review
+- blocked pending actions：把 issue 状态保持在 `in_release` 或 `blocked`
+- 发布范围发生重大变化：回到 QA validation 或 tech review

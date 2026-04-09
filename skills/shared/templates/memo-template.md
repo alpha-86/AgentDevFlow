@@ -1,16 +1,16 @@
-# {Meeting Title}
+# {会议标题}
 
-**Type**: {Daily Sync | Review | Release}
-**Date**: {YYYY-MM-DD}
+**类型**: {Daily Sync | Review | Release}
+**日期**: {YYYY-MM-DD}
 **Owner**: {Name}
-**Participants**: {Names}
+**参与人**: {Names}
 
-## Summary
+## 摘要
 
-## Decisions
+## 决策
 
 ## Action Items
 
-## Risks
+## 风险
 
-## Follow-up Links
+## 跟进链接

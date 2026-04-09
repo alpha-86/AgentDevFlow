@@ -6,10 +6,10 @@
 **Decision**: Approved | Conditional | Rejected
 **Date**: {YYYY-MM-DD}
 
-## Evidence Links
+## 证据链接
 
-## Key Notes
+## 关键意见
 
 ## Action Items
 
-## Next Gate Entry Condition
+## 下一 Gate 准入条件

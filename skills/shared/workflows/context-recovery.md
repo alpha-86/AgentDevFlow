@@ -1,43 +1,43 @@
-# Context Recovery Workflow
+# 上下文恢复 Workflow
 
-## Goal
+## 目标
 
-Recover execution context after session loss, environment switch, or role handoff without reducing review rigor.
+在会话丢失、环境切换或角色交接后，恢复执行上下文，同时不降低评审严谨性。
 
-## Triggers
+## 触发条件
 
-- cleared conversation history
-- agent restart
-- ownership handoff
-- stale task resumed after a long pause
+- 对话历史被清空
+- agent 重启
+- owner 交接
+- 长时间暂停后的任务恢复
 
-## Inputs
+## 输入
 
-- linked issue id
-- latest gate state
-- latest memo and todo links
-- latest change record links
+- 关联 Issue ID
+- 最新 Gate 状态
+- 最新 memo 和 todo 链接
+- 最新 change record 链接
 
-## Steps
+## 步骤
 
-1. Read issue status and latest decision record.
-2. Read current-stage documents and their status.
-3. Read open blockers, todos, and anomaly records.
-4. Produce a recovery summary.
-5. Confirm next action is still valid before execution.
+1. 读取 issue 状态和最近一次决策记录。
+2. 读取当前阶段文档及其状态。
+3. 读取未关闭 blocker、todo 和异常记录。
+4. 产出恢复摘要。
+5. 在执行前确认下一步动作仍然有效。
 
-## Recovery Summary Fields
+## 恢复摘要字段
 
-- current issue
-- current gate
-- latest decision
-- open blockers
-- open todos
-- next action
-- required approver or owner
+- 当前 issue
+- 当前 gate
+- 最近一次决策
+- 未关闭 blocker
+- 未关闭 todo
+- 下一步动作
+- 必需审批人或 owner
 
-## Exit Criteria
+## 退出条件
 
-- recovery summary exists
-- execution stage is unambiguous
-- no required upstream record is missing
+- 已产出恢复摘要
+- 当前执行阶段没有歧义
+- 上游必需记录没有缺失

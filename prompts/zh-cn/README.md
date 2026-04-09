@@ -41,3 +41,5 @@
 - `skills/shared/workflows/issue-lifecycle.md`
 - `skills/shared/workflows/anomaly-response.md`
 - `skills/shared/workflows/context-recovery.md`
+- `skills/shared/workflows/human-review.md`
+- `skills/shared/workflows/issue-routing.md`

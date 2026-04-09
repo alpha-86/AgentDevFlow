@@ -1,46 +1,46 @@
-# Implementation Workflow
+# 实现 Workflow
 
-## Goal
+## 目标
 
-Convert an approved tech spec into code, tests, and implementation evidence.
+把已批准的技术方案转化为代码、测试和实现证据。
 
-## Required Traceability
+## 必需追溯字段
 
-- linked issue id
-- approved PRD id
-- approved tech spec id
-- implementation commit links
-- test evidence links
+- 关联 issue id
+- 已批准 PRD id
+- 已批准 tech spec id
+- 实现 commit 链接
+- 测试证据链接
 
-## Inputs
+## 输入
 
-- approved PRD
-- approved Tech Spec
-- scoped todo items
-- linked issue record
+- 已批准的 PRD
+- 已批准的 Tech Spec
+- 已切分的 todo items
+- 关联 issue 记录
 
-## Steps
+## 步骤
 
-1. Engineer verifies approved inputs.
-2. Engineer implements the scoped change.
-3. Engineer adds unit tests and change notes.
-4. Engineer records any deviations or blockers.
-5. Engineer updates issue with implementation evidence.
-6. Engineer hands off traceable evidence to QA.
+1. Engineer 校验已批准输入。
+2. Engineer 实现本次范围内的改动。
+3. Engineer 补充单元测试和变更说明。
+4. Engineer 记录偏差或 blocker。
+5. Engineer 在 issue 中更新实现证据。
+6. Engineer 把可追溯证据交接给 QA。
 
-## Exit Criteria
+## 退出条件
 
-- code change exists
-- unit tests exist
-- implementation notes exist
-- QA handoff is possible
+- 代码改动已存在
+- 单元测试已存在
+- 实现说明已存在
+- 已具备 QA 交接条件
 
-## Required Sign-off
+## 必需签字
 
-- Engineer: required
-- Tech Lead: required for implementation consistency check
+- Engineer：必需
+- Tech Lead：实现一致性检查必需
 
-## Re-entry Rules
+## 回退规则
 
-- if implementation deviates from approved tech spec: return to tech review
-- if acceptance criteria mapping is broken: return to PRD review
+- 若实现偏离已批准 tech spec：回到 tech review
+- 若验收映射断裂：回到 PRD review

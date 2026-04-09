@@ -1,53 +1,53 @@
 # PRD Review Workflow
 
-## Goal
+## 目标
 
-Approve or reject a PRD before technical design begins.
+在技术设计开始前，批准或退回 PRD。
 
-## Required Traceability
+## 必需追溯字段
 
-- linked issue id
-- PRD document id and status
-- review memo link
-- action items in todo registry
+- 关联 issue id
+- PRD 文档 id 和状态
+- review memo 链接
+- todo registry 中的 action items
 
-## Inputs
+## 输入
 
-- current requirement statement
-- PRD draft
-- known constraints or dependencies
-- linked issue record
+- 当前需求描述
+- PRD 草稿
+- 已知约束或依赖
+- 关联 issue 记录
 
-## Steps
+## 步骤
 
-1. PM prepares PRD and acceptance criteria.
-2. Tech Lead reviews feasibility, dependencies, and risks.
-3. Optional domain reviewer validates business fit.
-4. PM and Tech Lead record sign-off decision in PRD review record.
-5. Review outcome is recorded in memo and linked issue comment.
-6. Action items enter todo tracking with owner and due date.
+1. PM 准备 PRD 和验收标准。
+2. Tech Lead 评估可行性、依赖和风险。
+3. 必要时由领域 reviewer 验证业务匹配。
+4. PM 和 Tech Lead 在 PRD review record 中记录签字结论。
+5. 在 memo 和关联 issue comment 中记录 review 结论。
+6. 把 action items 写入 todo 跟踪，并补充 owner 和 due date。
 
-## Review Checklist
+## Review 检查清单
 
-- scope is explicit
-- non-goals are explicit
-- acceptance criteria are testable
-- dependencies are identified
-- unresolved risks are visible
+- 范围是否明确
+- 非目标是否明确
+- 验收标准是否可测试
+- 依赖是否已识别
+- 未解决风险是否可见
 
-## Required Sign-off
+## 必需签字
 
-- PM: required
-- Tech Lead: required
+- PM：必需
+- Tech Lead：必需
 
-## Outcomes
+## 结果
 
 - approved
 - conditionally approved
 - rejected with rework items
 
-## Re-entry Rules
+## 回退规则
 
-- conditionally approved: all conditions must be closed with evidence before tech review
-- rejected: PRD must be revised and reviewed again
-- blocked: escalate to Team Lead and keep issue state at `blocked`
+- conditionally approved：所有条件关闭并补齐证据后，才能进入 tech review
+- rejected：PRD 必须修订后重新 review
+- blocked：升级给 Team Lead，并把 issue 状态保持为 `blocked`

@@ -147,8 +147,10 @@ Todo Closure / Weekly Review / Monthly Review
 
 - 团队拓扑与角色边界
 - Issue 驱动编排
+- Issue 路由与项目组合管理
 - 文档契约与状态机
 - PRD / Tech / QA / Release Gate
+- Human Review 与双阶段交付
 - 研发日会、周复盘、月复盘
 - Todo 闭环
 - 变更记录与重审
@@ -188,6 +190,7 @@ Todo Closure / Weekly Review / Monthly Review
    - [Codex](./docs/zh-cn/platforms/codex.md)
    - [OpenCode](./docs/zh-cn/platforms/opencode.md)
 4. 在你的项目中落地 `skills/shared/` 里的角色、workflow、template，并把正式产物写入 `docs/prd/`、`docs/tech/`、`docs/qa/`、`docs/release/` 等目录。
+5. 对需要人类确认的节点，显式使用 `human-review` workflow，并把结论写回 Issue / PR / Memo。
 
 ## 仓库结构
 

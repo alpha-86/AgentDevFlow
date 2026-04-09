@@ -1,17 +1,17 @@
 # Todo Review Workflow
 
-## Goal
+## 目标
 
-Track action items from creation through closure.
+跟踪 action item 从创建到关闭的完整生命周期。
 
-## Rules
+## 规则
 
-- every review or discussion creates tracked actions
-- every todo has issue id, gate, owner, priority, due date, and state
-- blocked items must include escalation
-- closed items must include evidence
+- 每次 review 或讨论都必须产生可跟踪 action
+- 每个 todo 都必须有 issue id、gate、owner、priority、due date 和 state
+- blocked 项必须包含升级路径
+- 已关闭项必须包含证据
 
-## Status Model
+## 状态模型
 
 - open
 - in_progress
@@ -19,11 +19,11 @@ Track action items from creation through closure.
 - done
 - canceled
 
-## Required Closure Evidence
+## 必需关闭证据
 
-- merged change link or document update link
-- verification record link (test report, review memo, or release record)
+- 已合并改动链接或文档更新链接
+- 验证记录链接（测试报告、review memo 或 release record）
 
-## Escalation Rule
+## 升级规则
 
-- if item is blocked for more than one working day, escalate in daily sync and assign escalation owner
+- 若 item 被阻塞超过一个工作日，必须在日会中升级并指定升级 owner

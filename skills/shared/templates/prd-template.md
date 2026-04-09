@@ -1,31 +1,30 @@
-# {Title}
+# {标题}
 
 **ID**: {ID}
-**Status**: Draft
+**状态**: Draft
 **Owner**: Product Manager
-**Date**: {YYYY-MM-DD}
-**Updated**: {YYYY-MM-DD}
+**日期**: {YYYY-MM-DD}
+**更新日期**: {YYYY-MM-DD}
 
-## Background
+## 背景
 
-## Problem
+## 问题
 
-## Goals
+## 目标
 
-## Scope
+## 范围
 
-## Non-Goals
+## 非目标
 
-## User Stories
+## 用户故事
 
-## Acceptance Criteria
+## 验收标准
 
-## Risks
+## 风险
 
-## Dependencies
+## 依赖
 
 ## Review Record
 
-| Date | Reviewer | Notes | Decision |
+| 日期 | Reviewer | 备注 | 决策 |
 |---|---|---|---|
-

@@ -1,19 +1,19 @@
-# {Context Recovery Title}
+# {上下文恢复标题}
 
 **Issue**: {Issue ID}
-**Recovered By**: {Role}
-**Date**: {YYYY-MM-DD}
+**恢复人**: {Role}
+**日期**: {YYYY-MM-DD}
 
-## Current Gate
+## 当前 Gate
 
-## Latest Decision
+## 最近决策
 
-## Open Blockers
+## 未关闭 Blockers
 
-## Open Todos
+## 未关闭 Todos
 
-## Next Action
+## 下一步动作
 
-## Required Approver
+## 必需审批人
 
-## Related Links
+## 相关链接

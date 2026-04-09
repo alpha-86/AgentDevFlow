@@ -1,22 +1,22 @@
-# {Title}
+# {标题}
 
 **ID**: {ID}
-**Status**: Draft
+**状态**: Draft
 **Owner**: Tech Lead
-**Date**: {YYYY-MM-DD}
-**Updated**: {YYYY-MM-DD}
+**日期**: {YYYY-MM-DD}
+**更新日期**: {YYYY-MM-DD}
 
-## Context
+## 上下文
 
-## Architecture
+## 架构
 
-## Interfaces
+## 接口
 
-## Data Flow
+## 数据流
 
-## Testability
+## 可测试性
 
-## Risks
+## 风险
 
 ## Rollout
 
@@ -24,5 +24,5 @@
 
 ## Review Record
 
-| Date | Reviewer | Notes | Decision |
+| 日期 | Reviewer | 备注 | 决策 |
 |---|---|---|---|

@@ -1,15 +1,15 @@
-# {Change Record Title}
+# {变更记录标题}
 
-**Change ID**: CR-{YYYYMMDD}-{NNN}
-**Level**: Minor | Major | Breaking
+**变更 ID**: CR-{YYYYMMDD}-{NNN}
+**级别**: Minor | Major | Breaking
 **Issue**: {Issue ID}
 **Owner**: {Name}
-**Date**: {YYYY-MM-DD}
-**Decision Date**: {YYYY-MM-DD}
+**日期**: {YYYY-MM-DD}
+**决策日期**: {YYYY-MM-DD}
 
-## Reason
+## 变更原因
 
-## Impact Scope
+## 影响范围
 
 - PRD:
 - Tech:
@@ -17,12 +17,12 @@
 - Release:
 - Todo:
 
-## Revalidation Required
+## 需要重审
 
 - Gate:
 - Reviewer:
 - Due:
 
-## Decision
+## 决策
 
-## Follow-up Actions
+## 后续动作

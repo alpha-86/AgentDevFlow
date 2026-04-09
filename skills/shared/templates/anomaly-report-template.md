@@ -1,20 +1,20 @@
-# {Anomaly Title}
+# {异常标题}
 
-**Anomaly ID**: ANOM-{YYYYMMDD}-{NNN}
-**Severity**: A1 | A2 | A3
+**异常 ID**: ANOM-{YYYYMMDD}-{NNN}
+**等级**: A1 | A2 | A3
 **Issue**: {Issue ID}
 **Gate**: {Gate}
 **Owner**: {Name}
-**Detected At**: {YYYY-MM-DD HH:MM}
+**发现时间**: {YYYY-MM-DD HH:MM}
 
-## Symptom
+## 现象
 
-## Impact
+## 影响
 
-## Root Cause
+## 根因
 
-## Immediate Action
+## 临时处置
 
-## Prevention Action
+## 预防动作
 
-## Closure Evidence
+## 关闭证据

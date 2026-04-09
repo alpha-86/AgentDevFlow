@@ -1,33 +1,33 @@
-# Weekly Review Workflow
+# 周度复盘 Workflow
 
-## Goal
+## 目标
 
-Review weekly delivery health, process compliance, and recurring blockers.
+复盘周度交付健康度、流程合规情况和重复 blocker。
 
-## Inputs
+## 输入
 
-- all active issues
-- gate outcomes from the week
-- todo aging report
-- blocker and escalation records
+- 所有活跃 issues
+- 本周 gate 结果
+- todo 老化报告
+- blocker 和升级记录
 
-## Steps
+## 步骤
 
-1. Team Lead summarizes weekly issue movement and gate outcomes.
-2. PM and Tech Lead review scope drift and revalidation events.
-3. QA reviews defect trends and residual risk patterns.
-4. Platform/SRE reviews release stability and rollback events.
-5. Team records corrective actions in memo and todo registry.
+1. Team Lead 汇总本周 issue 流转和 gate 结果。
+2. PM 和 Tech Lead 评估范围漂移和重审事件。
+3. QA 评估 defect 趋势和残留风险模式。
+4. Platform/SRE 评估发布稳定性和 rollback 事件。
+5. 团队把纠正动作写入 memo 和 todo registry。
 
-## Review Checklist
+## 复盘检查清单
 
-- any gate bypass happened
-- any major or breaking change skipped revalidation
-- blocked todos older than one working day were escalated
-- repeated blockers have an owner and fix plan
+- 是否发生 gate 绕过
+- 是否存在 major / breaking 变更未重审
+- 超过一个工作日的 blocked todo 是否已升级
+- 重复 blocker 是否已有 owner 和修复计划
 
-## Outputs
+## 输出
 
-- weekly review memo
-- prioritized process-improvement actions
-- updated owners and due dates
+- 周度复盘 memo
+- 优先级明确的流程改进动作
+- 更新后的 owner 和 due date

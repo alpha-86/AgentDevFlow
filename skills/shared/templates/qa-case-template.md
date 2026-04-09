@@ -1,24 +1,24 @@
-# {Title}
+# {标题}
 
 **ID**: {ID}
-**Status**: Draft
+**状态**: Draft
 **Owner**: QA Engineer
-**Date**: {YYYY-MM-DD}
-**Updated**: {YYYY-MM-DD}
+**日期**: {YYYY-MM-DD}
+**更新日期**: {YYYY-MM-DD}
 
-## Traceability
+## 追溯关系
 
-## Test Cases
+## 测试用例
 
-## Environment
+## 环境
 
-## Execution Notes
+## 执行说明
 
-## Defects
+## 缺陷
 
-## Residual Risks
+## 残留风险
 
-## Sign-off
+## 签字
 
-| Date | Reviewer | Notes | Decision |
+| 日期 | Reviewer | 备注 | 决策 |
 |---|---|---|---|

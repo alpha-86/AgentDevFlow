@@ -1,34 +1,34 @@
-# Anomaly Response Workflow
+# 异常响应 Workflow
 
-## Goal
+## 目标
 
-Contain, escalate, and close delivery anomalies without losing traceability.
+在不丢失追溯性的前提下，识别、升级、处置并关闭交付异常。
 
-## Inputs
+## 输入
 
-- anomaly description
-- linked issue id
-- impacted gate or document
-- current owner
+- 异常描述
+- 关联 Issue ID
+- 受影响的 Gate 或文档
+- 当前负责人
 
-## Steps
+## 步骤
 
-1. Record anomaly type, time, and impact.
-2. Classify severity as A1, A2, or A3.
-3. Assign owner and target resolution time.
-4. Link anomaly to issue, memo, and todo registry.
-5. Escalate according to severity.
-6. Verify closure evidence and update affected gate state.
+1. 记录异常类型、发生时间和影响范围。
+2. 将异常分级为 A1、A2 或 A3。
+3. 指定 owner 和目标解决时间。
+4. 把异常回链到 issue、memo 和 todo registry。
+5. 根据等级执行升级。
+6. 验证关闭证据并同步受影响的 Gate 状态。
 
-## Escalation Rules
+## 升级规则
 
-- A1: owner resolves within one working day.
-- A2: review in daily sync or dedicated review.
-- A3: stop downstream gate progression until explicit release.
+- A1：由 owner 在一个工作日内解决。
+- A2：进入日会或专项 review。
+- A3：在明确放行前，阻止下游 Gate 继续推进。
 
-## Exit Criteria
+## 退出条件
 
-- root cause is documented
-- immediate fix is documented
-- follow-up prevention action exists
-- issue and gate state are synchronized
+- 根因已记录
+- 临时处置已记录
+- 预防动作已存在
+- issue 和 gate 状态已同步
