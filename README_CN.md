@@ -47,6 +47,8 @@ AgentDevPipeline 是一套自包含的通用产研 Agent 能力包，面向 Clau
 - `skills/shared/workflows/release-review.md`
 - `skills/shared/workflows/daily-sync.md`
 - `skills/shared/workflows/todo-review.md`
+- `skills/shared/workflows/weekly-review.md`
+- `skills/shared/workflows/monthly-review.md`
 
 ## 项目结构
 

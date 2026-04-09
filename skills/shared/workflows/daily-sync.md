@@ -9,6 +9,7 @@ Synchronize status, blockers, priorities, and next actions.
 - current todos
 - open reviews
 - active delivery stage
+- linked issues in progress
 
 ## Agenda
 
@@ -17,9 +18,17 @@ Synchronize status, blockers, priorities, and next actions.
 3. blockers
 4. gate or review risks
 5. todo follow-up
+6. decisions needed today
 
 ## Outputs
 
 - daily memo
 - updated owners and due dates
 - escalations if needed
+
+## Required Fields in Daily Memo
+
+- linked issue ids
+- current gate per issue
+- blocker owner and escalation path
+- next review or gate entry condition

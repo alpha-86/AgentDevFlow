@@ -29,3 +29,5 @@
 - `skills/shared/workflows/release-review.md`
 - `skills/shared/workflows/daily-sync.md`
 - `skills/shared/workflows/todo-review.md`
+- `skills/shared/workflows/weekly-review.md`
+- `skills/shared/workflows/monthly-review.md`
