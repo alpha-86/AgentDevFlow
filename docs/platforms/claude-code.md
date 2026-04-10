@@ -27,9 +27,8 @@ Claude 已有 Agent Team 能力。AgentDevFlow 在 Claude 中要做的是：
    - QA Engineer
    - Engineer
    - Platform/SRE
-   - Process Auditor
-6. 仅在需要调研时再启用研究支持
-7. 最后通过 `start-agent-team` 完成团队启动
+   - PMO
+6. 最后通过 `start-agent-team` 完成团队启动
 
 ## Team Lead 必须先做什么
 

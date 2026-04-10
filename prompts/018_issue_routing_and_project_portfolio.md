@@ -43,7 +43,7 @@
 
 - `feature` -> Product Manager
 - `bug` -> Engineer
-- `research` -> 研究支持（可选）
+- `research` -> Product Manager 或 架构师，必要时升级 Team Lead
 - `process` -> Team Lead
 - `release` -> Platform/SRE 或 Team Lead
 - `anomaly` -> 当前阶段 owner，必要时升级 Team Lead

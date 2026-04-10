@@ -7,7 +7,7 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 ## 项目定位
 
 - AgentDevFlow 是一个全新独立的项目
-- 目标是提供完整的多智能体研发流程编排能力
+- 目标是提供完整的多 Agent 研发流程编排能力
 - 强调全流程自动化，同时保持过程可控、可追溯、可复盘
 - 所有文档、提示词、技能、工作流、模板都维护在本仓库内
 
@@ -20,7 +20,7 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 
 ## 核心能力范围
 
-- 团队负责人 / 产品经理 / 技术负责人 / 工程师 / 测试 / 研究支持 / 平台-SRE / 流程审计员 的角色定义与协作边界
+- 团队负责人 / 产品经理 / 架构师 / 工程师 / 质量工程师 / 平台与发布负责人 / PMO 的角色定义与协作边界
 - PRD Gate、Tech Gate、QA Gate、Release Gate 组成的端到端交付流程
 - 文档规范、会议纪要、Todo 闭环、Issue 驱动交付等过程治理机制
 - Agent 创建规范、平台适配约束和跨平台接入方式
@@ -47,7 +47,7 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 10. [核心原则](/home/work/code/AgentDevFlow/docs/governance/core-principles.md)
 11. [共享技能使用协议](/home/work/code/AgentDevFlow/docs/governance/skill-protocol.md)
 12. `prompts/discuss/` 中的复核与讨论记录
-13. 平台接入文档
+13. 平台与沟通通道接入文档
 14. `prompts/` 中的 Issue / 变更 / 异常 / 合规机制
 15. `skills/shared/` 中的角色、workflow、template
 16. `skills/shared/team-setup.md`
@@ -55,7 +55,7 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 18. `skills/shared/create-agent.md`
 19. `skills/shared/skill-protocol.md`
 20. `skills/shared/event-bus.md`
-21. `skills/shared/agents/process-auditor.md` 与其他角色文件
+21. `skills/shared/agents/pmo.md` 与其他角色文件
 
 ## 可直接使用的交付目录
 
@@ -64,7 +64,6 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 - [QA](/home/work/code/AgentDevFlow/docs/qa/README.md)
 - [Memo](/home/work/code/AgentDevFlow/docs/memo/README.md)
 - [Todo](/home/work/code/AgentDevFlow/docs/todo/README.md)
-- [Research](/home/work/code/AgentDevFlow/docs/research/README.md)
 - [Release](/home/work/code/AgentDevFlow/docs/release/README.md)
 
 ## 最小可运行示例

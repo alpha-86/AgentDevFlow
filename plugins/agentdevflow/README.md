@@ -1,6 +1,6 @@
 # AgentDevFlow 插件入口
 
-这个目录提供的是 **Codex 侧的 AgentDevFlow 启动入口**。目标不是复制整套规则，而是把 Codex 的多 agent 能力接到本仓库的共享资产上。
+这个目录提供的是 **Codex 侧的 AgentDevFlow 启动入口**。目标不是复制整套规则，而是把 Codex 的多 Agent 能力接到本仓库的共享资产上。
 
 ## 插件启动顺序
 
@@ -12,7 +12,7 @@
 4. 读取 [start-agent-team.md](/home/work/code/AgentDevFlow/skills/shared/start-agent-team.md)
 5. 读取 [create-agent.md](/home/work/code/AgentDevFlow/skills/shared/create-agent.md)
 6. 决定默认团队和本轮主 issue
-7. 再创建 Product Manager / 架构师 / QA / Engineer 等角色 subagent
+7. 再创建 Product Manager / 架构师 / QA / Engineer / PMO 等角色 Agent
 
 ## Codex 侧运行模型
 
@@ -20,7 +20,7 @@ Codex 侧的主会话承担 `Team Lead 等效编排者` 职责：
 
 - 建立主 issue、当前 Gate、Todo 和状态板
 - 决定本轮需要哪些角色
-- 用 `spawn_agent` 创建角色 subagent
+- 用 `spawn_agent` 创建角色 Agent
 - 控制文档阶段和实现阶段的先后顺序
 - 在关键节点统一把守 Human Review 和 Issue Comment Gate
 
@@ -36,11 +36,7 @@ Codex 侧的主会话承担 `Team Lead 等效编排者` 职责：
 - QA Engineer
 - Engineer
 - Platform/SRE
-- Process Auditor
-
-按需启用：
-
-- 研究支持
+- PMO
 
 ## 必读共享资产
 
@@ -59,7 +55,7 @@ Codex 侧的主会话承担 `Team Lead 等效编排者` 职责：
 - [qa-engineer.md](/home/work/code/AgentDevFlow/skills/shared/agents/qa-engineer.md)
 - [engineer.md](/home/work/code/AgentDevFlow/skills/shared/agents/engineer.md)
 - [platform-sre.md](/home/work/code/AgentDevFlow/skills/shared/agents/platform-sre.md)
-- [process-auditor.md](/home/work/code/AgentDevFlow/skills/shared/agents/process-auditor.md)
+- [pmo.md](/home/work/code/AgentDevFlow/skills/shared/agents/pmo.md)
 
 关键规则：
 
@@ -75,7 +71,7 @@ Codex 侧的主会话承担 `Team Lead 等效编排者` 职责：
 2. 文档阶段先于实现阶段
 3. 默认团队与可选团队边界明确
 4. Issue / Gate / Comment / Human Review 主线可追溯
-5. subagent 都有清晰职责和写入范围
+5. Agent 都有清晰职责和写入范围
 
 ## 依赖原则
 
@@ -83,7 +79,7 @@ AgentDevFlow 优先复用现成能力，不重复造轮子。
 
 直接复用：
 
-- Codex 多 agent 调度能力
+- Codex 多 Agent 调度能力
 - Git / Issue / PR / CI / `gh`
 - 已有 skills、plugin、agents 包
 

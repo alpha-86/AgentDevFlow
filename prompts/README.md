@@ -39,9 +39,8 @@
 - `architect.md`
 - `engineer.md`
 - `qa-engineer.md`
-- `researcher.md`
 - `platform-sre.md`
-- `process-auditor.md`
+- `pmo.md`
 
 每个共享角色应同时维护对应的 `*.playbook.md`。
 

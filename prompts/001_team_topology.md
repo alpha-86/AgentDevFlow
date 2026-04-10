@@ -27,30 +27,25 @@
 - 负责技术方案、架构评审、技术门禁
 - 负责确认方案的可实现性、可测试性、可维护性
 
-### Engineer
+### 工程师
 
 - 负责实现、单元测试、实现文档同步
 - 负责把通过评审的方案落成可交付资产
 
-### QA Engineer
+### 质量工程师
 
 - 负责测试设计、验证、质量门禁
 - 负责将 PRD/Tech 的要求转换为验证证据
 
-### 研究支持（可选）
-
-- 负责需求调研、技术调研、方案探索
-- 负责在正式立项前提供比较、风险和建议
-
-### Platform/SRE
+### 平台与发布负责人
 
 - 负责环境、流水线、发布稳定性
 - 负责上线前后的运行保障与回滚能力
 
-### Process Auditor
+### PMO
 
 - 负责流程合规审计、例外审批检查、状态漂移发现
-- 负责对 Gate、Issue、Todo、Comment、发布记录进行主动检查
+- 负责对 Gate、Issue、Todo、Comment、发布记录进行主动检查，并推动协作机制持续改进
 
 ## 推荐组织关系
 
@@ -58,11 +53,10 @@
 Team Lead
 ├── Product Manager
 ├── 架构师
-├── Engineer
-├── QA Engineer
-├── 研究支持（可选）
-├── Platform/SRE
-└── Process Auditor
+├── 工程师
+├── 质量工程师
+├── 平台与发布负责人
+└── PMO
 ```
 
 ## 角色协作关系
@@ -72,11 +66,10 @@ Team Lead
 | Team Lead | 项目目标、当前状态 | 节奏、分工、升级决策 |
 | Product Manager | 需求、调研、反馈 | PRD、优先级、验收标准 |
 | 架构师 | 已通过的 PRD | Tech Spec、架构约束、实现切分 |
-| Engineer | 已通过的 Tech Spec | 代码、单测、实现说明 |
-| QA Engineer | PRD + Tech + 实现 | QA Case、测试报告、缺陷列表 |
-| 研究支持（可选） | 模糊问题或方向 | 调研报告、选项比较、建议 |
-| Platform/SRE | 发布需求、运行约束 | 部署方案、发布记录、回滚方案 |
-| Process Auditor | 当前 issue / gate / todo / comment 状态 | 审计报告、纠正动作、例外审批检查 |
+| 工程师 | 已通过的 Tech Spec + QA Case Design | 代码、单测、实现说明 |
+| 质量工程师 | PRD + Tech + 实现 | QA Case Design、测试报告、缺陷列表 |
+| 平台与发布负责人 | 发布需求、运行约束 | 部署方案、发布记录、回滚方案 |
+| PMO | 当前 issue / gate / todo / comment 状态 | 审计报告、纠正动作、例外审批检查 |
 
 ## 基本原则
 
@@ -87,13 +80,13 @@ Team Lead
 - 所有会议必须留痕
 - 所有行动项必须进入 Todo
 - 所有关键文档必须可追溯
-- Team Lead 负责推进，Process Auditor 负责主动发现漂移和违规
+- Team Lead 负责推进，PMO 负责主动发现漂移和违规
 
 ## 升级原则
 
 - 评审超时由 Team Lead 升级
 - 范围冲突由 Product Manager 定口径
 - 技术不可行由 架构师 退回
-- 质量阻塞由 QA Engineer 持有 gate
-- 发布风险由 Platform/SRE 提出阻塞意见
-- 流程违规和状态漂移由 Process Auditor 记录并推动纠正
+- 质量阻塞由 质量工程师 持有 gate
+- 发布风险由 平台与发布负责人 提出阻塞意见
+- 流程违规和状态漂移由 PMO 记录并推动纠正

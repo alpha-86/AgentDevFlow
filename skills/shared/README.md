@@ -36,7 +36,7 @@
 - `templates/artifact-linkage-template.md`
 - `templates/project-portfolio-template.md`
 - `templates/project-kickoff-checklist-template.md`
-- `agents/process-auditor.md`
+- `agents/pmo.md`
 - `team-setup.md`
 - `start-agent-team.md`
 - `create-agent.md`

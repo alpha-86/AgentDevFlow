@@ -11,9 +11,8 @@
 - `architect`
 - `engineer`
 - `qa-engineer`
-- `research-support`
 - `platform-sre`
-- `process-auditor`
+- `pmo`
 
 ## 执行前必读
 
@@ -38,10 +37,6 @@
 
 - `skills/shared/agents/{role}.md`
 - `skills/shared/agents/{role}.playbook.md`
-
-兼容映射：
-
-- `research-support` -> `researcher`
 
 （注意：`architect` 已有独立文件，无需映射。）
 
@@ -95,7 +90,7 @@
 
 创建或激活后必须写入：
 
-- agent 类型
+- Agent 类型
 - 读取的角色文件
 - 读取的 playbook
 - project_id
@@ -117,7 +112,7 @@
 
 ## 禁止行为
 
-- 用通用空白 agent 执行正式角色职责
+- 用通用空白 Agent 执行正式角色职责
 - 跳过角色文件或 playbook 直接开始工作
 - 忽略初始化检查
 - 未确认 issue / gate 状态就直接接任务

@@ -1,6 +1,6 @@
 # Codex Adapter
 
-这是 Codex 侧的 AgentDevFlow 适配入口。它的职责不是再发明一套规则，而是把 Codex 的多 agent 调度能力接到 AgentDevFlow 的共享角色、workflow 和 Gate 主线。
+这是 Codex 侧的 AgentDevFlow 适配入口。它的职责不是再发明一套规则，而是把 Codex 的多 Agent 调度能力接到 AgentDevFlow 的共享角色、workflow 和 Gate 主线。
 
 ## 启动顺序
 
@@ -14,7 +14,7 @@
    - 主 issue 或当前主工作索引
    - 当前 Gate
    - Todo / 状态板 / 产物关联主记录
-7. 再创建 Product Manager、架构师、QA、Engineer、Process Auditor 等 subagent
+7. 再创建 Product Manager、架构师、QA、Engineer、PMO 等角色 Agent
 
 ## 主会话职责
 
@@ -22,14 +22,14 @@ Codex 中的主会话承担 `Team Lead 等效编排者` 职责：
 
 - 先建立启动前置条件，再决定是否创建角色
 - 决定默认团队和可选角色
-- 给每个 subagent 注入角色读物、职责边界和写入范围
+- 给每个子 Agent 注入角色读物、职责边界和写入范围
 - 控制文档阶段先于实现阶段
 - 把守 Issue / Comment / Human Review / Gate
 - 统一收口验证结果和下一步动作
 
-## subagent 最小约束
+## 子 Agent 最小约束
 
-每个 Codex 侧 subagent 在创建时至少必须带上：
+每个 Codex 侧子 Agent 在创建时至少必须带上：
 
 1. 角色定义
 2. 必读文档
@@ -43,8 +43,8 @@ Codex 中的主会话承担 `Team Lead 等效编排者` 职责：
 
 ## 最小通过标准
 
-1. 主会话先完成启动前置条件，再创建任何 subagent
-2. 每个 subagent 都带着明确读物、职责边界和写入范围启动
+1. 主会话先完成启动前置条件，再创建任何子 Agent
+2. 每个子 Agent 都带着明确读物、职责边界和写入范围启动
 3. 文档阶段先于实现阶段
 4. Issue / Comment / Human Review / Gate 全部可追溯
 5. 发现检查失败时，当前阶段会被阻断，而不是继续推进

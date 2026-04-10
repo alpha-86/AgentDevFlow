@@ -10,12 +10,12 @@
 | 角色 | 状态 | 说明 |
 |------|------|------|
 | Team Lead | ✅ | Claude Code (本会话) |
-| Product Manager | 🔄 待创建 | subagent |
-| 架构师 | 🔄 待创建 | subagent |
-| QA Engineer | 🔄 待创建 | subagent |
-| Engineer | 🔄 待创建 | subagent |
-| Platform/SRE | 🔄 待创建 | subagent |
-| Process Auditor | 🔄 待创建 | subagent |
+| Product Manager | 🔄 待创建 | 子 Agent |
+| 架构师 | 🔄 待创建 | 子 Agent |
+| QA Engineer | 🔄 待创建 | 子 Agent |
+| Engineer | 🔄 待创建 | 子 Agent |
+| Platform/SRE | 🔄 待创建 | 子 Agent |
+| PMO | 🔄 待创建 | 子 Agent |
 
 ## 当前 Gate
 
