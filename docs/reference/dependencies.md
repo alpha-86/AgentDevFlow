@@ -1,49 +1,93 @@
 # 依赖清单
 
+## 当前盘点结论
+
+当前仓库是“文档与共享资产自包含、平台能力外接”的结构。
+
+- 仓库内已直接承载的核心资产：
+  - `README.md`
+  - `prompts/`
+  - `docs/`
+  - `skills/shared/`
+  - `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+- 仓库内目前没有语言运行时依赖清单：
+  - 无 `package.json`
+  - 无 `pyproject.toml`
+  - 无 `requirements.txt`
+  - 无 `go.mod`
+- 当前外部依赖主要是“研发协作环境依赖”，而不是“应用运行时依赖”。
+
 ## 必需基础依赖
 
+这些依赖缺失时，插件主流程无法真正落地：
+
 - `git`
+  - 用途：提交、分支、PR 对应的版本管理
 - `rg` 或等价全文检索工具
+  - 用途：全文检索 prompt、workflow、模板和历史记录
 - Markdown 文件系统工作流
+  - 用途：承载 PRD、Tech、QA、Memo、Todo、Release 等正式交付物
 - Issue 跟踪系统
+  - 用途：作为 `Issue First` 主索引
 - Pull Request 工作流
+  - 用途：承载双阶段 PR 机制
 
 ## 推荐工程依赖
 
-- `gh`：GitHub CLI
-- Stacked PR 工具：推荐 `git-stack` 或团队已有 `gstack` 等价方案
-- 测试运行器：按项目语言选择
-- CI 平台：GitHub Actions / 等价系统
+这些依赖不是插件主干的一部分，但强烈建议接入：
 
-## 推荐外部 Skill / Plugin 复用
+- `gh`
+  - 用途：Issue / PR 自动化和评论回写
+- Stacked PR 工具
+  - 推荐：`git-stack`、`gstack` 或团队已有等价方案
+  - 用途：承接文档 PR / 代码 PR 的双阶段协作
+- 测试运行器
+  - 用途：在代码阶段输出真实测试证据
+- CI 平台
+  - 推荐：GitHub Actions 或等价系统
+  - 用途：承接平台检查层
 
-### Claude 官方 Skills
+## 当前已发现的仓库内建入口
 
-- `planner`
-- `architect`
-- `code-review`
-- `tdd`
-- `verification-loop`
-- `docs-lookup`
-- `deep-research`
+当前仓库实际内建且已可作为装载入口的只有：
 
-### 可复用社区包
+- `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+  - 当前唯一正式插件元数据入口
+- `skills/shared/`
+  - 当前唯一共享角色、工作流、模板入口
+- `prompts/`
+  - 当前唯一规则层入口
+- `docs/`
+  - 当前唯一说明、治理、迁移审计入口
 
-- `Superpowers`：适合作为多平台目录组织和插件分发参考
-- Stacked PR 工具链：适合承接文档 PR / 代码 PR 的双阶段协作
+## 推荐复用的外部能力
+
+### 1. `superpowers`
+
+- 级别：可选依赖
+- 当前作用：作为目录组织、技能拆分和执行方式的参考来源
+- 当前结论：可以复用思路，但本仓库核心资产不能依赖其在线存在
+
+### 2. `gstack`
+
+- 级别：可选依赖
+- 当前作用：适合作为 stacked PR、评审、发布、检查类能力的宿主环境
+- 当前结论：可接入，不应成为仓库核心规则的唯一承载
+
+### 3. GitHub CLI 与 GitHub 平台能力
+
+- 级别：推荐依赖
+- 当前作用：Issue、PR、Comment、检查器接入
+- 当前结论：是当前最贴近插件主流程的外部协作平台依赖
 
 ## 依赖治理规则
 
-- 本项目的核心资产不得依赖其他仓库中的 prompts、skills 或文档。
-- 核心流程文档必须说明依赖来源、安装方式、是否必需
-- 外部依赖优先“引用和适配”，避免重复造轮子
-- 若团队已有 `gstack` 约定，则在平台接入文档中明确其命令约定
+- 本项目的核心资产不得依赖其他仓库中的 prompts、skills 或文档才能成立。
+- 核心流程文档必须说明依赖来源、安装方式、是否必需。
+- 外部依赖优先“引用和适配”，避免重复造轮子。
+- 若团队已有 `gstack` 约定，则在平台接入文档中明确其命令约定。
+- 若外部依赖缺失，必须说明哪些流程可降级执行，哪些流程不可执行。
 
-## 当前建议
+## Phase 5.1 结论
 
-| 依赖 | 级别 | 用途 |
-|---|---|---|
-| Claude 官方 Skills | 推荐 | 规划、架构、评审、验证 |
-| Superpowers | 可选 | 参考其跨平台打包方式与现成能力 |
-| git-stack / gstack | 推荐 | Stacked PR 协作 |
-| GitHub CLI | 推荐 | Issue / PR 自动化 |
+`Phase 5.1` 的结论是：当前仓库没有复杂的语言运行时依赖，真正需要收口的是研发协作依赖和插件装载依赖。下一步应继续区分哪些能力直接复用 `superpowers` / `gstack`，哪些必须由本仓库自己承载。
