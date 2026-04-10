@@ -12,17 +12,15 @@ jobs:
       - name: Check PR is not a doc PR
         id: validate
         run: |
+          set -x
           TITLE="${{ github.event.pull_request.title }}"
           echo "PR title is: $TITLE"
-          # Use simple string prefix check
-          if [ "${TITLE:0:5}" = "[DOC]" ] || [ "${TITLE:0:5}" = "[DOC " ]; then
-            echo "This is a doc PR. Skipping."
-            exit 78
-          elif [ "${TITLE:0:4}" = "[DOC" ]; then
-            echo "This is a doc PR. Skipping."
+          echo "First 4 chars: ${TITLE:0:4}"
+          if [ "${TITLE:0:4}" = "[DOC" ]; then
+            echo "Doc PR detected"
             exit 78
           fi
-          echo "This is a code PR"
+          echo "Not a doc PR"
 
       - name: Checkout code
         uses: actions/checkout@v4
