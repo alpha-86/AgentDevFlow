@@ -99,7 +99,7 @@
 | `change_record/V1.0_*.md` | PRD / Tech / 代码一致性变更管理 | 可迁移 | `prompts/zh-cn/008_change_record_and_revalidation.md` | 插件变更管理能力 | 已迁移 |
 | `change_record/V1.2_review_org_支持subagent及change_record.md` | review 结果必须沉淀 change_record，并与 CHANGELOG 联动 | 可迁移 | 当前仅部分散落在 `prompts/discuss/` | 插件变更记录规范 | 已复核；需在 Phase 3 建立正式 CHANGELOG 联动 |
 | `change_record/V1.3_review_org_强化文档阅读与系统性方案要求.md` | 先读全量文档，再输出系统性方案 | 可迁移 | `prompts/discuss/` 当前执行口径 | 插件审计 / review 约束 | 已复核；需继续固化为插件规则 |
-| `change_record/V2.0_研发流程与GitHubIssue结合及QA角色引入.md` | Issue First + QA 正式进入研发主链路 | 可迁移 | `prompts/zh-cn/007_issue_driven_orchestration.md`、`004/005/013` 相关文档 | 插件 Issue / QA 主骨架 | 已复核；Phase 2 深化 |
+| `change_record/V2.0_研发流程与GitHubIssue结合及QA角色引入.md` | Issue First + QA 正式进入研发主链路 | 可迁移 | `prompts/zh-cn/007_issue_driven_orchestration.md`、`004/005/013` 相关文档 | 插件 Issue / QA 主骨架 | Issue First 已在 Phase 2.1 深化；QA Gate 继续在后续项深化 |
 | `change_record/V2.1_P0修复_QA_V2.0_review_critical_rules强化.md` | 流程变更后，Critical Rules 必须同步修正 | 可迁移 | `skills/shared/agents/*` | 插件角色规则校验 | 已复核；Phase 5 深化 |
 | `change_record/V2.1_V2.0变更review及Agent_Critical_Rules验证.md` | 流程变更需要复核并验证角色规则是否一致 | 可迁移 | `prompts/discuss/`、`skills/shared/agents/*` | 插件复核机制 | 已复核 |
 | `change_record/V2.2_双PR机制引入.md` | 文档阶段 + 代码阶段双阶段 PR 机制 | 可迁移 | `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`、`017_human_review_and_signoff.md` | 插件双阶段交付能力 | 已迁移，但 README 仍需改为插件口径 |
