@@ -1,4 +1,4 @@
-# Event Bus Trace 示例
+# 事件总线追踪示例
 
 - event_id: `evt-2026-04-09-001`
 - event_type: `document.created`
@@ -13,10 +13,10 @@
   - `docs/memo/启动会_2026-04-09_agentdevpipeline_execution_example.md`
 - required_checks:
   - `PRD 模板字段完整`
-  - `issue comment 已创建`
-  - `artifact linkage 已登记`
+  - `Issue 评论已创建`
+  - `产物关联已登记`
 - status: `completed`
-- result_summary: `PRD 评审已触发，等待 Tech Lead 与 Product Manager 完成评审结论`
+- result_summary: `PRD 评审已触发，等待技术负责人与产品经理完成评审结论`
 - follow_up_action: `创建 review.requested 事件，并把 issue 状态维持在 in_prd`
 - 负责人: `product-manager`
 - created_at: `2026-04-09T10:20:00Z`
@@ -30,14 +30,14 @@
 - current_stage: `tech_review`
 - source_role: `platform-checker`
 - target_workflow: `skills/shared/workflows/tech-review.md`
-- trigger_reason: `Tech Review 已完成，但缺少结构化 Gate 评论`
+- trigger_reason: `技术评审已完成，但缺少结构化阶段门评论`
 - related_artifacts:
   - `docs/tech/001_user_notification_center_tech_spec.md`
 - required_checks:
   - `review-comment-checklist-template.md`
   - `platform-check-result-template.md`
 - status: `blocked`
-- result_summary: `下游 implementation 被阻断，直到补齐 Gate 评论`
-- follow_up_action: `由 tech-lead 补充正式评论后重试`
+- result_summary: `下游实现阶段被阻断，直到补齐阶段门评论`
+- follow_up_action: `由技术负责人补充正式评论后重试`
 - 负责人: `tech-lead`
 - created_at: `2026-04-09T11:15:00Z`
