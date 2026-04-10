@@ -1,10 +1,10 @@
 # Agent 创建日志示例
 
 **日期**: 2026-04-09
-**创建人**: Team Lead
-**角色**: Process Auditor
+**创建人**: 团队负责人
+**角色**: 流程审计员
 **主 Issue**: #0
-**当前阶段**: Governance
+**当前阶段**: 治理阶段
 
 ## 已加载文件
 
@@ -21,7 +21,7 @@
 
 ## 当前待处理事项
 
-- 检查 issue / artifact linkage / platform fail 示例是否完整
+- 检查 issue / 产物关联 / 平台失败示例是否完整
 
 ## 备注
 

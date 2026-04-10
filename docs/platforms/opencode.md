@@ -2,7 +2,7 @@
 
 ## 建议接入方式
 
-- 以 prompt pack + workflow pack 的方式接入
+- 以提示词包 + 工作流包的方式接入
 - 优先复用 `skills/shared/` 与 `prompts/`
 
 ## 最小安装
@@ -14,5 +14,4 @@
 ## 说明
 
 - 当前先提供通用目录和文档适配说明
-- 后续可根据 OpenCode 的具体插件规范再补 manifest
-
+- 后续可根据 OpenCode 的具体插件规范再补清单文件

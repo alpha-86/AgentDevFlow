@@ -7,20 +7,20 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 ## 项目定位
 
 - AgentDevFlow 是一个全新独立的项目
-- 目标是提供完整的多 agent 研发流程编排能力
+- 目标是提供完整的多智能体研发流程编排能力
 - 强调全流程自动化，同时保持过程可控、可追溯、可复盘
-- 所有文档、prompts、skills、workflow、template 都维护在本仓库内
+- 所有文档、提示词、技能、工作流、模板都维护在本仓库内
 
 ## 文档组织方式
 
 - `docs/` 只保留中文单线文档。
 - 目录按内容语义组织，不再按语言组织。
-- 所有需求变更、prompt 调整、workflow 迭代都直接回写到当前目录结构。
+- 所有需求变更、提示词调整、工作流迭代都直接回写到当前目录结构。
 - 历史上的多语言镜像策略已停止使用。
 
 ## 核心能力范围
 
-- Team Lead / Product Manager / Tech Lead / Engineer / QA / Researcher / Platform/SRE / Process Auditor 的角色定义与协作边界
+- 团队负责人 / 产品经理 / 技术负责人 / 工程师 / 测试 / 研究支持 / 平台-SRE / 流程审计员 的角色定义与协作边界
 - PRD Gate、Tech Gate、QA Gate、Release Gate 组成的端到端交付流程
 - 文档规范、会议纪要、Todo 闭环、Issue 驱动交付等过程治理机制
 - Agent 创建规范、平台适配约束和跨平台接入方式
@@ -45,7 +45,7 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 8. [与 hedge-ai 的对照审计](/home/work/code/AgentDevFlow/docs/migration/review-vs-hedge-ai.md)
 9. [治理目录](/home/work/code/AgentDevFlow/docs/governance/README.md)
 10. [核心原则](/home/work/code/AgentDevFlow/docs/governance/core-principles.md)
-11. [Shared Skill 使用协议](/home/work/code/AgentDevFlow/docs/governance/skill-protocol.md)
+11. [共享技能使用协议](/home/work/code/AgentDevFlow/docs/governance/skill-protocol.md)
 12. `prompts/discuss/` 中的复核与讨论记录
 13. 平台接入文档
 14. `prompts/` 中的 Issue / 变更 / 异常 / 合规机制
@@ -81,6 +81,6 @@ AgentDevFlow 是一套自包含的通用产研 Agent 能力包，目标是把可
 - [Issue Comment 缺失阻断示例](/home/work/code/AgentDevFlow/docs/memo/issue_comment_failure_2026-04-09_example.md)
 - [项目状态板示例](/home/work/code/AgentDevFlow/docs/memo/project_status_board_2026-04-09_example.md)
 - [平台检查清单示例](/home/work/code/AgentDevFlow/docs/memo/platform_checklist_2026-04-09_example.md)
-- [QA Report 示例](/home/work/code/AgentDevFlow/docs/qa/001_user_notification_center_qa_report_2026-04-09.md)
-- [Release Record 示例](/home/work/code/AgentDevFlow/docs/release/001_release_record_example_2026-04-09.md)
-- [Todo Registry](/home/work/code/AgentDevFlow/docs/todo/TODO_REGISTRY.md)
+- [QA 报告示例](/home/work/code/AgentDevFlow/docs/qa/001_user_notification_center_qa_report_2026-04-09.md)
+- [发布记录示例](/home/work/code/AgentDevFlow/docs/release/001_release_record_example_2026-04-09.md)
+- [待办注册表示例](/home/work/code/AgentDevFlow/docs/todo/TODO_REGISTRY.md)

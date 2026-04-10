@@ -14,7 +14,7 @@
 ### 组织与角色
 
 - 团队拓扑与角色边界：`prompts/001_*`、`002_*`
-- Team Lead 边界与角色强规则：`skills/shared/agents/*`
+- 团队负责人边界与角色强规则：`skills/shared/agents/*`
 - 团队启动机制：`prompts/010_team_setup_and_bootstrap.md`
 
 ### 流程与 Gate

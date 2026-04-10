@@ -30,9 +30,9 @@
 
 ## 平台检查状态
 
-- Claude: checklist ready / result example ready
-- Codex: checklist ready / result example ready
-- OpenCode: checklist ready / result example ready
+- Claude：检查清单已就绪 / 结果示例已就绪
+- Codex：检查清单已就绪 / 结果示例已就绪
+- OpenCode：检查清单已就绪 / 结果示例已就绪
 
 ## 待办概览
 

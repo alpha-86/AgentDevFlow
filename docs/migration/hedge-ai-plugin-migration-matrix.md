@@ -48,15 +48,15 @@
 | `014_回测报告模板.md` | 回测模板 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
 | `015_会议记录规范.md` | Memo 强制留痕、目录与命名规则 | 可迁移 | `prompts/005_meeting_and_todo.md`、`docs/memo/README.md` | 插件会议留痕主干 | 已复核 |
 | `016_Todo管理机制.md` | Todo 闭环与 Review | 可迁移 | `prompts/005_meeting_and_todo.md`、`docs/todo/TODO_REGISTRY.md` | 插件 Todo 主干 | 已复核 |
-| `019_TeamLead职责边界.md` | Team Lead 边界、AI 驱动 AI、Agent 创建规范 | 可迁移 | `skills/shared/agents/team-lead.md`、`prompts/006_agent_creation_contract.md` | 插件协调与创建主干 | 已复核 |
+| `019_TeamLead职责边界.md` | 团队负责人边界、AI 驱动 AI、Agent 创建规范 | 可迁移 | `skills/shared/agents/team-lead.md`、`prompts/006_agent_creation_contract.md` | 插件协调与创建主干 | 已复核 |
 
 ## B. 角色机制
 
 | 源文件 | 机制摘要 | 判定 | 当前仓库落点 | 插件落点 | 状态 |
 |---|---|---|---|---|---|
 | `.claude/skills/AGENTS/team-lead.md` | 团队协调、会议前读 workflow、QA 触发、评论约束 | 可迁移 | `skills/shared/agents/team-lead.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
-| `.claude/skills/AGENTS/pm-agent.md` | 文档阶段 owner、Issue 主线、双阶段交付、Gate 前置 | 可迁移 | `skills/shared/agents/product-manager.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
-| `.claude/skills/AGENTS/cto-agent.md` | 技术评审 owner、架构边界、签字机制 | 可迁移 | `skills/shared/agents/tech-lead.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
+| `.claude/skills/AGENTS/pm-agent.md` | 文档阶段负责人、Issue 主线、双阶段交付、Gate 前置 | 可迁移 | `skills/shared/agents/product-manager.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
+| `.claude/skills/AGENTS/cto-agent.md` | 技术评审负责人、架构边界、签字机制 | 可迁移 | `skills/shared/agents/tech-lead.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
 | `.claude/skills/AGENTS/engineer-agent.md` | 前置检查、开发拒绝机制、实现后交 QA | 可迁移 | `skills/shared/agents/engineer.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
 | `.claude/skills/AGENTS/qa-agent.md` | QA 介入、测试报告、验收约束 | 可迁移 | `skills/shared/agents/qa-engineer.md` | 插件主干角色包 | 已复核；属于插件主干角色 |
 | `.claude/skills/AGENTS/sre-agent.md` | 平台保障、发布/回滚、平台检查 | 可迁移 | `skills/shared/agents/platform-sre.md` | 插件主干角色包 | 已复核；属于插件主干角色 |

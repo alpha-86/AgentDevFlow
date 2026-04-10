@@ -7,7 +7,7 @@
 参考仓库：
 
 - GitHub: https://github.com/obra/superpowers
-- Marketplace: https://github.com/obra/superpowers-marketplace
+- 市场地址: https://github.com/obra/superpowers-marketplace
 
 ### 当前仓库可直接复用的点
 
@@ -42,7 +42,7 @@
   - 不应把它写成 AgentDevFlow 的强制依赖
 - `test-driven-development`
   - 可作为代码阶段的推荐工程方法
-  - 不应替代本项目自己的 Gate、Issue、Human Review 机制
+  - 不应替代本项目自己的 Gate、Issue、人工评审机制
 
 ### 对 AgentDevFlow 的建议
 
@@ -66,7 +66,7 @@
 
 - 小步提交、分层 PR、顺序合并，非常适合文档 PR 和代码 PR 分离
 - 可以自然映射 AgentDevFlow 的“双阶段交付”：先设计文档，再实现代码
-- 降低大 PR 的评审负担，提升多 agent 协作稳定性
+- 降低大 PR 的评审负担，提升多智能体协作稳定性
 
 ### 对 AgentDevFlow 的建议
 

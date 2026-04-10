@@ -28,7 +28,7 @@
 - Markdown 文件系统工作流
   - 用途：承载 PRD、Tech、QA、Memo、Todo、Release 等正式交付物
 - Issue 跟踪系统
-  - 用途：作为 `Issue First` 主索引
+  - 用途：作为“Issue 优先”主索引
 - Pull Request 工作流
   - 用途：承载双阶段 PR 机制
 

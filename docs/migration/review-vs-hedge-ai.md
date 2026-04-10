@@ -26,7 +26,7 @@
 
 ### 2. 组织与角色
 
-- 已建立 Team Lead、PM、Tech Lead、Engineer、QA、Researcher、Platform/SRE 的通用角色
+- 已建立团队负责人、PM、技术负责人、工程师、QA、研究支持、平台 / SRE 的通用角色
 - 已排除基金经理、交易员、量化 CRO/CSO 等业务角色
 
 ### 3. 会议、Todo、异常、恢复
@@ -40,11 +40,11 @@
 
 ## 三、这次 review 发现并已修正的问题
 
-### 1. Team Lead 定义层次不清
+### 1. 团队负责人定义层次不清
 
 问题：
 
-- `001_team_topology.md` 和 `002_product_engineering_roles.md` 都在定义 Team Lead，容易让读者误以为存在两套定义
+- `001_team_topology.md` 和 `002_product_engineering_roles.md` 都在定义团队负责人，容易让读者误以为存在两套定义
 
 修正：
 
@@ -61,7 +61,7 @@
 
 - 已重写为用户视角，解释项目解决什么问题、如何解决、内部逻辑、核心原则、整体架构和适用边界
 
-### 3. hedge-ai 中 Team Lead 的若干通用硬规则缺失
+### 3. hedge-ai 中团队负责人的若干通用硬规则缺失
 
 问题：
 

@@ -29,7 +29,7 @@
 
 ## 残留风险
 
-- 目前仍缺真实 issue comment 与 PR/merge 链接
+- 目前仍缺真实 issue 评论与 PR / 合并链接
 
 ## 结论
 

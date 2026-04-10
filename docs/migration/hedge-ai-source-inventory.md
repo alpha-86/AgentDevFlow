@@ -33,7 +33,7 @@
 | `014_ClaudeSkills与Agent依赖.md` | 可迁移 | 迁移 agent 依赖治理方法 |
 | `015_会议记录规范.md` | 可迁移 | 迁移会议纪要标准 |
 | `016_Todo管理机制.md` | 可迁移 | 迁移 Todo 闭环机制 |
-| `019_TeamLead职责边界.md` | 可迁移 | 迁移 Team Lead 边界、AI 驱动 AI 与 Agent 创建规范 |
+| `019_TeamLead职责边界.md` | 可迁移 | 迁移团队负责人边界、AI 驱动 AI 与 Agent 创建规范 |
 
 ### A1. change_record（版本变更记录）
 
@@ -73,8 +73,8 @@
 | 源文件 | 判定 | 迁移说明 |
 |---|---|---|
 | `team-lead.md` | 可迁移 | 通用管理边界可迁移 |
-| `pm-agent.md` | 可迁移 | 通用 PM / 文档阶段 owner 可迁移 |
-| `cto-agent.md` | 可迁移 | 通用技术评审 owner 可迁移 |
+| `pm-agent.md` | 可迁移 | 通用 PM / 文档阶段负责人可迁移 |
+| `cto-agent.md` | 可迁移 | 通用技术评审负责人可迁移 |
 | `engineer-agent.md` | 可迁移 | 通用开发交付角色可迁移 |
 | `qa-agent.md` | 可迁移 | 通用 QA Gate 与测试验收角色可迁移 |
 | `pmo-agent.md` | 可迁移 | 流程合规主动检查机制可迁移 |

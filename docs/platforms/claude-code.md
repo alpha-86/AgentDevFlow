@@ -2,9 +2,9 @@
 
 ## 建议接入方式
 
-- 使用 `adapters/claude/.claude/skills/` 作为本地 skill pack
-- 直接使用本仓库中的 `skills/shared/` 作为 Claude skill 内容
-- 按需安装官方 skills
+- 使用 `adapters/claude/.claude/skills/` 作为本地技能包
+- 直接使用本仓库中的 `skills/shared/` 作为 Claude 技能内容
+- 按需安装官方技能
 
 ## 最小安装
 
@@ -14,10 +14,10 @@
 
 ## 角色建议
 
-- Team Lead
-- Product Manager
-- Tech Lead
+- 团队负责人
+- 产品经理
+- 技术负责人
 - Engineer
-- QA Engineer
+- 测试工程师
 - Researcher
-- Platform/SRE
+- 平台 / SRE
