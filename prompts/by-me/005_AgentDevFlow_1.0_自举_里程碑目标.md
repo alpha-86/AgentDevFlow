@@ -1,5 +1,5 @@
 本文档定义AgentDevFlow项目的1.0里程碑目标：
-1. 确保001～004文档的内容能完成，然后确保能在claude Code、Codex中能够使用本项目（AgentDevFlow）来迭代自己，即能够自举。即 1.0的关键里程碑是 “***自举***” 。
+1. 确保001～004文档的内容能完成，然后确保能在claude Code中能够使用本项目（AgentDevFlow）来迭代自己，即能够自举。即 1.0的关键里程碑是 “***自举***” 。明确1.0能达到Claude Code自举即可，1.1版本会支持codex自举。
 2. 当前AgentDevFlow的实现还有很多问题，有遗漏、错误、无意义实现、重复造轮子，请独立review当前AgentDevFlow的实现，是否匹配原hedge-ai的内容。举个例子，是否可以把hedge-ai的产品能力从agent-team内去掉，直接使用AgentDevFlow。
 3. 你可以创建两个subagent，分别作为 hedge-ai下 prompts/V3.0 和 .claude/skill 的专家，让这两个subagent阅读完整的这两个目录下的所有问题。你通过跟这两个subagent讨论的形式，对齐能力。001～005需求，都有很多不完备的地方，你要彻底review，你可以跟这两个subagent讨论对齐gap。
 4. 能够自举要确保跟Claude、Codex兼容，例如Claude 要基于Agent Team能力来实现，Agent Team已经有Team Lead就不需要创建新的，但是要约束Team Lead阅读相关规范、按照规范运转。具体可以参考 原hedge-ai下.claude/skills相关文档
