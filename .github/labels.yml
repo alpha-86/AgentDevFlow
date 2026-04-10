@@ -1,0 +1,34 @@
+---
+name: feature
+color: "3EA10B"
+description: 功能需求
+
+---
+name: bug
+color: "DC3545"
+description: 缺陷修复
+
+---
+name: discuss
+color: "1F75FE"
+description: 讨论
+
+---
+name: P0
+color: "B60205"
+description: 最高优先级
+
+---
+name: P1
+color: "FF7800"
+description: 高优先级
+
+---
+name: P2
+color: "FBCA04"
+description: 中优先级
+
+---
+name: P3
+color: "B0B0B0"
+description: 低优先级
