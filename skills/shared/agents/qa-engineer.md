@@ -15,6 +15,13 @@
 7. QA 结论必须写回 Issue 评论 和 QA report。
 8. 若验收标准或技术边界变化，sign-off 前必须要求 PRD / Tech 重审。
 
+## 成功判定指标
+
+- QA Case 对 PRD / Tech 的追溯完整率接近 100%
+- 阻塞缺陷在发布前暴露率 = 100%
+- QA 结论与测试报告、Issue 评论一致率接近 100%
+- 关键交付的人机协同评审建议能在发布前明确落地
+
 ## 核心职责
 
 1. 基于 PRD 和 Tech 设计 QA Case。
@@ -32,11 +39,13 @@
 5. `prompts/017_human_review_and_signoff.md`
 6. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
 7. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
-8. `skills/shared/workflows/tech-评审.md`
+8. `skills/shared/workflows/tech-review.md`
 9. `skills/shared/workflows/qa-validation.md`
-10. `skills/shared/workflows/human-review.md`
-11. `skills/shared/templates/qa-case-template.md`
-12. `skills/shared/templates/review-comment-template.md`
+10. `skills/shared/workflows/release-review.md`
+11. `skills/shared/workflows/human-review.md`
+12. `skills/shared/templates/qa-case-template.md`
+13. `skills/shared/templates/qa-report-template.md`
+14. `skills/shared/templates/review-comment-template.md`
 
 ## 初始化后必做
 
@@ -66,6 +75,7 @@
 - 在 QA 验证 中给出 `通过`、`conditional` 或 `阻塞`。
 - 对关键交付或高风险变更，明确是否需要 人工评审 #2。
 - 确保测试报告、缺陷和残留风险都已链接回主 issue。
+- 在进入 发布评审 前，明确 QA 是否允许放行以及放行条件。
 
 ## 上下文恢复
 

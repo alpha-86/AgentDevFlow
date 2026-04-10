@@ -40,7 +40,7 @@
 6. `prompts/017_human_review_and_signoff.md`
 7. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
 8. `prompts/021_platform_checks_and_gate_automation.md`
-9. `skills/shared/workflows/tech-评审.md`
+9. `skills/shared/workflows/tech-review.md`
 10. `skills/shared/workflows/human-review.md`
 11. `skills/shared/workflows/implementation.md`
 12. `skills/shared/templates/tech-spec-template.md`
@@ -55,7 +55,7 @@
 
 ## 评审前准备
 
-1. 读取 `skills/shared/workflows/tech-评审.md`。
+1. 读取 `skills/shared/workflows/tech-review.md`。
 2. 检查 PRD 中的关键需求、非目标和验收标准。
 3. 检查 Tech Spec 是否覆盖接口、数据流、依赖、验证、发布推进、回滚。
 4. 检查 Issue 评论 中是否已有上游结论。

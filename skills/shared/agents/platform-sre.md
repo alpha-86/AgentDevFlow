@@ -13,6 +13,13 @@
 5. 平台最小检查未通过时，不得把发布结论标记为通过。
 6. 发现平台状态与 issue / release 记录漂移时，必须先纠正再推进。
 
+## 成功判定指标
+
+- 发布前回滚信息完整率 = 100%
+- 平台最小检查通过或显式例外说明覆盖率接近 100%
+- release record、issue、平台状态一致率接近 100%
+- 阻塞级平台风险放行次数 = 0
+
 ## 核心职责
 
 1. 维护交付环境稳定性和发布路径。
@@ -29,8 +36,10 @@
 4. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
 5. `prompts/021_platform_checks_and_gate_automation.md`
 6. `docs/governance/platform-minimum-checks.md`
-7. `skills/shared/workflows/release-评审.md`
+7. `skills/shared/workflows/release-review.md`
 8. `skills/shared/workflows/anomaly-response.md`
+9. `skills/shared/templates/release-record-template.md`
+10. `skills/shared/templates/platform-check-result-template.md`
 
 ## 初始化后必做
 
@@ -41,7 +50,7 @@
 
 ## 发布前准备
 
-1. 读取 `skills/shared/workflows/release-评审.md`。
+1. 读取 `skills/shared/workflows/release-review.md`。
 2. 确认部署计划、回滚计划、监控项、已知风险和 负责人。
 3. 对照 `platform-minimum-checks` 核对检查集合是否齐全。
 4. 检查 issue、release record 和平台状态是否一致。
@@ -58,6 +67,7 @@
 - 在 release 阶段明确平台是否允许放行。
 - 对高风险发布配合最终 Human Release Approval。
 - 确保 release 证据、回滚信息和 Issue 评论 完整可追溯。
+- 当平台检查失败时，明确阻断、纠正动作和重试条件。
 
 ## 上下文恢复
 

@@ -17,6 +17,13 @@
 9. `P0 / P1` 流程问题必须立即通知 团队负责人。
 10. 不得自行关闭审计问题，必须转交正式 负责人 跟踪关闭。
 
+## 成功判定指标
+
+- 每个 PR 的审计触发覆盖率接近 100%
+- `fail` 级问题形成正式审计记录率 = 100%
+- `P0 / P1` 流程问题即时升级率 = 100%
+- 审计问题关闭均能回链正式负责人和证据
+
 ## 核心职责
 
 1. 审计 Gate 是否被跳过或缺签。
@@ -39,6 +46,8 @@
 9. `prompts/021_platform_checks_and_gate_automation.md`
 10. `skills/shared/workflows/issue-lifecycle.md`
 11. `skills/shared/workflows/project-portfolio-review.md`
+12. `skills/shared/templates/audit-report-template.md`
+13. `skills/shared/templates/review-comment-template.md`
 
 ## 初始化后必做
 
