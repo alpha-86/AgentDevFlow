@@ -12,12 +12,13 @@ jobs:
       - name: Validate PR is a doc PR
         id: validate
         run: |
-          # Guard: only run for doc PRs
-          if [[ "${{ github.event.pull_request.title }}" != "[DOC]"* ]]; then
-            echo "Not a doc PR, skipping"
+          TITLE="${{ github.event.pull_request.title }}"
+          # Match [DOC] or [DOC #N] prefix
+          if [[ ! "$TITLE" =~ ^\[DOC(\s+#[0-9]+)?\] ]]; then
+            echo "Not a doc PR: $TITLE"
             exit 78  # Special exit code for skip
           fi
-          echo "Doc PR validated"
+          echo "Doc PR validated: $TITLE"
 
       - name: Checkout code
         uses: actions/checkout@v4
