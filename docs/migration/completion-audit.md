@@ -4,10 +4,10 @@
 
 截至当前版本，hedge-ai 中大量“可迁移”和“部分迁移”的通用产研机制已经在 `agentdevpipeline` 当前仓库中形成主干，但不能再表述为“已基本完成拆解”。更准确的状态是：
 
-- 主干机制已经初步迁移
+- 主干机制已经形成可执行主线
 - 边界已经明确
-- 逐文档到插件落点的覆盖检查还没有彻底完成
-- 插件入口表达仍然弱于目标要求
+- 逐文档到插件落点的覆盖检查已经推进到 `Phase 7`
+- 仍有少量插件入口与安装承载细节未完全收口
 
 ## 已落地的主干机制
 
@@ -22,6 +22,7 @@
 - 文档契约：`prompts/003_document_contracts.md`
 - Gate 机制：`prompts/004_delivery_gates.md`
 - 双轨交付：`prompts/016_dual_track_delivery_mechanism.md`
+- 双阶段 PR 与 Comment Gate：`prompts/019_*`、`020_*`
 
 ### Issue / 评论 / 变更
 
@@ -46,7 +47,14 @@
 ### 评审评估
 
 - 评审维度：`prompts/015_review_evaluation_dimensions.md`
+- 检查器类型与模板字段：`prompts/015_*`、`review-comment-checklist-template.md`、`audit-report-template.md`
 - Review Comment / Change Record / Handoff / Recovery / Anomaly 模板：`skills/shared/templates/*`
+
+## 当前仍未完成的主缺口
+
+- `github-issue/SKILL.md` 与 `review-org/SKILL.md` 仍缺更明确的插件落点
+- 插件安装/装载说明仍可继续收紧
+- 完成度审计仍需随着后续插件入口收口继续同步
 
 ## 明确排除
 
@@ -63,7 +71,7 @@
 
 ## 审计口径
 
-本审计目前只表示“已有初步落点”，不表示“独立插件目标已经完成”。更严格的检查请以：
+本审计当前表示“主干已成型，但仍未彻底收口为最终插件成品”。更严格的检查请以：
 
 - [hedge-ai 研发机制拆解到独立插件的迁移矩阵](/home/work/code/agentdevpipeline/docs/migration/hedge-ai-plugin-migration-matrix.md)
 - [围绕独立插件目标的总复核与纠偏](/home/work/code/agentdevpipeline/prompts/discuss/015_2026-04-10_围绕独立插件目标的总复核与纠偏.md)

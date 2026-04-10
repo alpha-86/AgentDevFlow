@@ -14,9 +14,9 @@
 
 | 源文件 | 机制摘要 | 判定 | 当前仓库落点 | 插件落点 | 状态 |
 |---|---|---|---|---|---|
-| `prompts/V3.0/README.md` | 启动指南、阅读顺序、角色必读分配、双阶段流程总览、恢复入口 | 可迁移 | `README.md`、`docs/README.md` | `plugins/agentdevpipeline/README.md` | 已复核；插件入口仍偏薄，需在 Phase 3 收口 |
+| `prompts/V3.0/README.md` | 启动指南、阅读顺序、角色必读分配、双阶段流程总览、恢复入口 | 可迁移 | `README.md`、`docs/README.md` | `plugins/agentdevpipeline/README.md` | 已复核；主入口已成型，仍可继续收紧插件装载说明 |
 | `prompts/V3.0/CHANGELOG.md` | 版本化变更记录主索引，联动 change_record 明细 | 可迁移 | 根 `CHANGELOG.md` | 根 `CHANGELOG.md` | 已在 Phase 3.6 建立中文主版本 CHANGELOG 方案与主索引联动 |
-| `prompts/V3.0/014_ClaudeSkills与Agent依赖.md` | 平台 Skills 依赖矩阵、角色依赖关系 | 可迁移 | `docs/reference/dependencies.md`、`skills/shared/README.md` | `plugins/agentdevpipeline/README.md` | 未充分插件化 |
+| `prompts/V3.0/014_ClaudeSkills与Agent依赖.md` | 平台 Skills 依赖矩阵、角色依赖关系 | 可迁移 | `docs/reference/dependencies.md`、`skills/shared/README.md` | `plugins/agentdevpipeline/README.md` | 已复核；依赖边界已收口，安装说明仍可继续强化 |
 | `.claude/skills/TEAM_SETUP.md` | 团队初始化顺序、前置条件、恢复入口 | 可迁移 | `skills/shared/team-setup.md` | `plugins/agentdevpipeline/README.md` + 共享入口 | 已复核；属于插件启动主干 |
 | `.claude/skills/start-agent-team/SKILL.md` | 团队启动统一入口 | 可迁移 | `skills/shared/start-agent-team.md` | 插件内启动入口说明 | 已初步落地 |
 | `.claude/skills/create-agent/SKILL.md` | 角色统一创建入口 | 可迁移 | `skills/shared/create-agent.md` | 插件内角色激活入口 | 已初步落地 |
@@ -24,8 +24,8 @@
 | `.claude/skills/EVENT_BUS.md` | 事件总线架构、事件格式、触发与订阅 | 可迁移 | `skills/shared/event-bus.md` | 插件共享编排协议 | 已复核；只能保留抽象结构 |
 | `.claude/skills/ANOMALY_LOOP.md` | 异常闭环、优先级、case 状态机 | 部分迁移 | `prompts/012_anomaly_and_escalation_loop.md`、`skills/shared/workflows/anomaly-response.md` | 插件异常闭环能力 | 已复核；需持续去业务语义 |
 | `.claude/skills/github-issue.md` | GitHub Issue 流程约束、字段要求、流转规范 | 可迁移 | `prompts/007_issue_driven_orchestration.md`、`013_github_issue_and_review_comments.md` | 插件 Issue 主线规则 | 已复核；Phase 2 深化 |
-| `.claude/skills/github-issue/SKILL.md` | Issue skill 调用入口、执行顺序、约束包装 | 可迁移 | 当前缺严格对应共享入口 | 插件 Issue skill 入口说明 | 已复核；Phase 3 需要明确插件承载位置 |
-| `.claude/skills/review-org/SKILL.md` | 组织化评审入口、全量阅读、系统性输出约束 | 可迁移 | `prompts/discuss/` 当前执行口径、`prompts/009_review_rigor_and_context_recovery.md` | 插件评审入口约束 | 已复核；Phase 3 需要明确插件承载位置 |
+| `.claude/skills/github-issue/SKILL.md` | Issue skill 调用入口、执行顺序、约束包装 | 可迁移 | 当前缺严格对应共享入口 | 插件 Issue skill 入口说明 | 已复核；仍缺更明确插件承载位置 |
+| `.claude/skills/review-org/SKILL.md` | 组织化评审入口、全量阅读、系统性输出约束 | 可迁移 | `prompts/discuss/` 当前执行口径、`prompts/009_review_rigor_and_context_recovery.md` | 插件评审入口约束 | 已复核；仍缺更明确插件承载位置 |
 
 ## A1. 主文档 001-016, 019
 
@@ -122,11 +122,9 @@
 
 ## 当前最关键缺口
 
-1. Phase 1 覆盖核对后，根 `README.md` 仍未完全达到 hedge-ai 顶层启动指南的插件化强度。
-2. `plugins/agentdevpipeline/README.md` 太薄，尚未成为真正的插件入口。
-3. 根 `CHANGELOG.md` 尚未建立，无法对应 hedge-ai 的版本变更主索引机制。
-4. `github-issue/SKILL.md` 与 `review-org/SKILL.md` 已纳入矩阵，但当前仓库仍缺更明确的插件落点。
-5. evaluation checker 已从评审维度说明推进到检查器类型与模板字段，但仍未形成更完整的独立子入口。
+1. `github-issue/SKILL.md` 与 `review-org/SKILL.md` 已纳入矩阵，但当前仓库仍缺更明确的插件落点。
+2. 插件安装/装载说明已建立，但仍可继续收紧到更接近直接接入。
+3. evaluation checker 已从评审维度说明推进到检查器类型与模板字段，但仍未形成更完整的独立子入口。
 
 ## Phase 1 收口结论
 

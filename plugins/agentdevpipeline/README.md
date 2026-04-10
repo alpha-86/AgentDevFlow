@@ -148,4 +148,5 @@
 ## 当前仍未完成的部分
 
 - `github-issue/SKILL.md`、`review-org/SKILL.md` 还需要更明确的插件承载方式
-- evaluation checker 还未形成更接近 `hedge-ai` 的独立检查子能力
+- evaluation checker 已下沉到检查器类型与模板字段，但还没有独立的共享入口
+- 插件安装/装载说明还可以继续收紧到更接近“开箱即用”
