@@ -7,7 +7,7 @@ on:
 
 jobs:
   check-doc-pr:
-    if: startsWith(github.event.pull_request.title, '[DOC]') || startsWith(github.event.pull_request.title, '[DOC #')
+    if: github.event_name == 'pull_request' && (startsWith(github.event.pull_request.title, '[DOC]') || startsWith(github.event.pull_request.title, '[DOC #'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
