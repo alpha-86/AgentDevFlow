@@ -1,7 +1,7 @@
 {
   "name": "agentdevflow",
   "version": "0.3.0",
-  "description": "将 hedge-ai 中可迁移的研发流程机制拆解为独立插件资产的中文插件包。",
+  "description": "将软件研发流程中的多角色协作机制抽象为独立插件，支持 Claude Code 和 Codex 平台接入。",
   "interface": {
     "displayName": "AgentDevFlow"
   },

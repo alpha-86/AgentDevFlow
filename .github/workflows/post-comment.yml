@@ -1,0 +1,75 @@
+name: Post Issue Comment
+
+on:
+  push:
+    paths:
+      - '.claude/results/comment_*.json'
+  workflow_dispatch:
+    inputs:
+      result_file:
+        description: 'Result file path (optional)'
+        required: false
+        default: ''
+
+concurrency:
+  group: post-comment-${{ github.repository }}
+  cancel-in-progress: false
+
+permissions:
+  issues: write
+  contents: write
+
+jobs:
+  post-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find result files
+        id: find
+        env:
+          RESULT_FILE: ${{ github.event.inputs.result_file }}
+        run: |
+          if [ -n "$RESULT_FILE" ] && [ -f "$RESULT_FILE" ]; then
+            STATUS=$(python3 -c "import json,sys; print(json.load(open('$RESULT_FILE')).get('status',''))" 2>/dev/null)
+            if [ "$STATUS" = "pending" ]; then
+              echo "files=$RESULT_FILE" >> $GITHUB_OUTPUT
+            else
+              echo "files=" >> $GITHUB_OUTPUT
+              echo "Skipping $RESULT_FILE (status=$STATUS)"
+            fi
+          else
+            FILES=""
+            for f in $(find .claude/results -name "comment_*.json" -type f 2>/dev/null | head -20); do
+              STATUS=$(python3 -c "import json,sys; print(json.load(open('$f')).get('status',''))" 2>/dev/null)
+              if [ "$STATUS" = "pending" ]; then
+                FILES="$FILES $f"
+              else
+                echo "Skipping $f (status=$STATUS)"
+              fi
+            done
+            echo "files=$FILES" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post comments via GitHub API
+        env:
+          FILES: ${{ steps.find.outputs.files }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          python3 .github/workflows/post_comments.py
+
+      - name: Commit status updates
+        if: always()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .claude/results/
+          if git diff --cached --quiet; then
+            echo "No status updates to commit"
+          else
+            git commit -m "chore: update comment result status (post-comment workflow)"
+            git push
+          fi

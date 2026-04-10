@@ -1,0 +1,96 @@
+name: Issue Status Sync
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  check-issue-status:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract issue number
+        id: extract-issue
+        run: |
+          # Extract issue number from PR title or body
+          ISSUE_NUM=$(echo "${{ github.event.pull_request.title }}" | grep -oP '(?:#)\d+' | head -1 | tr -d '#')
+          if [ -z "$ISSUE_NUM" ]; then
+            ISSUE_NUM=$(echo "${{ github.event.pull_request.body }}" | grep -oP '(?:#)\d+' | head -1 | tr -d '#')
+          fi
+          echo "issue_number=$ISSUE_NUM" >> $GITHUB_OUTPUT
+          echo "Extracted issue number: $ISSUE_NUM"
+
+      - name: Determine PR type
+        id: pr-type
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          if [[ "$TITLE" == "[DOC]"* ]]; then
+            echo "pr_type=doc" >> $GITHUB_OUTPUT
+            echo "This is a doc PR"
+          else
+            echo "pr_type=code" >> $GITHUB_OUTPUT
+            echo "This is a code PR"
+          fi
+
+      - name: Check issue status for code PR
+        if: steps.pr-type.outputs.pr_type == 'code'
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          if [ -z "$ISSUE" ]; then
+            echo "Could not extract issue number, skipping issue status check"
+            exit 0
+          fi
+
+          echo "Checking if issue #${ISSUE} is closed after code PR merge..."
+
+          # Use GitHub CLI to check issue status
+          if command -v gh &> /dev/null; then
+            ISSUE_STATE=$(gh issue view $ISSUE --json state -q .state 2>/dev/null || echo "unknown")
+            echo "Issue #${ISSUE} state: $ISSUE_STATE"
+
+            if [ "$ISSUE_STATE" == "CLOSED" ]; then
+              echo "Issue #${ISSUE} is closed - good!"
+            else
+              echo "WARNING: Issue #${ISSUE} is still OPEN after code PR merge"
+              echo "PM should close the issue using: python scripts/github_issue_sync.py --close-issue --issue ${ISSUE}"
+            fi
+          else
+            echo "GitHub CLI not available, skipping issue state check"
+            echo "Please manually verify issue #${ISSUE} is closed after code PR merge"
+          fi
+
+      - name: Report for doc PR
+        if: steps.pr-type.outputs.pr_type == 'doc'
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          echo ""
+          echo "=========================================="
+          echo "Doc PR Merged: Issue #${ISSUE}"
+          echo "=========================================="
+          echo "This is a doc PR - design has been confirmed by Human."
+          echo ""
+          echo "Next steps:"
+          echo "  1. PM should assign Engineer to start development"
+          echo "  2. Engineer should create feature branch based on confirmed design"
+          echo "  3. After development, create code PR with:"
+          echo "     - Link to this doc PR"
+          echo "     - Fixes #${ISSUE}"
+
+      - name: Report for code PR
+        if: steps.pr-type.outputs.pr_type == 'code'
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          echo ""
+          echo "=========================================="
+          echo "Code PR Merged: Issue #${ISSUE}"
+          echo "=========================================="
+          echo "This is a code PR - implementation is complete."
+          echo ""
+          echo "Next steps:"
+          echo "  1. PM should close issue using:"
+          echo "     python scripts/github_issue_sync.py --close-issue --issue ${ISSUE}"
+          echo "  2. Delete the feature branch (optional)"

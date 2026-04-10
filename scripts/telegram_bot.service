@@ -1,0 +1,16 @@
+[Unit]
+Description=AgentDevFlow Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=work
+WorkingDirectory=/home/work/code/AgentDevFlow
+ExecStart=/usr/bin/python3 /home/work/code/AgentDevFlow/hedge_ai/telegram/bot_server.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/work/code/AgentDevFlow/logs/telegram_bot.log
+StandardError=append:/home/work/code/AgentDevFlow/logs/telegram_bot_error.log
+
+[Install]
+WantedBy=multi-user.target

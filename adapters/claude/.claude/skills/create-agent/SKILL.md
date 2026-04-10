@@ -19,7 +19,7 @@ Supported types:
 
 Role mapping:
 
-- `architect` -> `skills/shared/agents/tech-lead.md`
+- `architect` -> `skills/shared/agents/architect.md`
 - `research-support` -> `skills/shared/agents/researcher.md`
 
 The created agent must load its shared role file under `skills/shared/agents/` and the required source prompts under `prompts/`.

@@ -14,17 +14,6 @@ AgentDevFlow 是一套面向软件研发交付的多 Agent 流程资产包。它
 
 AgentDevFlow 提供的是一套可复用的共享角色、workflow、template 和平台入口约束，让这些问题可以被系统化处理。
 
-## 1.0 自举目标
-
-1.0 的关键里程碑是：**AgentDevFlow 能在 Claude Code 和 Codex 中，都用自己的规则来迭代自己的仓库。**
-
-这意味着：
-
-- 有明确的启动入口
-- 有明确的角色装载顺序
-- 有统一的 Issue / Gate / Comment / Human Review 主线
-- 有真实可执行的自举演练，而不只是说明文档
-
 ## 主线机制
 
 AgentDevFlow 当前的主干机制是：
@@ -106,8 +95,8 @@ Release / 验收 / Human 关闭
 
 说明：
 
-- `架构师` 是 1.0 的正式角色口径
-- 当前仓库内部仍有部分 `tech-lead` 文件路径，属于待收口兼容层
+- `架构师` 是 1.0 的正式角色口径，对应 `skills/shared/agents/architect.md`
+- 遗留的 `tech-lead` 文件已标记为兼容层，仅供遗留引用
 
 ## 如何开始
 
@@ -148,12 +137,6 @@ AgentDevFlow 不重复实现平台已经具备的能力。
 
 只有当现成能力不能承载主干机制时，才在本仓库补充自己的入口或约束。
 
-## 当前 1.0 进度入口
+## 问题反馈
 
-如果你要了解 1.0 自举推进情况，从这里开始：
-
-1. [1.0 主计划](./prompts/discuss/020_2026-04-10_AgentDevFlow_1.0_自举里程碑执行计划.md)
-2. [Phase 1 基线与差距](./prompts/discuss/020_phase_1_2026-04-10_1.0自举能力基线与现状差距.md)
-3. [Phase 2 阻断项与边界修正](./prompts/discuss/020_phase_2_2026-04-10_1.0阻断项与边界修正.md)
-4. [Phase 3 平台对等方案](./prompts/discuss/020_phase_3_2026-04-10_Claude与Codex对等自举方案.md)
-5. [Phase 4 演练与验收方案](./prompts/discuss/020_phase_4_2026-04-10_1.0自举演练与验收方案.md)
+如果你发现问题或有改进建议，欢迎通过 GitHub Issue 反馈。

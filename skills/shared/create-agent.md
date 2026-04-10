@@ -41,8 +41,9 @@
 
 兼容映射：
 
-- `architect` -> `tech-lead`
 - `research-support` -> `researcher`
+
+（注意：`architect` 已有独立文件，无需映射。）
 
 ### 步骤 2. 读取并提取关键内容
 

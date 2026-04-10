@@ -36,7 +36,7 @@
 
 - `team-lead.md`
 - `product-manager.md`
-- `tech-lead.md`
+- `architect.md`
 - `engineer.md`
 - `qa-engineer.md`
 - `researcher.md`

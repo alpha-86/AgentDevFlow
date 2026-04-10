@@ -55,7 +55,7 @@ Codex 侧的主会话承担 `Team Lead 等效编排者` 职责：
 
 - [team-lead.md](/home/work/code/AgentDevFlow/skills/shared/agents/team-lead.md)
 - [product-manager.md](/home/work/code/AgentDevFlow/skills/shared/agents/product-manager.md)
-- [tech-lead.md](/home/work/code/AgentDevFlow/skills/shared/agents/tech-lead.md)
+- [architect.md](/home/work/code/AgentDevFlow/skills/shared/agents/architect.md)
 - [qa-engineer.md](/home/work/code/AgentDevFlow/skills/shared/agents/qa-engineer.md)
 - [engineer.md](/home/work/code/AgentDevFlow/skills/shared/agents/engineer.md)
 - [platform-sre.md](/home/work/code/AgentDevFlow/skills/shared/agents/platform-sre.md)

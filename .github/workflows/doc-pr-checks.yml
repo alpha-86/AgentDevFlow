@@ -1,0 +1,84 @@
+name: Doc PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited]
+    branches: [main]
+
+jobs:
+  check-doc-pr:
+    if: startsWith(github.event.pull_request.title, '[DOC]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract issue number
+        id: extract-issue
+        run: |
+          ISSUE_NUM=$(echo "${{ github.event.pull_request.title }}" | grep -oP '(?:#)\d+' | head -1 | tr -d '#')
+          echo "issue_number=$ISSUE_NUM" >> $GITHUB_OUTPUT
+          echo "Extracted issue number: $ISSUE_NUM"
+
+      - name: Check PRD exists
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          # Check docs/prd/PRD-${ISSUE}_*.md exists
+          if ls docs/prd/PRD-${ISSUE}_*.md 1>/dev/null 2>&1; then
+            echo "PRD found for issue #${ISSUE}"
+          else
+            echo "PRD not found for issue #${ISSUE}"
+            echo "Expected: docs/prd/PRD-${ISSUE}_v*.md"
+            exit 1
+          fi
+
+      - name: Check Tech exists
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          # Check docs/tech/Tech-${ISSUE}_*.md exists
+          if ls docs/tech/Tech-${ISSUE}_*.md 1>/dev/null 2>&1; then
+            echo "Tech found for issue #${ISSUE}"
+          else
+            echo "Tech not found for issue #${ISSUE}"
+            echo "Expected: docs/tech/Tech-${ISSUE}_v*.md"
+            exit 1
+          fi
+
+      - name: Check QA exists
+        run: |
+          ISSUE=${{ steps.extract-issue.outputs.issue_number }}
+          # Check docs/qa/QA-${ISSUE}_*.md exists
+          if ls docs/qa/QA-${ISSUE}_*.md 1>/dev/null 2>&1; then
+            echo "QA found for issue #${ISSUE}"
+          else
+            echo "QA not found for issue #${ISSUE}"
+            echo "Expected: docs/qa/QA-${ISSUE}_v*.md"
+            exit 1
+          fi
+
+      - name: Check PR description contains all document links
+        run: |
+          BODY="${{ github.event.pull_request.body }}"
+          if echo "$BODY" | grep -q "PRD:" && \
+             echo "$BODY" | grep -q "Tech:" && \
+             echo "$BODY" | grep -q "QA:"; then
+            echo "PR description contains all document links"
+          else
+            echo "PR description missing required document links"
+            echo "Required: PRD:, Tech:, QA:"
+            exit 1
+          fi
+
+      - name: Report success
+        run: |
+          echo ""
+          echo "=========================================="
+          echo "Doc PR Checks PASSED"
+          echo "=========================================="
+          echo "Issue: #${{ steps.extract-issue.outputs.issue_number }}"
+          echo "PR: ${{ github.event.pull_request.title }}"
+          echo ""
+          echo "All required documents present:"
+          echo "  - PRD: docs/prd/PRD-${{ steps.extract-issue.outputs.issue_number }}_*.md"
+          echo "  - Tech: docs/tech/Tech-${{ steps.extract-issue.outputs.issue_number }}_*.md"
+          echo "  - QA: docs/qa/QA-${{ steps.extract-issue.outputs.issue_number }}_*.md"
