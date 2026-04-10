@@ -1,6 +1,6 @@
 # 外部能力复用调研
 
-> 调研日期：2026-04-09
+> 调研日期：2026-04-10
 
 ## 1. Superpowers
 
@@ -9,17 +9,51 @@
 - GitHub: https://github.com/obra/superpowers
 - Marketplace: https://github.com/obra/superpowers-marketplace
 
-### 值得复用的点
+### 当前仓库可直接复用的点
 
 - 同时覆盖 `.claude-plugin`、`.codex`、`.opencode`，说明其本身已经验证了跨平台分发思路
 - 把能力拆成 skills、commands、agents、hooks，层次清晰
 - 安装方式区分 Claude 插件安装与 Codex/OpenCode 手动安装，适合直接借鉴到本项目
+
+### 适合直接复用的方法类能力
+
+这些能力与 `agentdevpipeline` 的研发机制不冲突，可以作为执行辅助能力直接接入：
+
+- `writing-plans`
+  - 用途：把多阶段任务拆成可执行计划
+- `dispatching-parallel-agents`
+  - 用途：在无共享写集时并行清点、审计、分目录处理
+- `verification-before-completion`
+  - 用途：避免在未验证前宣称完成
+- `using-git-worktrees`
+  - 用途：在复杂迁移或并行任务中隔离工作区
+- `executing-plans`
+  - 用途：在已有计划时按任务逐项执行
+
+### 只应参考、不应强绑定的点
+
+这些内容可以借鉴，但不应成为本仓库成立的前提：
+
+- `using-superpowers`
+  - 可借鉴其“先确认方法、再执行”的纪律
+  - 不应要求最终用户必须安装 superpowers 才能使用本仓库
+- `brainstorming`
+  - 可借鉴其在大改动前先明确范围和意图的做法
+  - 不应把它写成 AgentDevPipeline 的强制依赖
+- `test-driven-development`
+  - 可作为代码阶段的推荐工程方法
+  - 不应替代本项目自己的 Gate、Issue、Human Review 机制
 
 ### 对 AgentDevPipeline 的建议
 
 - 不重复造一个“大而全”的开发工作流全集
 - 直接把 AgentDevPipeline 定位为“产研流程治理包”
 - 与 Superpowers 形成互补：Superpowers 负责通用开发方法，AgentDevPipeline 负责角色、Gate、文档和交付治理
+
+### Phase 5.2 结论
+
+- `superpowers` 适合复用“执行方法”，不适合承载本项目的核心流程规则
+- 本项目必须保持：即使没有 `superpowers`，核心角色、workflow、template、prompt 仍可独立成立
 
 ## 2. gitstack / gstack / stacked PR 工具
 
@@ -42,7 +76,6 @@
 
 ## 3. 结论
 
-- `Superpowers` 适合作为跨平台分发结构和通用开发 skill 依赖
+- `Superpowers` 适合作为执行方法与结构组织参考
 - `gitstack/spr/gstack` 适合作为 stacked PR 协作依赖
 - AgentDevPipeline 应专注于“产研组织能力”和“交付流程契约”，避免与这些项目功能重叠
-
