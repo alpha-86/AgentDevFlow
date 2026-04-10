@@ -7,7 +7,7 @@ name: Bootstrap Sync
 # 1. 当 skills/shared/ 中的共享技能发生变更并合并到 main 分支时触发
 # 2. 读取 skills/shared/ 中每个 .md 文件
 # 3. 为每个共享技能在 adapters/claude/.claude/skills/ 下创建或更新对应的 SKILL.md
-# 4. 提交变更到 main 分支（触发 bootstrap-sync 的变更本身不会再次触发 workflow）
+# 4. 直接提交到 main 分支（adapter 变更不会再次触发本 workflow）
 #
 # 禁止：
 # - 禁止修改 skills/shared/ 源文件（只读取）
@@ -40,7 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     outputs:
       changed_skills: ${{ steps.sync.outputs.changed_skills }}
       has_changes: ${{ steps.sync.outputs.has_changes }}
@@ -68,25 +67,15 @@ jobs:
           echo "Changed skills: ${{ steps.sync.outputs.changed_skills }}"
           echo "Has changes: ${{ steps.sync.outputs.has_changes }}"
 
-      - name: Create Pull Request if needed
+      - name: Commit and push adapter changes
         if: steps.sync.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          add-paths: adapters/claude/.claude/skills/**
-          commit-message: 'chore(adapter): sync shared skills to Claude adapter'
-          title: 'chore(adapter): sync shared skills to Claude adapter'
-          body: |
-            ## Bootstrap Sync
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add adapters/claude/.claude/skills/
+          git commit -m "chore(adapter): sync shared skills to Claude adapter
 
-            自动生成的 Pull Request，将 `skills/shared/` 中的共享技能同步到 `adapters/claude/.claude/skills/`。
+          Updated skills: ${{ steps.sync.outputs.changed_skills }}
 
-            **变更技能**: ${{ steps.sync.outputs.changed_skills }}
-
-            ---
-            _此 PR 由 bootstrap-sync workflow 自动生成_
-          branch: bootstrap-sync/sync-$(date +%Y%m%d-%H%M%S)
-          delete-branch: true
-          labels: |
-            automations
-            claude-adapter
+          [skip ci]"
+          git push
