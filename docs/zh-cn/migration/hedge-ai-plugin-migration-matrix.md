@@ -107,7 +107,7 @@
 | `change_record/V2.3_Gate_流程保障机制.md` | Gate 保障、三层保障体系、友好错误信息 | 可迁移 | `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`、`021_platform_checks_and_gate_automation.md` | 插件 Gate 保障能力 | 已复核；需继续校准与源文档一致性 |
 | `change_record/V2.3_Tech_Gate签字定义统一.md` | Tech Gate 签字口径统一 | 可迁移 | `prompts/zh-cn/004_delivery_gates.md` | 插件签字规则统一 | 已复核 |
 | `change_record/V2.5_DBR例会调整为每日4次.md` | DBR 交易运营节奏调整 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
-| `change_record/V2.6_PMO-Agent引入_流程合规主动检查机制.md` | 流程合规主动检查 | 可迁移 | `prompts/zh-cn/014_process_compliance_and_audit.md`、`skills/shared/agents/process-auditor.md` | 插件治理能力 | 已迁移 |
+| `change_record/V2.6_PMO-Agent引入_流程合规主动检查机制.md` | 流程合规主动检查 | 可迁移 | `prompts/zh-cn/014_process_compliance_and_audit.md`、`skills/shared/agents/process-auditor.md`、`skills/shared/agents/process-auditor.playbook.md`、`docs/pmo/issues/README.md` | 插件治理能力 | PMO 主动检查机制已在 Phase 2.4 深化；仍需在插件入口层说明触发方式 |
 
 ## E. 禁止进入插件主干的源
 
