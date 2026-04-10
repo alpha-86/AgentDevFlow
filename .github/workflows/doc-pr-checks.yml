@@ -14,7 +14,7 @@ jobs:
         run: |
           TITLE="${{ github.event.pull_request.title }}"
           # Match [DOC] or [DOC #N] prefix
-          if [[ ! "$TITLE" =~ ^\[DOC(\s+#[0-9]+)?\] ]]; then
+          if [[ ! "$TITLE" =~ ^\[DOC([[:space:]]+#[0-9]+)?\] ]]; then
             echo "Not a doc PR: $TITLE"
             exit 78  # Special exit code for skip
           fi
