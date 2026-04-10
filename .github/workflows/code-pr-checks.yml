@@ -13,8 +13,10 @@ jobs:
         id: validate
         run: |
           TITLE="${{ github.event.pull_request.title }}"
+          echo "DEBUG: PR title = '$TITLE'"
           # Match [DOC] or [DOC #N] prefix - skip if matched
-          if [[ "$TITLE" =~ ^\[DOC([[:space:]]+#[0-9]+)?\] ]]; then
+          # Use grep for portable regex
+          if echo "$TITLE" | grep -qE '^\[DOC(\s+#[0-9]+)?\]'; then
             echo "This is a doc PR, not a code PR. Skipping."
             exit 78  # Special exit code for GitHub Actions skip
           fi
