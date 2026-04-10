@@ -65,7 +65,7 @@
 | `.claude/skills/AGENTS/bull-agent.md` | 策略辩论看多方 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
 | `.claude/skills/AGENTS/bear-agent.md` | 策略辩论看空方 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
 | `.claude/skills/AGENTS/cro.md` | 交易风险负责人角色 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
-| `.claude/skills/AGENTS/evaluation/*.md` | 完整性 / 一致性 / 逻辑 / 证据检查 | 可迁移 | `prompts/zh-cn/015_review_evaluation_dimensions.md` | 插件评审子能力 | 尚未充分产品化 |
+| `.claude/skills/AGENTS/evaluation/*.md` | 完整性 / 一致性 / 逻辑 / 证据检查 | 可迁移 | `prompts/zh-cn/015_review_evaluation_dimensions.md` | 插件评审子能力 | 已复核；当前仅为维度说明，尚未形成更明确的独立检查子能力 |
 
 ## C. Workflow 机制
 
