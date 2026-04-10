@@ -111,6 +111,59 @@ Release / 验收 / Human 关闭
 7. [启动团队](./skills/shared/start-agent-team.md)
 8. [创建角色实例](./skills/shared/create-agent.md)
 
+## Telegram Bot 部署
+
+AgentDevFlow 支持通过 Telegram Bot 向用户发送状态通知。
+
+### 配置步骤
+
+1. **获取 Bot Token**
+   - 在 Telegram 中搜索 @BotFather
+   - 发送 `/newbot` 创建新 Bot
+   - 复制获得的 Bot Token
+
+2. **配置环境变量**
+
+   ```bash
+   export TELEGRAM_BOT_TOKEN=<your-bot-token>
+   export TELEGRAM_CHAT_ID=<your-chat-id>
+   ```
+
+3. **部署 systemd Service**
+
+   ```bash
+   # 复制 service 文件
+   sudo cp scripts/telegram_bot.service /etc/systemd/system/
+
+   # 编辑 token
+   sudo vim /etc/systemd/system/telegram_bot.service
+   # 在 [Service] 段的 Environment= 中设置 TELEGRAM_BOT_TOKEN
+
+   # 启用并启动
+   sudo systemctl daemon-reload
+   sudo systemctl enable telegram_bot
+   sudo systemctl start telegram_bot
+   ```
+
+4. **验证连接状态**
+
+   ```bash
+   # 检查服务状态
+   sudo systemctl status telegram_bot
+
+   # 查看日志
+   journalctl -u telegram_bot -f
+
+   # 发送测试消息
+   python scripts/send_telegram.py --test
+   ```
+
+### 相关文件
+
+- `scripts/telegram_bot.service` - systemd service 配置
+- `scripts/send_telegram.py` - 消息发送 CLI 工具
+- `hedge_ai/telegram/` - Bot 服务端实现
+
 ## 资产结构
 
 - `plugins/agentdevflow/`

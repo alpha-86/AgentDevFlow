@@ -1,15 +1,38 @@
-# 待办总表
+# TODO Registry
 
-> 更新日期：2026-04-09
+## 项目信息
+- `project_id`: alpha-86/AgentDevFlow
+- 主 issue: #1
+- 当前阶段: Team Startup
 
-## 未完成
+## 角色分配
 
-| ID | 标题 | 来源 | Issue | 阶段门 | 优先级 | 负责人 | 到期时间 | 状态 | 关闭证据 | 升级路径 |
-|---|---|---|---|---|---|---|---|---|---|---|
-| TODO-20260409-001 | 补齐 启动会 示例资产 | 启动会样例内化 | #0 | 启动会 | P1 | 团队负责人 | 2026-04-10 | 未完成 | 待补充 | 团队负责人 |
-| TODO-20260409-002 | 补 workflow 与 template 绑定示例 | Agent 差距复核 | #0 | 治理 | P1 | 流程审计员 | 2026-04-10 | 未完成 | 待补充 | 团队负责人 |
+| 角色 | 状态 | 说明 |
+|------|------|------|
+| Team Lead | ✅ | Claude Code (本会话) |
+| Product Manager | 🔄 待创建 | subagent |
+| 架构师 | 🔄 待创建 | subagent |
+| QA Engineer | 🔄 待创建 | subagent |
+| Engineer | 🔄 待创建 | subagent |
+| Platform/SRE | 🔄 待创建 | subagent |
+| Process Auditor | 🔄 待创建 | subagent |
 
-## 已完成
+## 当前 Gate
 
-| ID | 标题 | 来源 | Issue | 阶段门 | 优先级 | 负责人 | 到期时间 | 状态 | 关闭证据 | 升级路径 |
-|---|---|---|---|---|---|---|---|---|---|---|
+- Gate 0: Team Startup (当前)
+- Gate 1: PRD Review
+- Gate 2: Tech Doc Review
+- Gate 3: QA Case Review
+- Gate 4: Doc PR Merge
+- Gate 5: Code PR Merge
+- Gate 6: Issue Close
+
+## 启动会
+
+- 时间: 2026-04-10
+- 负责人: Team Lead
+- 结论: 详见 docs/memo/2026-04-10-kickoff-memo.md
+
+## 缺失角色说明
+
+本次演练使用最小角色集：Team Lead + Product Manager + 架构师 + QA Engineer
