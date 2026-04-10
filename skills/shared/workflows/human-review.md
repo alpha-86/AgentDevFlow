@@ -6,9 +6,7 @@
 
 ## 适用对象
 
-- PRD
-- Tech Spec
-- QA Case Design
+- 文档 PR（PRD + Tech Spec + QA Case Design）
 - 代码 PR
 - 发布决策
 - Major / Breaking 变更
@@ -26,6 +24,7 @@
 - 关联 issue
 - 当前 gate
 - 待评审交付物链接
+- 若为代码 PR，必须附已合并的文档 PR 链接
 - 上一阶段结论
 - 已知风险
 
@@ -39,9 +38,11 @@
 
 1. 明确本次 review 的对象、目的和通过条件。
 2. 准备结构化 review 摘要和交付物链接。
-3. 由 Human 给出 `approved`、`conditional` 或 `rejected`。
-4. 在 issue、memo 或 PR 中留下正式结论。
-5. 若为 `conditional` 或 `rejected`，生成 action items 和回退路径。
+3. 若为文档 PR，确认 PRD、Tech、QA Case Design 是否齐备。
+4. 若为代码 PR，确认文档 PR 已合并且测试报告已附齐。
+5. 由 Human 给出 `approved`、`conditional` 或 `rejected`。
+6. 在 issue、memo 或 PR 中留下正式结论。
+7. 若为 `conditional` 或 `rejected`，生成 action items 和回退路径。
 
 ## 阶段最小产物集合
 
@@ -49,6 +50,7 @@
 - reviewer 身份
 - 证据链接
 - 是否允许进入下游阶段
+- 若为双阶段 PR，必须能区分“设计确认”还是“实现确认”
 
 ## 必需输出
 
@@ -64,3 +66,5 @@
 - 只有口头结论，没有正式留痕
 - 没有条件项却标记为条件通过
 - Human Review 未完成却继续推进下游阶段
+- 文档 PR 缺 PRD / Tech / QA Case Design
+- 代码 PR 缺文档 PR 链接或测试报告

@@ -16,17 +16,40 @@
 
 ### 阶段 1：文档阶段
 
-- 产物：PRD、Tech、必要时的 QA Case Design
+- 分支：`doc-{issue}-{描述}`
+- PR 类型：文档 PR
+- 产物：PRD、Tech、QA Case Design
 - 目标：锁定需求、方案、测试思路
 - Human Review：确认设计可以进入实现
-- 结果：通过后，Implementation 才能正式开始
+- 结果：文档 PR 合并 = 设计确认；之后才能正式开始开发
 
 ### 阶段 2：实现阶段
 
+- 分支：`feature-{issue}-{描述}`
+- PR 类型：代码 PR
+- 前置：文档 PR 已合并
 - 产物：代码、测试、测试报告、发布准备
 - 目标：确认实现与设计一致且可交付
 - Human Review：确认代码/交付物可以进入发布或验收完成
-- 结果：通过后，Issue 才能进入关闭或发布完成状态
+- 结果：代码 PR 合并 = 实现确认；之后才能关闭 Issue 或完成发布
+
+## PR 内容最小要求
+
+### 文档 PR
+
+- PRD 链接
+- Tech 链接
+- QA Case Design 链接
+- 变更摘要
+- 明确写出“合并即设计确认，可以进入开发”
+
+### 代码 PR
+
+- 已合并的文档 PR 链接
+- 测试报告链接
+- 代码变更摘要
+- 关联 Issue
+- 明确写出“合并即实现确认，可以进入关闭或发布”
 
 ## Human Review 最小要求
 
@@ -43,6 +66,8 @@
 - Prompt / Workflow / Template 明确阶段、签字、退回条件
 - Team Lead / PM / Tech Lead / QA 持有强规则
 - 没有当前阶段通过结论，不得推进下游
+- 文档 PR 未合并，不得指派正式开发
+- QA Case Design 必须作为文档 PR 组成部分前置确认
 
 ### 第二层：执行留痕
 
@@ -59,9 +84,10 @@
 
 ### 第三层：平台与自动化检查
 
-- PR / Issue / CI 规则
-- 文档存在性检查
-- 状态一致性检查
+- Branch Protection / PR Template / Merge Gate
+- 文档 PR 完整性检查
+- 代码 PR 前置条件检查
+- Issue 状态一致性检查
 - Comment / artifact linkage 检查
 
 说明：
@@ -73,6 +99,8 @@
 
 - 文档阶段未确认，不得正式进入实现阶段
 - 实现阶段未确认，不得正式关闭 Issue 或发布
+- 文档 PR 必须同时包含 PRD、Tech、QA Case Design
+- 代码 PR 必须包含文档 PR 链接和测试报告
 - QA 测试报告不得缺席实现阶段确认
 - Major / Breaking 变更必须判断是否回退到文档阶段重新确认
 
@@ -82,3 +110,5 @@
 - Human Review 没有明确对象
 - 设计未确认就开始实现
 - 实现已变更但文档阶段结论未更新
+- QA Case Design 未前置到文档阶段
+- 代码 PR 与文档 PR 之间没有可追溯关联

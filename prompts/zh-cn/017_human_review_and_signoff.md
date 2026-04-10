@@ -12,13 +12,29 @@
 
 ## 必须进入 Human Review 的对象
 
-- 关键 PRD
-- 关键 Tech Spec
-- QA Case Design（高风险或复杂改动时）
+- 文档 PR 中的 PRD
+- 文档 PR 中的 Tech Spec
+- 文档 PR 中的 QA Case Design
 - 代码 PR
 - 发布放行
 - Major / Breaking Change
 - 例外审批
+
+## 双阶段 Human Review 主线
+
+### 阶段 1：设计确认
+
+- 载体：文档 PR
+- 最小内容：PRD + Tech + QA Case Design
+- Human Review 通过后，才允许进入开发阶段
+- 文档 PR 合并，代表设计正式确认
+
+### 阶段 2：实现确认
+
+- 载体：代码 PR
+- 最小内容：代码变更 + 测试报告 + 文档 PR 链接
+- Human Review 通过后，才允许进入关闭或发布阶段
+- 代码 PR 合并，代表实现正式确认
 
 ## 推荐 Review 形式
 
@@ -54,8 +70,25 @@
 
 - PRD：PM + Tech Lead
 - Tech：Tech Lead + QA + PM 确认
+- QA Case Design：QA 产出，PM + Tech Lead + Engineer 确认
 - QA：QA + PM
 - Release：PM + Tech Lead + Platform/SRE
+
+## 双阶段 PR 的最小确认条件
+
+### 文档 PR
+
+- PRD 已完成
+- Tech 已完成
+- QA Case Design 已完成
+- Review 结论已写回 PR / Issue / Memo
+
+### 代码 PR
+
+- 文档 PR 已合并
+- 代码实现已完成
+- 测试报告已完成
+- Review 结论已写回 PR / Issue / Memo
 
 ## 禁止行为
 
@@ -63,3 +96,5 @@
 - 只让 Agent 自评就视为通过
 - Conditional 未关闭就进入下游
 - 用聊天摘要替代签字记录
+- 文档 PR 未合并就启动正式开发
+- 代码 PR 不附文档 PR 链接或测试报告

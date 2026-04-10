@@ -102,7 +102,7 @@
 | `change_record/V2.0_研发流程与GitHubIssue结合及QA角色引入.md` | Issue First + QA 正式进入研发主链路 | 可迁移 | `prompts/zh-cn/007_issue_driven_orchestration.md`、`004/005/013` 相关文档 | 插件 Issue / QA 主骨架 | Issue First 已在 Phase 2.1 深化；QA Gate 继续在后续项深化 |
 | `change_record/V2.1_P0修复_QA_V2.0_review_critical_rules强化.md` | 流程变更后，Critical Rules 必须同步修正 | 可迁移 | `skills/shared/agents/*` | 插件角色规则校验 | 已复核；Phase 5 深化 |
 | `change_record/V2.1_V2.0变更review及Agent_Critical_Rules验证.md` | 流程变更需要复核并验证角色规则是否一致 | 可迁移 | `prompts/discuss/`、`skills/shared/agents/*` | 插件复核机制 | 已复核 |
-| `change_record/V2.2_双PR机制引入.md` | 文档阶段 + 代码阶段双阶段 PR 机制 | 可迁移 | `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`、`017_human_review_and_signoff.md` | 插件双阶段交付能力 | 已迁移，但 README 仍需改为插件口径 |
+| `change_record/V2.2_双PR机制引入.md` | 文档阶段 + 代码阶段双阶段 PR 机制 | 可迁移 | `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`、`017_human_review_and_signoff.md`、`skills/shared/workflows/human-review.md` | 插件双阶段交付能力 | 双阶段 PR 与三层保障体系已在 Phase 2.2 深化；README 流程图仍需后续校准 |
 | `change_record/V2.2.5_Issue_Comment机制修复与强制Gate建立.md` | 评论门禁、结构化评论、Gate 不可绕过 | 可迁移 | `prompts/zh-cn/013_github_issue_and_review_comments.md`、`020_issue_comment_gate_and_artifact_linkage.md` | 插件评论 / Gate 能力 | 已迁移 |
 | `change_record/V2.3_Gate_流程保障机制.md` | Gate 保障、三层保障体系、友好错误信息 | 可迁移 | `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`、`021_platform_checks_and_gate_automation.md` | 插件 Gate 保障能力 | 已复核；需继续校准与源文档一致性 |
 | `change_record/V2.3_Tech_Gate签字定义统一.md` | Tech Gate 签字口径统一 | 可迁移 | `prompts/zh-cn/004_delivery_gates.md` | 插件签字规则统一 | 已复核 |
