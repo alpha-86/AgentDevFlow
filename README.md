@@ -1,11 +1,11 @@
-# AgentDevPipeline
+# AgentDevFlow
 
-AgentDevPipeline 的核心目标，是把 `hedge-ai` 中可迁移的研发工作机制拆出来，沉淀成一个独立的研发流程插件包。它不是量化交易项目，也不应该继续携带 hedge-ai 的业务语义；它应该只保留可复用的研发编排机制。
+AgentDevFlow 的核心目标，是把 `hedge-ai` 中可迁移的研发工作机制拆出来，沉淀成一个独立的研发流程插件包。它不是量化交易项目，也不应该继续携带 hedge-ai 的业务语义；它应该只保留可复用的研发编排机制。
 
 这个仓库当前最重要的产物，不是单篇 prompt，也不是零散流程文档，而是一个中文单线的插件资产集合：
 
 - 根 `README.md` 负责告诉用户插件解决什么问题、主线机制是什么
-- `plugins/agentdevpipeline/` 负责承载插件入口
+- `plugins/agentdevflow/` 负责承载插件入口
 - `skills/shared/` 负责承载可复用的角色、workflow、template
 - `prompts/` 负责承载中文规则层
 - `docs/` 负责承载中文说明、迁移矩阵和治理边界
@@ -20,7 +20,7 @@ AgentDevPipeline 的核心目标，是把 `hedge-ai` 中可迁移的研发工作
 - 会话一断、Agent 一换，整个上下文就丢了
 - 同一套流程在 Claude、Codex、OpenCode 上重复造轮子
 
-AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编排问题。
+AgentDevFlow 要解决的，是这些跨角色、跨阶段、跨工具的编排问题。
 
 ## 它如何解决
 
@@ -28,7 +28,7 @@ AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编
 
 - 从 `hedge-ai/prompts/V3.0` 和 `.claude/skills` 逐文档拆出可迁移的研发机制
 - 把这些机制重组为独立的角色、workflow、template 和治理规则
-- 让这些资产能被 `plugins/agentdevpipeline/` 作为独立插件承载
+- 让这些资产能被 `plugins/agentdevflow/` 作为独立插件承载
 
 不是所有“看起来合理”的流程概念都应该进入这个仓库。只有能从 hedge-ai 源文档中明确拆出来、且去掉业务语义后仍成立的机制，才应该保留。
 
@@ -41,7 +41,7 @@ AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编
 1. 根 `README.md`
    说明插件定位、问题、方法、主流程和阅读入口。
 
-2. `plugins/agentdevpipeline/`
+2. `plugins/agentdevflow/`
    说明插件自身入口、插件资产组成、插件如何装载共享资产。
 
 3. `skills/shared/`
@@ -213,14 +213,14 @@ PMO 按 PR 主动检查
 
 其中当前最重要的是：
 
-- `plugins/agentdevpipeline/`
+- `plugins/agentdevflow/`
 - `skills/shared/`
 - `prompts/`
 
 ## 从哪里开始读
 
 1. [根 README](./README.md)
-2. [插件入口说明](./plugins/agentdevpipeline/README.md)
+2. [插件入口说明](./plugins/agentdevflow/README.md)
 3. [中文总览](./docs/README.md)
 4. [核心原则](./docs/governance/core-principles.md)
 5. [hedge-ai 迁移矩阵](./docs/migration/hedge-ai-plugin-migration-matrix.md)
@@ -231,14 +231,14 @@ PMO 按 PR 主动检查
 
 如果你现在就要把它接到一个项目里，按这个顺序即可：
 
-1. 阅读 [插件入口说明](./plugins/agentdevpipeline/README.md)
+1. 阅读 [插件入口说明](./plugins/agentdevflow/README.md)
 2. 阅读 [依赖清单](./docs/reference/dependencies.md)
 3. 让团队先按 `prompts/` 和 `skills/shared/` 运行手动流程
 4. 再逐步补 `gh`、stacked PR、CI 等增强能力
 
 ## 最小可运行示例
 
-- [Kickoff 示例纪要](./docs/memo/kickoff_2026-04-09_agentdevpipeline_execution_example.md)
+- [Kickoff 示例纪要](./docs/memo/kickoff_2026-04-09_agentdevflow_execution_example.md)
 - [项目组合视图示例](./docs/memo/project_portfolio_2026-04-09_example.md)
 - [上下文恢复示例](./docs/memo/context_recovery_2026-04-09_example.md)
 - [审计报告示例](./docs/memo/audit_2026-04-09_example.md)

@@ -2,7 +2,7 @@
 
 ## 目标
 
-说明在 Codex 插件或本地入口下，如何以最小实现满足 AgentDevPipeline 的平台检查要求。
+说明在 Codex 插件或本地入口下，如何以最小实现满足 AgentDevFlow 的平台检查要求。
 
 ## 最小自动化链路
 

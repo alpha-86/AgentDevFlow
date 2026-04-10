@@ -1,6 +1,6 @@
 # Codex Adapter
 
-使用 `plugins/agentdevpipeline/` 下的本地 Codex 插件接入 AgentDevPipeline。
+使用 `plugins/agentdevflow/` 下的本地 Codex 插件接入 AgentDevFlow。
 
 ## 最小要求
 

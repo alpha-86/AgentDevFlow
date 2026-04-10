@@ -1,7 +1,7 @@
 # 项目状态板示例
 
-**项目 ID**: ADP-BOOTSTRAP-001
-**项目名称**: AgentDevPipeline 中文执行层收口
+**项目 ID**: ADF-BOOTSTRAP-001
+**项目名称**: AgentDevFlow 中文执行层收口
 **日期**: 2026-04-09
 **负责人**: 团队负责人
 

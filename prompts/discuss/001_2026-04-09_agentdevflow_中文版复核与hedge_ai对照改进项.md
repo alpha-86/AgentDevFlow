@@ -1,10 +1,10 @@
-# 001 - 2026-04-09 AgentDevPipeline 中文版复核与 hedge-ai 对照改进项
+# 001 - 2026-04-09 AgentDevFlow 中文版复核与 hedge-ai 对照改进项
 
 ## 背景
 
 本轮复核基于以下输入：
 
-1. 对当前 AgentDevPipeline 中文主版本的全面 review
+1. 对当前 AgentDevFlow 中文主版本的全面 review
 2. 对 hedge-ai 中可迁移流程机制的再次对照
 3. 用户新增强调的两项核心诉求：
    - 人机协同必须成为方法论核心，而不是附属补充
@@ -32,7 +32,7 @@
 1. 设计确认和代码确认是两个不同的 Human Review 节点
 2. 设计轨和实现轨必须明确边界，防止代码推进裹挟设计确认
 
-对应到 AgentDevPipeline：
+对应到 AgentDevFlow：
 
 - 需要在方法论层面明确 `Human In The Loop`
 - 需要在 README 和核心流程中解释“双阶段交付”
@@ -51,7 +51,7 @@
 2. Issue Comment 是 Gate 留痕的一部分，不是随手备注
 3. Issue 能承载多项目并行和单项目问题拆分
 
-对应到 AgentDevPipeline：
+对应到 AgentDevFlow：
 
 - 要把 `Issue First` 上升为核心原则
 - 要在 README 里明确 Issue 的角色
@@ -117,7 +117,7 @@
 
 - 不迁移 hedge-ai 中量化交易业务角色
 - 不迁移盘前盘后、DBR、交易日报、回测因子等业务流程
-- 不把 AgentDevPipeline 绑定到 GitHub 单一平台实现细节
+- 不把 AgentDevFlow 绑定到 GitHub 单一平台实现细节
 
 ## 下一步建议
 

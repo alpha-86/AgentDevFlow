@@ -59,7 +59,7 @@ adapters/
   codex/
   opencode/
 plugins/
-  agentdevpipeline/
+  agentdevflow/
 ```
 
 ## 约束

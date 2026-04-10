@@ -2,7 +2,7 @@
 
 ## 结论
 
-当前 AgentDevPipeline 已经有：
+当前 AgentDevFlow 已经有：
 
 - `agent-activation-template.md`
 - `review-comment-template.md`

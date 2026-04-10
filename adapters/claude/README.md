@@ -1,6 +1,6 @@
 # Claude Adapter
 
-这个适配层负责把 AgentDevPipeline 包装成 Claude 可使用的本地 skill pack。
+这个适配层负责把 AgentDevFlow 包装成 Claude 可使用的本地 skill pack。
 
 ## 最小要求
 

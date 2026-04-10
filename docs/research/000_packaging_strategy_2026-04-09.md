@@ -7,7 +7,7 @@
 
 ## 调研问题
 
-AgentDevPipeline 应该如何在保持自包含的前提下，为 Claude、Codex 和 OpenCode 进行打包？
+AgentDevFlow 应该如何在保持自包含的前提下，为 Claude、Codex 和 OpenCode 进行打包？
 
 ## 备选方案
 

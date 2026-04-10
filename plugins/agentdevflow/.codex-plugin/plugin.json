@@ -1,9 +1,9 @@
 {
-  "name": "agentdevpipeline",
+  "name": "agentdevflow",
   "version": "0.3.0",
   "description": "将 hedge-ai 中可迁移的研发流程机制拆解为独立插件资产的中文插件包。",
   "interface": {
-    "displayName": "AgentDevPipeline"
+    "displayName": "AgentDevFlow"
   },
   "author": {
     "name": "alpha-86"

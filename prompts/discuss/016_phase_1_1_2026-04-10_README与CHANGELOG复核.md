@@ -20,7 +20,7 @@
 当前问题：
 
 - 本项目根 `README.md` 已转向“独立插件”口径，但还没有完全达到 hedge-ai 入口文档那种“启动步骤 + 阅读顺序 + 关键机制总览”强度
-- 插件入口 `plugins/agentdevpipeline/README.md` 仍然偏薄，无法承担真正的插件启动指南角色
+- 插件入口 `plugins/agentdevflow/README.md` 仍然偏薄，无法承担真正的插件启动指南角色
 
 ### 2. `CHANGELOG.md` 可迁移的部分
 

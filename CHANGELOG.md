@@ -1,6 +1,6 @@
 # 变更日志
 
-本文件用于记录 AgentDevPipeline 的正式版本变更。
+本文件用于记录 AgentDevFlow 的正式版本变更。
 
 ## 维护规则
 
@@ -44,16 +44,16 @@
 - 收口迁移矩阵，补齐 `github-issue.md`、`github-issue/SKILL.md`、`review-org/SKILL.md`
 - 前置固化 `Issue First`、双阶段 PR、Issue Comment Gate、PMO 主动检查、核心原则和 README 主流程图
 - 重写根 `README.md`，明确独立插件定位
-- 重写 `plugins/agentdevpipeline/README.md`，作为插件入口
-- 校准 `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+- 重写 `plugins/agentdevflow/README.md`，作为插件入口
+- 校准 `plugins/agentdevflow/.codex-plugin/plugin.json`
 - 明确 `skills/shared/` 已基本构成插件核心资产层
 - 明确 `prompts/` 已基本构成插件规则层
 
 **涉及文件 / 落点**:
 
 - `README.md`
-- `plugins/agentdevpipeline/README.md`
-- `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+- `plugins/agentdevflow/README.md`
+- `plugins/agentdevflow/.codex-plugin/plugin.json`
 - `docs/governance/core-principles.md`
 - `docs/migration/hedge-ai-plugin-migration-matrix.md`
 - `skills/shared/README.md`

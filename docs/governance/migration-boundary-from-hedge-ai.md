@@ -2,11 +2,11 @@
 
 ## 目的
 
-本文件用于明确 `agentdevpipeline` 与 `hedge-ai` 的关系，防止把量化交易业务内容误引入本项目。
+本文件用于明确 `agentdevflow` 与 `hedge-ai` 的关系，防止把量化交易业务内容误引入本项目。
 
 ## 关系定义
 
-- `agentdevpipeline` 是独立的通用产研流程编排项目，不是 hedge-ai 的子模块。
+- `agentdevflow` 是独立的通用产研流程编排项目，不是 hedge-ai 的子模块。
 - `hedge-ai` 仅作为“流程完备性参考样本”，用于抽取可复用的研发方法学。
 - 迁移时只允许抽象“流程机制”，禁止复制“交易业务语义”。
 
@@ -77,7 +77,7 @@
 
 ## Phase 7 边界复核结论
 
-- 根 `README.md` 与 `plugins/agentdevpipeline/README.md` 当前未发现新的交易业务语义混入主干。
+- 根 `README.md` 与 `plugins/agentdevflow/README.md` 当前未发现新的交易业务语义混入主干。
 - `skills/shared/agents/*` 与 `skills/shared/workflows/*` 当前未发现新的交易角色、交易节奏或交易指标字段残留。
 - 当前仓库中出现的“量化 / 交易 / 回测 / 因子 / DBR”等词，主要用于迁移边界、源清单和禁止迁移说明，不用于插件主干执行语义。
 

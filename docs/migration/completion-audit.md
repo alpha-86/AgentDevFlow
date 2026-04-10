@@ -2,7 +2,7 @@
 
 ## 结论
 
-截至当前版本，hedge-ai 中大量“可迁移”和“部分迁移”的通用产研机制已经在 `agentdevpipeline` 当前仓库中形成主干，但不能再表述为“已基本完成拆解”。更准确的状态是：
+截至当前版本，hedge-ai 中大量“可迁移”和“部分迁移”的通用产研机制已经在 `agentdevflow` 当前仓库中形成主干，但不能再表述为“已基本完成拆解”。更准确的状态是：
 
 - 主干机制已经形成可执行主线
 - 边界已经明确
@@ -66,15 +66,15 @@
 
 详见：
 
-- [迁移边界（强约束）](/home/work/code/agentdevpipeline/docs/governance/migration-boundary-from-hedge-ai.md)
-- [源文档清单与迁移判定](/home/work/code/agentdevpipeline/docs/migration/hedge-ai-source-inventory.md)
+- [迁移边界（强约束）](/home/work/code/AgentDevFlow/docs/governance/migration-boundary-from-hedge-ai.md)
+- [源文档清单与迁移判定](/home/work/code/AgentDevFlow/docs/migration/hedge-ai-source-inventory.md)
 
 ## 审计口径
 
 本审计当前表示“主干已成型，但仍未彻底收口为最终插件成品”。更严格的检查请以：
 
-- [hedge-ai 研发机制拆解到独立插件的迁移矩阵](/home/work/code/agentdevpipeline/docs/migration/hedge-ai-plugin-migration-matrix.md)
-- [围绕独立插件目标的总复核与纠偏](/home/work/code/agentdevpipeline/prompts/discuss/015_2026-04-10_围绕独立插件目标的总复核与纠偏.md)
+- [hedge-ai 研发机制拆解到独立插件的迁移矩阵](/home/work/code/AgentDevFlow/docs/migration/hedge-ai-plugin-migration-matrix.md)
+- [围绕独立插件目标的总复核与纠偏](/home/work/code/AgentDevFlow/prompts/discuss/015_2026-04-10_围绕独立插件目标的总复核与纠偏.md)
 
 为准。
 

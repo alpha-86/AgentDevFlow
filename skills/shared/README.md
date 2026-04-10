@@ -1,6 +1,6 @@
 # 共享技能目录
 
-`skills/shared/` 是 AgentDevPipeline 的平台无关执行资产层。
+`skills/shared/` 是 AgentDevFlow 的平台无关执行资产层。
 
 ## 结构
 

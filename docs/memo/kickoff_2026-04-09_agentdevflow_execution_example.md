@@ -1,6 +1,6 @@
-# AgentDevPipeline 启动会示例
+# AgentDevFlow 启动会示例
 
-**项目 ID**: ADP-BOOTSTRAP-001
+**项目 ID**: ADF-BOOTSTRAP-001
 **主 Issue**: #0
 **日期**: 2026-04-09
 **主持人**: 团队负责人

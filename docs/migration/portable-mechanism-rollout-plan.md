@@ -2,7 +2,7 @@
 
 ## 目标
 
-将 hedge-ai 中“可迁移/部分迁移”的流程机制，按通用产研语义落地到 AgentDevPipeline，形成完整闭环：
+将 hedge-ai 中“可迁移/部分迁移”的流程机制，按通用产研语义落地到 AgentDevFlow，形成完整闭环：
 
 `Issue -> PRD -> Tech -> Implementation -> QA -> Release -> 复盘 -> 改进`
 

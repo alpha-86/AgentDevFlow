@@ -2,7 +2,7 @@
 
 ## 目标
 
-校准 `plugins/agentdevpipeline/.codex-plugin/plugin.json`，使其与当前仓库的插件定位和版本状态一致。
+校准 `plugins/agentdevflow/.codex-plugin/plugin.json`，使其与当前仓库的插件定位和版本状态一致。
 
 ## 当前项目原有问题
 

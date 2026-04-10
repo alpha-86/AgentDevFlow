@@ -2,7 +2,7 @@
 
 - event_id: `evt-2026-04-09-001`
 - event_type: `document.created`
-- project_id: `agentdevpipeline-core`
+- project_id: `agentdevflow-core`
 - issue_id: `#101`
 - current_stage: `prd_review`
 - source_role: `product-manager`
@@ -10,7 +10,7 @@
 - trigger_reason: `新 PRD 文档已创建并进入正式评审`
 - related_artifacts:
   - `docs/prd/001_user_notification_center_prd.md`
-  - `docs/memo/启动会_2026-04-09_agentdevpipeline_execution_example.md`
+  - `docs/memo/kickoff_2026-04-09_agentdevflow_execution_example.md`
 - required_checks:
   - `PRD 模板字段完整`
   - `Issue 评论已创建`
@@ -25,7 +25,7 @@
 
 - event_id: `evt-2026-04-09-002`
 - event_type: `issue.comment_missing`
-- project_id: `agentdevpipeline-core`
+- project_id: `agentdevflow-core`
 - issue_id: `#101`
 - current_stage: `tech_review`
 - source_role: `platform-checker`

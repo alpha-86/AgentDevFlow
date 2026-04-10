@@ -2,7 +2,7 @@
 
 ## 目标
 
-对照 `hedge-ai` 的以下来源，审计 AgentDevPipeline 在“团队启动”和“共享协议”两块的落地完整度：
+对照 `hedge-ai` 的以下来源，审计 AgentDevFlow 在“团队启动”和“共享协议”两块的落地完整度：
 
 - `.claude/skills/TEAM_SETUP.md`
 - `.claude/skills/SKILL_PROTOCOL.md`
@@ -11,7 +11,7 @@
 
 ## 一、结论
 
-当前 AgentDevPipeline 已有：
+当前 AgentDevFlow 已有：
 
 - `prompts/zh-cn/010_team_setup_and_bootstrap.md`
 - `docs/zh-cn/governance/skill-protocol.md`

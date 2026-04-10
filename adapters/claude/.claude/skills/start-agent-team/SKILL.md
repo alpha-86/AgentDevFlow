@@ -1,6 +1,6 @@
 ---
 name: start-agent-team
-description: Initialize the AgentDevPipeline delivery team for Claude.
+description: Initialize the AgentDevFlow delivery team for Claude.
 user-invocable: true
 ---
 

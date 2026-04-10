@@ -17,7 +17,7 @@
 
 ### 适合直接复用的方法类能力
 
-这些能力与 `agentdevpipeline` 的研发机制不冲突，可以作为执行辅助能力直接接入：
+这些能力与 `agentdevflow` 的研发机制不冲突，可以作为执行辅助能力直接接入：
 
 - `writing-plans`
   - 用途：把多阶段任务拆成可执行计划
@@ -39,16 +39,16 @@
   - 不应要求最终用户必须安装 superpowers 才能使用本仓库
 - `brainstorming`
   - 可借鉴其在大改动前先明确范围和意图的做法
-  - 不应把它写成 AgentDevPipeline 的强制依赖
+  - 不应把它写成 AgentDevFlow 的强制依赖
 - `test-driven-development`
   - 可作为代码阶段的推荐工程方法
   - 不应替代本项目自己的 Gate、Issue、Human Review 机制
 
-### 对 AgentDevPipeline 的建议
+### 对 AgentDevFlow 的建议
 
 - 不重复造一个“大而全”的开发工作流全集
-- 直接把 AgentDevPipeline 定位为“产研流程治理包”
-- 与 Superpowers 形成互补：Superpowers 负责通用开发方法，AgentDevPipeline 负责角色、Gate、文档和交付治理
+- 直接把 AgentDevFlow 定位为“产研流程治理包”
+- 与 Superpowers 形成互补：Superpowers 负责通用开发方法，AgentDevFlow 负责角色、Gate、文档和交付治理
 
 ### Phase 5.2 结论
 
@@ -65,10 +65,10 @@
 ### 值得复用的点
 
 - 小步提交、分层 PR、顺序合并，非常适合文档 PR 和代码 PR 分离
-- 可以自然映射 AgentDevPipeline 的“双阶段交付”：先设计文档，再实现代码
+- 可以自然映射 AgentDevFlow 的“双阶段交付”：先设计文档，再实现代码
 - 降低大 PR 的评审负担，提升多 agent 协作稳定性
 
-### 对 AgentDevPipeline 的建议
+### 对 AgentDevFlow 的建议
 
 - 不强绑定某一个工具实现
 - 在依赖层声明“支持 git-stack / gstack 等价工作流”
@@ -106,4 +106,4 @@
 
 - `Superpowers` 适合作为执行方法与结构组织参考
 - `gitstack/spr/gstack` 适合作为 stacked PR 和研发协作宿主依赖
-- AgentDevPipeline 应专注于“产研组织能力”和“交付流程契约”，避免与这些项目功能重叠
+- AgentDevFlow 应专注于“产研组织能力”和“交付流程契约”，避免与这些项目功能重叠

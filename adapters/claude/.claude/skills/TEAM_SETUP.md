@@ -1,4 +1,4 @@
-# AgentDevPipeline Team Setup
+# AgentDevFlow Team Setup
 
 1. Create the team.
 2. Create agents through `create-agent`.

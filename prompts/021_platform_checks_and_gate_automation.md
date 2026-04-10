@@ -2,7 +2,7 @@
 
 ## 目标
 
-把 AgentDevPipeline 的流程规则从“纸面约束”推进到“平台可检查约束”，无论接入 GitHub、GitLab 还是其他平台，都应该能实现等价的最小自动化检查。
+把 AgentDevFlow 的流程规则从“纸面约束”推进到“平台可检查约束”，无论接入 GitHub、GitLab 还是其他平台，都应该能实现等价的最小自动化检查。
 
 ## 为什么必须做
 
@@ -44,7 +44,7 @@
 ## 平台无关要求
 
 - 可以通过 CI、PR Check、Workflow、Bot、Hook 或平台 API 实现
-- 只要实现效果等价，就符合 AgentDevPipeline 约束
+- 只要实现效果等价，就符合 AgentDevFlow 约束
 - 平台实现细节不得改写共享流程语义
 
 ## 失败处理

@@ -2,7 +2,7 @@
 
 ## 目标
 
-针对以下核心要求，对 AgentDevPipeline 当前状态与 hedge-ai 中对应机制做严格对照：
+针对以下核心要求，对 AgentDevFlow 当前状态与 hedge-ai 中对应机制做严格对照：
 
 1. 双阶段 PR / Human Review
 2. 三层保障体系
@@ -11,7 +11,7 @@
 
 ## 一、对照结论
 
-当前 AgentDevPipeline 已经开始覆盖上述能力，但距离“相对完整、可执行、可长期运行”的状态仍有明显差距。更准确地说：
+当前 AgentDevFlow 已经开始覆盖上述能力，但距离“相对完整、可执行、可长期运行”的状态仍有明显差距。更准确地说：
 
 - 方法论层已开始建立
 - 规则层正在成型
@@ -63,7 +63,7 @@ hedge-ai 对应机制：
 - Comment 检查
 - Issue 状态同步检查
 
-AgentDevPipeline 现状：
+AgentDevFlow 现状：
 
 - 只有规则，没有检查实现
 

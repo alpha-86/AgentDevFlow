@@ -37,4 +37,4 @@
 ## 相关链接
 
 - `docs/todo/TODO_REGISTRY.md`
-- `docs/memo/启动会_2026-04-09_agentdevpipeline_execution_example.md`
+- `docs/memo/kickoff_2026-04-09_agentdevflow_execution_example.md`

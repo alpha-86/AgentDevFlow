@@ -1,4 +1,4 @@
-# AgentDevPipeline 核心原则
+# AgentDevFlow 核心原则
 
 ## 目的
 

@@ -1,5 +1,5 @@
 version: 1
-project: AgentDevPipeline
+project: AgentDevFlow
 policy:
   source_of_truth: zh-cn
   release_language: en
@@ -18,7 +18,7 @@ platforms:
       - deep-research@anthropic
   codex:
     required:
-      - local-plugin:agentdevpipeline
+      - local-plugin:agentdevflow
   opencode:
     required:
       - prompt-pack

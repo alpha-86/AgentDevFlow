@@ -1,6 +1,6 @@
 ---
 name: create-agent
-description: Create a product-engineering agent using AgentDevPipeline shared role files.
+description: Create a product-engineering agent using AgentDevFlow shared role files.
 user-invocable: true
 ---
 

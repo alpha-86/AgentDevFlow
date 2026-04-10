@@ -9,7 +9,7 @@
   - `prompts/`
   - `docs/`
   - `skills/shared/`
-  - `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+  - `plugins/agentdevflow/.codex-plugin/plugin.json`
 - 仓库内目前没有语言运行时依赖清单：
   - 无 `package.json`
   - 无 `pyproject.toml`
@@ -51,7 +51,7 @@
 
 当前仓库实际内建且已可作为装载入口的只有：
 
-- `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+- `plugins/agentdevflow/.codex-plugin/plugin.json`
   - 当前唯一正式插件元数据入口
 - `skills/shared/`
   - 当前唯一共享角色、工作流、模板入口
@@ -66,7 +66,7 @@
 
 这些内容必须由本仓库自己承载，不能外包给外部能力包：
 
-- `plugins/agentdevpipeline/.codex-plugin/plugin.json`
+- `plugins/agentdevflow/.codex-plugin/plugin.json`
 - `README.md`
 - `prompts/`
 - `docs/`
@@ -173,7 +173,7 @@
 
 - 克隆当前仓库
 - 让项目成员先阅读 `README.md`
-- 再阅读 `plugins/agentdevpipeline/README.md`
+- 再阅读 `plugins/agentdevflow/README.md`
 - 再按 `docs/README.md` 和 `prompts/README.md` 进入规则层与共享资产层
 
 ### 2. 推荐增强接入
@@ -209,7 +209,7 @@
 
 1. 先接入仓库自身资产：
    - `README.md`
-   - `plugins/agentdevpipeline/README.md`
+   - `plugins/agentdevflow/README.md`
    - `prompts/`
    - `skills/shared/`
    - `docs/`
