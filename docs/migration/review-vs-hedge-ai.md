@@ -15,7 +15,7 @@
 - 主干机制已经落地
 - 边界约束已经明确
 - 一部分执行层细节仍然弱于 hedge-ai
-- 一部分共享资产仍然存在中文主版本与英文正文混用的问题
+- 一部分共享资产曾经存在中文文档与非中文正文混用的问题
 
 ## 二、已确认正确迁移的部分
 
@@ -73,7 +73,7 @@
 
 - 已补入 `skills/shared/agents/team-lead.md`
 - 已补入 `skills/shared/agents/team-lead.playbook.md`
-- 已补入 `prompts/zh-cn/013_github_issue_and_review_comments.md`
+- 已补入 `prompts/013_github_issue_and_review_comments.md`
 
 ## 四、对照 hedge-ai 后仍然存在的差距
 
@@ -82,16 +82,16 @@
 现状：
 
 - 仓库声明中文是内部主版本
-- 但 `skills/shared/agents/*`、`skills/shared/workflows/*`、`skills/shared/templates/*` 仍有大量英文正文
+- 但 `skills/shared/agents/*`、`skills/shared/workflows/*`、`skills/shared/templates/*` 当时仍有大量非中文正文
 
 影响：
 
 - “中文主版本完成”这个判断会被削弱
-- 用户阅读中文 docs 时，会跳入英文共享资产
+- 用户阅读仓库文档时，会跳入非中文共享资产
 
 建议：
 
-- 下一轮把共享资产正文系统性中文化，英文版再做镜像
+- 下一轮把共享资产正文系统性中文化，并移除多语言镜像规划
 
 ### P1. Issue 机制已成型，但还弱于 hedge-ai 的“任务路由 + 评论约束”细化程度
 

@@ -25,13 +25,13 @@
 
 ## 必读文档
 
-1. `prompts/zh-cn/002_product_engineering_roles.md`
-2. `prompts/zh-cn/003_document_contracts.md`
-3. `prompts/zh-cn/004_delivery_gates.md`
-4. `prompts/zh-cn/013_github_issue_and_review_comments.md`
-5. `prompts/zh-cn/017_human_review_and_signoff.md`
-6. `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
-7. `prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md`
+1. `prompts/002_product_engineering_roles.md`
+2. `prompts/003_document_contracts.md`
+3. `prompts/004_delivery_gates.md`
+4. `prompts/013_github_issue_and_review_comments.md`
+5. `prompts/017_human_review_and_signoff.md`
+6. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+7. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
 8. `skills/shared/workflows/tech-评审.md`
 9. `skills/shared/workflows/qa-validation.md`
 10. `skills/shared/workflows/human-review.md`

@@ -17,7 +17,7 @@
 
 ## 执行前必读
 
-1. `prompts/zh-cn/006_agent_creation_contract.md`
+1. `prompts/006_agent_creation_contract.md`
 2. `skills/shared/skill-protocol.md`
 3. `skills/shared/event-bus.md`
 4. 对应角色文件

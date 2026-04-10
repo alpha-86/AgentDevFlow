@@ -23,12 +23,12 @@
 
 ## 必读文档
 
-1. `prompts/zh-cn/004_delivery_gates.md`
-2. `prompts/zh-cn/012_anomaly_and_escalation_loop.md`
-3. `prompts/zh-cn/013_github_issue_and_review_comments.md`
-4. `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
-5. `prompts/zh-cn/021_platform_checks_and_gate_automation.md`
-6. `docs/zh-cn/governance/platform-minimum-checks.md`
+1. `prompts/004_delivery_gates.md`
+2. `prompts/012_anomaly_and_escalation_loop.md`
+3. `prompts/013_github_issue_and_review_comments.md`
+4. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+5. `prompts/021_platform_checks_and_gate_automation.md`
+6. `docs/governance/platform-minimum-checks.md`
 7. `skills/shared/workflows/release-评审.md`
 8. `skills/shared/workflows/anomaly-response.md`
 

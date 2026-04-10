@@ -10,9 +10,9 @@
 
 ## 接入清单
 
-1. 读取 `README.md`、`docs/zh-cn/README.md` 和 `skills/shared/README.md`
+1. 读取 `README.md`、`docs/README.md` 和 `skills/shared/README.md`
 2. 确认共享角色、workflow、template 可被 OpenCode 入口读取
-3. 对照 `docs/zh-cn/governance/platform-minimum-checks.md` 实现最小检查
+3. 对照 `docs/governance/platform-minimum-checks.md` 实现最小检查
 4. 至少落一份 `skills/shared/templates/platform-checklist-template.md`
 5. 明确检查失败时如何阻断当前阶段
 
@@ -32,7 +32,7 @@
 
 参考：
 
-- `docs/zh-cn/governance/platform-minimum-checks.md`
+- `docs/governance/platform-minimum-checks.md`
 - `skills/shared/templates/platform-checklist-template.md`
 - `skills/shared/templates/platform-check-result-template.md`
 - `adapters/opencode/platform-check-example.md`

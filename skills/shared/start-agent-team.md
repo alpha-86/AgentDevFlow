@@ -9,9 +9,9 @@
 1. `skills/shared/team-setup.md`
 2. `skills/shared/skill-protocol.md`
 3. `skills/shared/event-bus.md`
-4. `prompts/zh-cn/001_team_topology.md`
-5. `prompts/zh-cn/010_team_setup_and_bootstrap.md`
-6. `prompts/zh-cn/018_issue_routing_and_project_portfolio.md`
+4. `prompts/001_team_topology.md`
+5. `prompts/010_team_setup_and_bootstrap.md`
+6. `prompts/018_issue_routing_and_project_portfolio.md`
 
 ## 统一启动步骤
 

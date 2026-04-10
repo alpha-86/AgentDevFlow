@@ -1,16 +1,14 @@
 # AgentDevPipeline
 
-中文主版本
-
 AgentDevPipeline 的核心目标，是把 `hedge-ai` 中可迁移的研发工作机制拆出来，沉淀成一个独立的研发流程插件包。它不是量化交易项目，也不应该继续携带 hedge-ai 的业务语义；它应该只保留可复用的研发编排机制。
 
-这个仓库当前最重要的产物，不是单篇 prompt，也不是零散流程文档，而是一个中文优先的插件资产集合：
+这个仓库当前最重要的产物，不是单篇 prompt，也不是零散流程文档，而是一个中文单线的插件资产集合：
 
 - 根 `README.md` 负责告诉用户插件解决什么问题、主线机制是什么
 - `plugins/agentdevpipeline/` 负责承载插件入口
 - `skills/shared/` 负责承载可复用的角色、workflow、template
-- `prompts/zh-cn/` 负责承载中文规则层
-- `docs/zh-cn/` 负责承载中文说明、迁移矩阵和治理边界
+- `prompts/` 负责承载中文规则层
+- `docs/` 负责承载中文说明、迁移矩阵和治理边界
 
 ## 这个项目解决什么问题
 
@@ -49,10 +47,10 @@ AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编
 3. `skills/shared/`
    提供真正可复用的角色定义、workflow、template 和共享协议。
 
-4. `prompts/zh-cn/`
+4. `prompts/`
    提供中文规则层，约束角色、Gate、Issue、双阶段 PR、Comment Gate、PMO 主动检查等机制。
 
-5. `docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md`
+5. `docs/migration/hedge-ai-plugin-migration-matrix.md`
    提供“源文档 -> 当前落点 -> 插件落点”的审计依据。
 
 ## 内部逻辑
@@ -85,7 +83,7 @@ AgentDevPipeline 要解决的，是这些跨角色、跨阶段、跨工具的编
 - 合规检查是独立治理职责，不替代正式签字角色
 - 本项目只保留通用研发流程机制，不引入量化交易业务语义
 
-完整定义见 [核心原则](./docs/zh-cn/governance/core-principles.md)。
+完整定义见 [核心原则](./docs/governance/core-principles.md)。
 
 ## 完整流程图
 
@@ -180,8 +178,8 @@ PMO 按 PR 主动检查
 
 ### 1. 中文源层
 
-- `docs/zh-cn/`
-- `prompts/zh-cn/`
+- `docs/`
+- `prompts/`
 
 ### 2. 共享能力层
 
@@ -217,16 +215,16 @@ PMO 按 PR 主动检查
 
 - `plugins/agentdevpipeline/`
 - `skills/shared/`
-- `prompts/zh-cn/`
+- `prompts/`
 
 ## 从哪里开始读
 
 1. [根 README](./README.md)
 2. [插件入口说明](./plugins/agentdevpipeline/README.md)
-3. [中文总览](./docs/zh-cn/README.md)
-4. [核心原则](./docs/zh-cn/governance/core-principles.md)
-5. [hedge-ai 迁移矩阵](./docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md)
-6. [Prompt 索引](./prompts/zh-cn/README.md)
+3. [中文总览](./docs/README.md)
+4. [核心原则](./docs/governance/core-principles.md)
+5. [hedge-ai 迁移矩阵](./docs/migration/hedge-ai-plugin-migration-matrix.md)
+6. [Prompt 索引](./prompts/README.md)
 7. `skills/shared/`
 
 ## 最小可运行示例
@@ -268,7 +266,7 @@ PMO 按 PR 主动检查
 - 只需要单角色自动化，不需要流程治理
 - 想直接复用 hedge-ai 的量化交易业务角色和业务流程
 
-相关边界见 [迁移边界（强约束）](./docs/zh-cn/governance/migration-boundary-from-hedge-ai.md)。
+相关边界见 [迁移边界（强约束）](./docs/governance/migration-boundary-from-hedge-ai.md)。
 
 ## 当前版本
 

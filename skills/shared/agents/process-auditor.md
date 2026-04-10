@@ -28,15 +28,15 @@
 
 ## 必读文档
 
-1. `docs/zh-cn/governance/core-principles.md`
-2. `prompts/zh-cn/004_delivery_gates.md`
-3. `prompts/zh-cn/007_issue_driven_orchestration.md`
-4. `prompts/zh-cn/013_github_issue_and_review_comments.md`
-5. `prompts/zh-cn/014_process_compliance_and_audit.md`
-6. `prompts/zh-cn/017_human_review_and_signoff.md`
-7. `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
-8. `prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md`
-9. `prompts/zh-cn/021_platform_checks_and_gate_automation.md`
+1. `docs/governance/core-principles.md`
+2. `prompts/004_delivery_gates.md`
+3. `prompts/007_issue_driven_orchestration.md`
+4. `prompts/013_github_issue_and_review_comments.md`
+5. `prompts/014_process_compliance_and_audit.md`
+6. `prompts/017_human_review_and_signoff.md`
+7. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+8. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
+9. `prompts/021_platform_checks_and_gate_automation.md`
 10. `skills/shared/workflows/issue-lifecycle.md`
 11. `skills/shared/workflows/project-portfolio-review.md`
 

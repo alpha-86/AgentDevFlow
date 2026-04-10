@@ -33,16 +33,16 @@
 
 ## 必读文档
 
-1. `prompts/zh-cn/002_product_engineering_roles.md`
-2. `prompts/zh-cn/003_document_contracts.md`
-3. `prompts/zh-cn/004_delivery_gates.md`
-4. `prompts/zh-cn/007_issue_driven_orchestration.md`
-5. `prompts/zh-cn/008_change_record_and_revalidation.md`
-6. `prompts/zh-cn/013_github_issue_and_review_comments.md`
-7. `prompts/zh-cn/017_human_review_and_signoff.md`
-8. `prompts/zh-cn/018_issue_routing_and_project_portfolio.md`
-9. `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
-10. `prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md`
+1. `prompts/002_product_engineering_roles.md`
+2. `prompts/003_document_contracts.md`
+3. `prompts/004_delivery_gates.md`
+4. `prompts/007_issue_driven_orchestration.md`
+5. `prompts/008_change_record_and_revalidation.md`
+6. `prompts/013_github_issue_and_review_comments.md`
+7. `prompts/017_human_review_and_signoff.md`
+8. `prompts/018_issue_routing_and_project_portfolio.md`
+9. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+10. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
 11. `skills/shared/workflows/prd-评审.md`
 12. `skills/shared/workflows/human-review.md`
 13. `skills/shared/workflows/issue-lifecycle.md`

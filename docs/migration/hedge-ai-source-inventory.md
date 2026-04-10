@@ -119,10 +119,10 @@
 
 ## C. 本仓库落地原则（摘要）
 
-- 中文主版本优先，英文只做后续镜像。
+- 当前仓库只保留中文单线版本，不再规划其他语言镜像。
 - 先固化边界，再迁移机制，再补模板与 workflow。
 - 任何出现量化交易语义的内容，一律退回重写。
 
 详见：
 
-- [与 hedge-ai 的迁移边界（强约束）](/home/work/code/agentdevpipeline/docs/zh-cn/governance/migration-boundary-from-hedge-ai.md)
+- [与 hedge-ai 的迁移边界（强约束）](/home/work/code/agentdevpipeline/docs/governance/migration-boundary-from-hedge-ai.md)

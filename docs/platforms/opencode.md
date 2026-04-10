@@ -3,7 +3,7 @@
 ## 建议接入方式
 
 - 以 prompt pack + workflow pack 的方式接入
-- 优先复用 `skills/shared/` 与 `prompts/zh-cn/`
+- 优先复用 `skills/shared/` 与 `prompts/`
 
 ## 最小安装
 

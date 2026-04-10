@@ -21,11 +21,11 @@
 
 ## 必读文档
 
-1. `prompts/zh-cn/002_product_engineering_roles.md`
-2. `prompts/zh-cn/007_issue_driven_orchestration.md`
-3. `prompts/zh-cn/009_review_rigor_and_context_recovery.md`
-4. `prompts/zh-cn/015_review_evaluation_dimensions.md`
-5. `docs/zh-cn/governance/core-principles.md`
+1. `prompts/002_product_engineering_roles.md`
+2. `prompts/007_issue_driven_orchestration.md`
+3. `prompts/009_review_rigor_and_context_recovery.md`
+4. `prompts/015_review_evaluation_dimensions.md`
+5. `docs/governance/core-principles.md`
 6. `skills/shared/templates/memo-template.md`
 
 ## 初始化后必做

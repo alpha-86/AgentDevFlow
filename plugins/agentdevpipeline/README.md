@@ -14,13 +14,13 @@
    来自 `skills/shared/`
 
 2. 中文规则层  
-   来自 `prompts/zh-cn/`
+   来自 `prompts/`
 
 3. 中文说明与治理文档  
-   来自 `docs/zh-cn/`
+   来自 `docs/`
 
 4. 迁移审计依据  
-   来自 `docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md`
+   来自 `docs/migration/hedge-ai-plugin-migration-matrix.md`
 
 当前插件入口只面向中文单线仓库。
 
@@ -42,16 +42,16 @@
 
 从插件视角，当前仓库的核心装载关系如下：
 
-1. 根 [README.md](/home/work/code/agentdevpipeline/README.md)  
+1. 根 [README.md](/home/work/code/agentdevpipeline/README.md)
    负责说明插件解决什么问题、主流程是什么。
 
-2. [docs/zh-cn/README.md](/home/work/code/agentdevpipeline/docs/zh-cn/README.md)  
+2. [docs/README.md](/home/work/code/agentdevpipeline/docs/README.md)
    负责中文总览。
 
 3. [skills/shared/README.md](/home/work/code/agentdevpipeline/skills/shared/README.md)  
    负责共享角色、workflow、template 的入口。
 
-4. [hedge-ai-plugin-migration-matrix.md](/home/work/code/agentdevpipeline/docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md)  
+4. [hedge-ai-plugin-migration-matrix.md](/home/work/code/agentdevpipeline/docs/migration/hedge-ai-plugin-migration-matrix.md)
    负责记录源文档、当前落点和插件落点。
 
 ## 当前插件最重要的共享资产
@@ -85,18 +85,18 @@
 
 ### 4. 中文规则层
 
-- [007_issue_driven_orchestration.md](/home/work/code/agentdevpipeline/prompts/zh-cn/007_issue_driven_orchestration.md)
-- [014_process_compliance_and_audit.md](/home/work/code/agentdevpipeline/prompts/zh-cn/014_process_compliance_and_audit.md)
-- [017_human_review_and_signoff.md](/home/work/code/agentdevpipeline/prompts/zh-cn/017_human_review_and_signoff.md)
-- [019_dual_stage_pr_and_three_layer_safeguard.md](/home/work/code/agentdevpipeline/prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md)
-- [020_issue_comment_gate_and_artifact_linkage.md](/home/work/code/agentdevpipeline/prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md)
+- [007_issue_driven_orchestration.md](/home/work/code/agentdevpipeline/prompts/007_issue_driven_orchestration.md)
+- [014_process_compliance_and_audit.md](/home/work/code/agentdevpipeline/prompts/014_process_compliance_and_audit.md)
+- [017_human_review_and_signoff.md](/home/work/code/agentdevpipeline/prompts/017_human_review_and_signoff.md)
+- [019_dual_stage_pr_and_three_layer_safeguard.md](/home/work/code/agentdevpipeline/prompts/019_dual_stage_pr_and_three_layer_safeguard.md)
+- [020_issue_comment_gate_and_artifact_linkage.md](/home/work/code/agentdevpipeline/prompts/020_issue_comment_gate_and_artifact_linkage.md)
 
 ## 规则边界
 
 - 不得新增 `hedge-ai` 源文档中不存在的核心流程概念
 - 不得把量化交易角色、交易节奏、策略研究、因子、回测等内容带入插件主干
 - 不得由插件层改写 `skills/shared/` 的核心语义
-- 当前阶段不保留任何英文镜像入口规划
+- 当前阶段不保留任何其他语言镜像入口规划
 
 ## 当前仍未完成的部分
 

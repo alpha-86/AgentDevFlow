@@ -16,7 +16,7 @@
   - 详细记录链接
 - 详细记录优先回链到：
   - `prompts/discuss/`
-  - `docs/zh-cn/migration/`
+  - `docs/migration/`
 - 没有进入 `CHANGELOG.md` 的重要变更，不应视为正式版本变更完成。
 - 当前只维护中文单线仓库的正式版本记录。
 
@@ -47,23 +47,23 @@
 - 重写 `plugins/agentdevpipeline/README.md`，作为插件入口
 - 校准 `plugins/agentdevpipeline/.codex-plugin/plugin.json`
 - 明确 `skills/shared/` 已基本构成插件核心资产层
-- 明确 `prompts/zh-cn/` 已基本构成插件规则层
+- 明确 `prompts/` 已基本构成插件规则层
 
 **涉及文件 / 落点**:
 
 - `README.md`
 - `plugins/agentdevpipeline/README.md`
 - `plugins/agentdevpipeline/.codex-plugin/plugin.json`
-- `docs/zh-cn/governance/core-principles.md`
-- `docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md`
+- `docs/governance/core-principles.md`
+- `docs/migration/hedge-ai-plugin-migration-matrix.md`
 - `skills/shared/README.md`
-- `prompts/zh-cn/README.md`
-- `prompts/zh-cn/007_issue_driven_orchestration.md`
-- `prompts/zh-cn/013_github_issue_and_review_comments.md`
-- `prompts/zh-cn/014_process_compliance_and_audit.md`
-- `prompts/zh-cn/017_human_review_and_signoff.md`
-- `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
-- `prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md`
+- `prompts/README.md`
+- `prompts/007_issue_driven_orchestration.md`
+- `prompts/013_github_issue_and_review_comments.md`
+- `prompts/014_process_compliance_and_audit.md`
+- `prompts/017_human_review_and_signoff.md`
+- `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+- `prompts/020_issue_comment_gate_and_artifact_linkage.md`
 
 **详细记录**:
 

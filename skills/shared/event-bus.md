@@ -202,4 +202,4 @@
 - `platform_check.*`
   对应 `templates/platform-checklist-template.md` 和 `templates/platform-check-result-template.md`
 - `issue.comment_missing`
-  对应 `prompts/zh-cn/020_issue_comment_gate_and_artifact_linkage.md`
+  对应 `prompts/020_issue_comment_gate_and_artifact_linkage.md`

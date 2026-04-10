@@ -9,7 +9,7 @@
 
 1. 将 `plugins/agentdevpipeline/` 放入 Codex 可见插件目录
 2. 按平台要求注册插件
-3. 让角色初始化时优先阅读 `prompts/zh-cn/` 和 `skills/shared/`
+3. 让角色初始化时优先阅读 `prompts/` 和 `skills/shared/`
 
 ## 说明
 

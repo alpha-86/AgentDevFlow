@@ -35,16 +35,16 @@
 
 ## 必读文档
 
-1. `prompts/zh-cn/001_team_topology.md`
-2. `prompts/zh-cn/004_delivery_gates.md`
-3. `prompts/zh-cn/005_meeting_and_todo.md`
-4. `prompts/zh-cn/007_issue_driven_orchestration.md`
-5. `prompts/zh-cn/011_event_bus_and_handoff.md`
-6. `prompts/zh-cn/012_anomaly_and_escalation_loop.md`
-7. `prompts/zh-cn/013_github_issue_and_review_comments.md`
-8. `prompts/zh-cn/014_process_compliance_and_audit.md`
-9. `prompts/zh-cn/018_issue_routing_and_project_portfolio.md`
-10. `prompts/zh-cn/019_dual_stage_pr_and_three_layer_safeguard.md`
+1. `prompts/001_team_topology.md`
+2. `prompts/004_delivery_gates.md`
+3. `prompts/005_meeting_and_todo.md`
+4. `prompts/007_issue_driven_orchestration.md`
+5. `prompts/011_event_bus_and_handoff.md`
+6. `prompts/012_anomaly_and_escalation_loop.md`
+7. `prompts/013_github_issue_and_review_comments.md`
+8. `prompts/014_process_compliance_and_audit.md`
+9. `prompts/018_issue_routing_and_project_portfolio.md`
+10. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
 11. `skills/shared/workflows/daily-sync.md`
 12. `skills/shared/workflows/issue-lifecycle.md`
 13. `skills/shared/workflows/human-review.md`
