@@ -22,7 +22,7 @@
 4. 迁移审计依据  
    来自 `docs/zh-cn/migration/hedge-ai-plugin-migration-matrix.md`
 
-当前阶段中文优先，英文版明确后置，不纳入当前插件主入口。
+当前插件入口只面向中文单线仓库。
 
 ## 插件主线机制
 
@@ -96,11 +96,9 @@
 - 不得新增 `hedge-ai` 源文档中不存在的核心流程概念
 - 不得把量化交易角色、交易节奏、策略研究、因子、回测等内容带入插件主干
 - 不得由插件层改写 `skills/shared/` 的核心语义
-- 当前阶段不把英文版作为插件入口主线
+- 当前阶段不保留任何英文镜像入口规划
 
 ## 当前仍未完成的部分
 
-- `plugin.json` 还需要继续校准描述与版本信息
-- 根 `CHANGELOG.md` 还未建立
 - `github-issue/SKILL.md`、`review-org/SKILL.md` 还需要更明确的插件承载方式
 - evaluation checker 还未形成更接近 `hedge-ai` 的独立检查子能力
