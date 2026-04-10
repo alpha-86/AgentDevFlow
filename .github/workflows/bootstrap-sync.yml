@@ -1,0 +1,92 @@
+name: Bootstrap Sync
+
+# 持续部署：将 skills/shared/ 中的源文件同步到 adapters/claude/.claude/skills/
+# 作为 Claude Code 的技能包分发入口。
+#
+# 工作原理：
+# 1. 当 skills/shared/ 中的共享技能发生变更并合并到 main 分支时触发
+# 2. 读取 skills/shared/ 中每个 .md 文件
+# 3. 为每个共享技能在 adapters/claude/.claude/skills/ 下创建或更新对应的 SKILL.md
+# 4. 提交变更到 main 分支（触发 bootstrap-sync 的变更本身不会再次触发 workflow）
+#
+# 禁止：
+# - 禁止修改 skills/shared/ 源文件（只读取）
+# - 禁止修改非 SKILL.md 的文件
+# - 禁止在没有变更时提交空提交
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'skills/shared/**/*.md'
+      - '.github/workflows/bootstrap-sync.yml'
+  workflow_dispatch:
+    inputs:
+      force_resync:
+        description: 'Force resync all shared skills to adapter (ignores diff check)'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  SKILLS_SHARED_DIR: skills/shared
+  ADAPTER_CLAUDE_DIR: adapters/claude/.claude
+  SKILLS_TARGET_DIR: adapters/claude/.claude/skills
+
+jobs:
+  sync:
+    name: Sync shared skills to Claude adapter
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      changed_skills: ${{ steps.sync.outputs.changed_skills }}
+      has_changes: ${{ steps.sync.outputs.has_changes }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync shared skills
+        id: sync
+        env:
+          FORCE_RESYNC: ${{ inputs.force_resync || 'false' }}
+        run: python .github/workflows/bootstrap-sync.py
+
+      - name: Show sync results
+        run: |
+          echo "Changed skills: ${{ steps.sync.outputs.changed_skills }}"
+          echo "Has changes: ${{ steps.sync.outputs.has_changes }}"
+
+      - name: Create Pull Request if needed
+        if: steps.sync.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: adapters/claude/.claude/skills/**
+          commit-message: 'chore(adapter): sync shared skills to Claude adapter'
+          title: 'chore(adapter): sync shared skills to Claude adapter'
+          body: |
+            ## Bootstrap Sync
+
+            自动生成的 Pull Request，将 `skills/shared/` 中的共享技能同步到 `adapters/claude/.claude/skills/`。
+
+            **变更技能**: ${{ steps.sync.outputs.changed_skills }}
+
+            ---
+            _此 PR 由 bootstrap-sync workflow 自动生成_
+          branch: bootstrap-sync/sync-$(date +%Y%m%d-%H%M%S)
+          delete-branch: true
+          labels: |
+            automations
+            claude-adapter
