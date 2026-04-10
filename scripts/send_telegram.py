@@ -2,8 +2,7 @@
 """
 Telegram 消息推送工具（通用版）
 
-从 hedge-ai/scripts/util/send_telegram.py 迁移
-剥离业务逻辑（回测报告、研发日报），保留通用消息推送
+从 AgentDevFlow 原项目中迁移，剥离业务逻辑（回测报告、研发日报），保留通用消息推送
 """
 
 import os
