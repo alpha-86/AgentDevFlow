@@ -71,14 +71,20 @@
 
 | 源文件 | 机制摘要 | 判定 | 当前仓库落点 | 插件落点 | 状态 |
 |---|---|---|---|---|---|
-| `.claude/skills/WORKFLOWS/prd-review.md` | PRD Gate | 可迁移 | `skills/shared/workflows/prd-review.md` | 插件 workflow 包 | 已迁移 |
-| `.claude/skills/WORKFLOWS/tech-review.md` | Tech Gate | 可迁移 | `skills/shared/workflows/tech-review.md` | 插件 workflow 包 | 已迁移 |
-| `.claude/skills/WORKFLOWS/daily-standup.md` | 研发日会、Todo Review、Blocker 升级 | 可迁移 | `skills/shared/workflows/daily-sync.md` | 插件 workflow 包 | 已迁移，但还需逐项对齐 |
-| `.claude/skills/WORKFLOWS/todo-management.md` | Todo 全局管理 | 可迁移 | `skills/shared/workflows/todo-review.md` | 插件 workflow 包 | 已迁移 |
-| `.claude/skills/WORKFLOWS/weekly-review.md` | 周复盘 | 可迁移 | `skills/shared/workflows/weekly-review.md` | 插件 workflow 包 | 已迁移 |
-| `.claude/skills/WORKFLOWS/monthly-review.md` | 月复盘 | 可迁移 | `skills/shared/workflows/monthly-review.md` | 插件 workflow 包 | 已迁移 |
-| `.claude/skills/WORKFLOWS/anomaly-iteration.md` | 异常闭环 | 部分迁移 | `skills/shared/workflows/anomaly-response.md` | 插件 workflow 包 | 已部分迁移 |
-| `.claude/skills/WORKFLOWS/debate.md` | 对抗式评审 | 部分迁移 | `prompts/zh-cn/015_review_evaluation_dimensions.md`、`005/014` 相关文档 | 插件评审补充能力 | 仍偏弱 |
+| `.claude/skills/WORKFLOWS/prd-review.md` | PRD Gate | 可迁移 | `skills/shared/workflows/prd-review.md` | 插件主干 workflow 包 | 已复核；属于插件主干 workflow |
+| `.claude/skills/WORKFLOWS/tech-review.md` | Tech Gate | 可迁移 | `skills/shared/workflows/tech-review.md` | 插件主干 workflow 包 | 已复核；属于插件主干 workflow |
+| `.claude/skills/WORKFLOWS/daily-standup.md` | 研发日会、Todo Review、Blocker 升级 | 可迁移 | `skills/shared/workflows/daily-sync.md` | 插件主干 workflow 包 | 已复核；需继续去交易议程字段 |
+| `.claude/skills/WORKFLOWS/todo-management.md` | Todo 全局管理 | 可迁移 | `skills/shared/workflows/todo-review.md` | 插件主干 workflow 包 | 已复核；属于插件主干 workflow |
+| `.claude/skills/WORKFLOWS/weekly-review.md` | 周复盘 | 可迁移 | `skills/shared/workflows/weekly-review.md` | 插件主干 workflow 包 | 已复核；属于插件主干 workflow |
+| `.claude/skills/WORKFLOWS/monthly-review.md` | 月复盘 | 可迁移 | `skills/shared/workflows/monthly-review.md` | 插件主干 workflow 包 | 已复核；属于插件主干 workflow |
+| `.claude/skills/WORKFLOWS/anomaly-iteration.md` | 异常闭环 | 部分迁移 | `skills/shared/workflows/anomaly-response.md` | 插件异常 workflow | 已复核；仅保留通用异常闭环 |
+| `.claude/skills/WORKFLOWS/debate.md` | 对抗式评审 | 部分迁移 | `prompts/zh-cn/015_review_evaluation_dimensions.md`、`005/014` 相关文档 | 插件评审补充能力 | 已复核；只保留方法框架 |
+| `.claude/skills/WORKFLOWS/daily-report.md` | 日报生成 | 部分迁移 | 当前无主干 workflow 对应 | 不作为插件主干 workflow | 已复核；只可参考通用日报结构 |
+| `.claude/skills/WORKFLOWS/risk-report.md` | 风险日报 | 部分迁移 | 当前无主干 workflow 对应 | 不作为插件主干 workflow | 已复核；只可参考工程风险汇报结构 |
+| `.claude/skills/WORKFLOWS/strategy-review.md` | 策略评审 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
+| `.claude/skills/WORKFLOWS/strategy-debate.md` | 策略辩论 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
+| `.claude/skills/WORKFLOWS/factor-review.md` | 因子评审 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
+| `.claude/skills/WORKFLOWS/backtest-review.md` | 回测评审 | 禁止迁移 | 不进入主干 | 不进入插件主干 | 已复核 |
 
 ## D. 文档与变更机制
 
