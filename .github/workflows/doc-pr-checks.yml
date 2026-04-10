@@ -7,9 +7,19 @@ on:
 
 jobs:
   check-doc-pr:
-    if: startsWith(github.event.pull_request.title, '[DOC]')
     runs-on: ubuntu-latest
     steps:
+      - name: Validate PR is a doc PR
+        id: validate
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          # Match [DOC] or [DOC #N] prefix
+          if [[ ! "$TITLE" =~ ^\[DOC([[:space:]]+#[0-9]+)?\] ]]; then
+            echo "Not a doc PR: $TITLE"
+            exit 78  # Special exit code for skip
+          fi
+          echo "Doc PR validated: $TITLE"
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -23,7 +33,6 @@ jobs:
       - name: Check PRD exists
         run: |
           ISSUE=${{ steps.extract-issue.outputs.issue_number }}
-          # Check docs/prd/PRD-${ISSUE}_*.md exists
           if ls docs/prd/PRD-${ISSUE}_*.md 1>/dev/null 2>&1; then
             echo "PRD found for issue #${ISSUE}"
           else
@@ -35,7 +44,6 @@ jobs:
       - name: Check Tech exists
         run: |
           ISSUE=${{ steps.extract-issue.outputs.issue_number }}
-          # Check docs/tech/Tech-${ISSUE}_*.md exists
           if ls docs/tech/Tech-${ISSUE}_*.md 1>/dev/null 2>&1; then
             echo "Tech found for issue #${ISSUE}"
           else
@@ -47,7 +55,6 @@ jobs:
       - name: Check QA exists
         run: |
           ISSUE=${{ steps.extract-issue.outputs.issue_number }}
-          # Check docs/qa/QA-${ISSUE}_*.md exists
           if ls docs/qa/QA-${ISSUE}_*.md 1>/dev/null 2>&1; then
             echo "QA found for issue #${ISSUE}"
           else

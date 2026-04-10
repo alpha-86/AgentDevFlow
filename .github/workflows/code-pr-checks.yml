@@ -7,33 +7,33 @@ on:
 
 jobs:
   check-code-pr:
-    # Only run for non-doc PRs
-    if: "!startsWith(github.event.pull_request.title, '[DOC]')"
     runs-on: ubuntu-latest
     steps:
+      - name: Check PR is not a doc PR
+        id: validate
+        run: |
+          set -x
+          TITLE="${{ github.event.pull_request.title }}"
+          echo "PR title is: $TITLE"
+          echo "First 4 chars: ${TITLE:0:4}"
+          if [ "${TITLE:0:4}" = "[DOC" ]; then
+            echo "Doc PR detected"
+            exit 78
+          fi
+          echo "Not a doc PR"
+
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Extract issue number
         id: extract-issue
         run: |
-          # Try to extract issue number from title (e.g., "Feature: Issue #123" or "Fixes #123")
           ISSUE_NUM=$(echo "${{ github.event.pull_request.title }}" | grep -oP '(?:#)\d+' | head -1 | tr -d '#')
           if [ -z "$ISSUE_NUM" ]; then
-            # Try from body
             ISSUE_NUM=$(echo "${{ github.event.pull_request.body }}" | grep -oP '(?:#)\d+' | head -1 | tr -d '#')
           fi
           echo "issue_number=$ISSUE_NUM" >> $GITHUB_OUTPUT
           echo "Extracted issue number: $ISSUE_NUM"
-
-      - name: Check PR is not a doc PR
-        run: |
-          TITLE="${{ github.event.pull_request.title }}"
-          if [[ "$TITLE" == "[DOC]"* ]]; then
-            echo "This is a doc PR, not a code PR. Use doc-pr-checks.yml instead."
-            exit 1
-          fi
-          echo "This is a code PR"
 
       - name: Check PR description contains doc PR link
         run: |
@@ -53,22 +53,18 @@ jobs:
             echo "Could not extract issue number, skipping doc PR merge check"
             exit 0
           fi
-
-          # Check if doc-{issue}-* branch exists and was merged
-          # Look for merge commit in main that contains doc-{issue}
           MERGED=$(git log --oneline main | grep -i "doc-${ISSUE}" | grep -i "merge" | head -1)
           if [ -n "$MERGED" ]; then
             echo "Doc PR for issue #${ISSUE} appears to be merged"
           else
             echo "Could not confirm doc PR merge for issue #${ISSUE}"
             echo "Please ensure doc PR is merged before creating code PR"
-            echo "Note: This is a soft check. Human reviewer should verify doc PR is merged."
           fi
 
       - name: Check PR contains Fixes #N
         run: |
           BODY="${{ github.event.pull_request.body }}"
-          if echo "$BODY" | grep -qE "(Fixes|Closes)\s+#[[:digit:]]+"; then
+          if echo "$BODY" | grep -qE "(Fixes|Closes)[[:space:]]+#[[:digit:]]+"; then
             echo "PR contains Fixes or Closes reference"
           else
             echo "PR description missing 'Fixes #N' or 'Closes #N'"
