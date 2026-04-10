@@ -1,34 +1,63 @@
 # Codex Adapter
 
-使用 `plugins/agentdevflow/` 下的本地 Codex 插件接入 AgentDevFlow。
+这是 Codex 侧的 AgentDevFlow 适配入口。它的职责不是再发明一套规则，而是把 Codex 的多 agent 调度能力接到 AgentDevFlow 的共享角色、workflow 和 Gate 主线。
 
-## 最小要求
+## 启动顺序
 
-- 不改写 `skills/shared/` 的核心语义
-- 支持读取中文主版本规则
-- 至少具备 issue / gate / artifact linkage 的最小检查能力
+1. 读取根 `README.md`
+2. 读取 `plugins/agentdevflow/README.md`
+3. 读取 `docs/platforms/codex.md`
+4. 读取 `skills/shared/start-agent-team.md`
+5. 读取 `skills/shared/create-agent.md`
+6. 由主会话建立：
+   - `project_id`
+   - 主 issue 或当前主工作索引
+   - 当前 Gate
+   - Todo / 状态板 / 产物关联主记录
+7. 再创建 Product Manager、架构师、QA、Engineer、Process Auditor 等 subagent
 
-## 接入清单
+## 主会话职责
 
-1. 读取 `README.md`、`docs/README.md` 和 `skills/shared/README.md`
-2. 确认共享角色、workflow、template 可被 Codex 插件或本地入口读取
-3. 对照 `docs/governance/platform-minimum-checks.md` 实现最小检查
-4. 至少落一份 `skills/shared/templates/platform-checklist-template.md`
-5. 明确检查失败时如何阻断当前阶段
+Codex 中的主会话承担 `Team Lead 等效编排者` 职责：
 
-## 最小输出物
+- 先建立启动前置条件，再决定是否创建角色
+- 决定默认团队和可选角色
+- 给每个 subagent 注入角色读物、职责边界和写入范围
+- 控制文档阶段先于实现阶段
+- 把守 Issue / Comment / Human Review / Gate
+- 统一收口验证结果和下一步动作
 
-- 一份平台最小检查清单
-- 一份平台检查结果
-- 一份接入说明
-- 一份失败处理说明
+## subagent 最小约束
 
-## 接入完成判定
+每个 Codex 侧 subagent 在创建时至少必须带上：
 
-- 能读取中文主版本规则
-- 不改写共享语义
-- 能做最小 Gate / Issue / Artifact / 状态一致性检查
-- 检查失败时能阻断并给出修复路径
+1. 角色定义
+2. 必读文档
+3. 当前 Gate
+4. 当前主 issue / `project_id`
+5. 明确职责边界
+6. 允许写入的文件范围
+7. 初始化确认格式
+
+没有这些内容，不应创建正式的 gated delivery 角色。
+
+## 最小通过标准
+
+1. 主会话先完成启动前置条件，再创建任何 subagent
+2. 每个 subagent 都带着明确读物、职责边界和写入范围启动
+3. 文档阶段先于实现阶段
+4. Issue / Comment / Human Review / Gate 全部可追溯
+5. 发现检查失败时，当前阶段会被阻断，而不是继续推进
+
+## 最小检查建议
+
+接入 Codex 时，至少检查：
+
+1. 当前阶段所需文档是否存在
+2. 当前阶段所需 Issue Comment 是否存在
+3. artifact linkage 是否完整
+4. 当前 Gate 状态是否与实际产物一致
+5. Human Review 结论是否已正式落地
 
 参考：
 

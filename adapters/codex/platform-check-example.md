@@ -7,10 +7,11 @@
 ## 最小自动化链路
 
 1. 读取主 issue、当前 gate 和关联产物。
-2. 检查当前阶段所需 PRD / Tech / QA / Release 文档是否存在。
-3. 检查对应 issue comment 是否存在且字段完整。
-4. 检查 artifact linkage 是否完整。
-5. 失败时输出平台检查结果并阻断继续推进。
+2. 确认主会话是否已经完成启动前置条件。
+3. 检查当前阶段所需 PRD / Tech / QA / Release 文档是否存在。
+4. 检查对应 issue comment 是否存在且字段完整。
+5. 检查 artifact linkage 是否完整。
+6. 失败时输出平台检查结果并阻断继续推进。
 
 ## 最小落地物
 
@@ -24,3 +25,4 @@
 - 缺 QA comment
 - artifact linkage 缺失
 - issue 状态提前推进
+- 还没建立主 issue / Gate / Todo 就开始创建 subagent
