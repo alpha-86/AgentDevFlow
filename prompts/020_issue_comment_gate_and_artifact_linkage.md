@@ -36,6 +36,8 @@
 
 每个主 Issue 下至少应能反查：
 
+- 文档 PR
+- 代码 PR
 - PRD
 - Tech
 - QA Case
@@ -60,6 +62,8 @@
 - 若自动投递 Comment 失败，必须返回失败状态并阻断下游动作
 - 代码 PR 创建前，必须确认主 Issue 已存在要求的上游 Comment
 - 代码 PR 合并前，必须确认当前阶段 Comment 与产物链接完整
+- 文档 PR 合并前，必须确认文档阶段 Comment、产物链接和 Human Review #1 结论完整
+- 代码 PR 合并前，必须确认实现阶段 Comment、产物链接和 Human Review #2 结论完整
 
 ## 失败信号
 

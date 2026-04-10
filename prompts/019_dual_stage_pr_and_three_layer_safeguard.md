@@ -40,6 +40,7 @@
 - PRD 链接
 - Tech 链接
 - QA Case Design 链接
+- 主 Issue 链接
 - 变更摘要
 - 明确写出“合并即设计确认，可以进入开发”
 
@@ -50,6 +51,21 @@
 - 代码变更摘要
 - 关联 Issue
 - 明确写出“合并即实现确认，可以进入关闭或发布”
+
+## PR 合并前置条件
+
+### 文档 PR 合并前
+
+- PRD、Tech、QA Case Design 已齐备
+- Human Review #1 结论已形成正式留痕
+- 主 Issue 中已能反查文档 PR 和当前 Gate Comment
+
+### 代码 PR 合并前
+
+- 已合并的文档 PR 链接已存在
+- 测试报告已齐备
+- Human Review #2 结论已形成正式留痕
+- 主 Issue 中已能反查代码 PR、测试报告和当前 Gate Comment
 
 ## Human Review 最小要求
 

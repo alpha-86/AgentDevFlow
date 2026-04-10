@@ -32,12 +32,14 @@
 
 ## Gate 评论最小字段
 
+- project_id
 - Gate 名称
 - 决策人
 - 结论
 - 证据链接
 - 待办与 owner
 - 是否允许进入下游阶段
+- 当前 Issue 状态
 
 ## 评论约束
 
@@ -54,6 +56,8 @@
 - 若阶段要求存在 Comment，但目标 Issue 下查不到该 Comment，则视为未完成
 - 代码 PR 创建前，应确认上游必需 Comment 已存在
 - 代码 PR 合并前，应确认当前阶段 Comment 和产物链接完整
+- 文档 PR 合并前，应确认 Human Review #1 结论已落到目标 Issue 或 PR
+- 代码 PR 合并前，应确认 Human Review #2 结论已落到目标 Issue 或 PR
 
 ## 失败处理
 
@@ -62,6 +66,7 @@
 - 若 comment 与 issue / 文档状态不一致，则以更严格状态为准并触发纠正
 - 必须指定修复 owner 和重试条件
 - 若 comment 自动投递失败，必须返回非成功状态，阻断下游动作
+- 若 Human Review 结论未真实落地，则不能把该评审视为已完成
 
 ## PR / Issue 关系
 
@@ -69,3 +74,4 @@
 - 合并前必须确认主 Issue 的阶段状态与 PR 实际内容一致
 - 若 PR 引入 Major / Breaking 变更，Issue 必须先完成重审记录
 - 若 Issue Comment 缺失，不得把 PR 创建或合并视为合规完成
+- 文档 PR 与代码 PR 都必须能从主 Issue 反查

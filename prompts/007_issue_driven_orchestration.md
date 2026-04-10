@@ -74,12 +74,12 @@
 ### Gate 2 Tech Review
 
 - 入场条件：PRD `Approved`。
-- 出场条件：Tech Spec `Approved`，Issue 留下风险、依赖、重审条件。
+- 出场条件：Tech Spec `Approved`，Issue 留下风险、依赖、重审条件；若属于双阶段 PR，则必须同时具备文档 PR 合并前置条件。
 
 ### Gate 3 Implementation
 
-- 入场条件：Tech Spec `Approved`。
-- 出场条件：实现证据（代码、测试、说明）回链 Issue。
+- 入场条件：Tech Spec `Approved`，文档 PR 已合并，且 Human Review #1 已完成。
+- 出场条件：实现证据（代码、测试、说明）回链 Issue，并明确是否具备 Human Review #2 条件。
 
 ### Gate 4 QA Validation
 
@@ -89,7 +89,7 @@
 ### Gate 5 Release Review
 
 - 入场条件：QA 无阻塞缺陷或风险已明确接受。
-- 出场条件：发布结论、回滚方案、值守安排回链 Issue；是否关闭由 Human 最终确认。
+- 出场条件：发布结论、回滚方案、值守安排回链 Issue；Issue 是否关闭由 Human 最终确认。
 
 ## 强制评论模板（Issue 内）
 
@@ -100,6 +100,7 @@
 - 关键证据链接
 - 待办清单（负责人 + 截止时间）
 - 下一 Gate 的入场条件
+- 当前 Issue 状态是否需要更新
 
 ## 关闭规则
 
