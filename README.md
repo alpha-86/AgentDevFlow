@@ -1,37 +1,116 @@
 # AgentDevFlow
 
-AgentDevFlow 是一套面向 AI Coding 研发交付的多 Agent 流程资产包。它关注的不是“单个 Agent 会不会写代码”，而是如何把 GitHub Issue 驱动、双阶段 PR 引入的人类评审、文件化交付物，以及两条彼此配合但职责不同的 AI 驱动 AI 闭环串成可执行流程：一条是 QA 与 Engineer 围绕 QA Case 的交付质量闭环，另一条是 PMO 驱动的流程改进闭环。
+AgentDevFlow 是一套面向 AI Coding 多 Agent 研发交付的流程资产包。它关注的不是单个 Agent 会不会写代码，而是如何把 AI 协作从聊天驱动，收敛为以 GitHub Issue、文件交付物、双阶段 PR、Gate 和多通道协作为核心的正式交付流程。
 
-## 它解决什么问题
+它解决的核心问题有三个：需求和结论如何留痕，设计和实现如何防漂移，多个 Agent 与人如何在关键节点形成可阻断、可追溯、可恢复的协作链路。
+
+## 两个入口
+
+如果你第一次接触 AgentDevFlow，建议按目标进入：
+
+### 我想理解这套机制
+
+先读：
+
+1. [核心机制](#核心机制)
+2. [最近强化的保障机制](#最近强化的保障机制)
+3. [完整流程](#完整流程)
+4. [默认角色与边界](#默认角色与边界)
+
+### 我想快速接入试用
+
+先读：
+
+1. [快速接入](#快速接入)
+2. [协作通道与入口](#协作通道与入口)
+3. [继续阅读](#继续阅读)
+
+## 为什么需要 AgentDevFlow
 
 很多团队已经在用 Claude、Codex 或其他 Agent 工具，但真正容易失控的往往不是编码本身，而是协作过程：
 
-- 对话式安排任务，很难确保 Agent 真正理解需求、边界和验收标准
-- 关键信息如果停留在聊天里，上下文恢复成本很高，还会占用宝贵的上下文空间并干扰 AI
-- 多个问题并行推进时，状态、依赖、优先级和责任边界的复杂性会快速爆炸，过程会越来越不可控
-- 如果没有前置确认的 QA Case Design、设计确认和 QA 与 Engineer 的验证修复闭环，AI Coding 很容易持续偏离预期
-- 人与 Agent Team 的桌面端主入口通常只有 Claude 或 Codex，离开电脑后移动端实时沟通和状态跟进容易断掉
-- 不同平台各写一套规则，流程越做越碎，重复造轮子
+- 任务靠聊天安排，需求、边界和验收标准很难稳定传递
+- 关键信息停留在会话里，难追溯、难恢复，也会污染后续上下文
+- PRD、Tech、代码和测试结论容易漂移
+- 没有前置 QA Case Design，AI Coding 很容易持续偏离预期
+- Gate 如果只停留在文档规则里，现实执行中很容易被绕过
+- 桌面端之外缺少移动端协作闭环，状态跟进容易断掉
 
-AgentDevFlow 的目标，是把这些问题沉淀成一套可复用的 Agent、workflow、template 和平台入口约束：让 Agent 基于文件交付物协作，让人只在关键节点把关，一方面通过 QA 与 Engineer 的验证-修复循环提升交付质量，另一方面通过 PMO 持续发现流程问题并回写机制，持续优化整个 Agent 团队，使研发交付过程更可控、更符合预期、更高质量。
+AgentDevFlow 的目标，是把这些问题沉淀成一套可复用的 Agent、workflow、template 和平台入口约束：让 Agent 基于文件交付物协作，让人只在关键节点把关，让研发链路更可控、更可追溯、更符合预期。
 
-## 它怎么工作
+## 核心机制
 
-AgentDevFlow 的主线不是“让 Agent 自己跑完一切”，而是建立一条 **以 Claude / Codex 为桌面端编排入口**、**以 GitHub Issue 为正式主线**、**以文件交付物为上下游唯一交接物**、**以双阶段 PR 引入 Human Review**、**以 QA Case Design 前置定义验证路径**、**以交付质量闭环和流程改进闭环并行运转** 的研发链路：
+### 1. GitHub Issue 是正式主线
 
-- `GitHub Issue 全流程`：从主 Issue 启动，所有关键产物和结论持续回链，最终也在 Issue 上完成验收与关闭
-- `问题先于方案`：先澄清目标、边界、约束，再写 PRD，而不是让 Agent 直接根据聊天内容开工
-- `文件交付物与文件交接`：PRD、Tech Spec、QA Case Design 是任务交付物，也是下游新任务的正式启动输入；Agent 与 Agent 之间的正式交接只认文件和结构化评论，不靠聊天接力
-- `双阶段 PR`：文档 PR 合并代表设计确认，代码 PR 合并代表实现确认；两次确认都通过 Human Review 引入明确的人类判断
-- `Case Design 先行的 TDD`：本项目语境的 TDD 指 QA Case Design 前置，并在 PR#1 / Human Review #1 中完成确认。它先定义测试覆盖和验收路径，但不等于 Engineer 按 QA Case Design 写实现；Engineer 的 coding 以已确认的 PRD 和 Tech Spec 为主输入
-- `交付质量闭环`：QA 基于 PRD 和 Tech 设计或维护 QA Case Design，并在代码阶段按 case 验证实现、反馈缺陷、产出测试报告；Engineer 根据 QA 反馈修复问题，直到约定 case 通过并形成可审阅证据
-- `Issue Comment Gate`：关键结论必须真正回写到 Issue，而不是停留在聊天里
-- `PMO 流程改进闭环`：由于上下文干扰、执行漂移和幻觉，不能假设每个 Agent 都会 100% 按 prompt 执行；PMO 按 PR / Gate / 复盘主动检查流程、沉淀重复性协同问题，并把问题回写到 agent 描述、workflow、template、prompt 和文档要求
-- `多通道沟通`：Claude / Codex 负责桌面端编排，GitHub Issue 承担正式流程主线，Telegram 提供移动端实时沟通能力，后续可扩展飞书 CLI、Discord 等更多沟通通道
+主 Issue 是每个需求、变更或异常的正式入口。关键产物、阶段结论、Gate 状态、QA 结论和最终验收都要回链到 Issue，而不是只停留在聊天记录里。
 
-换句话说，这里要区分两条并行闭环：一条是 `QA Case Design -> Engineer 实现 -> QA 验证 -> Engineer 修复 -> 测试报告` 的交付质量闭环；另一条是 `PMO 审计 -> 发现重复问题 -> 回写角色 / workflow / template / prompt / 文档要求 -> 下轮再执行` 的流程改进闭环。
+### 2. 文件交付物是唯一正式交接物
+
+PRD、Tech Spec、QA Case Design、QA Report 不是顺手写的文档，而是上下游的正式交接物。Agent 与 Agent 之间的正式接力只认文件和结构化评论，不靠口头补充。
+
+### 3. 双阶段 PR + Human Review
+
+AgentDevFlow 将研发链路拆成两个明确阶段：
+
+- 文档 PR：PRD + Tech + QA Case Design，合并代表设计确认
+- 代码 PR：代码 + 测试证据 + QA 结论，合并代表实现确认
+
+两次 PR 都通过 Human Review 在关键节点引入人的判断。
+
+### 4. 交付质量闭环
+
+质量闭环不是开发完再测，而是：
+
+`QA Case Design -> Engineer 实现 -> QA 验证 -> Engineer 修复 -> QA Report`
+
+QA 负责把 PRD 和 Tech 的承诺转成可验证路径，Engineer 负责按已确认输入实现并交付证据，两者围绕 case 循环直到形成可审阅结果。
+
+### 5. 流程改进闭环
+
+除了交付主线，AgentDevFlow 还有一条并行的流程改进线：
+
+`PMO 审计 -> 发现重复问题 -> 回写 roles / workflows / templates / prompts -> 下轮执行`
+
+它的目的不是替代交付，而是持续修正多 Agent 协作中的重复性偏差和机制漏洞。
 
 完整原则见 [核心原则](./docs/governance/core-principles.md)。
+
+## 最近强化的保障机制
+
+最近几轮迭代，AgentDevFlow 已经从描述流程，推进到用自动化和约束机制保障流程。
+
+### Gate 已自动化
+
+Gate 不再只是文档中的约定：
+
+- 文档 PR 会检查 PRD、Tech、QA 文档是否包含 Gate 块和签字状态
+- 本地 `.githooks/pre-commit` 会对受保护文档目录执行 Gate 检查
+- 缺少关键签字时，流程会被直接阻断
+
+### 代码 PR 有前置约束
+
+代码 PR 不再只看代码本身，还会检查：
+
+- 是否关联对应 Issue
+- 是否包含文档 PR 链接
+- 是否满足 `Fixes #N` 或 `Closes #N`
+- Issue 下是否已有关键 Agent Comment 和产物留痕
+
+### 一致性开始被脚本约束
+
+为了减少 PRD、Tech 和代码漂移：
+
+- 仓库新增了 PRD / Tech / 代码一致性变更管理规范
+- Issue 标题开始执行命名格式校验
+- 变更等级与是否需要重新 Gate 评审被明确化
+
+### Telegram 已形成闭环
+
+Telegram 不再只是通知通道，而是移动端协作闭环的一部分：
+
+- 用户消息进入 `.claude/task_queue`
+- `task_router` 将 Telegram 任务路由给 Team Lead
+- Team Lead 回复可通过 `response_forwarder` 回传原始用户
 
 ## 完整流程
 
@@ -48,8 +127,14 @@ PM 澄清问题与边界
 PRD
         │
         ▼
+Gate 1: PRD Review
+        │
+        ▼
 Tech Spec + QA Case Design
 文档阶段交付物
+        │
+        ▼
+Gate 2: Tech Review
         │
         ▼
 文档 PR
@@ -81,40 +166,44 @@ Issue Comment Gate
 Release / 验收 / Human 关闭
 ```
 
-上图展示的是交付主线。实际项目落地时，还需要把它和现实中的人类角色衔接起来：
+上图展示的是交付主线。实际落地时，还需要把它和其他支撑机制一起看：
 
-- `已有人工 PRD 时`：如果现实中已经由人类 PM 完成了 PRD，PM Agent 的职责不是重新发明需求，而是与当前人类 PM 和工程师讨论对齐，把人类 PRD 整理成其他 Agent 可稳定读取、可评审、可追溯的正式 PRD，确保后续 Tech Spec、QA Case Design、实现和验证基于同一份语义
-- `修 Bug 时`：即使只是修复一个 bug，也建议先由 PM Agent 把问题现象、影响范围、预期行为、复现线索和修复边界写清楚，再进入后续的 Tech、QA、Engineer 和 Review 流程，避免 Engineer 直接凭聊天和零散上下文开工
 - `PMO 的位置`：PMO 不代替签字，也不替代交付质量闭环；它在文档 PR、代码 PR 和周期复盘中并行运行，持续主动检查流程、沉淀协同问题并推动机制改进
+- `已有人工 PRD 时`：如果现实中已经由人类 PM 完成了 PRD，PM Agent 的职责不是重新发明需求，而是把人类 PRD 整理成其他 Agent 可稳定读取、可评审、可追溯的正式输入
+- `修 Bug 时`：即使只是修复一个 bug，也建议先由 PM Agent 把问题现象、影响范围、预期行为、复现线索和修复边界写清楚，再进入后续 Tech、QA、Engineer 和 Review 流程
 
-## 默认角色
+## 默认角色与边界
+
+Team Lead 是流程编排与升级协调的唯一负责人，不是一个可以重复创建的普通 Agent。QA Engineer 不只负责测试，还负责把 PRD 验收标准和 Tech 验证路径转成可追溯的 QA Case，并在关键 Gate 持有质量结论。
 
 | 启用方式 | 角色 | 一句话职责 | 定义文档 |
 | --- | --- | --- | --- |
 | 默认 | 团队负责人（Team Lead） | 负责团队节奏、流程完整性、跨角色协同和升级协调。 | [team-lead.md](./skills/shared/agents/team-lead.md) |
 | 默认 | 产品经理（Product Manager） | 负责把用户问题、业务目标或既有人类 PRD，转成可评审、可实现、可验收且可供其他 Agent 读取的正式交付物。 | [product-manager.md](./skills/shared/agents/product-manager.md) |
 | 默认 | 架构师（Architect） | 负责技术可行性判断、架构与接口收敛、Tech Spec 产出以及技术 Gate 守门。 | [architect.md](./skills/shared/agents/architect.md) |
-| 默认 | 质量工程师（QA Engineer） | 负责测试设计、验证执行、测试报告和质量 Gate。 | [qa-engineer.md](./skills/shared/agents/qa-engineer.md) |
+| 默认 | 质量工程师（QA Engineer） | 负责 QA Case Design、验证执行、测试报告、PRD 追溯和质量 Gate。 | [qa-engineer.md](./skills/shared/agents/qa-engineer.md) |
 | 默认 | 工程师（Engineer） | 负责把已确认的设计转成代码、测试和实现证据。 | [engineer.md](./skills/shared/agents/engineer.md) |
 | 默认 | 平台与发布负责人（Platform / SRE） | 负责环境稳定性、CI 与自动化检查、部署准备、回滚能力和发布风险控制。 | [platform-sre.md](./skills/shared/agents/platform-sre.md) |
 | 默认 | PMO | 负责流程合规检查、协同问题沉淀和机制改进，驱动流程改进闭环，但不代替正式签字角色。 | [pmo.md](./skills/shared/agents/pmo.md) |
 
-## 人与 Agent 的沟通通道
+## 协作通道与入口
 
 当前桌面端的主入口通常是 Claude 或 Codex。这样做适合同步编排，但用户一旦离开电脑，移动端实时沟通和状态跟进就容易断掉。
 
-因此，AgentDevFlow 把 `Claude / Codex`、`GitHub Issue`、`Telegram`，以及未来可扩展的 `飞书 CLI`、`Discord` 等沟通通道统一看作协作通道，而不是孤立工具。
+因此，AgentDevFlow 把 `Claude / Codex`、`GitHub Issue`、`Telegram`，以及未来可扩展的 `飞书 CLI`、`Discord` 等能力统一看作协作入口，而不是孤立工具。
 
 其中：
 
-- `Claude / Codex` 负责桌面端主会话编排、角色启动和同步推进
-- `GitHub Issue` 不只是沟通通道，还是 GitHub Issue 全流程的正式主线，负责挂接过程产出物、状态、评论、Gate 结论以及最终验收关闭
-- `Telegram` 提供移动端实时沟通和状态跟进能力
-- 后续可继续扩展 `飞书 CLI`、`Discord` 等更多沟通通道
+- `Claude / Codex`：桌面端主会话编排、角色启动和同步推进入口
+- `GitHub Issue`：正式流程主线，负责挂接过程产出物、状态、评论、Gate 结论和最终验收关闭
+- `Telegram`：移动端实时沟通与 Team Lead 回复闭环入口
+- `飞书 CLI / Discord`：后续可扩展的更多协作通道
 
 Telegram 配置与接入说明见 [Telegram 通道接入](./docs/channels/telegram.md)。
 
-## 如何安装
+## 快速接入
+
+### 1. 安装
 
 当前仓库提供安装脚本：
 
@@ -131,21 +220,45 @@ Telegram 配置与接入说明见 [Telegram 通道接入](./docs/channels/telegr
 - 默认目标目录是 `~/.claude`
 - 如果要先预览改动，先执行 `--dry-run`
 
-## 继续阅读
+### 2. 最少必读
 
-如果你要接入平台入口，可继续阅读：
-
-1. [Claude 接入](./docs/platforms/claude-code.md)
-2. [插件入口](./plugins/agentdevflow/README.md)
-3. [共享技能目录](./skills/shared/README.md)
-
-如果你想先理解这套机制，至少先读：
+如果你想先跑通一遍最小流程，至少先读：
 
 1. [核心原则](./docs/governance/core-principles.md)
 2. [交付 Gate](./prompts/004_delivery_gates.md)
 3. [Issue 与评审评论机制](./prompts/013_github_issue_and_review_comments.md)
 4. [双阶段 PR 与三层保障](./prompts/019_dual_stage_pr_and_three_layer_safeguard.md)
-5. [Telegram 通道接入](./docs/channels/telegram.md)
+
+### 3. 跑通最小路径
+
+建议第一次试用按这条最短路径走：
+
+1. 创建一个主 GitHub Issue
+2. 产出 PRD、Tech Spec、QA Case Design
+3. 提交文档 PR，并完成 Human Review #1
+4. 由 Engineer 基于已确认输入实现
+5. 由 QA 按 case 验证并形成 QA 结论
+6. 提交代码 PR，并完成 Human Review #2
+7. 在 Issue 上完成结论回写与关闭
+
+## 继续阅读
+
+### 理解机制必读
+
+1. [核心原则](./docs/governance/core-principles.md)
+2. [交付 Gate](./prompts/004_delivery_gates.md)
+3. [Issue 与评审评论机制](./prompts/013_github_issue_and_review_comments.md)
+4. [双阶段 PR 与三层保障](./prompts/019_dual_stage_pr_and_three_layer_safeguard.md)
+
+### 接入平台必读
+
+1. [Claude 接入](./docs/platforms/claude-code.md)
+2. [插件入口](./plugins/agentdevflow/README.md)
+3. [共享技能目录](./skills/shared/README.md)
+
+### 通道接入
+
+1. [Telegram 通道接入](./docs/channels/telegram.md)
 
 ## 问题反馈
 
