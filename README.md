@@ -241,6 +241,30 @@ Telegram 配置与接入说明见 [Telegram 通道接入](./docs/channels/telegr
 6. 提交代码 PR，并完成 Human Review #2
 7. 在 Issue 上完成结论回写与关闭
 
+## FAQ
+
+### AgentDevFlow 和 gstack / superpower 有什么区别？
+
+三者解决的不是同一层问题。
+
+- `gstack` / `superpower` 更偏 **单个 Agent 的能力增强层**
+- `AgentDevFlow` 更偏 **多 Agent 的交付流程层**
+
+从技术分层看：
+
+- `gstack`：偏工具与任务工作流，增强单个 Agent 的执行能力
+- `superpower`：偏通用方法论与执行模式，增强单个 Agent 的规划、拆解和协作能力
+- `AgentDevFlow`：定义多 Agent 围绕 `Issue / PRD / Tech / QA / Gate / Human Review / Release` 的正式协作机制
+
+所以它们不是简单替代关系，而是不同层级、可以叠加：
+
+- 前者负责让 **单个 Agent 更强**
+- 后者负责让 **多个 Agent 真正像研发团队一样协作交付**
+
+如果只用一句话概括：
+
+**`gstack / superpower` 解决“Agent 怎么更会做事”，`AgentDevFlow` 解决“多个 Agent 怎么稳定交付”。`**
+
 ## 继续阅读
 
 ### 理解机制必读
