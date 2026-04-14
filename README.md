@@ -1,6 +1,6 @@
 # AgentDevFlow
 
-AgentDevFlow 是一套面向 AI Coding 多 Agent 研发交付的流程资产包。它关注的不是单个 Agent 会不会写代码，而是如何把 AI 协作从聊天驱动，收敛为以 GitHub Issue、文件交付物、双阶段 PR、Gate 门控和多通道协作为核心的正式交付流程。
+AgentDevFlow 是一套面向 AI Coding 的多 Agent 研发交付机制与协作框架。它关注的不是单个 Agent 会不会写代码，而是如何通过编排多 Agent 协作的研发 pipeline，把 harness 一类能力落到真实的产研协作、角色分工和交付约束中。
 
 它解决的核心问题有三个：需求和结论如何留痕，设计和实现如何防漂移，多个 Agent 与人如何在关键节点形成可阻断、可追溯、可恢复的协作链路。
 
