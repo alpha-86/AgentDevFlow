@@ -55,7 +55,7 @@
 - `plugins/agentdevflow/README.md`
 - `plugins/agentdevflow/.codex-plugin/plugin.json`
 - `docs/governance/core-principles.md`
-- `docs/migration/hedge-ai-plugin-migration-matrix.md`
+- `docs/migration/plugin-migration-matrix.md`
 - `skills/shared/README.md`
 - `prompts/README.md`
 - `prompts/007_issue_driven_orchestration.md`
