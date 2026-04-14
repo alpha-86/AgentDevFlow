@@ -32,3 +32,6 @@ Thumbs.db
 *.tmp
 *.bak
 *.temp
+
+# Claude task queue (runtime)
+.claude/task_queue/
