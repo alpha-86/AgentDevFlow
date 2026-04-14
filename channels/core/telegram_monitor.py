@@ -208,10 +208,16 @@ class TelegramHealthChecker:
             try:
                 with open(config_path, 'r') as f:
                     config = json.load(f)
+                    telegram_cfg = config.get("telegram", {})
                     if not self.token:
-                        self.token = config.get("telegram", {}).get("token", "")
+                        self.token = telegram_cfg.get("token", "")
                     if not self.chat_id:
-                        self.chat_id = config.get("telegram", {}).get("chat_id", "")
+                        # 优先读取 chat_ids 数组，兼容 chat_id 单数
+                        chat_ids = telegram_cfg.get("chat_ids", [])
+                        if chat_ids and isinstance(chat_ids, list):
+                            self.chat_id = str(chat_ids[0])
+                        else:
+                            self.chat_id = telegram_cfg.get("chat_id", "")
             except Exception as e:
                 logger.warning(f"加载 bot_config 失败: {e}")
 

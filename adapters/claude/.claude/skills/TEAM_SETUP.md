@@ -8,6 +8,14 @@
 2. `skills/shared/create-agent.md`
 3. `docs/governance/core-principles.md`
 
+## Team Lead 语义说明
+
+Claude 的 Agent Team 能力中，**Team Lead 是 human 用户本身，不是需要创建的 agent**。
+
+`create-agent` 明确声明：`team-lead` is the human user themselves, not a separate agent。
+
+Human 用户通过 Agent Team 能力承担 Team Lead 编排职责。其他角色才需要通过 `create-agent` 创建。
+
 ## 启动顺序
 
 1. 先确认 `project_id`
@@ -17,8 +25,8 @@
    - `docs/todo/TODO_REGISTRY.md`
    - 项目状态板
    - 产物关联主记录
-4. 先创建 Team Lead
-5. 再通过 `create-agent` 创建其他角色
+4. Human 用户作为 Team Lead，确认上述上下文
+5. 通过 `create-agent` 创建其他角色
 6. 最后通过 `start-agent-team` 完成团队启动
 
 ## 默认角色顺序

@@ -68,7 +68,14 @@ def save_config(config):
 def send_message(text, chat_id=None, parse_mode="Markdown"):
     """发送消息到 Telegram"""
     if not chat_id:
-        chat_id = load_config().get("telegram", {}).get("chat_id")
+        # 优先读取 chat_ids（数组），兼容 chat_id（单数）
+        config = load_config()
+        telegram_config = config.get("telegram", {})
+        chat_ids = telegram_config.get("chat_ids", [])
+        if chat_ids and isinstance(chat_ids, list):
+            chat_id = chat_ids[0]  # 取第一个授权用户
+        else:
+            chat_id = telegram_config.get("chat_id")
 
     if not chat_id:
         print("❌ 未配置 chat_id")
@@ -114,6 +121,8 @@ if __name__ == "__main__":
             config = load_config()
             if "telegram" not in config:
                 config["telegram"] = {}
+            # 写入 chat_ids 数组格式（推荐），同时保留 chat_id 兼容
+            config["telegram"]["chat_ids"] = [chat_id]
             config["telegram"]["chat_id"] = chat_id
             save_config(config)
             print(f"✅ Chat ID 已保存: {chat_id}")

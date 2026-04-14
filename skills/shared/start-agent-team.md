@@ -41,9 +41,12 @@
 
 ### 步骤 3. 加载团队角色
 
+> **注意**：Claude Agent Team 中，`team-lead`（团队负责人）是 human 用户本身，不是需要创建的 agent。
+> Human 用户作为 Team Lead 承担编排职责，其他角色才通过 `create-agent` 创建。
+
 推荐顺序：
 
-1. 团队负责人
+1. **Human 用户作为 Team Lead**（不需要创建，确认项目上下文即可）
 2. 产品经理
 3. 架构师
 4. 质量工程师
