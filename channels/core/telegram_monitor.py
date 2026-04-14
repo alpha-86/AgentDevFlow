@@ -198,8 +198,9 @@ class TelegramHealthChecker:
     """Telegram 健康检查器"""
 
     def __init__(self, token: str = None, chat_id: str = None):
-        self.token = token or os.environ.get("TELEGRAM_TOKEN", "")
-        self.chat_id = chat_id or os.environ.get("TELEGRAM_CHAT_ID", "")
+        # 优先 TELEGRAM_BOT_TOKEN，兼容 TELEGRAM_TOKEN
+        self.token = token or os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("TELEGRAM_TOKEN", "")
+        self.chat_id = chat_id or os.environ.get("TELEGRAM_BOT_CHAT_ID") or os.environ.get("TELEGRAM_CHAT_ID", "")
 
         # 从配置文件加载
         config_path = os.path.join(AGENTDEVFLOW_ROOT, ".claude", "config", "bot_config.json")

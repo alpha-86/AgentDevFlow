@@ -16,12 +16,16 @@ CONFIG_FILE = AGENTDEVFLOW_ROOT / ".claude" / "config" / "bot_config.json"
 
 
 def get_token():
-    """获取 Token"""
-    # 1. 环境变量
+    """获取 Token（优先 TELEGRAM_BOT_TOKEN，兼容 TELEGRAM_TOKEN）"""
+    # 1. 环境变量优先
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    if token:
+        return token
+    # 2. 兼容 TELEGRAM_TOKEN
     token = os.environ.get("TELEGRAM_TOKEN", "")
     if token:
         return token
-    # 2. 配置文件
+    # 3. 配置文件
     if CONFIG_FILE.exists():
         with open(CONFIG_FILE) as f:
             config = json.load(f)

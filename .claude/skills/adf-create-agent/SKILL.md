@@ -46,6 +46,21 @@ user-invocable: true
 
 （注意：`architect` 已有独立文件，无需映射。）
 
+### 步骤 1.5. team-lead 类型特殊处理
+
+**team-lead 是 Human 本身，不需要创建 Agent。**
+
+```
+角色类型为 team-lead → 返回提示"Team Lead 是你本身，不需要创建"，停止执行
+其他角色类型 → 继续步骤 2
+```
+
+如果尝试创建 team-lead：
+- 返回提示：`Team Lead 是你本身，当前会话就是你。不需要创建新的 Team Lead Agent。`
+- 停止执行，拒绝创建
+
+**禁止重复创建 team-lead**：每个项目只能有一个 Team Lead（启动项目的那个人本身）。
+
 ### 步骤 2. 读取并提取关键内容
 
 必须完整提取：
@@ -96,7 +111,7 @@ user-invocable: true
 
 创建或激活后必须写入：
 
-- agent 类型
+- Agent 类型
 - 读取的角色文件
 - 读取的 playbook
 - project_id
@@ -115,10 +130,12 @@ user-invocable: true
 - 若角色文件或 playbook 缺失，拒绝创建并返回缺失项。
 - 若当前阶段 workflow 未知，角色只能停在初始化确认，不得直接开始正式工作。
 - 若初始化确认未输出，不得视为角色已成功激活。
+- 若角色类型为 `team-lead`，拒绝创建并返回提示"Team Lead 是你本身，不需要创建"。
+- 若项目中已存在 team-lead，禁止重复创建，每个项目只能有一个 Team Lead。
 
 ## 禁止行为
 
-- 用通用空白 agent 执行正式角色职责
+- 用通用空白 Agent 执行正式角色职责
 - 跳过角色文件或 playbook 直接开始工作
 - 忽略初始化检查
 - 未确认 issue / gate 状态就直接接任务

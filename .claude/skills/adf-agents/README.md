@@ -1,9 +1,7 @@
 ---
-name: adf-agents
+name: agents
 description: AgentDevFlow 角色定义与协作边界
-user-invocable: true
 ---
-
 
 # AgentDevFlow 角色定义
 
@@ -33,4 +31,3 @@ user-invocable: true
 - 不得用空白 agent 执行正式角色职责
 - 不得跳过角色文件直接开始工作
 - 不得忽略初始化确认就接任务
-

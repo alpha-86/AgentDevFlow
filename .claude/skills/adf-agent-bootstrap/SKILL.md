@@ -71,7 +71,7 @@ user-invocable: true
 2. `architect` - 负责架构规范
 3. `qa-engineer` - 负责质量规范
 4. `engineer` - 负责具体实现任务
-5. `pmo` - 负责流程合规检查
+5. `pmo` - 负责检查流程合规与协同问题
 
 ### 步骤 5. 执行首轮检查
 

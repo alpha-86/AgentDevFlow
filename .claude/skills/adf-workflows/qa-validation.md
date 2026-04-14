@@ -2,13 +2,13 @@
 
 ## 目标
 
-依据 PRD 和 Tech 要求，验证已交付的实现。
+依据已在文档阶段确认的 QA Case Design、PRD 和 Tech 要求，验证已交付的实现。
 
 ## 必需追溯字段
 
 - 关联 issue id
 - 已批准的 PRD 和 tech spec ids
-- QA case 链接
+- QA case design 链接
 - 测试报告链接
 - defect 列表和残留风险链接
 
@@ -16,8 +16,8 @@
 
 - 已批准的 PRD
 - 已批准的 Tech Spec
+- 已批准的 QA Case Design
 - 实现证据
-- QA cases
 - 关联 issue 记录
 - 必要时的 人工评审 #2 安排
 
@@ -30,7 +30,7 @@
 
 ## 步骤
 
-1. QA 派生或校验 case 集。
+1. QA 校验当前实现是否覆盖文档阶段已确认的 QA Case Design。
 2. QA 执行验证。
 3. QA 记录 defects 和残留风险。
 4. PM 评估对验收的影响。
@@ -41,6 +41,7 @@
 ## 阶段最小产物集合
 
 - 一份 QA Case 或覆盖映射
+- 一份已确认的 QA Case Design 或覆盖映射
 - 一份 QA 测试报告
 - 一份 QA 结论评论
 - 必要时的一份 人工评审 #2 结论
