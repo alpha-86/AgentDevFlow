@@ -40,7 +40,7 @@
 
 **核心内容**:
 
-- 完成 `hedge-ai/prompts/V3.0`、`.claude/skills`、`change_record/`、`AGENTS/`、`WORKFLOWS/` 的 Phase 1 逐组复核
+- 完成 `prompts/V3.0`、`.claude/skills`、`change_record/`、`AGENTS/`、`WORKFLOWS/` 的 Phase 1 逐组复核
 - 收口迁移矩阵，补齐 `github-issue.md`、`github-issue/SKILL.md`、`review-org/SKILL.md`
 - 前置固化 `Issue First`、双阶段 PR、Issue Comment Gate、PMO 主动检查、核心原则和 README 主流程图
 - 重写根 `README.md`，明确独立插件定位
@@ -67,8 +67,8 @@
 
 **详细记录**:
 
-- `prompts/discuss/015_2026-04-10_围绕独立插件目标的总复核与纠偏.md`
-- `prompts/discuss/016_2026-04-10_hedge_ai研发机制独立插件拆解执行计划.md`
+- `prompts/discuss/015_2026-04-10_独立插件目标总复核与纠偏.md`
+- `prompts/discuss/016_2026-04-10_独立插件拆解执行计划.md`
 - `prompts/discuss/016_phase_1_1_2026-04-10_README与CHANGELOG复核.md`
 - `prompts/discuss/016_phase_1_2_2026-04-10_主文档001_016_019复核.md`
 - `prompts/discuss/016_phase_1_3_2026-04-10_change_record复核.md`
