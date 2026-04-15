@@ -60,17 +60,26 @@
 - 建立项目状态板
 - 建立 artifact linkage 主记录
 
-### 步骤 3. 加载团队角色
+### 步骤 3. 加载团队角色（显式初始化）
 
 推荐顺序：
 
-1. 团队负责人
-2. 产品经理
+1. Team Lead（Human 本身，不创建 Agent）
+2. Product Manager
 3. 架构师
 4. 质量工程师
 5. 工程师
 6. 平台与发布负责人
 7. PMO
+
+**Agent 初始化标准步骤**（每个 Agent 创建时必须执行）：
+
+1. **读取 Skill 文件**：读取 `skills/shared/agents/{role}.md`
+2. **提取 Critical Rules**：从 Skill 文件中提取 Critical Rules
+3. **构建完整 Agent prompt**：将角色定义、Critical Rules、必读文档、初始化动作组装为完整 prompt
+4. **创建 Agent**：调用 create-agent skill 创建角色实例（team-lead 类型除外）
+5. **记录创建日志**：写入创建日志到 `.claude/logs/agent-creation.log`
+6. **进入下一个 Agent**：立即执行下一个 Agent 的初始化步骤
 
 不是每个项目都必须全量启用，但必须记录：
 
@@ -134,6 +143,18 @@ python scripts/task_router.py --verbose
 
 此摘要将作为启动会议程的依据。
 
+## Agent 必读文档速查表
+
+| Agent | 必读文档 |
+|-------|---------|
+| Team Lead | prompts/001_team_topology.md, prompts/010_team_setup_and_bootstrap.md, prompts/018_issue_routing_and_project_portfolio.md |
+| Product Manager | prompts/001_team_topology.md, prompts/003_document_contracts.md, prompts/004_delivery_gates.md |
+| 架构师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, skills/shared/workflows/tech-review.md |
+| 质量工程师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, skills/shared/workflows/qa-validation.md |
+| 工程师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
+| Platform/SRE | prompts/001_team_topology.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md, skills/shared/workflows/release-review.md |
+| PMO | prompts/001_team_topology.md, prompts/005_meeting_and_todo.md, docs/governance/core-principles.md |
+
 ### 步骤 4. 执行首轮初始化检查
 
 每个角色都必须完成：
@@ -143,6 +164,20 @@ python scripts/task_router.py --verbose
 - 读取本阶段 工作流
 - 读取必需模板
 - 检查 issue / gate / todo / risk
+
+### 步骤 4.5. Agent 工作触发条件
+
+每个 Agent 的触发条件：
+
+| Agent | 触发时间 | 执行 Workflow | 关联文档 |
+|-------|---------|--------------|----------|
+| Team Lead | 每日启动时 | skills/shared/workflows/weekly-review.md | 启动会纪要 |
+| Product Manager | PRD Gate 完成后 | skills/shared/workflows/prd-review.md | PRD 文档 |
+| 架构师 | PRD Gate 通过后 | skills/shared/workflows/tech-review.md | Tech Spec |
+| 质量工程师 | Tech Gate 通过后 | skills/shared/workflows/qa-validation.md | QA Case |
+| 工程师 | QA Case Design 通过后 | prompts/019_dual_stage_pr_and_three_layer_safeguard.md | 代码 PR |
+| Platform/SRE | Release 前 | skills/shared/workflows/release-review.md | 发布检查单 |
+| PMO | 每周定期 | skills/shared/workflows/weekly-review.md | 审计报告 |
 
 ### 步骤 5. 执行 启动会
 

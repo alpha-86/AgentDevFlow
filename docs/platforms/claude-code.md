@@ -30,6 +30,26 @@ Claude 已有 Agent Team 能力。AgentDevFlow 在 Claude 中要做的是：
    - PMO
 6. 最后通过 `start-agent-team` 完成团队启动
 
+## Agent 初始化速查表（平台可执行）
+
+| 序号 | Agent | 角色类型 | Skill 文件 | Playbook 文件 | 创建状态 | 初始化后动作 |
+|------|-------|---------|-----------|--------------|---------|------------|
+| 1 | Team Lead | team-lead | skills/shared/agents/team-lead.md | skills/shared/agents/team-lead.playbook.md | **不创建** | Human 本身 |
+| 2 | Product Manager | product-manager | skills/shared/agents/product-manager.md | skills/shared/agents/product-manager.playbook.md | 立即创建 | 读取 skills/shared/workflows/prd-review.md |
+| 3 | 架构师 | architect | skills/shared/agents/architect.md | skills/shared/agents/architect.playbook.md | 立即创建 | 读取 skills/shared/workflows/tech-review.md |
+| 4 | 质量工程师 | qa-engineer | skills/shared/agents/qa-engineer.md | skills/shared/agents/qa-engineer.playbook.md | 立即创建 | 读取 skills/shared/workflows/qa-validation.md |
+| 5 | 工程师 | engineer | skills/shared/agents/engineer.md | skills/shared/agents/engineer.playbook.md | 立即创建 | 读取 prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
+| 6 | Platform/SRE | platform-sre | skills/shared/agents/platform-sre.md | skills/shared/agents/platform-sre.playbook.md | 立即创建 | 读取 skills/shared/workflows/release-review.md |
+| 7 | PMO | pmo | skills/shared/agents/pmo.md | skills/shared/agents/pmo.playbook.md | 按需创建 | 读取 docs/governance/core-principles.md |
+
+**创建后立即动作**：每个 Agent 创建后必须：
+1. 读取主 issue
+2. 读取最新 Gate 结论
+3. 读取 todo registry
+4. 输出初始化确认结果
+
+**创建日志记录**：每个 Agent 创建后必须写入 `.claude/logs/agent-creation.log`
+
 ## Team Lead 必须先做什么
 
 Team Lead 在创建其他角色前，必须先确认：

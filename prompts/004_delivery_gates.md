@@ -26,24 +26,36 @@
   - 是否说明风险、监控、回滚点
 - 未通过处理：退回 架构师 修订
 
-## Gate 3: Implementation
+## Gate 3: QA Case Design
+
+- 输入：通过 Tech Review 的 Tech Spec
+- 输出：通过三方签字的 QA Case Design 文档
+- 参与：PM、架构师/QA、Engineer
+- 签字：PM（必签）、架构师（必签）、Engineer（必签）
+- 检查点：
+  - Case 覆盖关键验收项
+  - Case 覆盖边界条件
+  - Case 覆盖异常路径
+- 未通过处理：退回修订
+
+## Gate 4: Implementation
 
 - 输入：通过的 Tech Spec
 - 输出：代码、单测、变更说明
 - 参与：Engineer
-- 签字：Engineer（必签）、架构师（实现一致性确认）
+- 签字：Engineer（必签）、架构师（技术一致性确认）
 - 检查点：
   - 实现是否符合 Tech
   - 单测是否覆盖关键路径
   - 文档和配置是否同步
 - 未通过处理：补实现或补证据
 
-## Gate 4: QA Validation
+## Gate 5: QA Validation
 
 - 输入：实现结果
 - 输出：QA 报告、阻塞问题、验收意见
 - 参与：QA、Engineer、PM
-- 签字：QA（必签）、PM（验收口径确认）
+- 签字：QA（必签）、PM（验收口径确认）、Engineer（必签）
 - 检查点：
   - Case 是否覆盖关键验收项
   - 是否有阻塞缺陷
@@ -51,7 +63,7 @@
   - 残留风险是否明确
 - 未通过处理：回到 Implementation 或 Tech Review
 
-## Gate 5: Release
+## Gate 6: Release
 
 - 输入：通过验证的交付物
 - 输出：上线决定、发布记录、回滚信息
@@ -83,10 +95,12 @@
 
 | Gate | 文档类型 | 必需签字 | 检查位置 |
 |------|---------|----------|----------|
-| **PRD Gate 1** | PRD | PM + 架构评审人 + 质量评审人 | PRD 文档头部 Gate 块 |
+| **PRD Gate 1** | PRD | PM + 架构评审人 | PRD 文档头部 Gate 块 |
 | **Tech Gate 2** | Tech | PM + 技术评审人 + QA | Tech 文档头部 Gate 块 |
-| **QA Case Design** | QA Case | PM + CTO + Engineer (三方签字) | QA Case 文档头部 Gate 块 |
-| **QA Test Report** | QA Test Report | CTO + Engineer + PM (三方签字验收) | QA Test Report 文档头部 Gate 块 |
+| **QA Case Design Gate 3** | QA Case | PM + 架构师 + Engineer (三方签字) | QA Case 文档头部 Gate 块 |
+| **Implementation Gate 4** | 代码/单测 | Engineer + 架构师 | 代码 PR 或交付记录 |
+| **QA Test Report Gate 5** | QA Test Report | QA + PM + Engineer (三方签字验收) | QA Test Report 文档头部 Gate 块 |
+| **Release Gate 6** | 发布记录 | PM + 架构师 + Platform/SRE | 发布文档头部 Gate 块 |
 
 ### CI Gate 检查流程
 
@@ -96,9 +110,9 @@
      ▼
 doc-pr-checks.yml 执行
      │
-     ├── 检查 PRD Gate 1 (PM + 架构评审人 + 质量评审人)
+     ├── 检查 PRD Gate 1 (PM + 架构评审人)
      ├── 检查 Tech Gate 2 (PM + 技术评审人 + QA)
-     └── 检查 QA Case Design (PM + CTO + Engineer)
+     └── 检查 QA Case Design Gate 3 (PM + 架构师 + Engineer)
           │
           ├── 全部通过 → 允许提交
           └── 任一失败 → 显示友好错误，阻止提交
@@ -113,14 +127,13 @@ doc-pr-checks.yml 执行
 
 要求:
   □ PM 签字: 未通过
-  □ CTO 签字: 已通过
-  □ 技术评审签字: 未通过
-  □ QA 签字: 已通过
+  □ 技术评审人签字: 已通过
+  □ QA 签字: 未通过
 
 解决方案:
   1. 完成所有 Gate 签字后再提交 PR
   2. 参考: prompts/004_delivery_gates.md
-  3. 参考: .claude/skills/adf-workflows/tech-review.md
+  3. 参考: skills/shared/workflows/tech-review.md
 ```
 
 ### 三层保障体系
