@@ -106,30 +106,48 @@ jobs:
             fi
           }
 
+          # Check a role, trying multiple alias names (OR logic — any alias match passes)
+          check_sig_alias() {
+            local DOC_FILE="$1"; local ROLE="$2"; local GATE_NAME="$3"; shift 3
+            local ALIASES="$*"
+            for ALIAS in $ALIASES; do
+              local SIG_LINE
+              SIG_LINE=$(grep "^|" "${DOC_FILE}" | grep "| ${ALIAS} |" | grep -E "\| [0-9]{4}-[0-9]{2}-[0-9]{2} \|.*\| (Approved|Conditional|Rejected|Draft|通过|待评审|驳回)" 2>/dev/null || true)
+              if [ -n "$SIG_LINE" ]; then
+                echo "  [${GATE_NAME}] Signature found: ${ALIAS} (matches '${ROLE}') ✓"
+                return 0
+              fi
+            done
+            echo "  [${GATE_NAME}] FAILED: Missing required signature"
+            echo "    Required: ${ROLE} (alias: ${ALIASES})"
+            echo "    Fix: Add review record to Gate table in ${DOC_FILE}"
+            return 1
+          }
+
           FAILED=0
 
-          # === PRD Gate 1: PM + 架构师 ===
+          # === PRD Gate 1: PM + 架构评审人 (aliases: Architect) ===
           PRD_FILE=$(ls docs/prd/PRD-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$PRD_FILE" ]; then
             echo ""
             echo "[PRD Gate 1] Checking: $PRD_FILE"
             if grep -q "Gate 1" "$PRD_FILE" || grep -q "PRD Gate" "$PRD_FILE"; then
               check_sig "$PRD_FILE" "PM" "PRD Gate 1" || FAILED=1
-              check_sig "$PRD_FILE" "架构师" "PRD Gate 1" || FAILED=1
+              check_sig_alias "$PRD_FILE" "架构评审人" "PRD Gate 1" "架构评审人 Team Lead Architect" || FAILED=1
             else
               echo "  [PRD Gate 1] No Gate block found - document may not be ready for merge"
               exit 1
             fi
           fi
 
-          # === Tech Gate 2: PM + 技术负责人 + QA ===
+          # === Tech Gate 2: PM + 技术负责人/技术评审人 + QA (aliases) ===
           TECH_FILE=$(ls docs/tech/Tech-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$TECH_FILE" ]; then
             echo ""
             echo "[Tech Gate 2] Checking: $TECH_FILE"
             if grep -q "Gate 2\|Tech Gate" "$TECH_FILE"; then
               check_sig "$TECH_FILE" "PM" "Tech Gate 2" || FAILED=1
-              check_sig "$TECH_FILE" "技术负责人" "Tech Gate 2" || FAILED=1
+              check_sig_alias "$TECH_FILE" "技术负责人" "Tech Gate 2" "技术负责人 技术评审人" || FAILED=1
               check_sig "$TECH_FILE" "QA" "Tech Gate 2" || FAILED=1
             else
               echo "  [Tech Gate 2] No Gate block found - document may not be ready for merge"
@@ -137,24 +155,24 @@ jobs:
             fi
           fi
 
-          # === QA Case Design Gate 3: PM + 架构师 + Engineer ===
+          # === QA Case Design Gate 3: PM + 架构师 + Engineer (aliases: Architect) ===
           QA_FILE=$(ls docs/qa/QA-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$QA_FILE" ]; then
             echo ""
             echo "[QA Case Design Gate 3] Checking: $QA_FILE"
             if grep -q "Gate\|Sign" "$QA_FILE"; then
               check_sig "$QA_FILE" "PM" "QA Gate 3" || FAILED=1
-              check_sig "$QA_FILE" "架构师" "QA Gate 3" || FAILED=1
+              check_sig_alias "$QA_FILE" "架构师" "QA Gate 3" "架构师 Architect" || FAILED=1
               check_sig "$QA_FILE" "Engineer" "QA Gate 3" || FAILED=1
             fi
           fi
 
-          # === QA Test Report Gate 5: QA + PM + Engineer ===
+          # === QA Test Report Gate 5: QA + PM + Engineer (aliases: QA Engineer) ===
           if [ -n "$QA_FILE" ]; then
             echo ""
             echo "[QA Test Report Gate 5] Checking: $QA_FILE"
             if grep -q "Gate\|Sign\|Report\|Test" "$QA_FILE"; then
-              check_sig "$QA_FILE" "QA" "QA Gate 5" || FAILED=1
+              check_sig_alias "$QA_FILE" "QA" "QA Gate 5" "QA QA Engineer" || FAILED=1
               check_sig "$QA_FILE" "PM" "QA Gate 5" || FAILED=1
               check_sig "$QA_FILE" "Engineer" "QA Gate 5" || FAILED=1
             fi
@@ -184,7 +202,7 @@ jobs:
           echo "  - QA: docs/qa/QA-${{ steps.extract-issue.outputs.issue_number }}_*.md"
           echo ""
           echo "Gate Status:"
-          echo "  - PRD Gate 1: PM + 架构师"
+          echo "  - PRD Gate 1: PM + 架构评审人"
           echo "  - Tech Gate 2: PM + 技术负责人 + QA"
           echo "  - QA Case Design Gate 3: PM + 架构师 + Engineer"
           echo "  - Implementation Gate 4: Engineer + 架构师"
