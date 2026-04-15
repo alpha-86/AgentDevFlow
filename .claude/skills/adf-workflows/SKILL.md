@@ -1,83 +1,83 @@
 ---
 name: adf-workflows
-description: 在关键交付节点引入明确的人类评审与确认，避免流程只在 Agent 内部自循环。
+description: 在技术设计开始前，批准或退回 PRD。
 user-invocable: true
 ---
 
-# 人工评审 工作流
+# PRD 评审 工作流
 
 ## 目标
 
-在关键交付节点引入明确的人类评审与确认，避免流程只在 Agent 内部自循环。
+在技术设计开始前，批准或退回 PRD。
 
-## 适用对象
+## 必需追溯字段
 
-- 文档 PR（PRD + Tech Spec + QA Case Design）
-- 代码 PR
-- 发布决策
-- Major / Breaking 变更
-
-## 评审形式
-
-- 文档 评审
-- Pull Request 评审
-- Issue 评论 confirm
-- 发布放行确认
-- 例外审批确认
+- 关联 issue id
+- PRD 文档 id 和状态
+- 评审 纪要 链接
+- todo registry 中的 行动项
 
 ## 输入
 
-- 关联 issue
-- 当前 gate
-- 待评审交付物链接
-- 若为代码 PR，必须附已合并的文档 PR 链接
-- 上一阶段结论
-- 已知风险
+- 当前需求描述
+- PRD 草稿
+- 已知约束或依赖
+- 关联 issue 记录
+- 必要时的 人工评审 安排
 
 ## 推荐模板与输出目录
 
+- PRD：`.claude/skills/adf-templates/prd-template.md`
 - 评审评论：`.claude/skills/adf-templates/review-comment-template.md`
 - Memo：`.claude/skills/adf-templates/memo-template.md`
-- 推荐输出目录：`docs/memo/` 或关联 PR / issue
+- 推荐输出目录：`docs/prd/`、`docs/memo/`
 
 ## 步骤
 
-1. 明确本次 评审 的对象、目的和通过条件。
-2. 准备结构化 评审 摘要和交付物链接。
-3. 若为文档 PR，确认 PRD、Tech、QA Case Design 是否齐备。
-4. 若为代码 PR，确认文档 PR 已合并且测试报告已附齐。
-5. 由 Human 给出 `通过`、`conditional` 或 `退回`。
-6. 在 issue、纪要 或 PR 中留下正式结论。
-7. 若为 `conditional` 或 `退回`，生成 行动项 和回退路径。
+1. PM 准备 PRD 和验收标准。
+2. 技术负责人 评估可行性、依赖和风险。
+3. 必要时由领域 reviewer 验证业务匹配。
+4. PM 和 技术负责人 在 PRD 评审 record 中记录签字结论。
+5. 若本次 PRD 属于关键需求或高风险需求，执行 人工评审。
+6. 在 纪要 和关联 Issue 评论 中记录 评审 结论。
+7. 把 行动项 写入 todo 跟踪，并补充 负责人 和 到期日。
 
 ## 阶段最小产物集合
 
-- 一份结构化 评审 结论
-- reviewer 身份
-- 证据链接
-- 是否允许进入下游阶段
-- 若为双阶段 PR，必须能区分“设计确认”还是“实现确认”
+- 一份 PRD 文档
+- 一份 评审 结论
+- 必要时的一份 人工评审 结论
+- 一份 纪要 或等价纪要
 
-## 必需输出
+## 评审检查清单
 
-- reviewer 身份
-- 决策结论
-- 关键意见
-- 证据链接
-- 下游是否允许继续推进
+- 范围是否明确
+- 非目标是否明确
+- 验收标准是否可测试
+- 依赖是否已识别
+- 未解决风险是否可见
 
-## 评审留痕规则
+## 必需签字
 
-- Human Review #1 结束后，必须能从主 Issue 或文档 PR 反查正式结论。
-- Human Review #2 结束后，必须能从主 Issue 或代码 PR 反查正式结论。
-- 若评审发生在会议中，会议纪要不能替代 Issue / PR 上的正式结论。
+- PM：必需
+- 技术负责人：必需
 
-## 失败信号
+## 人工评审规则
 
-- 没有明确 reviewer
-- 只有口头结论，没有正式留痕
-- 没有条件项却标记为条件通过
-- 人工评审 未完成却继续推进下游阶段
-- 文档 PR 缺 PRD / Tech / QA Case Design
-- 代码 PR 缺文档 PR 链接或测试报告
+- 高风险或关键需求的 PRD，必须进入 人工评审。
+- 人工评审 未完成时，不得进入 技术评审。
+- 人工评审 结论必须写回 Issue 评论 或 评审 record。
+
+## 结果
+
+- 通过
+- conditionally 通过
+- 退回并附返工项
+
+## 回退规则
+
+- conditionally 通过：所有条件关闭并补齐证据后，才能进入 tech 评审
+- 退回：PRD 必须修订后重新 评审
+- 阻塞：升级给 团队负责人，并把 issue 状态保持为 `阻塞`
+- 若 人工评审 退回：PRD 必须修订后重新执行当前阶段 评审
 
