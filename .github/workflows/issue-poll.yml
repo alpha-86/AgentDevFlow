@@ -1,0 +1,82 @@
+name: Issue Poll & Route
+
+# 定时轮询 GitHub Issues，同步到 task_queue 并路由到角色
+#
+# 触发条件：
+# 1. cron 定时触发（默认每 15 分钟）
+# 2. 手动触发（workflow_dispatch）
+#
+# 产出：
+#   - .claude/task_queue/issue_*.task（由 github_issue_sync.py 写入）
+#   - .claude/results/routing.log（由 task_router.py 写入）
+#   - .claude/results/pending_*.md（由 task_router.py 写入）
+#
+# 注意：产出文件类型为 .md，而 post-comment.yml 监听的是 .claude/results/comment_*.json。
+# 本 workflow 不声称自动触发下游 post-comment workflow，后续如需集成需另行配置。
+
+on:
+  schedule:
+    # 每 15 分钟轮询一次（可按需调整为 */30 * * * * 等）
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      sync_only:
+        description: '仅同步 issues，不执行路由'
+        required: false
+        default: 'false'
+        type: boolean
+
+concurrency:
+  group: issue-poll-${{ github.repository }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  poll-and-route:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync GitHub Issues to task_queue
+        id: sync-issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "=== Step 1: 同步 GitHub Issues ==="
+          python scripts/github_issue_sync.py
+          echo "=== 同步完成 ==="
+
+      - name: Route tasks to roles
+        id: route-tasks
+        if: inputs.sync_only != 'true'
+        run: |
+          echo "=== Step 2: 路由任务到角色 ==="
+          python scripts/task_router.py --verbose
+          echo "=== 路由完成 ==="
+
+      - name: Show routing summary
+        if: inputs.sync_only != 'true'
+        run: |
+          if [ -f .claude/results/routing.log ]; then
+            echo "=== 路由日志摘要 ==="
+            cat .claude/results/routing.log
+          else
+            echo "无新任务路由"
+          fi
+
+      - name: Report
+        run: |
+          TASK_COUNT=$(find .claude/task_queue -name "*.task" 2>/dev/null | wc -l)
+          echo "当前 task_queue 中共有 $TASK_COUNT 个任务文件"
