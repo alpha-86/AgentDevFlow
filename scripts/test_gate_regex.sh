@@ -58,12 +58,12 @@ cat > "$TMPFILE" << 'EOF'
 | 日期 | 评审人 | 备注 | 决策 |
 |---|---|---|---|
 | 2026-04-15 | PM | OK | Approved |
-| 2026-04-15 | 架构师 | Good | Approved |
+| 2026-04-15 | 架构评审人 | Good | Approved |
 | 2026-04-15 | 技术负责人 | LGTM | Conditional |
 | 2026-04-15 | QA | Pass | Approved |
 | 2026-04-15 | Engineer | Done | Rejected |
 EOF
-run_test "$TMPFILE" "Test1" "PM" "match" "架构师" "match" "技术负责人" "match" "QA" "match" "Engineer" "match"
+run_test "$TMPFILE" "Test1" "PM" "match" "架构评审人" "match" "技术负责人" "match" "QA" "match" "Engineer" "match"
 rm "$TMPFILE"
 
 # --- Test 2: Pseudo-signatures should NOT match ---
@@ -107,9 +107,9 @@ fi
 echo ""
 
 # --- Test 4: PRD-5 review records ---
-# Actual decisions in file: "通过", "待评审", "已纳入...", "**Approved**", "v2", "**Approved**", "v3 — Approved"
-# Rows with valid decisions: Team Lead(通过), PM(待评审)
-# Rows with non-standard decisions: Architect(已纳入...), Team Lead(**Approved**), PM(v2), Team Lead(**Approved**), PM(v3 — Approved)
+# Gate 1 roles: PM + 架构评审人 (alias: Architect)
+# Actual review records: Team Lead(通过), PM(待评审), Architect(已纳入)
+# With alias support, Architect now matches as 架构评审人
 echo "[Test 4] PRD-5 review record table"
 FILE="$SCRIPT_DIR/../docs/prd/005_adf_bootstrap_skill_system_2026-04-15.md"
 if [ -f "$FILE" ]; then
@@ -120,6 +120,8 @@ fi
 echo ""
 
 # --- Test 5: Tech-5 review records ---
+# Gate 3 roles: PM + 架构师 (alias: Architect)
+# Gate 2 roles: PM + 技术负责人 (alias: 技术评审人)
 # All rows have standard decisions: Draft, Approved, Approved, Conditional, Approved
 echo "[Test 5] Tech-5 review record table"
 FILE="$SCRIPT_DIR/../docs/tech/Tech-5_v1.md"
@@ -131,6 +133,7 @@ fi
 echo ""
 
 # --- Test 6: QA-5 review records ---
+# QA Gate 5 roles: QA (alias: QA Engineer) + PM + Engineer
 # Only QA Engineer row has a decision value; PM/Architect/Engineer rows are placeholders
 echo "[Test 6] QA-5 review record table"
 FILE="$SCRIPT_DIR/../docs/qa/QA-5_v1.md"
@@ -139,6 +142,47 @@ if [ -f "$FILE" ]; then
 else
     echo "  ! QA-5 file not found"
 fi
+echo ""
+
+# --- Test 7: Gate doc table vs body text role name alignment ---
+# Gate doc summary table: 架构评审人, 技术评审人
+# Gate doc body / Tech-5 records: 架构师, 技术负责人
+# Both sets should be recognized by CI check_sig_alias
+# Here we test that "Architect" matches (English alias for 架构师/架构评审人)
+echo "[Test 7] English role aliases recognized"
+TMPFILE=$(mktemp)
+cat > "$TMPFILE" << 'EOF'
+| 日期 | 评审人 | 备注 | 决策 |
+|---|---|---|---|
+| 2026-04-15 | Architect | Gate review | Approved |
+| 2026-04-15 | 技术评审人 | Gate review | Approved |
+| 2026-04-15 | QA Engineer | Gate review | Approved |
+EOF
+# "Architect" matches (English alias for 架构师/架构评审人)
+if check_sig "$TMPFILE" "Architect" "Test7" 2>/dev/null; then
+    echo "  ✓ [Test7] Architect: match (English alias for 架构师)"
+    ((PASS++))
+else
+    echo "  ✗ [Test7] Architect: no match"
+    ((FAIL++))
+fi
+# "技术评审人" matches (Gate doc table alias for 技术负责人)
+if check_sig "$TMPFILE" "技术评审人" "Test7" 2>/dev/null; then
+    echo "  ✓ [Test7] 技术评审人: match (Gate doc table alias)"
+    ((PASS++))
+else
+    echo "  ✗ [Test7] 技术评审人: no match"
+    ((FAIL++))
+fi
+# "QA Engineer" matches (English alias for QA)
+if check_sig "$TMPFILE" "QA Engineer" "Test7" 2>/dev/null; then
+    echo "  ✓ [Test7] QA Engineer: match (English alias for QA)"
+    ((PASS++))
+else
+    echo "  ✗ [Test7] QA Engineer: no match"
+    ((FAIL++))
+fi
+rm "$TMPFILE"
 echo ""
 
 # --- Summary ---
