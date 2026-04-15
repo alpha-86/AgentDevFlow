@@ -101,7 +101,7 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 | `scripts/github_issue_sync.py` | 发现/同步 GitHub Issues | ✅ 工具存在，但 skill 未调用 |
 | `.claude/task_queue/` | 读取待处理任务 | ✅ 目录存在，无 skill 集成 |
 | `docs/todo/TODO_REGISTRY.md` | 读取 todo | ✅ 文档存在，无 skill 集成 |
-| TeamCreate | 创建 Agent Team | ❌ AgentDevFlow 无此 tooling |
+| TeamCreate | 创建 Agent Team | ⚠️ Claude Agent Team 内置，skill 文本未调用 |
 | create-agent | 创建具体 Agent | ⚠️ 有 skill 文档，无 skill 集成 |
 
 ### 4.3 缺失的 workflow 能力
@@ -141,10 +141,10 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 
 ### P0（立即修复）
 
-1. **在 skill 中集成 tooling 调用**
-   - `/adf-start-agent-team` 需要调用 `scripts/github_issue_sync.py` 发现 open issues
-   - 需要读取 `.claude/task_queue/` 目录
-   - 需要读取 `docs/todo/TODO_REGISTRY.md`
+1. **修改 `skills/shared/start-agent-team.md` 源文件，加入 tooling 调用**
+   - `scripts/github_issue_sync.py` 发现 open issues
+   - 读取 `.claude/task_queue/` 目录
+   - 读取 `docs/todo/TODO_REGISTRY.md`
 
 2. **实现 `adf-daily-standup` workflow**
    - 定时触发（可选，依赖平台能力）
@@ -176,6 +176,6 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 - **执行层面**：tooling 存在（github_issue_sync.py），但 skill 未调用
 - **自举悖论**：要求"检查 open issues"但 skill 文本里没有调用指令
 
-**根因**：AgentDevFlow 的 skill 以 markdown 描述为主，未集成 `scripts/github_issue_sync.py` 调用。
+**根因**：`skills/shared/start-agent-team.md` 本身是纯 markdown 描述，bootstrap-sync 只做路径替换和 SKILL.md 生成，没有能力补全 tooling 调用。
 
-**下一步**：需要在 skill 定义中加入实际可执行的 tooling 指令，或提供 standalone 脚本供调用。
+**真正的修复点**：`skills/shared/start-agent-team.md` 源文件需要加入 `scripts/github_issue_sync.py` 调用指令，bootstrap-sync 生成的 `.claude/skills/adf-start-agent-team/SKILL.md` 才能继承 tooling 能力。
