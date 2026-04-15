@@ -20,6 +20,25 @@ user-invocable: true
 - `platform-sre`
 - `pmo`
 
+## Agent 初始化速查表
+
+| 序号 | Agent 名称 | 角色类型 | 角色文件路径 | Playbook 文件路径 | 状态 |
+|------|-----------|---------|-------------|------------------|------|
+| 1 | Team Lead | team-lead | .claude/skills/adf-agents/team-lead.md | .claude/skills/adf-agents/team-lead.playbook.md | **不创建**（Human 本身）|
+| 2 | Product Manager | product-manager | .claude/skills/adf-agents/product-manager.md | .claude/skills/adf-agents/product-manager.playbook.md | 立即创建 |
+| 3 | 架构师 | architect | .claude/skills/adf-agents/architect.md | .claude/skills/adf-agents/architect.playbook.md | 立即创建 |
+| 4 | 质量工程师 | qa-engineer | .claude/skills/adf-agents/qa-engineer.md | .claude/skills/adf-agents/qa-engineer.playbook.md | 立即创建 |
+| 5 | 工程师 | engineer | .claude/skills/adf-agents/engineer.md | .claude/skills/adf-agents/engineer.playbook.md | 立即创建 |
+| 6 | 平台与发布负责人 | platform-sre | .claude/skills/adf-agents/platform-sre.md | .claude/skills/adf-agents/platform-sre.playbook.md | 立即创建 |
+| 7 | PMO | pmo | .claude/skills/adf-agents/pmo.md | .claude/skills/adf-agents/pmo.playbook.md | 按需创建 |
+
+**状态说明**：
+- **不创建**：Team Lead 是 Human 本身，不需要创建 Agent 实例
+- **立即创建**：项目启动时立即创建，进入启动会流程
+- **按需创建**：根据项目需要（如 PMO 可能不是每个项目都需要）触发创建
+
+**Agent 创建顺序**：按序号 2→3→4→5→6→7 顺序创建，每个创建完成后立即记录日志并进入下一个
+
 ## 执行前必读
 
 1. `prompts/006_agent_creation_contract.md`

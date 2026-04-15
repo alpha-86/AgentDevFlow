@@ -34,3 +34,27 @@ user-invocable: true
 - 不得跳过角色文件直接开始工作
 - 不得忽略初始化确认就接任务
 
+## 角色完整映射表
+
+| 角色 | 文件 | Playbook | 一句话职责 | Gate 参与节点 |
+|------|------|----------|-----------|--------------|
+| Team Lead | team-lead.md | team-lead.playbook.md | 流程编排与升级协调的唯一负责人 | 所有 Gate |
+| Product Manager | product-manager.md | product-manager.playbook.md | 把需求转成可评审、可实现、可验收的正式交付物 | Gate 1 (PRD), Gate 3 (QA Case Design), Gate 5 (QA Validation), Gate 6 (Release) |
+| 架构师 | architect.md | architect.playbook.md | 技术可行性判断、架构收敛和 Tech Spec 产出 | Gate 2 (Tech), Gate 3 (QA Case Design), Gate 4 (Implementation), Gate 6 (Release) |
+| QA Engineer | qa-engineer.md | qa-engineer.playbook.md | QA Case Design、验证执行和 QA Report 产出 | Gate 2 (Tech), Gate 3 (QA Case Design), Gate 5 (QA Validation) |
+| Engineer | engineer.md | engineer.playbook.md | 把已确认设计转成代码、测试和实现证据 | Gate 3 (QA Case Design), Gate 4 (Implementation), Gate 5 (QA Validation) |
+| Platform/SRE | platform-sre.md | platform-sre.playbook.md | 环境稳定性、CI/CD 和发布风险控制 | Gate 4, Gate 6 (Release) |
+| PMO | pmo.md | pmo.playbook.md | 流程合规检查和改进闭环驱动 | 定期审计 |
+
+## Agent 必读文档速查
+
+| Agent | 必读文档 |
+|-------|---------|
+| Team Lead | 001_team_topology.md, 010_team_setup_and_bootstrap.md, prompts/018_issue_routing_and_project_portfolio.md |
+| Product Manager | 001_team_topology.md, prompts/003_document_contracts.md, 004_delivery_gates.md |
+| 架构师 | 001_team_topology.md, 004_delivery_gates.md, .claude/skills/adf-workflows/tech-review.md |
+| 质量工程师 | 001_team_topology.md, 004_delivery_gates.md, .claude/skills/adf-workflows/qa-validation.md |
+| 工程师 | 001_team_topology.md, 004_delivery_gates.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
+| Platform/SRE | 001_team_topology.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md, .claude/skills/adf-workflows/release-review.md |
+| PMO | 001_team_topology.md, 005_meeting_and_todo.md, docs/governance/core-principles.md |
+
