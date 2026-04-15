@@ -94,16 +94,15 @@ hedge-ai 的 skill 包含 TeamCreate 等 tooling 调用，
 AgentDevFlow 的 skill 只有 markdown 描述。
 ```
 
-### 4.2 缺失的 tooling 能力
+### 4.2 tooling 能力现状（需修正确认）
 
 | tooling | 用途 | 现状 |
 |---------|------|------|
-| `gh issue list` | 发现 open issues | ❌ 无集成 |
-| `gh issue view` | 查看 issue 详情 | ❌ 无集成 |
-| `cat .claude/task_queue/*.task` | 读取待处理任务 | ❌ 无集成 |
-| `read TODO_REGISTRY.md` | 读取 todo | ⚠️ 有文档，无 tooling |
-| TeamCreate | 创建 Agent Team | ❌ 无 |
-| create-agent | 创建具体 Agent | ⚠️ 有文档，无 skill 集成 |
+| `scripts/github_issue_sync.py` | 发现/同步 GitHub Issues | ✅ 工具存在，但 skill 未调用 |
+| `.claude/task_queue/` | 读取待处理任务 | ✅ 目录存在，无 skill 集成 |
+| `docs/todo/TODO_REGISTRY.md` | 读取 todo | ✅ 文档存在，无 skill 集成 |
+| TeamCreate | 创建 Agent Team | ❌ AgentDevFlow 无此 tooling |
+| create-agent | 创建具体 Agent | ⚠️ 有 skill 文档，无 skill 集成 |
 
 ### 4.3 缺失的 workflow 能力
 
@@ -131,7 +130,7 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 
 | 能力 | 现状 | 优先级 |
 |------|------|--------|
-| Issue 自动发现 | ❌ skill 中无 tooling | P0 |
+| Issue 自动发现 | ⚠️ github_issue_sync.py 存在，但 skill 未集成调用 | P0 |
 | Issue 触发 Agent | ❌ 无触发机制 | P1 |
 | Issue 评论自动留痕 | ⚠️ 部分有，无完整集成 | P1 |
 | Issue 状态变更 -> Workflow | ❌ 无 | P2 |
@@ -143,7 +142,7 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 ### P0（立即修复）
 
 1. **在 skill 中集成 tooling 调用**
-   - `/adf-start-agent-team` 需要调用 `gh issue list` 发现 open issues
+   - `/adf-start-agent-team` 需要调用 `scripts/github_issue_sync.py` 发现 open issues
    - 需要读取 `.claude/task_queue/` 目录
    - 需要读取 `docs/todo/TODO_REGISTRY.md`
 
@@ -174,9 +173,9 @@ AgentDevFlow 的 skill 只有 markdown 描述。
 `/adf-start-agent-team` 当前状态：
 
 - **设计层面**：有完整的流程描述和文档结构
-- **执行层面**：完全没有 tooling 集成，无法真正"启动"
-- **自举悖论**：要求"检查 open issues"但没有工具去检查
+- **执行层面**：tooling 存在（github_issue_sync.py），但 skill 未调用
+- **自举悖论**：要求"检查 open issues"但 skill 文本里没有调用指令
 
-**根因**：AgentDevFlow 的 skill 以 markdown 描述为主，hedge-ai 的 skill 包含实际的 tooling 调用指令。
+**根因**：AgentDevFlow 的 skill 以 markdown 描述为主，未集成 `scripts/github_issue_sync.py` 调用。
 
 **下一步**：需要在 skill 定义中加入实际可执行的 tooling 指令，或提供 standalone 脚本供调用。
