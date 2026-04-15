@@ -86,81 +86,84 @@ jobs:
           echo "Gate Status Check"
           echo "=========================================="
 
-          # Check PRD Gate 1
-          # Gate 1 要求: PM (必签) + 架构评审人 (必签)
+          # Pattern A regex: table row with role + date + decision
+          # Format: | 日期 | 评审人 | 备注 | 决策 |
+          # Valid decisions: Approved, Conditional, Rejected, Draft, 通过, 待评审, 驳回
+          check_sig() {
+            local DOC_FILE="$1"; local ROLE="$2"; local GATE_NAME="$3"
+            local SIG_LINE
+            # Must match: table row (starts with |) + role in column 2 + date (YYYY-MM-DD in col 1) + valid decision (col 4)
+            # Supports English decisions (Approved/Conditional/Rejected) and Chinese (通过/待评审/驳回)
+            SIG_LINE=$(grep "^|" "${DOC_FILE}" | grep "| ${ROLE} |" | grep -E "\| [0-9]{4}-[0-9]{2}-[0-9]{2} \|.*\| (Approved|Conditional|Rejected|Draft|通过|待评审|驳回)")
+            if [ -n "$SIG_LINE" ]; then
+              echo "  [${GATE_NAME}] Signature found: ${ROLE} ✓"
+              return 0
+            else
+              echo "  [${GATE_NAME}] FAILED: Missing required signature"
+              echo "    Required: ${ROLE} sign-off (评审人: ${ROLE} + 日期: YYYY-MM-DD + 决策: Approved/Conditional/Rejected)"
+              echo "    Fix: Add review record to Gate table in ${DOC_FILE}"
+              return 1
+            fi
+          }
+
+          FAILED=0
+
+          # === PRD Gate 1: PM + 架构师 ===
           PRD_FILE=$(ls docs/prd/PRD-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$PRD_FILE" ]; then
             echo ""
             echo "[PRD Gate 1] Checking: $PRD_FILE"
             if grep -q "Gate 1" "$PRD_FILE" || grep -q "PRD Gate" "$PRD_FILE"; then
-              PM_SIG=$(grep -i "PM" "$PRD_FILE" | grep -i "sign" | head -1)
-              ARCH_SIG=$(grep -i "架构" "$PRD_FILE" | grep -i "sign" | head -1)
-              if [ -n "$PM_SIG" ] && [ -n "$ARCH_SIG" ]; then
-                echo "  [PRD Gate 1] Signatures: PM=present, 架构评审人=present"
-              else
-                echo "  [PRD Gate 1] FAILED: Missing required signatures (PM=${PM_SIG:+present}, 架构评审人=${ARCH_SIG:+present})"
-                exit 1
-              fi
+              check_sig "$PRD_FILE" "PM" "PRD Gate 1" || FAILED=1
+              check_sig "$PRD_FILE" "架构师" "PRD Gate 1" || FAILED=1
             else
               echo "  [PRD Gate 1] No Gate block found - document may not be ready for merge"
               exit 1
             fi
           fi
 
-          # Check Tech Gate 2
+          # === Tech Gate 2: PM + 技术负责人 + QA ===
           TECH_FILE=$(ls docs/tech/Tech-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$TECH_FILE" ]; then
             echo ""
             echo "[Tech Gate 2] Checking: $TECH_FILE"
             if grep -q "Gate 2\|Tech Gate" "$TECH_FILE"; then
-              PM_SIG=$(grep -i "PM" "$TECH_FILE" | grep -i "sign" | head -1)
-              TECH_SIG=$(grep -i "技术评审人\|Tech Review" "$TECH_FILE" | grep -i "sign" | head -1)
-              QA_SIG=$(grep -i "QA" "$TECH_FILE" | grep -i "sign\|review" | head -1)
-              if [ -n "$PM_SIG" ] && [ -n "$TECH_SIG" ] && [ -n "$QA_SIG" ]; then
-                echo "  [Tech Gate 2] Signatures: PM=present, 技术评审人=present, QA=present"
-              else
-                echo "  [Tech Gate 2] FAILED: Missing required signatures (PM=${PM_SIG:+present}, 技术评审人=${TECH_SIG:+present}, QA=${QA_SIG:+present})"
-                exit 1
-              fi
+              check_sig "$TECH_FILE" "PM" "Tech Gate 2" || FAILED=1
+              check_sig "$TECH_FILE" "技术负责人" "Tech Gate 2" || FAILED=1
+              check_sig "$TECH_FILE" "QA" "Tech Gate 2" || FAILED=1
             else
               echo "  [Tech Gate 2] No Gate block found - document may not be ready for merge"
               exit 1
             fi
           fi
 
-          # Check QA Case Design Gate
+          # === QA Case Design Gate 3: PM + 架构师 + Engineer ===
           QA_FILE=$(ls docs/qa/QA-${ISSUE}_*.md 2>/dev/null | head -1)
           if [ -n "$QA_FILE" ]; then
             echo ""
             echo "[QA Case Design Gate 3] Checking: $QA_FILE"
             if grep -q "Gate\|Sign" "$QA_FILE"; then
-              PM_SIG=$(grep -i "PM" "$QA_FILE" | grep -i "sign" | head -1)
-              ARCH_SIG=$(grep -i "架构师\|Architect" "$QA_FILE" | grep -i "sign" | head -1)
-              ENG_SIG=$(grep -i "Engineer\|ENG" "$QA_FILE" | grep -i "sign\|review" | head -1)
-              if [ -n "$PM_SIG" ] && [ -n "$ARCH_SIG" ] && [ -n "$ENG_SIG" ]; then
-                echo "  [QA Case Design Gate 3] Signatures: PM=present, 架构师=present, Engineer=present"
-              else
-                echo "  [QA Case Design Gate 3] FAILED: Missing required signatures (PM=${PM_SIG:+present}, 架构师=${ARCH_SIG:+present}, Engineer=${ENG_SIG:+present})"
-                exit 1
-              fi
+              check_sig "$QA_FILE" "PM" "QA Gate 3" || FAILED=1
+              check_sig "$QA_FILE" "架构师" "QA Gate 3" || FAILED=1
+              check_sig "$QA_FILE" "Engineer" "QA Gate 3" || FAILED=1
             fi
           fi
 
-          # Check QA Test Report Gate 5
+          # === QA Test Report Gate 5: QA + PM + Engineer ===
           if [ -n "$QA_FILE" ]; then
             echo ""
             echo "[QA Test Report Gate 5] Checking: $QA_FILE"
             if grep -q "Gate\|Sign\|Report\|Test" "$QA_FILE"; then
-              QA_SIG=$(grep -i "QA" "$QA_FILE" | grep -i "sign\|review" | head -1)
-              PM_SIG=$(grep -i "PM" "$QA_FILE" | grep -i "sign" | head -1)
-              ENG_SIG=$(grep -i "Engineer\|ENG" "$QA_FILE" | grep -i "sign\|review" | head -1)
-              if [ -n "$QA_SIG" ] && [ -n "$PM_SIG" ] && [ -n "$ENG_SIG" ]; then
-                echo "  [QA Test Report Gate 5] Signatures: QA=present, PM=present, Engineer=present"
-              else
-                echo "  [QA Test Report Gate 5] FAILED: Missing required signatures (QA=${QA_SIG:+present}, PM=${PM_SIG:+present}, Engineer=${ENG_SIG:+present})"
-                exit 1
-              fi
+              check_sig "$QA_FILE" "QA" "QA Gate 5" || FAILED=1
+              check_sig "$QA_FILE" "PM" "QA Gate 5" || FAILED=1
+              check_sig "$QA_FILE" "Engineer" "QA Gate 5" || FAILED=1
             fi
+          fi
+
+          if [ "$FAILED" -eq 1 ]; then
+            echo ""
+            echo "[Gate Check] FAILED - see details above"
+            exit 1
           fi
 
           echo ""
@@ -181,8 +184,8 @@ jobs:
           echo "  - QA: docs/qa/QA-${{ steps.extract-issue.outputs.issue_number }}_*.md"
           echo ""
           echo "Gate Status:"
-          echo "  - PRD Gate 1: PM + 架构评审人"
-          echo "  - Tech Gate 2: PM + 技术评审人 + QA"
+          echo "  - PRD Gate 1: PM + 架构师"
+          echo "  - Tech Gate 2: PM + 技术负责人 + QA"
           echo "  - QA Case Design Gate 3: PM + 架构师 + Engineer"
           echo "  - Implementation Gate 4: Engineer + 架构师"
           echo "  - QA Test Report Gate 5: QA + PM + Engineer"
