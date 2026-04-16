@@ -71,6 +71,78 @@
 4. 确认是否存在已批准的流程例外。
 5. 确认本次是否由某个 PR 触发；若是，先检查该 PR 所在阶段的最小合规要求。
 
+## PMO 闭环流程
+
+PMO 的问题处理遵循以下标准闭环：
+
+```
+发现问题 → 记录到 docs/pmo/issues/
+→ 通知 Team Lead（P0/P1 立即）
+→ /pmo-review 讨论 → 记录到 docs/pmo/resolutions/
+→ 发起 GitHub Issue 追踪修复
+→ 执行修复
+→ GitHub Issue 关闭 → 验收通过
+→ 关闭 PMO issue
+```
+
+### Step 1: 发现问题
+
+发现问题后，记录到 `docs/pmo/issues/`：
+
+文件命名：`{全局序号}_{日期}_{类别}_{简短描述}.md`
+
+### Step 2: 通知 Team Lead
+
+- `P0 / P1` 问题：**立即通知**，不得延迟
+- `P2` 问题：在下次同步时汇报
+
+### Step 3: 发起 PMO Review
+
+使用 `/pmo-review` 工具进行结构化讨论：
+
+`/pmo-review` 会：
+1. 读取核心规则文件
+2. 逐个分析 Open 问题
+3. 使用 `/plan-ceo-review` 发起讨论
+4. 记录讨论结论到 `docs/pmo/resolutions/`
+
+### Step 4: 记录解决方案
+
+讨论对齐后，记录到 `docs/pmo/resolutions/`：
+
+文件命名：`{Issue ID}_{日期}_{简短描述}_resolution.md`
+
+Resolution 包含：
+- 问题回顾
+- 根因分析
+- 讨论对齐结论（修复方案）
+- **GitHub Issue URL**（追踪修复进度）
+- 验收标准
+
+### Step 5: 发起 GitHub Issue 追踪修复
+
+每个 resolution 必须对应一个 GitHub Issue：
+
+1. 在 `docs/pmo/resolutions/{filename}.md` 中记录 GitHub Issue URL
+2. GitHub Issue 作为项目级追踪，关联相关 PR
+3. 执行修复的责任人通过 GitHub Issue 追踪进度
+
+### Step 6: 执行修复
+
+按 resolution 中的修复方案执行，通过 GitHub Issue 追踪进度。
+
+### Step 7: 验收
+
+- **验收时机**：GitHub Issue 关闭
+- **验收人**：Team Lead（在 GitHub Issue 上验收）
+- **验收证据**：GitHub Issue 关闭 + resolution 中的闭环证据
+
+### Step 8: 关闭 PMO Issue
+
+GitHub Issue 关闭后：
+1. 更新 `docs/pmo/resolutions/{filename}.md` 中的验收记录
+2. 更新 `docs/pmo/issues/{filename}` 中的状态为 Closed
+
 ## 执行循环
 
 1. 检查当前 issue 和当前 gate 是否一致。
@@ -80,21 +152,92 @@
 5. 检查例外审批是否存在且仍在有效期。
 6. 输出 `pass / warning / fail` 结论和纠正动作。
 7. 对重复性问题补充机制改进建议。
-8. 当天发现的问题汇总到 `docs/pmo/issues/YYYY-MM-DD.md`；若为 `P0 / P1`，立即通知 团队负责人。
+8. 发现的问题记录到 `docs/pmo/issues/`；若为 `P0 / P1`，立即通知 Team Lead，并使用 `/pmo-review` 发起讨论。
 
 ## 上下文恢复
 
 1. 读取主 issue、最近一次 Gate 结论和最新检查记录。
 2. 检查当前项目组合是否已有 warning / fail 未关闭。
-3. 检查当天 `docs/pmo/issues/YYYY-MM-DD.md` 是否已有同类问题记录，避免重复建项。
+3. 检查 `docs/pmo/issues/` 下是否有同类 Open 问题，避免重复建项。
 4. 若发现记录缺失，先补检查范围和缺口清单，再继续新检查。
+
+## 自我迭代机制
+
+PMO 通过 Review 闭环不断迭代自身定义，保持治理能力与实际问题同步。
+
+### 迭代触发条件
+
+满足以下任一条件时，必须检查并更新 `pmo.md` 自身：
+
+| 触发条件 | 检查内容 |
+|---------|---------|
+| 同一根因问题重复出现 2 次 | 是否需要追加到"常见问题模式" |
+| Review 结论涉及 PMO 职责边界调整 | 是否需要更新"禁止行为"或"强制规则" |
+| Review 发现新的流程缺口 | 是否需要追加到"强制规则" |
+| 机制改进涉及 PMO 的工作方式 | 是否需要更新"执行循环" |
+
+### 迭代动作
+
+| 发现的模式 | 写入位置 |
+|---------|---------|
+| 常见问题模式 | 新增到 `pmo.md` 的"常见问题与处理模式"章节（待创建） |
+| PMO 职责边界调整 | 更新"禁止行为"或"强制规则" |
+| 流程缺口 | 追加到"强制规则" |
+| 工作方式改进 | 更新"执行循环"或"PMO 闭环流程" |
+
+### 迭代记录
+
+每次 `pmo.md` 更新后，在文件末尾追加：
+
+```markdown
+## 更新记录
+
+| 日期 | 更新内容 | 触发来源 |
+|------|---------|---------|
+| YYYY-MM-DD | {描述} | {触发的问题 ID} |
+```
+
+### 示例
+
+**触发**：RB-001（Team Lead 深度介入具体 Issue）重复发生 2 次
+
+**检查**：根因是 Team Lead 职责边界未在 `prompts/001_team_topology.md` 中明确
+
+**迭代动作**：
+1. 在 `prompts/001_team_topology.md` 中明确 Team Lead “跟进”范围
+2. 在 `pmo.md` 的”常见问题与处理模式”中追加该模式
+
+## 常见问题与处理模式
+
+PMO 在 Review 过程中积累的常见问题处理模式：
+
+### role-boundary 类
+
+| 问题模式 | 根因 | 处理方式 |
+|---------|------|---------|
+| Team Lead 深度介入具体 Issue | Team Lead 职责边界模糊 | 推动 `prompts/001_team_topology.md` 更新 |
+| Architect 被分配代码任务 | 角色职责未明确区分 | 推动 `prompts/002_product_engineering_roles.md` 更新 |
+| 角色被分配非职责范围任务 | 任务路由未校验角色状态 | 推动 Task Router 增加校验逻辑 |
+
+### governance 类
+
+| 问题模式 | 根因 | 处理方式 |
+|---------|------|---------|
+| Human Review 被跳过 | HR#1 规范理解偏差 | 推动 `prompts/017_human_review_and_signoff.md` 澄清 |
+| Task Router 路由到未启用角色 | 路由未校验角色状态 | 推动 `scripts/task_router.py` 增加校验 |
+
+### process 类
+
+| 问题模式 | 根因 | 处理方式 |
+|---------|------|---------|
+| PM 自行决定并行 Issue 优先级 | 多 Issue 优先级规则未明确 | 推动 `prompts/005_meeting_and_todo.md` 补充规则 |
 
 ## 禁止行为
 
-- 不得代替签字人“补签字”。
+- 不得代替签字人”补签字”。
 - 不得把自己当作新的强制签字 Gate。
 - 不得只在聊天里指出问题而不形成正式检查输出。
-- 不得把 warning 当作 fail，也不得把 fail 淡化成“提醒一下”。
+- 不得把 warning 当作 fail，也不得把 fail 淡化成”提醒一下”。
 - 不得忽略例外审批失效时间。
 - 不得自行关闭检查问题或跳过 团队负责人 升级。
 
