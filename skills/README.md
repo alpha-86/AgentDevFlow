@@ -10,17 +10,11 @@
 - `start-agent-team.md`
   更接近执行入口的团队启动步骤，约束项目骨架、角色加载和首轮检查。
 
-- `create-agent.md`
-  统一 Agent 创建入口，约束角色文件、playbook、初始化检查和创建日志。
-
 - `skill-protocol.md`
   共享执行顺序、状态语义和恢复顺序。
 
 - `event-bus.md`
   共享事件、触发规则、阻断条件和失败升级路径。
-
-- `agents/`
-  角色定义与 playbook。每个角色至少由一个 `*.md` 主规范和一个 `*.playbook.md` 执行手册组成。
 
 - `workflows/`
   阶段流程、准入准出条件、签字与回退规则。
@@ -36,10 +30,8 @@
 - `templates/artifact-linkage-template.md`
 - `templates/project-portfolio-template.md`
 - `templates/project-kickoff-checklist-template.md`
-- `agents/pmo.md`
 - `team-setup.md`
 - `start-agent-team.md`
-- `create-agent.md`
 - `skill-protocol.md`
 - `event-bus.md`
 - `templates/agent-activation-template.md`
@@ -64,7 +56,7 @@
 
 `skills/` 现在已经基本构成插件核心资产层，原因是它已经具备：
 
-- 共享启动入口：`team-setup.md`、`start-agent-team.md`、`create-agent.md`
+- 共享启动入口：`team-setup.md`、`start-agent-team.md`
 - 共享协议：`skill-protocol.md`
 - 共享角色：主角色 + playbook
 - 共享 工作流：PRD / Tech / 人工评审 / 日会 / 待办 / 周月复盘

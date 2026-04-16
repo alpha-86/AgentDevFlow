@@ -57,7 +57,6 @@ bootstrap-sync.yml 在 `skills/**/*.md` 变更时自动触发（push to main）�
 |---------------------------|-------------------------------------|
 | `start-agent-team.md` | `adf-start-agent-team/SKILL.md` |
 | `team-setup.md` | `adf-team-setup/SKILL.md` |
-| `create-agent.md` | `adf-create-agent/SKILL.md` |
 | `agent-bootstrap.md` | `adf-agent-bootstrap/SKILL.md` |
 
 ### 当前差异

@@ -296,7 +296,6 @@ show_next_steps() {
     echo "  2. 在 Claude Code 中使用以下命令启动团队:"
     echo "     /agent-bootstrap   # 自举 AgentDevFlow 项目"
     echo "     /start-agent-team  # 启动交付团队"
-    echo "     /create-agent      # 创建角色实例"
     echo ""
     info "更多信息请查看:"
     echo "  - ${REPO_ROOT}/README.md"

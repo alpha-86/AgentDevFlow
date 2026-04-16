@@ -16,13 +16,12 @@
 ## 执行前必读
 
 1. `skills/start-agent-team.md`
-2. `skills/create-agent.md`
-3. `skills/skill-protocol.md`
-4. `skills/event-bus.md`
-5. `prompts/001_team_topology.md`
-6. `prompts/010_team_setup_and_bootstrap.md`
-7. `docs/governance/core-principles.md`
-8. `README.md`
+2. `skills/skill-protocol.md`
+3. `skills/event-bus.md`
+4. `prompts/001_team_topology.md`
+5. `prompts/010_team_setup_and_bootstrap.md`
+6. `docs/governance/core-principles.md`
+7. `README.md`
 
 ## 自举步骤
 

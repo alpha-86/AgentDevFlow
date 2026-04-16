@@ -21,7 +21,7 @@ Claude 已有 Agent Team 能力。AgentDevFlow 在 Claude 中要做的是：
    - 主 issue 或当前主工作索引
    - 当前 Gate
    - 启动会纪要、Todo Registry、状态板、产物关联主记录
-5. 再通过 `create-agent` 按顺序创建：
+5. 再通过  按顺序创建：
    - Product Manager
    - 架构师
    - QA Engineer
@@ -34,13 +34,13 @@ Claude 已有 Agent Team 能力。AgentDevFlow 在 Claude 中要做的是：
 
 | 序号 | Agent | 角色类型 | Skill 文件 | Playbook 文件 | 创建状态 | 初始化后动作 |
 |------|-------|---------|-----------|--------------|---------|------------|
-| 1 | Team Lead | team-lead | skills/shared/agents/team-lead.md | skills/shared/agents/team-lead.playbook.md | **不创建** | Human 本身 |
-| 2 | Product Manager | product-manager | skills/shared/agents/product-manager.md | skills/shared/agents/product-manager.playbook.md | 立即创建 | 读取 skills/shared/workflows/prd-review.md |
-| 3 | 架构师 | architect | skills/shared/agents/architect.md | skills/shared/agents/architect.playbook.md | 立即创建 | 读取 skills/shared/workflows/tech-review.md |
-| 4 | 质量工程师 | qa-engineer | skills/shared/agents/qa-engineer.md | skills/shared/agents/qa-engineer.playbook.md | 立即创建 | 读取 skills/shared/workflows/qa-validation.md |
-| 5 | 工程师 | engineer | skills/shared/agents/engineer.md | skills/shared/agents/engineer.playbook.md | 立即创建 | 读取 prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
-| 6 | Platform/SRE | platform-sre | skills/shared/agents/platform-sre.md | skills/shared/agents/platform-sre.playbook.md | 立即创建 | 读取 skills/shared/workflows/release-review.md |
-| 7 | PMO | pmo | skills/shared/agents/pmo.md | skills/shared/agents/pmo.playbook.md | 按需创建 | 读取 docs/governance/core-principles.md |
+| 1 | Team Lead | team-lead | skills/agents/team-lead.md | skills/agents/team-lead.playbook.md | **不创建** | Human 本身 |
+| 2 | Product Manager | product-manager | skills/agents/product-manager.md | skills/agents/product-manager.playbook.md | 立即创建 | 读取 skills/workflows/prd-review.md |
+| 3 | 架构师 | architect | skills/agents/architect.md | skills/agents/architect.playbook.md | 立即创建 | 读取 skills/workflows/tech-review.md |
+| 4 | 质量工程师 | qa-engineer | skills/agents/qa-engineer.md | skills/agents/qa-engineer.playbook.md | 立即创建 | 读取 skills/workflows/qa-validation.md |
+| 5 | 工程师 | engineer | skills/agents/engineer.md | skills/agents/engineer.playbook.md | 立即创建 | 读取 prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
+| 6 | Platform/SRE | platform-sre | skills/agents/platform-sre.md | skills/agents/platform-sre.playbook.md | 立即创建 | 读取 skills/workflows/release-review.md |
+| 7 | PMO | pmo | skills/agents/pmo.md | skills/agents/pmo.playbook.md | 按需创建 | 读取 docs/governance/core-principles.md |
 
 **创建后立即动作**：每个 Agent 创建后必须：
 1. 读取主 issue
@@ -73,8 +73,8 @@ Team Lead 在创建其他角色前，必须先确认：
 ## 必读文件
 
 - `adapters/claude/.claude/skills/TEAM_SETUP.md`
-- `skills/shared/start-agent-team.md`
-- `skills/shared/create-agent.md`
+- `skills/start-agent-team.md`
+- `skills/create-agent.md`
 - `docs/governance/core-principles.md`
 - `prompts/004_delivery_gates.md`
 - `prompts/013_github_issue_and_review_comments.md`

@@ -14,8 +14,8 @@ Codex 没有现成的 Team 产品壳，但已有多 Agent 调度能力。AgentDe
 ## 启动顺序
 
 1. 读取 `plugins/agentdevflow/README.md`
-2. 读取 `skills/shared/start-agent-team.md`
-3. 读取 `skills/shared/create-agent.md`
+2. 读取 `skills/start-agent-team.md`
+3. 读取 `skills/create-agent.md`
 4. 读取 `docs/governance/core-principles.md`
 5. 主会话建立主 issue、当前 Gate、Todo 和状态板
 6. 再创建：

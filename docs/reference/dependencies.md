@@ -8,7 +8,7 @@
   - `README.md`
   - `prompts/`
   - `docs/`
-  - `skills/shared/`
+  - `skills/`
   - `plugins/agentdevflow/.codex-plugin/plugin.json`
 - 仓库内目前没有语言运行时依赖清单：
   - 无 `package.json`
@@ -53,7 +53,7 @@
 
 - `plugins/agentdevflow/.codex-plugin/plugin.json`
   - 当前唯一正式插件元数据入口
-- `skills/shared/`
+- `skills/`
   - 当前唯一共享角色、工作流、模板入口
 - `prompts/`
   - 当前唯一规则层入口
@@ -70,14 +70,14 @@
 - `README.md`
 - `prompts/`
 - `docs/`
-- `skills/shared/agents/`
-- `skills/shared/workflows/`
-- `skills/shared/templates/`
-- `skills/shared/team-setup.md`
-- `skills/shared/start-agent-team.md`
-- `skills/shared/create-agent.md`
-- `skills/shared/skill-protocol.md`
-- `skills/shared/event-bus.md`
+- `skills/agents/`
+- `skills/workflows/`
+- `skills/templates/`
+- `skills/team-setup.md`
+- `skills/start-agent-team.md`
+- `skills/create-agent.md`
+- `skills/skill-protocol.md`
+- `skills/event-bus.md`
 
 这些资产共同构成：
 
@@ -103,7 +103,7 @@
 ### 三、边界规则
 
 - 外部依赖只能增强执行效率，不能定义核心流程规则。
-- 任何平台或工具接入都不得改写 `prompts/` 与 `skills/shared/` 的核心语义。
+- 任何平台或工具接入都不得改写 `prompts/` 与 `skills/` 的核心语义。
 - 若移除外部依赖，插件自身资产仍必须可以被阅读、审计和手动执行。
 - 若某个流程只有依赖外部宿主才能成立，则它不应被写成插件主干规则。
 
@@ -211,7 +211,7 @@
    - `README.md`
    - `plugins/agentdevflow/README.md`
    - `prompts/`
-   - `skills/shared/`
+   - `skills/`
    - `docs/`
 2. 再接入协作依赖：
    - `git`

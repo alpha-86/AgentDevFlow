@@ -16,7 +16,7 @@
 
 ### L2. 共享能力层
 
-- 路径：`skills/shared/`
+- 路径：`skills/`
 - 用途：平台无关的智能体角色、工作流、模板
 - 约束：尽量不写平台私有语法
 
@@ -64,12 +64,12 @@ plugins/
 
 ## 约束
 
-- 角色定义写在 `skills/shared/agents/`，执行手册使用同名 `*.playbook.md`
-- 团队启动入口写在 `skills/shared/team-setup.md` 与 `skills/shared/start-agent-team.md`
-- Agent 统一创建入口写在 `skills/shared/create-agent.md`
-- 事件与状态同步语义写在 `skills/shared/event-bus.md`
-- 流程定义写在 `skills/shared/workflows/`
-- 模板写在 `skills/shared/templates/`
+- 角色定义写在 `skills/agents/`，执行手册使用同名 `*.playbook.md`
+- 团队启动入口写在 `skills/team-setup.md` 与 `skills/start-agent-team.md`
+- Agent 统一创建入口写在 `skills/create-agent.md`
+- 事件与状态同步语义写在 `skills/event-bus.md`
+- 流程定义写在 `skills/workflows/`
+- 模板写在 `skills/templates/`
 - 顶层原则、边界和协议写在 `docs/governance/`
 - 迁移复核与对照材料写在 `docs/migration/` 和 `prompts/discuss/`
 - 项目可直接使用的交付目录写在 `docs/prd/`、`docs/tech/`、`docs/qa/`、`docs/release/` 等路径
