@@ -1,5 +1,20 @@
 # 交付 Gate
 
+## README 流程节点 vs Gate 编号映射表
+
+| README 流程节点 | Gate 编号 | 说明 |
+|---------------|-----------|------|
+| 创建主 GitHub Issue | Gate 0 | Team Startup |
+| PRD | Gate 1 | PRD Review |
+| Tech Spec + QA Case | Gate 2 | Tech Review |
+| Human Review #1 + 文档PR合并 | - | HR#1 通过后 Human 合并 |
+| Engineer 实现 | Gate 3 | Implementation |
+| QA 验证 | Gate 4 | QA Validation |
+| Human Review #2 + 代码PR合并 | - | HR#2 通过后 Human 合并 |
+| Release / Issue Close | Gate 5 | Release |
+
+> 详细流程定义见 `prompts/002_develop_pipeline.md`。
+
 ## Gate 1: PRD Review
 
 - 输入：明确需求
@@ -37,6 +52,12 @@
   - Case 覆盖边界条件
   - Case 覆盖异常路径
 - 未通过处理：退回修订
+
+## QA Case Design 独立文档要求
+
+- **QA Case Design 必须是有独立文件的文档**（`docs/qa/QA-{issue}-v{n}.md`）
+- **不得以内嵌形式存在于 Tech Spec 中**（Tech Spec 中的 TC 仅为设计说明，不能替代正式 QA Case Design 文档）
+- 纯文档交付场景下，Engineer 角色由架构师代理签字（需在文档中注明原因）
 
 ## Gate 4: Implementation
 

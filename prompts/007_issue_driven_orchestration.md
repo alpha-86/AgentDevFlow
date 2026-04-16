@@ -78,8 +78,10 @@
 
 ### Gate 3 Implementation
 
-- 入场条件：Tech Spec `Approved`，文档 PR 已合并，且 Human Review #1 已完成。
+- 入场条件：Tech Spec `Approved`，文档 PR 已合并，Human Review #1 已完成，**Team Lead 已通知 Human 执行文档 PR 合并**。
 - 出场条件：实现证据（代码、测试、说明）回链 Issue，并明确是否具备 Human Review #2 条件。
+
+> Team Lead 通知 Human 执行 PR 合并是 Human Review #1 通过后的强制步骤。见 `prompts/002_develop_pipeline.md`。
 
 ### Gate 4 QA Validation
 

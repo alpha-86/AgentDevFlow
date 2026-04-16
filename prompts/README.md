@@ -5,6 +5,7 @@
 ## 文件列表
 
 - `001_team_topology.md`
+- `002_develop_pipeline.md` — **核心流程文档**，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作
 - `002_product_engineering_roles.md`
 - `003_document_contracts.md`
 - `004_delivery_gates.md`

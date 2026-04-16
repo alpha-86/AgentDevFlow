@@ -90,3 +90,11 @@ Team Lead
 - 质量阻塞由 质量工程师 持有 gate
 - 发布风险由 平台与发布负责人 提出阻塞意见
 - 流程违规和状态漂移由 PMO 记录并推动纠正
+
+## Human vs Agent 角色区分
+
+- **Human**（`alpha-86`）：Claude Code 的实际操作者，持有 GitHub 账号权限，唯一可以执行 PR 合并、Issue 关闭、Human Review 正式签字
+- **Agent**（PM/Architect/Engineer/QA/PMO/Team Lead）：运行在 Claude Code 环境中的 AI agent，通过 Issue Comment 和文档协作
+- Agent 执行 `gh` 命令的权限由 Claude Code 环境决定，但应遵守 skill 中的禁止行为规则
+- Agent 不得执行版本控制或 GitHub API 写操作（issue comment 通过标准化接口除外）
+- Issue 关闭是 Human 的专属操作，Agent 可以发布"Issue 关闭请求"评论，但必须由 Human 执行关闭

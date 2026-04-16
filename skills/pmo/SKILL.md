@@ -49,19 +49,20 @@
 
 ## 必读文档
 
-1. `docs/governance/core-principles.md`
-2. `prompts/004_delivery_gates.md`
-3. `prompts/007_issue_driven_orchestration.md`
-4. `prompts/013_github_issue_and_review_comments.md`
-5. `prompts/014_process_compliance_and_audit.md`
-6. `prompts/017_human_review_and_signoff.md`
-7. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
-8. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
-9. `prompts/021_platform_checks_and_gate_automation.md`
-10. `skills/workflows/issue-lifecycle.md`
-11. `skills/workflows/project-portfolio-review.md`
-12. `skills/templates/audit-report-template.md`
-13. `skills/templates/review-comment-template.md`
+1. **`prompts/002_develop_pipeline.md`** — **核心流程文档**，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作
+2. `docs/governance/core-principles.md`
+3. `prompts/004_delivery_gates.md`
+4. `prompts/007_issue_driven_orchestration.md`
+5. `prompts/013_github_issue_and_review_comments.md`
+6. `prompts/014_process_compliance_and_audit.md`
+7. `prompts/017_human_review_and_signoff.md`
+8. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
+9. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
+10. `prompts/021_platform_checks_and_gate_automation.md`
+11. `skills/workflows/issue-lifecycle.md`
+12. `skills/workflows/project-portfolio-review.md`
+13. `skills/templates/audit-report-template.md`
+14. `skills/templates/review-comment-template.md`
 
 ## 何时启用
 

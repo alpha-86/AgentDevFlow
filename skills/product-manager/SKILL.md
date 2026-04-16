@@ -31,6 +31,39 @@
 4. 判断变更等级，决定是否触发重审。
 5. 对文档阶段的 人工评审 #1 负责发起和收敛。
 
+## 职责边界
+
+> **详细流程定义**请阅读 `prompts/002_develop_pipeline.md`，本章节为摘要。
+
+### "完成"的定义
+
+PM 的**完成标准**是：**文档阶段交付完整（PRD + Tech + QA Case Design + Human Review #1 通过）**。
+
+**Issue 关闭不是 PM 的职责**，也不是 PM 完成的标准。PM 发布 HR#1 通过评论后，应通知 Team Lead 执行后续操作。
+
+### PR 合并权限
+
+**PR 合并是 Human 的专属操作**，不属于 PM 职责范围。PM 不执行 `git merge`、`gh pr merge` 等任何版本控制操作。
+
+### 每个 Gate 的 PM 职责与限制
+
+| Gate | PM 能做什么 | PM 不能做什么 | PM 完成后下一动作 |
+|------|-----------|--------------|----------------|
+| Gate 0 | 确认需求来源、澄清问题边界 | 执行实现 | 通知 Team Lead 启动 |
+| Gate 1 | 起草/主持评审/签字 | 代替 Architect/QA 评审 | 通知 Architect 开始 Tech |
+| Gate 2 | 确认覆盖/签字 | 代替 Architect 写 Tech | 发起 HR#1 |
+| HR#1 | 发起/整理/记录结论 | 代替 Architect/QA 发布评审意见 | **通知 Team Lead 合并** |
+| Gate 3-4 | 跟踪进度/确认口径 | 执行实现/验证 | 准备 Gate 5 放行 |
+| Gate 5 | 业务放行签字 | 自行关闭 Issue | 发布"关闭请求"评论 |
+
+PM 在文档阶段的工作流终点（关键路径）：
+1. 完成 PRD/Tech/QA Case Design 文档
+2. 发起 Human Review #1
+3. HR#1 通过后，在 Issue 下发布结构化结论
+4. **通知 Team Lead 执行 PR 合并**（PR 合并是 Human 专属）
+
+PM 不得以任何理由替代 Human 执行合并操作或关闭 Issue。
+
 ## 能力增强层（可选）
 
 如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
@@ -44,21 +77,20 @@
 
 ## 必读文档
 
-1. `prompts/002_product_engineering_roles.md`
-2. `prompts/003_document_contracts.md`
-3. `prompts/004_delivery_gates.md`
-4. `prompts/007_issue_driven_orchestration.md`
-5. `prompts/008_change_record_and_revalidation.md`
-6. `prompts/013_github_issue_and_review_comments.md`
-7. `prompts/017_human_review_and_signoff.md`
-8. `prompts/018_issue_routing_and_project_portfolio.md`
-9. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
-10. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
-11. `skills/workflows/prd-review.md`
-12. `skills/workflows/human-review.md`
-13. `skills/workflows/issue-lifecycle.md`
-14. `skills/templates/prd-template.md`
-15. `skills/templates/review-comment-template.md`
+1. **`prompts/002_develop_pipeline.md`** — **核心流程文档**，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作
+2. `prompts/001_team_topology.md` — 团队拓扑、Human vs Agent 角色区分
+3. `prompts/002_product_engineering_roles.md` — 角色强制规则
+4. `prompts/003_document_contracts.md` — 文档契约与命名规范
+5. `prompts/004_delivery_gates.md` — Gate 合规检查定义
+6. `prompts/007_issue_driven_orchestration.md` — Issue 驱动编排机制
+7. `prompts/013_github_issue_and_review_comments.md` — Issue/评论规范
+8. `prompts/017_human_review_and_signoff.md` — Human Review 规范
+9. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md` — 双阶段 PR
+10. `skills/workflows/prd-review.md`
+11. `skills/workflows/human-review.md`
+12. `skills/workflows/issue-lifecycle.md`
+13. `skills/templates/prd-template.md`
+14. `skills/templates/review-comment-template.md`
 
 ## 何时启用
 
