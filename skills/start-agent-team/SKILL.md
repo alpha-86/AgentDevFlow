@@ -35,14 +35,14 @@
 
 2. **若 Team 不存在，使用 TeamCreate 创建**：
    ```json
-   TeamCreate(team_name="{project_id}", description="{项目描述}")
+   TeamCreate(team_name="{project_id}", description="AgentDevFlow 项目团队")
    ```
 
 3. **Team 创建完成后，继续步骤 1**
 
 **禁止行为**：
 - 在 Team 未建立的情况下直接创建多个 Agent
-- 将 `team-lead` 作为需要创建的 Agent（team-lead 是 Human 本身，见 `create-agent.md` 步骤 1.5）
+- 将 `team-lead` 作为需要创建的 Agent（team-lead 是当前 Claude Code 窗口本身，不是需要创建的 Agent）
 - 每个项目只创建一个 Team，禁止重复创建
 
 ### 步骤 1. 建立项目骨架
