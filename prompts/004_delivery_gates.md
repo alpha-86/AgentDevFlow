@@ -83,6 +83,14 @@
 - Team Lead 负责监督 Gate 不被绕过
 - 任一必签角色缺失，当前 Gate 视为未完成
 
+## 强制顺序（不可跳过）
+
+```
+Gate 1 (PRD) → Gate 2 (Tech) → Human Review #1（强制）→ Gate 3 → Gate 4 (Implementation) → Gate 5 → Gate 6
+```
+
+**Human Review #1 是 Gate 2 之后的强制环节，不可跳过。** HR#1 评审 PRD + Tech Spec + Case 设计文档，与交付方式无关。
+
 ## Gate 退回与重进规则
 
 - `Rejected`：必须回到当前 Gate 输入文档修订后再提交
