@@ -1,0 +1,29 @@
+{
+  "team_id": "alpha-86/AgentDevFlow",
+  "description": "AgentDevFlow bootstrap project team for ADF skill development and documentation",
+  "project_id": "alpha-86/AgentDevFlow",
+  "created_at": "2026-04-15",
+  "members": [
+    {
+      "role": "Team Lead",
+      "type": "team-lead",
+      "status": "active",
+      "note": "Human operator (this session)"
+    },
+    {
+      "role": "Product Manager",
+      "type": "product-manager",
+      "status": "pending"
+    },
+    {
+      "role": "架构师",
+      "type": "architect",
+      "status": "pending"
+    },
+    {
+      "role": "质量工程师",
+      "type": "qa-engineer",
+      "status": "pending"
+    }
+  ]
+}
