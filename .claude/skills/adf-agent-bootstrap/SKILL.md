@@ -17,7 +17,7 @@ user-invocable: true
 | 适用场景 | 任意目标项目启动 AgentDevFlow | AgentDevFlow 自身初始化 |
 | 起点 | 目标项目已有骨架 | 项目骨架待建立或待复核 |
 | 重点 | 建立交付目录、Issue、团队 | 建立 AgentDevFlow 自身治理 + 交付机制 |
-| 角色来源 | `.claude/skills/adf-agents/` | `.claude/skills/adf-agents/` (自身) |
+| 角色来源 | `skills/shared/{role}.md` | `skills/shared/{role}.md` (自身) |
 
 ## 执行前必读
 

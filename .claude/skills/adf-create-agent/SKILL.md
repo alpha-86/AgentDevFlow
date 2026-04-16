@@ -22,15 +22,15 @@ user-invocable: true
 
 ## Agent 初始化速查表
 
-| 序号 | Agent 名称 | 角色类型 | 角色文件路径 | Playbook 文件路径 | 状态 |
-|------|-----------|---------|-------------|------------------|------|
-| 1 | Team Lead | team-lead | .claude/skills/adf-agents/team-lead.md | .claude/skills/adf-agents/team-lead.playbook.md | **不创建**（Human 本身）|
-| 2 | Product Manager | product-manager | .claude/skills/adf-agents/product-manager.md | .claude/skills/adf-agents/product-manager.playbook.md | 立即创建 |
-| 3 | 架构师 | architect | .claude/skills/adf-agents/architect.md | .claude/skills/adf-agents/architect.playbook.md | 立即创建 |
-| 4 | 质量工程师 | qa-engineer | .claude/skills/adf-agents/qa-engineer.md | .claude/skills/adf-agents/qa-engineer.playbook.md | 立即创建 |
-| 5 | 工程师 | engineer | .claude/skills/adf-agents/engineer.md | .claude/skills/adf-agents/engineer.playbook.md | 立即创建 |
-| 6 | 平台与发布负责人 | platform-sre | .claude/skills/adf-agents/platform-sre.md | .claude/skills/adf-agents/platform-sre.playbook.md | 立即创建 |
-| 7 | PMO | pmo | .claude/skills/adf-agents/pmo.md | .claude/skills/adf-agents/pmo.playbook.md | 按需创建 |
+| 序号 | Agent 名称 | 角色类型 | 角色 Skill | 状态 |
+|------|-----------|---------|------------|------|
+| 1 | Team Lead | team-lead | `adf-team-lead` | **不创建**（Human 本身）|
+| 2 | Product Manager | product-manager | `adf-product-manager` | 立即创建 |
+| 3 | 架构师 | architect | `adf-architect` | 立即创建 |
+| 4 | 质量工程师 | qa-engineer | `adf-qa-engineer` | 立即创建 |
+| 5 | 工程师 | engineer | `adf-engineer` | 立即创建 |
+| 6 | 平台与发布负责人 | platform-sre | `adf-platform-sre` | 立即创建 |
+| 7 | PMO | pmo | `adf-pmo` | 按需创建 |
 
 **状态说明**：
 - **不创建**：Team Lead 是 Human 本身，不需要创建 Agent 实例
@@ -44,8 +44,7 @@ user-invocable: true
 1. `prompts/006_agent_creation_contract.md`
 2. `skills/shared/skill-protocol.md`
 3. `skills/shared/event-bus.md`
-4. 对应角色文件
-5. 对应角色 playbook
+4. 对应角色 Skill（见上方速查表）
 
 ## 创建步骤
 
@@ -58,12 +57,16 @@ user-invocable: true
 
 ### 步骤 1. 解析角色类型
 
-根据输入角色映射到：
+每个角色现在是对应的独立 Skill：
 
-- `.claude/skills/adf-agents/{role}.md`
-- `.claude/skills/adf-agents/{role}.playbook.md`
-
-（注意：`architect` 已有独立文件，无需映射。）
+| 角色类型 | Skill 路径 |
+|---------|-----------|
+| `product-manager` | `.claude/skills/adf-product-manager/SKILL.md` |
+| `architect` | `.claude/skills/adf-architect/SKILL.md` |
+| `qa-engineer` | `.claude/skills/adf-qa-engineer/SKILL.md` |
+| `engineer` | `.claude/skills/adf-engineer/SKILL.md` |
+| `platform-sre` | `.claude/skills/adf-platform-sre/SKILL.md` |
+| `pmo` | `.claude/skills/adf-pmo/SKILL.md` |
 
 ### 步骤 1.5. team-lead 类型特殊处理
 
