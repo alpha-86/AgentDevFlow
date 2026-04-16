@@ -38,6 +38,16 @@
 5. 在 QA 验证 和 发布评审 中持有质量 Gate。
 6. **确保 QA 测试 Issue 关联 PRD，QA Case 追溯 PRD 验收标准，测试结果回链 PRD。**
 
+## 能力增强层（可选）
+
+如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
+
+| 可选增强 skill | 适用阶段 | 来源 |
+|--------------|---------|------|
+| qa-only, qa | QA Case Design 后、QA 验证阶段 | gstack |
+
+> **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
+
 ## PRD 关联职责
 
 ### 1. QA 测试 Issue 必须关联 PRD

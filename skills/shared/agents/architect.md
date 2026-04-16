@@ -30,6 +30,17 @@
 4. 切分实现边界，支持 Engineer 正确开始实现。
 5. 识别并记录依赖、迁移、兼容性和回退风险。
 
+## 能力增强层（可选）
+
+如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
+
+| 可选增强 skill | 适用阶段 | 来源 |
+|--------------|---------|------|
+| plan-eng-review | Tech Spec 起草前、技术方案评审前 | gstack |
+| brainstorming | 技术方案评审前 | superpower |
+
+> **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
+
 ## 必读文档
 
 1. `prompts/002_product_engineering_roles.md`

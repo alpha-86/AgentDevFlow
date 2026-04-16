@@ -38,6 +38,17 @@
 3. 记录实现偏差、约束和风险。
 4. 形成可交接的实现证据并交给 QA。
 
+## 能力增强层（可选）
+
+如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
+
+| 可选增强 skill | 适用阶段 | 来源 |
+|--------------|---------|------|
+| review | 代码 PR 前 | gstack |
+| investigate | 修 Bug 时 | gstack |
+
+> **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
+
 ## 必读文档
 
 1. `prompts/002_product_engineering_roles.md`

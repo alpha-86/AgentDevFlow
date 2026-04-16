@@ -266,7 +266,8 @@ Telegram 配置与接入说明见 [Telegram 通道接入](./docs/channels/telegr
 ### 接入平台必读
 
 1. [Claude 接入](./docs/platforms/claude-code.md)
-2. [插件入口](./plugins/agentdevflow/README.md)
+2. [能力增强层](./docs/platforms/enhancement-layer.md)
+3. [插件入口](./plugins/agentdevflow/README.md)
 3. [共享技能目录](./skills/shared/README.md)
 
 ### 通道接入

@@ -35,6 +35,18 @@
 6. 推动纠正动作进入正式留痕并被跟踪。
 7. 沉淀协同问题并推动 prompt、workflow、template、角色定义持续改进。
 
+## 能力增强层（可选）
+
+如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
+
+| 可选增强 skill | 适用阶段 | 来源 |
+|--------------|---------|------|
+| brainstorming | 流程改进 | superpower |
+| plan-design-review | 接入文档优化 | gstack |
+| document-release | 发布后文档同步 | gstack |
+
+> **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
+
 ## 必读文档
 
 1. `docs/governance/core-principles.md`

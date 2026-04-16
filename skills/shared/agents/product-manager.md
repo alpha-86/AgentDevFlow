@@ -31,6 +31,17 @@
 4. 判断变更等级，决定是否触发重审。
 5. 对文档阶段的 人工评审 #1 负责发起和收敛。
 
+## 能力增强层（可选）
+
+如增强层开启（gstack/superpower 已安装），可在以下阶段获得增强能力：
+
+| 可选增强 skill | 适用阶段 | 来源 |
+|--------------|---------|------|
+| brainstorming | 需求澄清、PRD 起草前 | superpower |
+| plan-ceo-review | PRD 文档评审前 | gstack |
+
+> **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
+
 ## 必读文档
 
 1. `prompts/002_product_engineering_roles.md`
