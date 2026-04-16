@@ -28,21 +28,26 @@ user-invocable: true
 - 确认 团队负责人
 - 确认本轮需要启用的角色
 
-### 步骤 0.5. Team 创建检查
+### 步骤 0.5. Team 创建检查与实际存活验证
 
 > **注**：此步骤确保项目级别的 Agent Team 已建立。TeamCreate 是 Claude Code 内置 tooling。若使用 `create-agent` skill 创建子 Agent（角色类型非 `team-lead`），该 skill 会处理 Agent 创建；但 Team 本身需提前确认存在。
 
 **执行步骤**：
 
-1. 检查当前项目是否已有 Team 定义：
-   - 查找 `.claude/teams/{team_name}/config.json` 或 equivalent Team 配置文件
-   - 若 Team 已存在，跳过此步
-2. 若 Team 不存在，使用平台相关 TeamCreate tooling 建立项目级 Team：
-   - 示意调用格式（按实际平台语法执行）：`TeamCreate(team_name="{project_id}", description="{项目描述}")`
-   - 具体调用格式需参照所在平台的 TeamCreate tooling 文档
-3. Team 创建完成后，继续步骤 1
+1. **检查全局 Team 注册表**：
+   - 执行 `ls ~/.claude/teams/` 检查是否存在
+   - 若存在，继续步骤 2 验证可用性
+   - 若不存在，跳到步骤 3 创建 Team
 
-**本仓库约定 fallback**：若平台 TeamCreate tooling 不可用，可改为创建本地配置文件 `.claude/teams/{project_id}/config.json`（team_id、description、created_at 字段）。此为 AgentDevFlow 仓库约定，非跨平台标准。
+2. **验证 Team 实际可用性**（关键改进）：
+   - 尝试读取 Team 的 task list：`TaskList` 工具调用
+   - 若返回 "No tasks found" 或 Team 不可访问，说明 Team 存在但 Agent 实例已丢失
+   - **若 Team config 存在但 TaskList 不可用，必须重新创建 Team**
+   - 验证通过后继续步骤 1
+
+3. **创建 Team（若不存在或不可用）**：
+   - 使用平台相关 TeamCreate tooling 建立项目级 Team
+   - Team 创建完成后，继续步骤 1
 
 **⚠️ 路径陷阱：Claude Code Team 系统 vs 项目本地配置是两套路径系统**：
 - TeamCreate tooling 读取全局注册表：`~/.claude/teams/{team_name}/config.json`（home 目录，不是项目目录）
@@ -73,7 +78,7 @@ user-invocable: true
 - 建立项目状态板
 - 建立 artifact linkage 主记录
 
-### 步骤 3. 加载团队角色（显式初始化）
+### 步骤 3. 加载团队角色（显式初始化 + 实际存活检测）
 
 推荐顺序：
 
@@ -85,14 +90,81 @@ user-invocable: true
 6. 平台与发布负责人
 7. PMO
 
+**⚠️ 关键改进：禁止仅依赖配置文件判断 Agent 存活状态**
+
+配置文件（`.claude/logs/agent-creation.log`、`.claude/teams/{team}/config.json`）仅记录历史创建意图，不代表 Agent 当前实际可用。
+
+**Agent 实际存活检测流程**（每个角色检查时必须执行）：
+
+1. **尝试与 Agent 通信**：向待检测 Agent 发送测试消息 `{"type":"ping"}`
+2. **验证响应**：若 Agent 响应正常，确认存活；若超时或无响应，标记为"已丢失"
+3. **记录实际状态**：将检测结果写入 `.claude/logs/agent-liveness.log`
+
+```
+# agent-liveness.log 格式示例
+## 2026-04-16 Agent Liveness Check
+
+| Agent | 配置状态 | 实际状态 | 备注 |
+|-------|---------|---------|------|
+| product-manager | 已创建 | ❌ 丢失 | TaskList 无响应 |
+| architect | 已创建 | ✅ 存活 | ping 响应正常 |
+...
+```
+
 **Agent 初始化标准步骤**（每个 Agent 创建时必须执行）：
 
 1. **读取 Skill 文件**：读取 `.claude/skills/adf-agents/{role}.md`
 2. **提取 Critical Rules**：从 Skill 文件中提取 Critical Rules
 3. **构建完整 Agent prompt**：将角色定义、Critical Rules、必读文档、初始化动作组装为完整 prompt
 4. **创建 Agent**：调用 create-agent skill 创建角色实例（team-lead 类型除外）
-5. **记录创建日志**：写入创建日志到 `.claude/logs/agent-creation.log`
-6. **进入下一个 Agent**：立即执行下一个 Agent 的初始化步骤
+5. **验证实际存活**：创建后立即发送 ping 验证，确保持续运行
+6. **记录创建日志**：写入创建日志到 `.claude/logs/agent-creation.log`
+7. **进入下一个 Agent**：立即执行下一个 Agent 的初始化步骤
+
+**Agent 存活状态判定规则**：
+
+| 状态 | 判定条件 | 处理方式 |
+|------|---------|---------|
+| ✅ 存活 | ping 响应正常 + TaskList 可查 | 无需操作 |
+| ❌ 已丢失 | ping 超时 + TaskList 不可见 | 重新创建 Agent |
+| ⚠️ 状态不明 | 无法确定 | 视为已丢失，必须重新创建 |
+
+**配置与实际状态不一致的处理**：
+
+- 若配置文件显示"已创建"但实际检测"已丢失"：**以实际检测为准**，重新创建 Agent
+- 若配置文件显示"未创建"但实际存在同名 Agent：记录异常，评估是否复用或重建
+- **禁止仅凭配置文件声明角色"已启用"，必须通过实际检测验证**
+
+**步骤 3.1. Agent 存活状态预检（在创建任何 Agent 前执行）**
+
+在创建新 Agent 前，必须先执行预检，确定当前实际状态：
+
+1. **读取本地配置**：
+   - 读取 `.claude/logs/agent-creation.log` 获取历史创建记录
+   - 读取 `docs/todo/TODO_REGISTRY.md` 获取角色状态
+
+2. **执行实际存活检测**：
+   - 向每个历史已创建的 Agent 发送 ping 消息
+   - 记录每个 Agent 的实际响应状态
+
+3. **生成预检报告**：
+   ```
+   ## Agent 存活预检报告 - {timestamp}
+   
+   | 角色 | 配置状态 | 实际 ping | TaskList可见 | 最终判定 |
+   |------|---------|---------|-------------|---------|
+   | Product Manager | 已创建 | ❌ 超时 | ❌ | 需要重建 |
+   | 架构师 | 已创建 | ✅ 响应 | ✅ | 正常 |
+   | ... | ... | ... | ... | ... |
+   
+   需要创建的 Agent: [列表]
+   需要重建的 Agent: [列表]
+   ```
+
+4. **基于预检结果决定后续动作**：
+   - 若所有 Agent 都存活：跳过步骤 3，继续步骤 3.5
+   - 若部分 Agent 丢失：重建丢失的 Agent
+   - 若所有 Agent 都丢失：重新执行完整的步骤 3
 
 每个项目必须全量启用所有角色，不得以"临时承担"代替正式 Agent 实例化。
 
