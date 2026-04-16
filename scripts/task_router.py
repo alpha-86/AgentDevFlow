@@ -25,11 +25,14 @@ LOG_FILE = RESULTS_DIR / "routing.log"
 # ===== 角色路由表 =====
 
 ROLE_MAP = {
-    "prd": "Product Manager",
-    "tech": "架构师",
-    "bug": "Engineer",
-    "qa": "QA Engineer",
-    "research": "研究支持",
+    "type/prd": "Product Manager",
+    "type/tech": "架构师",
+    "type/bug": "Engineer",
+    "type/qa": "QA Engineer",
+    "type/research": "研究支持",
+    "type/release": "Platform/SRE",
+    "type/anomaly": "Team Lead",
+    "type/process": "PMO",
     "telegram": "Team Lead",  # Telegram 用户消息 -> Team Lead 处理
 }
 
