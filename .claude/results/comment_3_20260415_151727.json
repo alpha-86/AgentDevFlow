@@ -5,5 +5,6 @@
   "agent": "github-actions[sync]",
   "source_comment_url": "",
   "created_at": "2026-04-15T15:17:27Z",
-  "status": "pending"
+  "status": "sent",
+  "http_code": 201
 }
