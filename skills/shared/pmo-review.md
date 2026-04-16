@@ -113,6 +113,16 @@ docs/pmo/issues/
 - 如果需要修改文件 → 记录到变更清单
 - 如果只是确认 → 更新该 issue 状态为 Closed/Mitigated
 
+#### PMO 状态机
+
+| 状态 | 说明 | 退出条件 |
+|------|------|---------|
+| **Review 进行中** | PMO 正在分析问题、与用户对齐 | 用户对齐后进入下一状态 |
+| **追踪中** | Resolution 已归档，GitHub Issue 已创建，等待执行 | 执行完成 + Human Review 通过 |
+| **验收待确认** | 机制改进已合并，等待 Human 验收 | Human 确认验收后关闭 PMO Issue |
+
+**PMO 退出规则**：Resolution 归档 + GitHub Issue 评论分配完动作后，PMO 立即退出追踪状态。后续由 Human（Team Lead）负责验收，PMO 收到通知后再确认关闭。
+
 ---
 
 ### Step 4: 创建 Resolution
@@ -129,17 +139,25 @@ Resolution 包含：
 
 ### Step 5: 发起 GitHub Issue
 
+**一个 PMO Issue = 一个 GitHub Issue。**
+
 Resolution 创建后，发起 GitHub Issue 追踪修复：
 
 1. 在 Resolution 中记录 GitHub Issue URL
 2. GitHub Issue 作为项目级追踪，关联相关 PR
-3. 责任人通过 GitHub Issue 汇报进度
+3. **在同一个 Issue 下评论分配所有动作，不创建多个 Issue**
+4. 执行人在该 Issue 下回复认领，提交 PR（Refs #N），不自动关闭
+5. Human Review 通过 PR 后，Human 验收，Issue 才关闭
+
+**禁止**：为每个子动作创建独立的 GitHub Issue。
 
 ### Step 6: 跟踪与验收
 
-- 跟踪 GitHub Issue 进度
+- 跟踪 GitHub Issue 进度（通过 Issue 评论）
 - GitHub Issue 关闭后，更新 Resolution 中的验收记录
 - PMO issue 状态更新为 Closed
+
+**GitHub Issue 操作规范**：必须使用 `python scripts/github_issue_sync.py`，禁止直接使用 `gh issue create/close` 等 raw gh 命令。详见 CLAUDE.md。
 
 ### Step 7: 更新索引
 
