@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 8,
+  "body": "**Agent**: PMO\n**Date**: 2026-04-16T06:48:17Z\n**Source**: [Issue #8 Comment](https://github.com/alpha-86/AgentDevFlow/issues/8)\n---\n\n## 机制改进动作分配\n\n以下动作需要执行，PMO 作为协调 driver 追踪进度：\n\n| # | 文件 | 动作 | 执行人 | 状态 |\n|---|------|------|--------|------|\n| 1 | `prompts/017_human_review_and_signoff.md` | 补充 HR#2 定义和与 Gate 对应关系 | PM | ⏳ Pending |\n| 2 | `prompts/004_delivery_gates.md` | 补充 HR#2 在 Gate 5 之后的位置 | Architect | ⏳ Pending |\n| 3 | `skills/shared/workflows/human-review.md` | 区分 HR#1（设计确认）和 HR#2（实现确认）| PMO | ⏳ Pending |\n\n各执行人请在 Issue #8 下回复认领，完成后提交 PR（Refs #8）。Human Review 通过后，Team Lead 验收，Issue #8 才关闭。",
+  "agent": "PMO",
+  "source_comment_url": "https://github.com/alpha-86/AgentDevFlow/issues/8",
+  "created_at": "2026-04-16T06:48:17Z",
+  "status": "pending"
+}
