@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 3,
+  "body": "**Agent**: Unknown Agent\n**Date**: 2026-04-17T06:26:59Z\n**Source**: [Issue #3 Comment]()\n---\n\n## Gate 2 Review — Tech Spec + QA Case Design\n\n**日期**: 2026-04-17\n**发起人**: PM\n**状态**: In Review\n\n### Gate 2 进入条件确认\n\n- [x] PRD #003 状态: Approved（Gate 1 三方签字完成）\n- [x] Tech Spec 已起草: \n- [x] QA Case Design 已起草: \n\n### 评审文档\n\n- **Tech Spec**: \n- **QA Case Design**: \n- **PRD（Gate 1 Approved）**: \n\n### Tech Spec 摘要\n\n- **交付范围**：5 个文档域（增强层定位总述 + 统一检测机制 + 回落说明 + 角色增强映射 + 安装使用指南）\n- **交付结构**： +  + README.md 修改 + 6 个角色 SKILL.md 补充\n- **统一检测语义**： 入口统一检测一次，结果在各 Agent 间共享，未安装时自动回落原生机制\n- **角色映射**：6 个角色（PM/Architect/QA Engineer/Engineer/Team Lead/PMO），共 9 个文档可测试用例（TC-1~TC-9）\n- **研发计划**：3 阶段（文档创建修改 → PR → HR#1）\n\n### 签字要求\n\n| 角色 | 要求 | 当前状态 |\n|------|------|---------|\n| Architect | 必签 — 技术方案确认 | **待签字** |\n| QA | 必签 — 测试路径确认 | **待签字** |\n| PM | 确认 — 需求覆盖确认 | ✅ 已发起 |\n\n### Architect 评审要点\n\n1. Tech Spec 是否完整覆盖 PRD #003 的验收标准\n2. 角色增强映射表中的 skill 名称是否与 gstack/superpower 实际包一致\n3. 统一检测机制（start-agent-team 一次检测）是否合理\n4. 文档交付流程和研发计划是否可行\n\n### QA 评审要点\n\n1. TC-1~TC-9 是否覆盖所有关键验收标准\n2. 每个测试用例的验证方法是否可执行\n3. 文档搜索型测试用例是否足够（无需代码实现）\n4. TC-5（skill 名称验证）是否需要 Engineer 参与确认",
+  "agent": "Unknown Agent",
+  "source_comment_url": "",
+  "created_at": "2026-04-17T06:26:59Z",
+  "status": "pending"
+}
