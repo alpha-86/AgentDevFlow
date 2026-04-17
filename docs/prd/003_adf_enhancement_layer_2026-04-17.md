@@ -124,6 +124,15 @@ AgentDevFlow 与 gstack、superpower 三个项目解决的问题层级不同：
 | 2026-04-17 | Architect | **Approved** ✅ | PRD v4 符合新约束：无技术选型/代码/接口/架构；Section 4 范围重构合理 | — |
 | 2026-04-17 | QA | **Approved** ✅ | Section 7 验收标准覆盖完整，可测试性明确 | — |
 
+### Gate 2 评审（跨文档追溯）
+
+| 文档 | Tech Spec #003 v4 | QA Case #003 |
+|------|-------------------|---------------|
+| 状态 | Approved ✅ | Approved ✅ |
+| Engineer 签字 | Approved | — |
+| QA 签字 | Approved | Approved |
+| PM 签字 | PM 确认 Tech Spec 覆盖 PRD v4 ✅ | PM 确认 QA Case 覆盖 PRD v4 ✅ |
+
 ---
 
 ## 11. 评审记录

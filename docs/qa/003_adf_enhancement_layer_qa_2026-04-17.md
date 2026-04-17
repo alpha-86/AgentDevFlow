@@ -1,7 +1,7 @@
 ---
 name: AgentDevFlow 增强层接入 — QA Case Design
 description: 定义增强层文档交付的 QA 测试用例（文档搜索型验收测试）
-status: In Review
+status: Approved
 owner: QA Engineer
 date: 2026-04-17
 update_date: 2026-04-17
@@ -151,6 +151,6 @@ tech: docs/tech/003_adf_enhancement_layer_tech_2026-04-17.md
 
 | 日期 | 评审人 | 结论 | 关键意见 | 待办 |
 |---|---|---|---|---|
-| 2026-04-17 | PM | 发起评审 | Tech + QA Case 均已起草，追溯关系完整 | 等待 Architect + QA 签字 |
-| — | Architect | 待签字 | — | — |
-| — | QA | 待签字 | — | — |
+| 2026-04-17 | PM | 发起评审 | Tech + QA Case 均已起草，追溯关系完整 | 等待 Engineer + QA 签字 |
+| 2026-04-17 | Engineer | **Approved** ✅ | skill 名称映射准确，检测机制语义可实现，文档交付流程可行 | — |
+| 2026-04-17 | QA | **Approved** ✅ | TC-1~TC-9 完整覆盖 PRD v4 Section 7，验证方法可执行，无覆盖缺口 | — |
