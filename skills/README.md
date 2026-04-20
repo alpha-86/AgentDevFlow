@@ -51,6 +51,51 @@
 - 角色文件必须明确：必读文档、初始化动作、上下文恢复、Issue/Gate 责任、禁止行为、输出格式。
 - 主持会议或执行评审前，必须先读取对应 工作流。
 - 团队启动、Agent 创建、事件分发都必须优先复用共享入口，而不是在平台层各写一套。
+- **强制 Comment 规则**：每个角色完成工作后必须在对应 Issue 下 Comment。**未 Comment 视为未完成**，不得进入下一阶段。
+
+## 流程入口规则
+
+完整流程见 `prompts/002_develop_pipeline.md`。以下是与 `skills/` 资产强关联的流程节点：
+
+### 流程启动顺序
+
+```
+Agent Team 启动
+        │
+        ▼
+PM 从已扫描的 open Issues 中领取 Issue（必须 Comment）
+        │
+        ▼
+PM 与 Human 讨论问题，每次讨论后必须 Comment 到 Issue
+        │
+        ▼
+Gate 1: PRD Review → Gate 2: Tech Review → QA Case Design
+        │
+        ▼
+文档 PR（doc-{issue}）— Human Review #1：文档 PR 合并 = 设计确认
+        │
+        ▼
+代码 PR（feature-{issue}）— Human Review #2：代码 PR 合并 = 实现确认
+```
+
+### 双 PR 分支策略
+
+| 阶段 | 分支名 | 内容 | Human Review |
+|------|--------|------|--------------|
+| 设计确认 | `doc-{issue_number}-{简短描述}` | PRD + Tech + QA Case Design | **HR#1** |
+| 实现确认 | `feature-{issue_number}-{简短描述}` | 代码 + 测试报告 | **HR#2** |
+
+分支创建条件：
+- 文档 PR：PRD `Approved` + Tech Spec `Approved` + QA Case Design `Approved` + Gate 2 两签通过
+- 代码 PR：文档 PR 已合并 + 代码开发完成 + QA 测试报告完成 + 三方签字验收完成
+
+### PM 领取 Issue + Comment 规则
+
+| 节点 | Comment 内容 |
+|------|-------------|
+| Issue 领取 | "Issue #N 已领取，开始分析需求" |
+| 问题讨论完成 | 讨论结论（回归问题本质） |
+| PRD 产出 | "PRD 已完成: [链接] - 概述..." |
 
 ## 当前判定
 
