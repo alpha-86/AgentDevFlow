@@ -11,7 +11,7 @@
 | # | 文档 | 用途 | 状态 |
 |---|------|------|------|
 | 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
-| 2 | `skills/adf-team-setup.md` | 团队启动规范 | ⬜ 未读 |
+| 2 | `.claude/skills/adf-.claude/skills/adf-team-setup/SKILL.md` | 团队启动规范 | ⬜ 未读 |
 | 3 | `skills/skill-protocol.md` | 共享技能协议 | ⬜ 未读 |
 | 4 | `skills/event-bus.md` | 事件总线规范 | ⬜ 未读 |
 | 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 | ⬜ 未读 |
