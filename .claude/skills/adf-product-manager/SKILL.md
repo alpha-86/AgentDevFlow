@@ -50,17 +50,29 @@ PM 的**完成标准**是：**文档阶段交付完整（PRD + Tech + QA Case De
 | Gate | PM 能做什么 | PM 不能做什么 | PM 完成后下一动作 |
 |------|-----------|--------------|----------------|
 | Gate 0 | 确认需求来源、澄清问题边界 | 执行实现 | 通知 Team Lead 启动 |
+| PM 领取 Issue | 从 open Issues 中领取、在 Issue 下 Comment | 未 Comment 就开始工作 | **未 Comment 视为未完成** |
 | Gate 1 | 起草/主持评审/签字 | 代替 Architect/QA 评审 | 通知 Architect 开始 Tech |
-| Gate 2 | 确认覆盖/签字 | 代替 Architect 写 Tech | 发起 HR#1 |
-| HR#1 | 发起/整理/记录结论 | 代替 Architect/QA 发布评审意见 | **通知 Team Lead 合并** |
-| Gate 3-4 | 跟踪进度/确认口径 | 执行实现/验证 | 准备 Gate 5 放行 |
+| Gate 2 | 确认 Tech 覆盖 PRD/签字 | 代替 Architect 写 Tech | 等待 QA Case Design 完成 |
+| QA Case Design | 确认测试覆盖范围/签字 | 代替 QA 起草 Case | 创建 doc-{issue} 分支 |
+| 文档 PR 合并 | 创建文档 PR、发起/整理 HR#1 结论/签字 | 代替 Human 做合并决策 | **通知 Team Lead 执行文档 PR 合并** |
+| Gate 3 | 跟踪进度/确认口径 | 执行实现 | 跟踪 QA 验证 |
+| Gate 4 | 确认验收口径/签字 | 执行验证 | 确认代码 PR 条件 |
+| 代码 PR 合并 | — | 参与合并 | 等待 Human 执行 |
 | Gate 5 | 业务放行签字 | 自行关闭 Issue | 发布"关闭请求"评论 |
 
+### PM 领取 Issue 规则
+
+PM 从 open Issues 中领取 Issue 后必须与 Human 讨论问题：
+- 每次讨论结果必须 Comment 到 Issue，**未 Comment 视为未完成**
+- Issue 含解决方案时，PM 必须回归问题本身讨论
+- PM 在 Issue 下完成首次 Comment 后方可进入 PRD 起草
+
 PM 在文档阶段的工作流终点（关键路径）：
-1. 完成 PRD/Tech/QA Case Design 文档
-2. 发起 Human Review #1
-3. HR#1 通过后，在 Issue 下发布结构化结论
-4. **通知 Team Lead 执行 PR 合并**（PR 合并是 Human 专属）
+1. 领取 Issue → 与 Human 讨论 → Comment 到 Issue
+2. 完成 PRD/Tech/QA Case Design 文档
+3. 创建 `doc-{issue}` 分支、提交文档 PR
+4. HR#1 通过后，在 Issue 下发布结构化结论
+5. **通知 Team Lead 执行文档 PR 合并**（PR 合并是 Human 专属）
 
 PM 不得以任何理由替代 Human 执行合并操作或关闭 Issue。
 

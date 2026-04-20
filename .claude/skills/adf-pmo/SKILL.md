@@ -54,14 +54,53 @@ PMO 的工作终点是问题被正式跟踪，不是个体问题的解决。
 |------|-----------|--------------|----------------|
 | Gate 0 | 检查启动状态合规、Issue 命名规范、角色分配完整性 | 代替 Team Lead 主持启动 | 记录启动合规状态 |
 | Gate 1 | 检查 PRD 评审证据、签字完整性 | 代替 Architect/QA 评审 | 提示缺失签字 |
-| Gate 2 | 检查 Tech Review + QA Case Design 签字完整性 | 代替 Architect/QA 签字 | 提示缺失签字 |
-| HR#1 | 检查 HR#1 结论是否已落地 | 代替 Human 做合并决策 | 通知 Team Lead HR#1 状态 |
-| Gate 3 | 检查实现是否遵循 Tech、HR#1 结论是否被遵守 | 代替 Engineer 实现 | 记录合规偏离 |
-| Gate 4 | 检查 QA 结论与测试报告一致性 | 代替 QA 做质量结论 | 确认 Gate 5 条件 |
+| Gate 2 | 检查 Tech Review 签字完整性（QA + Engineer + PM）| 代替 Architect/QA 签字 | 提示缺失签字 |
+| QA Case Design | 检查 Case Design 签字完整性（PM + Architect + Engineer）| 代替 Architect/QA 签字 | 提示缺失签字 |
+| 文档 PR 合并 | 检查文档 PR 已合并、设计确认完毕 | 代替 Human 做合并决策 | 通知 Team Lead HR#1 状态 |
+| Gate 3 | 检查实现是否遵循 Tech、文档 PR 已合并 | 代替 Engineer 实现 | 记录合规偏离 |
+| Gate 4 | 检查 QA 结论与测试报告一致性 | 代替 QA 做质量结论 | 确认代码 PR 条件 |
+| 代码 PR 合并 | 检查代码 PR 已合并、实现确认完毕 | 代替 Human 做合并决策 | 记录实现确认状态 |
 | Gate 5 | 检查 Release 记录完整性、平台状态一致性 | 代替 Human 做发布决策 | 记录发布合规状态 |
 | PR 节点 | 触发主动合规检查、输出 pass/warning/fail 结论 | 阻塞正常流程（主要职责是记录和升级） | 推动纠正动作 |
 
-PMO 的工作流关键路径：
+### PM 领取 Issue + 讨论 Comment 规则
+
+PM 领取 Issue 后必须与 Human 讨论问题：
+- 每次讨论结果必须 Comment 到 Issue，**未 Comment 视为未完成**
+- Issue 含解决方案时，PM 必须回归问题本身讨论
+- PM 在 Issue 下完成首次 Comment 后方可进入 PRD 起草
+
+PMO 在合规检查中必须验证此规则：若 PM 未在 Issue 下 Comment，不得视为已领取或已讨论。
+
+### Issue Comment 强制节点（V2.2.4）
+
+PMO 在每次检查中必须验证以下 13 个节点的 Comment 是否落地：
+
+| 节点 | 执行者 | Comment 内容 |
+|------|--------|-------------|
+| Issue 领取 | PM | 说明领取，开始分析 |
+| 问题讨论完成 | PM | 讨论结论（回归问题本质）|
+| PRD 产出 | PM | PRD 链接 + 概述 |
+| PRD 评审完成 | PM | 评审结论 + 签署人 |
+| Tech 产出 | Architect | Tech 链接 + 概述 |
+| Tech Review 完成 | Architect | 评审结论 + 签署人 |
+| QA Case Design 完成 | QA | Case 链接 + 概述 |
+| 文档 PR 创建 | PM | PR 链接 + 文档清单 |
+| 文档 PR 合并 | PM | 合并确认 |
+| 开发完成 | Engineer | 开发报告 |
+| 测试完成 | QA | 测试报告链接 |
+| 代码 PR 创建 | Engineer | PR 链接 + 测试报告 |
+| 代码 PR 合并 | Engineer | 合并确认 |
+
+**强制规则**：未 Comment 视为未完成。PMO 发现节点 Comment 缺失时，必须记录为 fail 并提示纠正。
+
+### 双 PR 分支策略
+
+- 文档 PR：`doc-{issue_number}-{简短描述}` — 包含 PRD + Tech + QA Case Design，HR#1 通过后合并
+- 代码 PR：`feature-{issue_number}-{简短描述}` — 包含代码 + 测试报告，HR#2 通过后合并
+- 代码 PR 创建前必须确认文档 PR 已合并
+
+PMO 工作流关键路径：
 1. PR 创建触发合规检查
 2. 输出 pass/warning/fail 结论并留痕
 3. fail 级问题通知 Team Lead

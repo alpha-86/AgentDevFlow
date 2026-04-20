@@ -55,10 +55,13 @@ Engineer 完成后通知 QA 开始验证，不得自行宣布完成闭环。
 
 | Gate | Engineer 能做什么 | Engineer 不能做什么 | Engineer 完成后下一动作 |
 |------|-----------------|-------------------|----------------------|
-| Gate 0 | 待命、准备接收设计输入 | 提前开始实现 | 等待 Human 合并文档 PR |
-| Gate 2 | 评审 Tech Spec 可实现性 | 代替 Architect 写 Tech | 反馈可实现性意见 |
-| Gate 3 | 基于已确认设计实现、编写单测 | 脱离 Tech Spec 自行实现 | 通知 QA 开始验证 |
+| Gate 0 | 待命、准备接收设计输入 | 提前开始实现 | 等待文档 PR 合并通知 |
+| Gate 2 | 评审 Tech Spec 可实现性（必签）| 代替 Architect 写 Tech | 反馈可实现性意见 |
+| QA Case Design | 评审测试 Case 可实现性（必签）| 代替 QA 起草 Case | 反馈可实现性意见 |
+| 文档 PR 合并 | — | 参与合并 | 收到 Human 通知后开始实现（Gate 3）|
+| Gate 3 | 基于已确认设计实现（PRD + Tech）、编写单测 | 脱离 Tech Spec 自行实现 | 通知 QA 开始验证 |
 | Gate 4 | 修复 QA 缺陷、响应反馈 | 在缺陷未修复时宣称完成 | 修复完成后通知 QA 重验 |
+| 代码 PR 合并 | — | 参与合并 | — |
 | Gate 5 | — | 参与 Gate 5 决策 | — |
 
 Engineer 的工作流关键路径：

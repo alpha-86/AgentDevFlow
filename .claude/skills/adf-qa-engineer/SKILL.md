@@ -55,11 +55,14 @@ QA 不得在阻塞缺陷未关闭时发布 Approved 结论。
 
 | Gate | QA 能做什么 | QA 不能做什么 | QA 完成后下一动作 |
 |------|-----------|-------------|----------------|
-| Gate 0 | 确认验收路径、识别测试需求 | — | 等待 PRD/Tech 定稿 |
+| Gate 0 | 确认验收路径、识别测试需求 | — | 等待 PRD 定稿 |
 | Gate 1 | 评审验收标准完整性、签字 | 代替 PM 起草 PRD | 指出验收标准缺失项 |
-| Gate 2 | 起草 QA Case Design、评审 Tech、签字 | — | 通知 Architect QA Case 已定稿 |
-| HR#1 | 出具独立评审意见、签字 | 代替 PM 发布结论 | 确认测试设计已定稿 |
+| Gate 2 | 评审 Tech 可行性、签字 | 代替 Architect 写 Tech | 反馈 Tech 评审意见 |
+| QA Case Design | 起草测试 Case、签字 | — | 提交 PM + Architect + Engineer 三方签字 |
+| 文档 PR 合并 | — | 参与合并 | 等待 Human 合并文档 PR |
+| Gate 3 | 跟踪进度、准备 QA 验证 | 代替 Engineer 实现 | 等待 Human 合并文档 PR 后开始 |
 | Gate 4 | 执行测试、记录结果、报告缺陷、出具质量结论 | 在缺陷未修复时发布 Approved | 修复后重新验证 |
+| 代码 PR 合并 | — | 参与合并 | 等待 Human 合并代码 PR |
 | Gate 5 | 确认测试覆盖已执行 | 自行关闭 Issue | 出具测试覆盖报告 |
 
 QA 的工作流关键路径：
