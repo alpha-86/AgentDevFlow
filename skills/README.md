@@ -86,16 +86,31 @@ Gate 1: PRD Review → Gate 2: Tech Review → QA Case Design
 | 实现确认 | `feature-{issue_number}-{简短描述}` | 代码 + 测试报告 | **HR#2** |
 
 分支创建条件：
-- 文档 PR：PRD `Approved` + Tech Spec `Approved` + QA Case Design `Approved` + Gate 2 两签通过
+- 文档 PR：PRD `Approved` + Tech Spec `Approved` + QA Case Design `Approved` + Gate 2 三签通过
 - 代码 PR：文档 PR 已合并 + 代码开发完成 + QA 测试报告完成 + 三方签字验收完成
 
 ### PM 领取 Issue + Comment 规则
+
+> 完整 Comment 节点表格见 `prompts/002_develop_pipeline.md`「Issue Comment 强制要求」章节。以下为关键节点：
 
 | 节点 | Comment 内容 |
 |------|-------------|
 | Issue 领取 | "Issue #N 已领取，开始分析需求" |
 | 问题讨论完成 | 讨论结论（回归问题本质） |
 | PRD 产出 | "PRD 已完成: [链接] - 概述..." |
+| PRD 评审完成 | "PRD 评审通过 - PM[✅] Architect[✅] QA[✅]" |
+| Tech 产出 | "Tech 已完成: [链接] - 概述..." |
+| Tech Review 完成 | "Tech Review 通过 - PM[✅] QA[✅] Engineer[✅]" |
+| QA Case Design 完成 | "QA Case Design 完成: [链接]" |
+| 文档 PR 创建 | "文档 PR 已创建: [链接] - PRD/Tech/QA Case" |
+| 文档 PR 合并 | "文档 PR 已合并，设计确认完毕" |
+| 开发完成 | "开发完成 - [组件列表] - 待测试" |
+| 测试完成 | "测试完成 - [报告链接]" |
+| 代码 PR 创建 | "代码 PR 已创建: [链接] - Fixes #N" |
+| 代码 PR 合并 | "代码 PR 已合并 - 等待 Issue 关闭" |
+| Issue 关闭 | "Issue #N 请求关闭 - 完成/重复/无法复现" |
+
+**必须通过 `scripts/github_issue_sync.py` 发布 Comment**，未 Comment 视为未完成，不得进入下一阶段。
 
 ## 当前判定
 
