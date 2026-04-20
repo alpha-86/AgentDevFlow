@@ -11,7 +11,7 @@
 | Agent Team 启动 → 扫描 Issue | Gate 0 | Team Startup |
 | PM 领取 Issue + 讨论 Comment | - | Issue 是强制入口，未 Comment 视为未完成 |
 | PRD Review | Gate 1 | PRD Review（PM + Architect + QA 三方签字）|
-| Tech Review | Gate 2 | Tech Review（QA + Engineer + PM 两签）|
+| Tech Review | Gate 2 | Tech Review（QA + Engineer + PM 三签）|
 | QA Case Design | - | QA Case Design（PM + Architect + Engineer 三签）|
 | 文档 PR 合并（doc-{issue} 分支）| Human Review #1 | HR#1 通过后 Human 合并 = 设计确认 |
 | Engineer 实现（feature-{issue} 分支）| Gate 3 | Implementation |

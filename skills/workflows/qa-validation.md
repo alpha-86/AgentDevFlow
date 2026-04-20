@@ -58,6 +58,10 @@
 
 - QA：必需
 - PM：确认验收范围时必需
+- Architect：技术放行确认（Gate 4 必需）
+- Engineer：实现确认
+
+三方（PM + Architect + QA）签字完成，方可进入 Human Review #2。
 
 ## 人工评审规则
 

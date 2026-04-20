@@ -44,15 +44,24 @@
 - `team-lead/SKILL.md`
 - `agent-bootstrap/SKILL.md`
 - `pmo-review/SKILL.md`
+- `start-agent-team/SKILL.md`
+- `team-setup/SKILL.md`
 
 工作流位于：
 
 - `skills/workflows/issue-lifecycle.md`
 - `skills/workflows/human-review.md`
 - `skills/workflows/project-portfolio-review.md`
+- `skills/workflows/prd-review.md`
+- `skills/workflows/tech-review.md`
+- `skills/workflows/qa-validation.md`
 
 模板位于：
 
+- `skills/templates/prd-template.md`
+- `skills/templates/tech-spec-template.md`
+- `skills/templates/qa-case-template.md`
+- `skills/templates/qa-report-template.md`
 - `skills/templates/audit-report-template.md`
 - `skills/templates/review-comment-template.md`
 
