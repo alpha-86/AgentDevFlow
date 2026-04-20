@@ -2,26 +2,44 @@
 
 ## 目标
 
-定义 AgentDevFlow 的完整开发交付流程，基于 hedge-ai V2.0/V2.2 双 PR 机制，作为所有 Agent 的核心必读流程文档。
+定义 AgentDevFlow 的完整开发交付流程，基于 V2.0/V2.2 双 PR 机制，作为所有 Agent 的核心必读流程文档。
 
 本文档与 `004_delivery_gates.md`（Gate 合规检查定义）、`017_human_review_and_signoff.md`（Human Review 规范）配套使用。
 
-## 流程概览
+## 关键原则（Critical Rules）
+
+- **Issue 是强制入口**：无 Issue 不进入正式交付流程
+- **无 Issue 不进入 PRD**：PM 领取 Issue 后与 Human 讨论（必须 Comment）才能开始 PRD
+- **讨论结果必须 Comment**：每次讨论结束必须将结论 Comment 到 Issue，**未 Comment 视为未完成**
+- **方案不等于有效**：当 Issue 包含解决方案时，PM 必须回归问题本身讨论
+- **PRD 不含技术实现**：PRD 只描述问题/产品设计/能力边界/方案，不含技术实现
+- **无 PRD Review 不进入 Tech Review**
+- **无 Human Review #1 不进入 Implementation**
+- **双 PR 分支策略**：文档 PR（doc-{issue}）和代码 PR（feature-{issue}）分离
+- **文档 PR 合并 = 设计确认**
+- **代码 PR 合并 = 实现确认**
+- **PR 合并是 Human 专属操作**，Agent 只负责推动流程，不执行合并
+- **Issue 关闭是 Human 专属操作**，Agent 只负责发布关闭请求评论
+- Human Review 结论未正式落地，不视为通过
+- **打回 = 回滚 + 重新走流程**：任意节点被打回 → 回滚到该节点编写阶段 → 修改文档（版本+1）→ 从该节点重新走完整流程
+- **变更级联效应**：PRD 变更 → Tech Spec 版本+1 → Case Design 版本+1；Tech Spec 发生 Major/Breaking 变更 → 回到 Gate 1 重新评审 PRD
+
+---
+
+## 三个流程图
+
+本文档包含三个独立的流程图，从不同视角描述开发交付流程：
+
+### 流程图 A：完整 Issue 交付流程（正向流程，从认领到关闭）
 
 ```
-Agent Team 启动
-        │
-        ▼
-扫描所有 open GitHub Issues（Human 随时可能创建新 Issue）
-        │
-        ▼
-PM 领取 Issue → 与 Human 讨论问题（必须 Comment 到 Issue）
+PM 领取 Issue → 与 Human 讨论问题（每次讨论后必须 Comment 到 Issue）
         │
         ▼
 Gate 1: PRD Review — 需求评审（PM + Architect + QA 三方签字）
         │
         ▼
-Gate 2: Tech Review — 技术评审（PM + QA 两签）
+Gate 2: Tech Review — 技术评审（QA + Engineer + PM 三签）
         │
         ▼
 QA Case Design（三方：PM + Architect + Engineer 签字）
@@ -38,15 +56,31 @@ Gate 3: Implementation — 开发实现（feature-{issue} 分支）
         ▼
 Gate 4: QA Validation — 质量验证
         │
-        ▼
+        ├── QA 根据 Case Design 开发测试代码（case 代码）
+        ├── QA 运行 case 验证 Engineer 完成的代码质量
+        ├── 不合格 → 排查问题来源：
+        │   • 代码问题 → Engineer 修复 → 重新验证
+        │   • Case 问题 → QA 修复 case → 重新验证
+        ├── 验证通过 → QA 编写测试报告（QA Report）
+        │
+        ├── PM + Architect + Engineer 三方评审测试报告并签字
+        │
+        ▼ (通过)
 代码 PR（feature-{issue} 分支）— Human Review #2
         │
         ▼
 代码 PR 合并 = 实现确认 ✅
         │
         ▼
-Gate 5: Release / Issue Close — 发布 / 关闭
+Gate 5: Release — 发布
+        │
+        ▼
+PM 通过 github_issue_sync.py 发布关闭请求 → Human 执行关闭
 ```
+
+**强制 Comment 规则**：`PM 领取 Issue` 后每次与 Human 讨论结束必须 Comment 到 Issue。**未 Comment 视为未完成**，不得进入下一阶段。
+
+**Human Review 绑定**：Human Review #1 = 文档 PR（doc-{issue}）合并 = 设计确认；Human Review #2 = 代码 PR（feature-{issue}）合并 = 实现确认。
 
 ### 流程图 B：需求变更与打回流程（异常处理）
 
@@ -105,27 +139,70 @@ Team Lead 协调多角色并行工作
 - 流程图 B：需求变更与打回的异常处理流程（被打回时触发）
 - 流程图 C：Team 启动后的全局视角（多 Issue 并行调度）
 
-## 关键原则
+---
 
-- **Issue 是强制入口**：无 Issue 不进入正式交付流程
-- **无 Issue 不进入 PRD**：PM 领取 Issue 后与 Human 讨论（必须 Comment）才能开始 PRD
-- **讨论结果必须 Comment**：每次讨论结束必须将结论 Comment 到 Issue，**未 Comment 视为未完成**
-- **方案不等于有效**：当 Issue 包含解决方案时，PM 必须回归问题本身讨论
-- **PRD 不含技术实现**：PRD 只描述问题/产品设计/能力边界/方案，不含技术实现
-- **无 PRD Review 不进入 Tech Review**
-- **无 Human Review #1 不进入 Implementation**
-- **双 PR 分支策略**：文档 PR（doc-{issue}）和代码 PR（feature-{issue}）分离
-- **文档 PR 合并 = 设计确认**
-- **代码 PR 合并 = 实现确认**
-- **PR 合并是 Human 专属操作**，Agent 只负责推动流程，不执行合并
-- **Issue 关闭是 Human 专属操作**，Agent 只负责发布关闭请求评论
-- Human Review 结论未正式落地，不视为通过
-- **打回 = 回滚 + 重新走流程**：任意节点被打回 → 回滚到该节点编写阶段 → 修改文档（版本+1）→ 从该节点重新走完整流程
-- **变更级联效应**：PRD 发生变更 → Tech Spec 需同步变更（版本+1）→ Case Design 需同步变更（版本+1）；Tech Spec 发生 Major/Breaking 变更 → 回到 Gate 1 重新评审 PRD
+## 双 PR 分支策略
+
+### 分支命名
+
+| 阶段 | 分支名 | 内容 | Human Review |
+|------|--------|------|--------------|
+| 设计确认 | `doc-{issue_number}-{简短描述}` | PRD + Tech + QA Case Design | **HR#1** |
+| 实现确认 | `feature-{issue_number}-{简短描述}` | 代码 + 测试报告 | **HR#2** |
+
+### 文档 PR 创建条件（必须同时满足）
+
+```
+✅ PRD 文档完成（docs/prd/PRD-XXX_v*.md）
+✅ Tech 文档完成（docs/tech/Tech-XXX_v*.md）
+✅ Gate 2 Tech Review 三签通过（QA + Engineer + PM）
+✅ QA Case Design 完成（docs/qa/QA-Case-XXX_v*.md）
+```
+
+### 代码 PR 创建条件（必须同时满足）
+
+```
+✅ 文档 PR 已合并（设计已确认）
+✅ 代码开发完成
+✅ QA 测试报告完成（docs/qa/qa-report-XXX_v*.md）
+✅ 三方签字验收完成（Architect + Engineer + PM）
+```
 
 ---
 
-## 前置阶段：PM 领取 Issue + 讨论
+## Issue Comment 强制要求（V2.2.4）
+
+**⚠️ 强制规则**：未 Comment 视为未完成。每个角色完成工作后必须在 Issue 下 Comment。
+
+| 节点 | 执行者 | Comment 内容 | 示例 |
+|------|--------|-------------|------|
+| Issue 领取 | PM | 说明领取，开始分析 | "Issue #N 已领取，开始分析需求" |
+| 问题讨论完成 | PM | 讨论结论（回归问题本质）| "讨论完成：问题根源是 X，方案 Y 已被否决" |
+| PRD 产出 | PM | PRD 链接 + 概述 | "PRD 已完成: [链接] - 概述..." |
+| PRD 评审完成 | PM | 评审结论 + 签署人 | "PRD 评审通过 - PM[✅] Architect[✅] QA[✅]" |
+| Tech 产出 | Architect | Tech 链接 + 概述 | "Tech 已完成: [链接] - 概述..." |
+| Tech Review 完成 | Architect | 评审结论 + 签署人 | "Tech Review 通过 - PM[✅] QA[✅]" |
+| QA Case Design 完成 | QA | Case 链接 + 概述 | "QA Case Design 完成: [链接]" |
+| 文档 PR 创建 | PM | PR 链接 + 文档清单 | "文档 PR 已创建: [链接] - PRD/Tech/QA Case" |
+| 文档 PR 合并 | PM | 合并确认 | "文档 PR 已合并，设计确认完毕" |
+| 开发完成 | Engineer | 开发报告 | "开发完成 - [组件列表] - 待测试" |
+| 测试完成 | QA | 测试报告链接 | "测试完成 - [报告链接]" |
+| 代码 PR 创建 | Engineer | PR 链接 + 测试报告 | "代码 PR 已创建: [链接] - Fixes #N" |
+| 代码 PR 合并 | Engineer | 合并确认 | "代码 PR 已合并 - 等待 Issue 关闭" |
+| Issue 关闭 | PM | 关闭原因 + 关闭请求 | "Issue #N 请求关闭 - 完成/重复/无法复现" |
+
+**必须通过 `scripts/github_issue_sync.py` 发布 Comment**：
+```bash
+python scripts/github_issue_sync.py \
+  --post-comment \
+  --issue N \
+  --body "$(cat comment.md)" \
+  --agent "Agent名称"
+```
+
+---
+
+## 阶段详解
 
 ### 触发条件
 
