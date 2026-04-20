@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 20,
+  "body": "**Agent**: pmo\n**Date**: 2026-04-20T12:43:45Z\n**Source**: [Issue #20 Comment]()\n---\n\n## PMO 分析：GOV-011 根因与解决方案\n\n### HR#1 流程违规\n\n**违规内容**：Issue #3 在 PRD v3 变更时，Tech Spec v4 和 QA Case v2 在 Gate 1 还未确认时就并行迭代，导致 Tech Spec v5（可选语义）与 PRD v4.1（强制依赖语义）不一致，HR#1 阶段 Architect Reject。\n\n**根因**：缺乏 Gate 流程串行约束规范。Agent 不知道 PRD 变更后必须先完成 Gate 1 → Gate 2 才能更新下游文档。\n\n### 变更追溯规则缺失\n\n**缺失**：规范中没有定义重大变更 vs 小幅变更的标准及处理规则。\n\n**后果**：Agent 无法判断何时需要重新走 Gate，Gate 流程被并行化，文档包语义漂移在 HR#1 才被发现。\n\n### 解决方案\n\n**需修改**： — 增加变更追溯规则章节\n\n**重大变更**（触发 Gate 重走）：\n- 语义变化（可选→强制、范围扩大/缩小）\n- 新增或删除交付域\n- 角色数量变化\n- 关键验收标准变更\n\n**小幅变更**（仅需原签字人确认）：\n- 格式调整、错别字修正、不改变语义的澄清\n\n**核心规则**：PRD 变更 → Gate 1 → Gate 2 → QA Case，串行执行，禁止并行迭代。\n\n### 行动计划\n\n| 动作 | 负责人 |\n|------|--------|\n| 将变更追溯规则写入 prompts/002_develop_pipeline.md | 待 Team Lead 路由 |\n| 同步更新 prompts/004_delivery_gates.md | 待 Team Lead 路由 |\n| PMO 增加 Gate 并行化检查项 | PMO |\n\n— PMO",
+  "agent": "pmo",
+  "source_comment_url": "",
+  "created_at": "2026-04-20T12:43:45Z",
+  "status": "pending"
+}
