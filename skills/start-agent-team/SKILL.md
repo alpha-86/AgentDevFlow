@@ -92,17 +92,9 @@
 > - 必须使用 `Agent(team_name="{project_id}", ...)` 创建 agent 实例，agent 才会加入 team
 > - **禁止使用 `run_in_background: true`**，后台任务不会加入 team
 
-**Agent 创建顺序**：
+**Agent 创建顺序（Pattern 式 + 枚举式映射表）**：
 
-1. Team Lead（Human 本身，**不创建**）
-2. Product Manager → 使用 `Agent()` 创建
-3. 架构师 → 使用 `Agent()` 创建
-4. 质量工程师 → 使用 `Agent()` 创建
-5. 工程师 → 使用 `Agent()` 创建
-6. 平台与发布负责人 → 使用 `Agent()` 创建
-7. PMO → 使用 `Agent()` 创建
-
-**Agent 创建模板**（不使用 `run_in_background`）：
+**Pattern 式 — Agent 创建模板**（不使用 `run_in_background`）：
 
 ```json
 Agent(
@@ -110,12 +102,26 @@ Agent(
   team_name="{project_id}",
   name="{role-name}",
   prompt="你是 {角色名} Agent。请初始化：
-1. 读取你的 skill 文件：`.claude/skills/adf-{role}/SKILL.md`
+1. 查 Skill 映射表，用 Skill() 加载你的 skill：`Skill(\"{skill-name}\")`
 2. 读取必读文档：`prompts/001_team_topology.md`（已读）和角色对应必读文档
 3. 输出初始化确认（角色、project_id、issue_id、当前阶段、已读取文档、阻塞项、下一动作）
 4. 通过 SendMessage 向 team-lead 报告初始化完成"
 )
 ```
+
+**枚举式 — Skill 映射表**（Pattern 中 {skill-name} 的具体值）：
+
+| # | Agent | Skill 名称 | Skill 源文件 | 用途 |
+|---|-------|-----------|------------|------|
+| 1 | Team Lead | Human 本身，**不创建** | — | 团队负责人 |
+| 2 | Product Manager | `product-manager` | `skills/product-manager/SKILL.md` | 产品经理 |
+| 3 | 架构师 | `architect` | `skills/architect/SKILL.md` | 技术架构与 Tech Spec |
+| 4 | 质量工程师 | `qa-engineer` | `skills/qa-engineer/SKILL.md` | QA Case Design 与验证 |
+| 5 | 工程师 | `engineer` | `skills/engineer/SKILL.md` | 代码实现 |
+| 6 | 平台与发布负责人 | `platform-sre` | `skills/platform-sre/SKILL.md` | 发布与环境 |
+| 7 | PMO | `pmo` | `skills/pmo/SKILL.md` | 流程合规检查 |
+
+> **使用方式**：先看 Pattern 式模板了解通用初始化流程，再查枚举式映射表确定具体的 skill 名称和文件路径。
 
 **⚠️ 关键错误：禁止使用 `run_in_background: true`**
 
@@ -127,7 +133,7 @@ Agent(..., run_in_background: true)  // ❌ 错误！后台任务不会加入 te
 正确做法：Agent 创建后同步等待其完成初始化，再创建下一个。
 
 **每个 Agent 创建后必须执行初始化确认**：
-1. 读取对应的 `adf-{role}/SKILL.md`
+1. 查 Skill 映射表，用 `Skill("{skill-name}")` 加载对应的 skill
 2. 读取必读文档列表中的第一个文档
 3. 输出初始化确认（角色、project_id、issue_id、当前阶段、已读取文档、阻塞项、下一动作）
 4. 通过 SendMessage 向 team-lead 发送初始化报告
