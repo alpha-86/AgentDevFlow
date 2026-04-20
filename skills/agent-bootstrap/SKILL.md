@@ -13,15 +13,26 @@
 | 重点 | 建立交付目录、Issue、团队 | 建立 AgentDevFlow 自身治理 + 交付机制 |
 | 角色来源 | `skills/{role}.md` | `skills/{role}.md` (自身) |
 
-## 执行前必读
+## 必读文档 ⚠️ 强制
 
-1. `skills/start-agent-team.md`
-2. `skills/skill-protocol.md`
-3. `skills/event-bus.md`
-4. `prompts/001_team_topology.md`
-5. `prompts/010_team_setup_and_bootstrap.md`
-6. `docs/governance/core-principles.md`
-7. `README.md`
+> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+
+| # | 文档 | 用途 | 状态 |
+|---|------|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
+| 2 | `skills/start-agent-team.md` | 启动团队规范 | ⬜ 未读 |
+| 3 | `skills/skill-protocol.md` | 共享技能协议 | ⬜ 未读 |
+| 4 | `skills/event-bus.md` | 事件总线规范 | ⬜ 未读 |
+| 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 | ⬜ 未读 |
+| 6 | `prompts/010_team_setup_and_bootstrap.md` | 团队启动与自举机制 | ⬜ 未读 |
+| 7 | `docs/governance/core-principles.md` | 核心治理原则 | ⬜ 未读 |
+| 8 | `README.md` | 项目自述文件 | ⬜ 未读 |
+
+**强制规则**：
+- 必读文档全部 ✅ 已读前，**不得执行任何 Gate 动作**
+- 必读文档全部 ✅ 已读前，**不得发布任何正式结论**
+- 必读文档全部 ✅ 已读前，**不得代替其他角色做决策**
+- **未完整阅读全部必读文档，不得开始任何工作**
 
 ## 自举步骤
 

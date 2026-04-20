@@ -93,6 +93,9 @@ def build_name_mapping() -> dict[str, str]:
         if not subdir.is_dir():
             continue
         name = subdir.name
+        # Exclude workflows and templates — they are shared dirs, not individual skills
+        if name in ("workflows", "templates"):
+            continue
         mapping[name] = f"adf-{name}"
 
     return mapping
@@ -295,6 +298,9 @@ def main():
             continue
 
         subdir_name = subdir_path.name
+        # Exclude workflows and templates — shared dirs, not individual skills
+        if subdir_name in ("workflows", "templates"):
+            continue
         adf_subdir_name = mapping.get(subdir_name, f"adf-{subdir_name}")
 
         if dry_run:

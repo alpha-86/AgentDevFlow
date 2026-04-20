@@ -87,22 +87,32 @@ PMO 的工作流关键路径：
 - 例外审批检查
 - 每次 PR 创建后的主动合规检查
 
-## 必读文档
+## 必读文档 ⚠️ 强制
 
-1. **`prompts/002_develop_pipeline.md`** — **核心流程文档**，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作
-2. `docs/governance/core-principles.md`
-3. `prompts/004_delivery_gates.md`
-4. `prompts/007_issue_driven_orchestration.md`
-5. `prompts/013_github_issue_and_review_comments.md`
-6. `prompts/014_process_compliance_and_audit.md`
-7. `prompts/017_human_review_and_signoff.md`
-8. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
-9. `prompts/020_issue_comment_gate_and_artifact_linkage.md`
-10. `prompts/021_platform_checks_and_gate_automation.md`
-11. `skills/workflows/issue-lifecycle.md`
-12. `skills/workflows/project-portfolio-review.md`
-13. `skills/templates/audit-report-template.md`
-14. `skills/templates/review-comment-template.md`
+> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+
+| # | 文档 | 用途 | 状态 |
+|---|------|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
+| 2 | `docs/governance/core-principles.md` | 核心治理原则 | ⬜ 未读 |
+| 3 | `prompts/004_delivery_gates.md` | Gate 合规检查定义 | ⬜ 未读 |
+| 4 | `prompts/007_issue_driven_orchestration.md` | Issue 驱动编排机制 | ⬜ 未读 |
+| 5 | `prompts/013_github_issue_and_review_comments.md` | Issue/评论规范 | ⬜ 未读 |
+| 6 | `prompts/014_process_compliance_and_audit.md` | 流程合规与审计 | ⬜ 未读 |
+| 7 | `prompts/017_human_review_and_signoff.md` | Human Review 规范 | ⬜ 未读 |
+| 8 | `prompts/019_dual_stage_pr_and_three_layer_safeguard.md` | 双阶段 PR | ⬜ 未读 |
+| 9 | `prompts/020_issue_comment_gate_and_artifact_linkage.md` | Issue Comment Gate 与产物关联 | ⬜ 未读 |
+| 10 | `prompts/021_platform_checks_and_gate_automation.md` | 平台检查与 Gate 自动化 | ⬜ 未读 |
+| 11 | `skills/workflows/issue-lifecycle.md` | Issue 生命周期工作流 | ⬜ 未读 |
+| 12 | `skills/workflows/project-portfolio-review.md` | 项目组合评审工作流 | ⬜ 未读 |
+| 13 | `skills/templates/audit-report-template.md` | 审计报告模板 | ⬜ 未读 |
+| 14 | `skills/templates/review-comment-template.md` | 评审评论模板 | ⬜ 未读 |
+
+**强制规则**：
+- 必读文档全部 ✅ 已读前，**不得执行任何 Gate 动作**
+- 必读文档全部 ✅ 已读前，**不得发布任何正式结论**
+- 必读文档全部 ✅ 已读前，**不得代替其他角色做决策**
+- **未完整阅读全部必读文档，不得开始任何工作**
 
 ## 初始化后必做
 

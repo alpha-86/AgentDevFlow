@@ -85,24 +85,34 @@ Team Lead 的工作流关键路径：
 
 > **说明**：增强层默认关闭。未安装时回落至原生机制，不报错不阻断。详见 [增强层文档](../../docs/platforms/enhancement-layer.md)。
 
-## 必读文档
+## 必读文档 ⚠️ 强制
 
-1. **`prompts/002_develop_pipeline.md`** — **核心流程文档**，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作
-2. `prompts/001_team_topology.md`
-2. `prompts/004_delivery_gates.md`
-3. `prompts/005_meeting_and_todo.md`
-4. `prompts/007_issue_driven_orchestration.md`
-5. `prompts/011_event_bus_and_handoff.md`
-6. `prompts/012_anomaly_and_escalation_loop.md`
-7. `prompts/013_github_issue_and_review_comments.md`
-8. `prompts/014_process_compliance_and_audit.md`
-9. `prompts/018_issue_routing_and_project_portfolio.md`
-10. `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`
-11. `skills/workflows/daily-sync.md`
-12. `skills/workflows/issue-lifecycle.md`
-13. `skills/workflows/human-review.md`
-14. `skills/workflows/anomaly-response.md`
-15. `skills/workflows/project-portfolio-review.md`
+> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+
+| # | 文档 | 用途 | 状态 |
+|---|------|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
+| 2 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 | ⬜ 未读 |
+| 3 | `prompts/004_delivery_gates.md` | Gate 合规检查定义 | ⬜ 未读 |
+| 4 | `prompts/005_meeting_and_todo.md` | 会议与 Todo 规范 | ⬜ 未读 |
+| 5 | `prompts/007_issue_driven_orchestration.md` | Issue 驱动编排机制 | ⬜ 未读 |
+| 6 | `prompts/011_event_bus_and_handoff.md` | 事件总线与交接机制 | ⬜ 未读 |
+| 7 | `prompts/012_anomaly_and_escalation_loop.md` | 异常与升级机制 | ⬜ 未读 |
+| 8 | `prompts/013_github_issue_and_review_comments.md` | Issue/评论规范 | ⬜ 未读 |
+| 9 | `prompts/014_process_compliance_and_audit.md` | 流程合规与审计 | ⬜ 未读 |
+| 10 | `prompts/018_issue_routing_and_project_portfolio.md` | Issue 路由与项目组合 | ⬜ 未读 |
+| 11 | `prompts/019_dual_stage_pr_and_three_layer_safeguard.md` | 双阶段 PR | ⬜ 未读 |
+| 12 | `skills/workflows/daily-sync.md` | 日会工作流 | ⬜ 未读 |
+| 13 | `skills/workflows/issue-lifecycle.md` | Issue 生命周期工作流 | ⬜ 未读 |
+| 14 | `skills/workflows/human-review.md` | Human Review 工作流 | ⬜ 未读 |
+| 15 | `skills/workflows/anomaly-response.md` | 异常响应工作流 | ⬜ 未读 |
+| 16 | `skills/workflows/project-portfolio-review.md` | 项目组合评审工作流 | ⬜ 未读 |
+
+**强制规则**：
+- 必读文档全部 ✅ 已读前，**不得执行任何 Gate 动作**
+- 必读文档全部 ✅ 已读前，**不得发布任何正式结论**
+- 必读文档全部 ✅ 已读前，**不得代替其他角色做决策**
+- **未完整阅读全部必读文档，不得开始任何工作**
 
 ## 何时启用
 

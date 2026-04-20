@@ -4,14 +4,25 @@
 
 提供通用研发项目的团队启动统一入口，确保在任何平台里启动多 Agent 协作前，先把团队、角色、Issue、交付目录和首轮检查建立完整。
 
-## 执行前必读
+## 必读文档 ⚠️ 强制
 
-1. `skills/team-setup.md`
-2. `skills/skill-protocol.md`
-3. `skills/event-bus.md`
-4. `prompts/001_team_topology.md`
-5. `prompts/010_team_setup_and_bootstrap.md`
-6. `prompts/018_issue_routing_and_project_portfolio.md`
+> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+
+| # | 文档 | 用途 | 状态 |
+|---|------|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
+| 2 | `skills/team-setup.md` | 团队启动规范 | ⬜ 未读 |
+| 3 | `skills/skill-protocol.md` | 共享技能协议 | ⬜ 未读 |
+| 4 | `skills/event-bus.md` | 事件总线规范 | ⬜ 未读 |
+| 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 | ⬜ 未读 |
+| 6 | `prompts/010_team_setup_and_bootstrap.md` | 团队启动与自举机制 | ⬜ 未读 |
+| 7 | `prompts/018_issue_routing_and_project_portfolio.md` | Issue 路由与项目组合 | ⬜ 未读 |
+
+**强制规则**：
+- 必读文档全部 ✅ 已读前，**不得执行任何 Gate 动作**
+- 必读文档全部 ✅ 已读前，**不得发布任何正式结论**
+- 必读文档全部 ✅ 已读前，**不得代替其他角色做决策**
+- **未完整阅读全部必读文档，不得开始任何工作**
 
 ## 统一启动步骤
 
@@ -195,25 +206,87 @@ python scripts/task_router.py --verbose
 
 ## Agent 必读文档速查表
 
-| Agent | 必读文档 |
-|-------|---------|
-| Team Lead | prompts/001_team_topology.md, prompts/010_team_setup_and_bootstrap.md, prompts/018_issue_routing_and_project_portfolio.md |
-| Product Manager | prompts/001_team_topology.md, prompts/003_document_contracts.md, prompts/004_delivery_gates.md |
-| 架构师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, skills/workflows/tech-review.md |
-| 质量工程师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, skills/workflows/qa-validation.md |
-| 工程师 | prompts/001_team_topology.md, prompts/004_delivery_gates.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md |
-| Platform/SRE | prompts/001_team_topology.md, prompts/019_dual_stage_pr_and_three_layer_safeguard.md, skills/workflows/release-review.md |
-| PMO | prompts/001_team_topology.md, prompts/005_meeting_and_todo.md, docs/governance/core-principles.md |
+> 各角色专属必读文档详见 **步骤 4.2 角色特定必读文档确认**，本表为快速索引。
+
+| Agent | 角色专属必读文档数量 |
+|-------|-------------------|
+| Team Lead | 2 项（见 4.2） |
+| Product Manager | 2 项（见 4.2） |
+| 架构师 | 2 项（见 4.2） |
+| 质量工程师 | 2 项（见 4.2） |
+| 工程师 | 4 项（见 4.2） |
+| Platform/SRE | 2 项（见 4.2） |
+| PMO | 2 项（见 4.2） |
 
 ### 步骤 4. 执行首轮初始化检查
 
-每个角色都必须完成：
+#### 4.1 必读文档阅读确认 ⚠️ 强制
 
-- 读取角色主规范
-- 读取角色 playbook
-- 读取本阶段 工作流
-- 读取必需模板
-- 检查 issue / gate / todo / risk
+> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+
+每个角色 Agent 初始化时，必须逐项完成以下阅读确认，并在向 team-lead 报告时包含阅读状态：
+
+**必读文档阅读确认清单**：
+
+```
+[ ] 1. prompts/002_develop_pipeline.md   — 核心流程文档，Gate 0~5、角色职责矩阵、Human 专属操作
+[ ] 2. skills/team-setup.md             — 团队启动规范
+[ ] 3. skills/skill-protocol.md          — 共享技能协议
+[ ] 4. skills/event-bus.md              — 事件总线规范
+[ ] 5. prompts/001_team_topology.md      — 团队拓扑、Human vs Agent 角色区分
+[ ] 6. prompts/010_team_setup_and_bootstrap.md  — 团队启动与自举机制
+[ ] 7. prompts/018_issue_routing_and_project_portfolio.md  — Issue 路由与项目组合
+```
+
+**强制规则**（适用于每个角色 Agent）：
+- ⬜ 未读完全部 7 项必读文档前，**不得执行任何 Gate 动作**
+- ⬜ 未读完全部 7 项必读文档前，**不得发布任何正式结论或评审意见**
+- ⬜ 未读完全部 7 项必读文档前，**不得代替其他角色做决策**
+- ⬜ 未读完全部 7 项必读文档前，**不得开始任何工作**
+
+**执行步骤**：
+1. 读取上表中全部 7 项必读文档
+2. 将 `[ ]` 更新为 `[✅]` 标记已读
+3. 向 team-lead 发送初始化报告，包含：
+   - 已读取文档列表
+   - 未读取文档列表（如有）
+   - 阻塞项（如有）
+   - 下一动作
+
+#### 4.2 角色特定必读文档确认
+
+各角色还需额外阅读角色专属必读文档（见下表）：
+
+| Agent | 角色专属必读文档 |
+|-------|----------------|
+| Team Lead | `prompts/010_team_setup_and_bootstrap.md`, `prompts/018_issue_routing_and_project_portfolio.md` |
+| Product Manager | `prompts/003_document_contracts.md`, `prompts/004_delivery_gates.md` |
+| 架构师 | `prompts/004_delivery_gates.md`, `skills/workflows/tech-review.md` |
+| 质量工程师 | `prompts/004_delivery_gates.md`, `skills/workflows/qa-validation.md` |
+| 工程师 | `prompts/004_delivery_gates.md`, `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`, `skills/workflows/implementation.md`, `skills/workflows/qa-validation.md` |
+| Platform/SRE | `prompts/019_dual_stage_pr_and_three_layer_safeguard.md`, `skills/workflows/release-review.md` |
+| PMO | `prompts/005_meeting_and_todo.md`, `docs/governance/core-principles.md` |
+
+#### 4.3 初始化状态检查
+
+完成阅读确认后，每个 Agent 必须输出以下初始化确认：
+
+- 角色
+- project_id
+- issue_id（当前主 issue 或"N/A"）
+- 当前阶段
+- 已读取文档（从必读清单中逐项列出）
+- 阻塞项（如有）
+- 下一动作
+
+**通过 SendMessage 向 team-lead 报告初始化完成前**，必须先完成上述全部必读文档阅读确认。
+
+#### 4.4 禁止行为
+
+- 未经完整阅读必读文档即发布评审意见
+- 未经完整阅读必读文档即代替其他角色做决策
+- 未经完整阅读必读文档即开始 Gate 流程动作
+- 向 team-lead 发送初始化报告时隐瞒未读文档
 
 ### 步骤 4.5. Agent 工作触发条件
 
