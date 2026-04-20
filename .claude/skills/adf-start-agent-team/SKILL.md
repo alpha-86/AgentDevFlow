@@ -8,15 +8,15 @@
 
 > **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
 
-| # | 文档 | 用途 | 状态 |
-|---|------|------|------|
-| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 | ⬜ 未读 |
-| 2 | `.claude/skills/adf-team-setup/SKILL.md` | 团队启动规范 | ⬜ 未读 |
-| 3 | `skills/skill-protocol.md` | 共享技能协议 | ⬜ 未读 |
-| 4 | `skills/event-bus.md` | 事件总线规范 | ⬜ 未读 |
-| 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 | ⬜ 未读 |
-| 6 | `prompts/010_team_setup_and_bootstrap.md` | 团队启动与自举机制 | ⬜ 未读 |
-| 7 | `prompts/018_issue_routing_and_project_portfolio.md` | Issue 路由与项目组合 | ⬜ 未读 |
+| # | 文档 | 用途 |
+|---|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，定义完整开发交付流程（Gate 0~5）、角色职责矩阵、Human 专属操作 |
+| 2 | `.claude/skills/adf-team-setup/SKILL.md` | 团队启动规范 |
+| 3 | `skills/skill-protocol.md` | 共享技能协议 |
+| 4 | `skills/event-bus.md` | 事件总线规范 |
+| 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 |
+| 6 | `prompts/010_team_setup_and_bootstrap.md` | 团队启动与自举机制 |
+| 7 | `prompts/018_issue_routing_and_project_portfolio.md` | Issue 路由与项目组合 |
 
 **强制规则**：
 - 必读文档全部 ✅ 已读前，**不得执行任何 Gate 动作**
@@ -74,9 +74,9 @@
 - 建立项目状态板
 - 建立 artifact linkage 主记录
 
-### 步骤 3. 加载团队角色（显式 Skill 调用）
+### 步骤 3. 加载团队角色
 
-**⚠️ 关键原则：每次 start-agent-team 执行都是全新开始，不依赖历史配置**
+> ⚠️ **关键原则**：每次 start-agent-team 执行都是全新开始，不依赖历史配置
 
 以下文件/内容**不能**作为 Agent 存在的证明：
 - `.claude/logs/agent-creation.log`
@@ -85,16 +85,35 @@
 - `docs/todo/TODO_REGISTRY.md` 中的角色状态列
 - 任何 md 文件中的"已创建"、"active" 状态标记
 
-**Agent 创建方式**：
+#### 3.1 Agent 创建方式
 
 > ⚠️ **必须使用 `Agent()` 工具创建 agent，不能仅用 `Skill()`**
 > - `Skill()` 只是加载指令到当前对话，不会创建 agent 进程，也不会让 agent 加入 team
 > - 必须使用 `Agent(team_name="{project_id}", ...)` 创建 agent 实例，agent 才会加入 team
 > - **禁止使用 `run_in_background: true`**，后台任务不会加入 team
 
-**Agent 创建顺序（Pattern 式 + 枚举式映射表）**：
+**Pattern 式 + 枚举式 — Agent 创建顺序与 Skill 映射**：
 
-**Pattern 式 — Agent 创建模板**（不使用 `run_in_background`）：
+| # | Agent | Skill 名称（Pattern 变量值） | Skill 源文件（枚举式） |
+|---|-------|---------------------------|---------------------|
+| 1 | Team Lead | Human 本身，**不创建** | — |
+| 2 | Product Manager | `product-manager` | `.claude/skills/adf-product-manager/SKILL.md` |
+| 3 | 架构师 | `architect` | `.claude/skills/adf-architect/SKILL.md` |
+| 4 | 质量工程师 | `qa-engineer` | `.claude/skills/adf-qa-engineer/SKILL.md` |
+| 5 | 工程师 | `engineer` | `.claude/skills/adf-engineer/SKILL.md` |
+| 6 | 平台与发布负责人 | `platform-sre` | `.claude/skills/adf-platform-sre/SKILL.md` |
+| 7 | PMO | `pmo` | `.claude/skills/adf-pmo/SKILL.md` |
+
+**使用方式**：
+1. 按顺序创建 Agent（Team Lead 除外）
+2. 创建时填入 `{skill-name}`（查上表第二列）
+3. Agent 初始化时用 `Skill("{skill-name}")` 加载对应 skill（查上表第三列）
+
+#### 3.2 Agent 初始化流程
+
+> **强制要求**：每个 Agent 创建后必须完成初始化，才能继续创建下一个
+
+**Agent 创建模板**：
 
 ```json
 Agent(
@@ -102,46 +121,37 @@ Agent(
   team_name="{project_id}",
   name="{role-name}",
   prompt="你是 {角色名} Agent。请初始化：
-1. 查 Skill 映射表，用 Skill() 加载你的 skill：`Skill(\"{skill-name}\")`
+1. 用 Skill() 加载你的 skill：`Skill(\"{skill-name}\")`
 2. 读取必读文档：`prompts/001_team_topology.md`（已读）和角色对应必读文档
 3. 输出初始化确认（角色、project_id、issue_id、当前阶段、已读取文档、阻塞项、下一动作）
 4. 通过 SendMessage 向 team-lead 报告初始化完成"
 )
 ```
 
-**枚举式 — Skill 映射表**（Pattern 中 {skill-name} 的具体值）：
-
-| # | Agent | Skill 名称 | Skill 源文件 | 用途 |
-|---|-------|-----------|------------|------|
-| 1 | Team Lead | Human 本身，**不创建** | — | 团队负责人 |
-| 2 | Product Manager | `product-manager` | `.claude/skills/adf-product-manager/SKILL.md` | 产品经理 |
-| 3 | 架构师 | `architect` | `.claude/skills/adf-architect/SKILL.md` | 技术架构与 Tech Spec |
-| 4 | 质量工程师 | `qa-engineer` | `.claude/skills/adf-qa-engineer/SKILL.md` | QA Case Design 与验证 |
-| 5 | 工程师 | `engineer` | `.claude/skills/adf-engineer/SKILL.md` | 代码实现 |
-| 6 | 平台与发布负责人 | `platform-sre` | `.claude/skills/adf-platform-sre/SKILL.md` | 发布与环境 |
-| 7 | PMO | `pmo` | `.claude/skills/adf-pmo/SKILL.md` | 流程合规检查 |
-
-> **使用方式**：先看 Pattern 式模板了解通用初始化流程，再查枚举式映射表确定具体的 skill 名称和文件路径。
-
 **⚠️ 关键错误：禁止使用 `run_in_background: true`**
 
-错误示例：
 ```json
 Agent(..., run_in_background: true)  // ❌ 错误！后台任务不会加入 team
 ```
 
-正确做法：Agent 创建后同步等待其完成初始化，再创建下一个。
+**初始化确认步骤**：
 
-**每个 Agent 创建后必须执行初始化确认**：
-1. 查 Skill 映射表，用 `Skill("{skill-name}")` 加载对应的 skill
-2. 读取必读文档列表中的第一个文档
-3. 输出初始化确认（角色、project_id、issue_id、当前阶段、已读取文档、阻塞项、下一动作）
-4. 通过 SendMessage 向 team-lead 发送初始化报告
+1. **加载 Skill**：用 `Skill("{skill-name}")` 加载对应的 skill（查 3.1 表格）
+2. **读取必读文档**：共同必读 + 角色专属必读（见 4.1、4.2）
+3. **输出初始化确认**：
+   - 角色、project_id、issue_id、当前阶段
+   - 已读取文档（逐项列出）
+   - 阻塞项（如有）
+   - 下一动作
+4. **通过 SendMessage 向 team-lead 报告初始化完成**
 
-**Agent 创建后验证**：
+#### 3.3 Agent 创建后验证
+
 - 检查 `~/.claude/teams/{project_id}/config.json` 的 `members` 数组
 - 确认新 agent 已在 members 中列出
 - 若 agent 未加入 team，重新使用 `Agent()` 创建并确保 `team_name` 参数正确
+
+#### 3.4 全量启用要求
 
 每个项目必须全量启用所有角色，不得以"临时承担"代替正式 Agent 实例化。
 
@@ -150,16 +160,11 @@ Agent(..., run_in_background: true)  // ❌ 错误！后台任务不会加入 te
 2. PMO 无法对"Team Lead 既当裁判又当运动员"进行独立检查
 3. 缺失职责无正式 Agent 承担，任务路由失效
 
-**正确做法**：
-- 启动前必须创建 Engineer、Platform/SRE、PMO 的 Agent 实例
-- 角色暂不需要实际工作时，Agent 处于"待命"状态（idle），但不分配给其他角色
-- 所有角色都必须完成初始化检查（步骤 4），进入各自的角色循环
-
 ### 步骤 3.5. 发现并路由待处理任务
 
 > **注**：启动团队前必须先拉取所有待处理任务，确保启动会覆盖完整的上下文。
 
-**步骤 3.5.1. 发现 GitHub Open Issues**
+#### 3.5.1 发现 GitHub Open Issues
 
 调用 `scripts/github_issue_sync.py` 同步 open issues：
 
@@ -171,7 +176,7 @@ python scripts/github_issue_sync.py
 - 对于命名格式不符的 issue，脚本会输出警告
 - 每次运行自动去重，已处理的 issue 不会重复写入
 
-**步骤 3.5.2. 读取任务队列**
+#### 3.5.2 读取任务队列
 
 读取 `.claude/task_queue/` 目录下所有 `.task` 文件：
 
@@ -179,7 +184,7 @@ python scripts/github_issue_sync.py
 - 按 type 分类（prd/tech/bug/qa 等）
 - 按 priority 排序（critical > high > medium > low）
 
-**步骤 3.5.3. 读取 Todo Registry**
+#### 3.5.3 读取 Todo Registry
 
 读取 `docs/todo/TODO_REGISTRY.md`：
 
@@ -187,7 +192,7 @@ python scripts/github_issue_sync.py
 - 检查是否有 overdue 任务
 - 确认启动会前的未完成任务
 
-**步骤 3.5.4. 路由任务到角色**
+#### 3.5.4 路由任务到角色
 
 调用 `scripts/task_router.py` 将待处理任务路由到对应角色：
 
@@ -200,7 +205,7 @@ python scripts/task_router.py --verbose
 - 输出路由日志到 `.claude/results/routing.log`
 - 每个任务生成 pending comment 文件到 `.claude/results/pending_{issue_id}.md`
 
-**步骤 3.5.5. 汇总启动上下文**
+#### 3.5.5 汇总启动上下文
 
 整合以上结果，生成启动前任务摘要：
 
@@ -212,8 +217,6 @@ python scripts/task_router.py --verbose
 此摘要将作为启动会议程的依据。
 
 ## Agent 必读文档速查表
-
-> 各角色专属必读文档详见 **步骤 4.2 角色特定必读文档确认**，本表为快速索引。
 
 | Agent | 角色专属必读文档数量 |
 |-------|-------------------|
@@ -227,42 +230,25 @@ python scripts/task_router.py --verbose
 
 ### 步骤 4. 执行首轮初始化检查
 
-#### 4.1 必读文档阅读确认 ⚠️ 强制
+#### 4.1 共同必读文档（所有 Agent 必须阅读）
 
-> **强制要求**：以下文档必须在开始任何工作前**全部阅读完毕**，不得遗漏任何一项。未完整阅读不得进入工作状态。
+| # | 文档 | 用途 |
+|---|------|------|
+| 1 | `prompts/002_develop_pipeline.md` | 核心流程文档，Gate 0~5、角色职责矩阵、Human 专属操作 |
+| 2 | `.claude/skills/adf-team-setup/SKILL.md` | 团队启动规范 |
+| 3 | `skills/skill-protocol.md` | 共享技能协议 |
+| 4 | `skills/event-bus.md` | 事件总线规范 |
+| 5 | `prompts/001_team_topology.md` | 团队拓扑、Human vs Agent 角色区分 |
+| 6 | `prompts/010_team_setup_and_bootstrap.md` | 团队启动与自举机制 |
+| 7 | `prompts/018_issue_routing_and_project_portfolio.md` | Issue 路由与项目组合 |
 
-每个角色 Agent 初始化时，必须逐项完成以下阅读确认，并在向 team-lead 报告时包含阅读状态：
-
-**必读文档阅读确认清单**：
-
-```
-[ ] 1. prompts/002_develop_pipeline.md   — 核心流程文档，Gate 0~5、角色职责矩阵、Human 专属操作
-[ ] 2. .claude/skills/adf-team-setup/SKILL.md             — 团队启动规范
-[ ] 3. skills/skill-protocol.md          — 共享技能协议
-[ ] 4. skills/event-bus.md              — 事件总线规范
-[ ] 5. prompts/001_team_topology.md      — 团队拓扑、Human vs Agent 角色区分
-[ ] 6. prompts/010_team_setup_and_bootstrap.md  — 团队启动与自举机制
-[ ] 7. prompts/018_issue_routing_and_project_portfolio.md  — Issue 路由与项目组合
-```
-
-**强制规则**（适用于每个角色 Agent）：
+**强制规则**：
 - ⬜ 未读完全部 7 项必读文档前，**不得执行任何 Gate 动作**
 - ⬜ 未读完全部 7 项必读文档前，**不得发布任何正式结论或评审意见**
 - ⬜ 未读完全部 7 项必读文档前，**不得代替其他角色做决策**
 - ⬜ 未读完全部 7 项必读文档前，**不得开始任何工作**
 
-**执行步骤**：
-1. 读取上表中全部 7 项必读文档
-2. 将 `[ ]` 更新为 `[✅]` 标记已读
-3. 向 team-lead 发送初始化报告，包含：
-   - 已读取文档列表
-   - 未读取文档列表（如有）
-   - 阻塞项（如有）
-   - 下一动作
-
-#### 4.2 角色特定必读文档确认
-
-各角色还需额外阅读角色专属必读文档（见下表）：
+#### 4.2 角色专属必读文档
 
 | Agent | 角色专属必读文档 |
 |-------|----------------|
@@ -296,8 +282,6 @@ python scripts/task_router.py --verbose
 - 向 team-lead 发送初始化报告时隐瞒未读文档
 
 ### 步骤 4.5. Agent 工作触发条件
-
-每个 Agent 的触发条件：
 
 | Agent | 触发时间 | 执行 Workflow | 关联文档 |
 |-------|---------|--------------|----------|
@@ -343,7 +327,7 @@ python scripts/task_router.py --verbose
 
 ## 禁止行为
 
-- **严禁 Team Lead 承担其他 Agent 的职责**：Team Lead 不得以”临时承担””暂由 Team Lead 代管”等理由，实际履行 Engineer、PMO、Platform/SRE 等角色的决策权、签字权和工作触发权。违反此规则等同于绕开角色分离机制，PMO 应立即标记为 P0 级 governance 问题。
+- **严禁 Team Lead 承担其他 Agent 的职责**：Team Lead 不得以"临时承担""暂由 Team Lead 代管"等理由，实际履行 Engineer、PMO、Platform/SRE 等角色的决策权、签字权和工作触发权。违反此规则等同于绕开角色分离机制，PMO 应立即标记为 P0 级 governance 问题。
 - 没有主 issue 就启动多角色并发
 - 角色未读取必读文档就开始做正式判断
 - 启动会 后没有 纪要、负责人、到期时间 和下游 Gate
