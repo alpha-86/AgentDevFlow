@@ -23,6 +23,8 @@
 - Major / Breaking 变更
 - 异常升级与关闭
 
+> 纯文档交付同样必须保留上述 Comment（PRD/Tech/HR#1/Release 不可跳过），但不产生 Implementation/QA/HR#2 阶段 Comment。
+
 ## Comment 最小字段
 
 - Gate / 阶段名称

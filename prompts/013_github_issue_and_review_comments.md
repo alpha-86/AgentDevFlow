@@ -21,6 +21,10 @@
 - 最新 Gate 结论
 - 打开的 Todo / blocker
 
+> **Human Review #1** = 文档 PR 的 Human review / merge decision（不是 Agent 签字节点）  
+> **Human Review #2** = 代码 PR 的 Human review / merge decision（不是 Agent 签字节点）  
+> Agent 可在进入 HR 前完成自己的评审与签字，但 HR 本身由 Human 执行。
+
 ## 评论写入时机
 
 - PRD Review 结束
@@ -68,6 +72,12 @@
 - 必须指定修复 owner 和重试条件
 - 若 comment 自动投递失败，必须返回非成功状态，阻断下游动作
 - 若 Human Review 结论未真实落地，则不能把该评审视为已完成
+
+## 纯文档交付与开发交付的 Comment 路径差异
+
+- **开发交付**：PRD → Tech → HR#1 → Implementation → QA → HR#2 → Release → Issue Close
+- **纯文档交付**：PRD → Tech → HR#1 → Release → Issue Close（不走 HR#2 / 代码 PR）
+- 两种路径都必须保留完整的 Issue Comment 和产物回链，差异仅在于是否经过代码阶段
 
 ## PR / Issue 关系
 

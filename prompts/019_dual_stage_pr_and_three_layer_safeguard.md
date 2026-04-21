@@ -111,10 +111,15 @@
 - AgentDevFlow 不绑定某个特定平台实现
 - 但任何平台适配都应该提供等价的自动化保障
 
+## 纯文档交付说明
+
+纯文档交付与开发交付同等重要，其路径为：文档 PR → Human Review #1 → Release → Issue Close，不经过实现阶段（Gate 3）和代码 PR（Gate 4）。HR#1 的 Human review / merge decision 对纯文档交付仍然不可跳过。
+
 ## 强制规则
 
 - 文档阶段未确认，不得正式进入实现阶段
 - 实现阶段未确认，不得正式关闭 Issue 或发布
+- 纯文档交付也必须完成 Human Review #1 后方可进入 Release
 - 文档 PR 必须同时包含 PRD、Tech、QA Case Design
 - 代码 PR 必须包含文档 PR 链接和测试报告
 - QA 测试报告不得缺席实现阶段确认

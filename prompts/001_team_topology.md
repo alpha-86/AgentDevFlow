@@ -77,6 +77,7 @@ Team Lead
 - 无 Tech Review 不编码
 - 无 QA 验证不验收
 - 无发布确认不上线
+- 纯文档交付与开发交付同等重要，不走 Gate 3/Gate 4 不等于可以跳过 Issue、留痕或 Human Review
 - 所有会议必须留痕
 - 所有行动项必须进入 Todo
 - 所有关键文档必须可追溯
