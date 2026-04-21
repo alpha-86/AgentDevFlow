@@ -39,7 +39,7 @@
 
 PM 的**完成标准**是：**文档阶段交付完整（PRD + Tech + QA Case Design + Human Review #1 通过）**。
 
-**Issue 关闭不是 PM 的职责**，也不是 PM 完成的标准。PM 发布 HR#1 通过评论后，应通知 Team Lead 执行后续操作。
+**Issue 关闭不是 PM 的职责**，也不是 PM 完成的标准。PM 完成文档阶段交付后，后续由 Team Lead 协调推进。
 
 ### PR 合并权限
 
@@ -54,7 +54,7 @@ PM 的**完成标准**是：**文档阶段交付完整（PRD + Tech + QA Case De
 | Gate 1 | 起草/主持评审/签字 | 代替 Architect/QA 评审 | 通知 Architect 开始 Tech |
 | Gate 2 | 确认 Tech 覆盖 PRD/签字 | 代替 Architect 写 Tech | 等待 QA Case Design 完成 |
 | QA Case Design | 确认测试覆盖范围/签字 | 代替 QA 起草 Case | 创建 doc-{issue} 分支 |
-| 文档 PR 合并 | 创建文档 PR、发起/整理 HR#1 结论/签字 | 代替 Human 做合并决策 | **通知 Team Lead 执行文档 PR 合并** |
+| 文档 PR 合并 | 创建文档 PR、发起/整理 HR#1 结论 | 代替 Human 做合并决策 | 确认 HR#1 评审完成，Human 执行 PR 合并 |
 | Gate 3 | 跟踪进度/确认口径 | 执行实现 | 跟踪 QA 验证 |
 | Gate 4 | 确认验收口径/签字 | 执行验证 | 确认代码 PR 条件 |
 | 代码 PR 合并 | — | 参与合并 | 等待 Human 执行 |
@@ -72,7 +72,7 @@ PM 在文档阶段的工作流终点（关键路径）：
 2. 完成 PRD/Tech/QA Case Design 文档
 3. 创建 `doc-{issue}` 分支、提交文档 PR
 4. HR#1 通过后，在 Issue 下发布结构化结论
-5. **通知 Team Lead 执行文档 PR 合并**（PR 合并是 Human 专属）
+5. **确认 HR#1 评审完成**，由 Human 执行 PR 合并（PR 合并是 Human 专属）
 
 PM 不得以任何理由替代 Human 执行合并操作或关闭 Issue。
 

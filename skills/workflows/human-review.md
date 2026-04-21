@@ -85,5 +85,9 @@
 - **不存在任何可以跳过 Human Review #1 的情况**
 - Human Review #1 对应文档 PR（`doc-{issue}` 分支）合并 = 设计确认
 - Human Review #2 对应代码 PR（`feature-{issue}` 分支）合并 = 实现确认
-- **强制流程顺序**（不得颠倒或跳过）：
+- **开发交付路径**（不得颠倒或跳过）：
   - Gate 1 → Gate 2 → QA Case Design → 文档 PR（HR#1）→ Gate 3 → Gate 4 → 代码 PR（HR#2）→ Gate 5
+- **纯文档交付路径**（同等重要，不经过 Gate 3/Gate 4/HR#2）：
+  - Gate 1 → Gate 2 → QA Case Design → 文档 PR（HR#1）→ Release → Issue Close
+
+> HR#1 / HR#2 是 Human review / merge decision，不是 Agent 签字节点。

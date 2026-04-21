@@ -62,11 +62,11 @@ Team Lead 负责推动以下 Human 专属操作，不代替 Human 执行：
 | Gate 1 | 主持评审、确认流转、判断是否需要重审 | 代替 Architect/QA 做签字 | 确认 PM 通知 Architect 开始 Tech |
 | Gate 2 | 主持 Tech Review 评审、确认流转 | 代替 Architect 写 Tech | 确认 Engineer + QA 已签字 |
 | QA Case Design | 跟踪 QA Case Design 三方签字进度 | 代替 QA/PM/Architect 签字 | 确认三签完成后推动文档 PR |
-| 文档 PR 合并 | 确认 HR#1 评审完成、推动 Human 合并 | 代替 Human 做合并决策 | Human 合并后通知 Engineer 开始实现 |
+| 文档 PR 合并 | 确认 HR#1 评审完成、推动 Human 合并 | 代替 Human 做合并决策 | 文档 PR 合并后 Engineer 可进入 Implementation |
 | Gate 3 | 协调并行进度、确保文档 PR 不被跳过 | 代替 Engineer 实现 | 确认 QA 开始验证 |
 | Gate 4 | 协调 QA 验证进度、确认质量结论 | 代替 QA 做质量结论 | 确认代码 PR 发起 |
 | 代码 PR 合并 | 确认 HR#2 评审完成、推动 Human 合并 | 代替 Human 做合并决策 | Human 合并后确认 Release |
-| Gate 5 | 主持 Release 评审、推动 Human 发布 | 代替 Human 做发布决策 | Human 发布后关闭 Issue |
+| Gate 5 | 主持 Release 评审、推动 Human 发布 | 代替 Human 做发布决策 | Human 执行发布决策与 Issue 关闭 |
 
 Team Lead 的工作流关键路径：
 1. 主持 Gate 0 启动，确认角色分配

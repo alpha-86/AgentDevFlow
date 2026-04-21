@@ -91,9 +91,12 @@
 
 - Gate 1: 自举骨架和团队就绪
 - Gate 2: 本轮功能实现完成
-- Gate 3: 文档 PR 合并（Human Review #1）
-- Gate 4: 代码 PR 合并（Human Review #2）
-- Gate 5: Issue Comment Gate + 发布
+- Gate 3: Implementation（实现阶段）
+- Gate 4: QA Validation（验证阶段）
+- Gate 5: Release（发布阶段）
+
+> 文档 PR 合并（Human Review #1）是 Gate 2 与 Gate 3 之间的 Human review / merge 节点，不是 Gate 编号。  
+> 代码 PR 合并（Human Review #2）是 Gate 4 与 Gate 5 之间的 Human review / merge 节点，不是 Gate 编号。
 
 ## AgentDevFlow 自举完成判定
 

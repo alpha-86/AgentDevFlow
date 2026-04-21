@@ -61,7 +61,7 @@
 - Architect：技术放行确认（Gate 4 必需）
 - Engineer：实现确认
 
-三方（PM + Architect + QA）签字完成，方可进入 Human Review #2。
+QA 产出测试报告后，由 PM + Architect + Engineer 三方评审测试报告并签字，然后进入代码 PR / Human Review #2。
 
 ## 人工评审规则
 
