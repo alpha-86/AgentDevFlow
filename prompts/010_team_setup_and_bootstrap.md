@@ -16,7 +16,7 @@
 
 1. Team Lead 确认本轮目标、范围、角色与节奏。
 2. Product Manager 确认需求来源与 PRD 入口。
-3. Tech Lead 确认技术范围、依赖和评审边界。
+3. Architect 确认技术范围、依赖和评审边界。
 4. QA 确认何时介入、验收路径和测试资产要求。
 5. Platform/SRE 确认环境、发布与回滚边界。
 6. 所有角色加载必读材料并确认 Critical Rules。

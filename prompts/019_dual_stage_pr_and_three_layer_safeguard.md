@@ -80,7 +80,7 @@
 ### 第一层：流程规则
 
 - Prompt / Workflow / Template 明确阶段、签字、退回条件
-- Team Lead / PM / Tech Lead / QA 持有强规则
+- Team Lead / PM / Architect / QA 持有强规则
 - 没有当前阶段通过结论，不得推进下游
 - 文档 PR 未合并，不得指派正式开发
 - QA Case Design 必须作为文档 PR 组成部分前置确认
