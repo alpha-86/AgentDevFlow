@@ -822,13 +822,50 @@ Agent 在这些操作完成后的正确行为：发布通知评论，推动 Huma
 
 ### 变更级联效应
 
-当上游文档发生变更时，下游文档必须同步更新：
+**核心原则：Gate 流程必须串行执行，禁止并行迭代。**
 
-| 变更来源 | 影响范围 | 处理方式 |
-|----------|---------|---------|
-| PRD 变更 | Tech Spec、Case Design | Tech Spec 版本+1 → Case Design 版本+1 → 重新评审受影响文档 |
-| Tech Spec 发生 Major/Breaking 变更 | PRD、Case Design | 回到 Gate 1 重新评审 PRD → 按顺序重新走完整个流程 |
-| Case Design 变更 | 测试报告 | 测试报告版本+1 → 重新评审测试报告 |
+下游文档依赖上游文档的评审结论。任何 Gate 未 Approved 前，不得进入下游 Gate 的文档编写。并行迭代会导致文档间语义不一致，最终只能在 HR#1 阶段以高代价发现。
+
+**禁止行为**：
+- PRD 在 Gate 1 评审期间，Tech Spec 不得更新
+- Tech Spec 在 Gate 2 评审期间，QA Case 不得起草
+- 任何 Gate 未 Approved 前，不得进入下游 Gate
+
+#### 变更等级定义
+
+**重大变更**（必须触发完整 Gate 重审）：
+- 语义发生变化（可选→强制、单一→多个、范围扩大/缩小）
+- 新增或删除交付域
+- 角色数量变化
+- 关键验收标准变更
+- 架构决策变更（技术选型改变、检测方式改变）
+
+**小幅变更**（仅需原 Gate 签字人确认，无需完整 Gate 重审）：
+- 文档格式调整
+- 错别字修正
+- 描述文字澄清（不改变语义）
+- 补充遗漏内容（不改变范围）
+- 链接修正
+
+#### 变更追溯规则
+
+| 变更来源 | 变更等级 | 需重新通过的 Gate | 下游文档处理 |
+|---------|---------|------------------|-------------|
+| PRD | 重大 | Gate 1 → Gate 2 → QA Case Design → 重新评审全部 | Tech Spec 版本+1 → Case Design 版本+1 |
+| PRD | 小幅 | 原 Gate 1 签字人确认即可 | Tech Spec 确认无影响后无需变更 |
+| Tech Spec | Major/Breaking | Gate 2 → QA Case Design → 重新评审 | 如影响 PRD，回到 Gate 1；Case Design 版本+1 |
+| Tech Spec | 小幅 | 原 Gate 2 签字人确认即可 | Case Design 确认无影响 |
+| QA Case | 任意 | QA Case Design 重新评审 | 测试报告版本+1（如有）|
+| 多环节同时变更 | — | 从头重新走 Gate 1 → Gate 2 → QA Case | 全部文档版本+1 |
+
+#### Gate 进入条件强化（新增上游确认检查）
+
+| Gate | 进入条件（强化） |
+|------|-----------------|
+| Gate 1 | PRD 已起草；当前无未完成的下游文档更新在并行进行 |
+| Gate 2 | **PRD Gate 1 已 Approved**；Tech Spec 已起草；无 QA Case 并行起草 |
+| QA Case Design | **Gate 2 已 Approved**；QA Case 已起草 |
+| 文档 PR | 所有 Gate 签字已落地；无未完成的文档变更在评审中 |
 
 ---
 

@@ -98,3 +98,4 @@ PMO 发现问题 → 记录到 docs/pmo/issues/
 | RB-001 | Team Lead 深度介入具体 Issue 跟踪 | — | `RB-001_..._resolution.md` | Open |
 | RB-002 | Architect 被分配代码实现任务 | — | `RB-002_..._resolution.md` | Closed |
 | GOV-004 | Issue #3 Human Review #1 被跳过 | https://github.com/alpha-86/AgentDevFlow/issues/8 | `GOV-004_2026-04-16_issue3_hr1_skipped_resolution.md` | Open |
+| GOV-011 | 变更追溯规则缺失 + Gate 流程并行化违规 | https://github.com/alpha-86/AgentDevFlow/issues/20 | `GOV-011_2026-04-20_change_propagation_gate_violation_resolution.md` | Open |

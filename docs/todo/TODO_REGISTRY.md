@@ -1,50 +1,75 @@
 # TODO Registry
 
 ## 项目信息
-- `project_id`: alpha-86/AgentDevFlow
-- 主 issue: #1
-- 当前阶段: Gate 2 Tech Review (Issue #3 v3, 2026-04-17)
-- 启动方式: 补充创建 Engineer、Platform/SRE、PMO Agent 实例
+- `project_id`: alpha-86-AgentDevFlow
+- 当前主任务: #20
+- 关联业务 issue: #3（暂停中，待 #20 完成后恢复）
+- 当前阶段: #20 治理修复主体已完成，待同步正式留痕并验收；#3 Gate 2 Tech Review 暂停
+- 启动方式: 2026-04-21 团队重启（全新 session）
+- 启动会纪要: `docs/memo/kickoff_2026-04-21.md`
 
 ## 角色分配
 
-| 角色 | 状态 | Agent ID | tmux  panes |
-|------|------|----------|-------------|
-| Team Lead | ✅ | - | - |
-| Product Manager | ✅ | product-manager@agentdevflow | %54 |
-| 架构师 | ✅ | architect@agentdevflow | %55 |
-| QA Engineer | ✅ | qa-engineer@agentdevflow | %56 |
-| Engineer | ✅ | engineer@agentdevflow | %57 |
-| Platform/SRE | ✅ | platform-sre@agentdevflow | %58 |
-| PMO | ✅ | pmo@agentdevflow | %59 |
+| 角色 | 状态 | Agent ID | 备注 |
+|------|------|----------|------|
+| Team Lead | ✅ | team-lead@alpha-86-AgentDevFlow | Human 保留角色 |
+| Product Manager | ✅ | product-manager@alpha-86-AgentDevFlow | 启动文档已读 |
+| 架构师 | ✅ | architect@alpha-86-AgentDevFlow | 启动文档+额外强制清单已读 |
+| QA Engineer | ✅ | qa-engineer@alpha-86-AgentDevFlow | 启动文档已读 |
+| Engineer | ✅ | engineer@alpha-86-AgentDevFlow | 启动文档已读 |
+| Platform/SRE | ✅ | platform-sre@alpha-86-AgentDevFlow | 启动文档已读 |
+| PMO | ✅ | pmo@alpha-86-AgentDevFlow | 启动文档已读 |
 
-## 当前 Gate
+## 当前活跃任务
 
-- Gate 0: Team Startup ✅ 已完成 (2026-04-16 全员角色补充完成，tmux 模式)
-- Gate 1: PRD Review ✅ Issue #3 v3 三方签字完成 (2026-04-17)
-- Gate 2: Tech Review 🔄 Tech Spec v3 已提交，评审进行中
-- Gate 3-5: 待 HR#1 完成后继续
+| 任务 | Issue | 负责人 | 状态 | 说明 |
+|------|-------|--------|------|------|
+| GOV-011 治理修复 | #20 | PM + PMO | 🔄 in_progress | 最高优先级，Issue #3 暂停 |
 
-## 待处理 Issue
+### #20 Action Items
 
-| Issue | 标题 | 路由 | 状态 | 备注 |
-|-------|------|------|------|------|
-| #8 | GOV-004 HR#1 被跳过 | PMO | pending | 机制改进执行中 |
-| #5 | ADF 技能系统完善 | Engineer | pending | — |
-| #3 | gstack/superpower 增强层接入 | PM | pending | Gate 1 ✅, Gate 2 🔄 |
+| Action Item | Owner | Due | Evidence | Status |
+|------------|-------|-----|----------|--------|
+| 同步主线留痕：registry / kickoff / status board 口径一致 | PM | 2026-04-21 | `docs/todo/TODO_REGISTRY.md`, `docs/memo/kickoff_2026-04-21.md`, `docs/memo/project_status_2026-04-21.md` | ✅ 已完成 |
+| 准备 PM 结构化评论草稿，待正式回写 Issue #20 | PM | 2026-04-21 | `docs/memo/issue_20_pm_structured_comment_draft_2026-04-21.md` | ✅ 已完成 |
+| Team Lead / PMO 对治理修复结果执行验收确认 | Team Lead + PMO | 2026-04-21 | Issue #20 验收评论 / 后续验收留痕 | ⏳ 待完成 |
 
-## 已知问题
+## 待处理 Issue (Open)
 
-- Platform/SRE 报告 4 个 skill 文件缺失：release-review.md, anomaly-response.md, release-record-template.md, platform-check-result-template.md
-- PM 合规审计（2026-04-17）：见下方审计记录，5 项违规已记录
+| Issue | 标题 | 类型 | 优先级 | 路由 | 状态 |
+|-------|------|------|--------|------|------|
+| #20 | GOV-011 HR#1 流程违规 | governance | medium | PM + PMO | 治理修复主体已完成，待同步正式留痕并验收 |
+| #3 | gstack/superpower 增强层接入 | feature | high | PM | ⏸️ 暂停（关联业务 issue，等 #20 完成后恢复） |
+| #5 | ADF 技能系统完善 | feature | medium | PM | pending |
+| #8 | GOV-004 HR#1 被跳过 | process | medium | PMO | pending |
+| #16 | GOV-009 职责归属矩阵缺失 | governance | medium | PM | pending |
+| #17 | GOV-010 Skill 结构冲突 | governance | medium | PM | pending |
+| #18 | Agent 获取 Issue Comment 不规范 | bug | medium | PM | pending |
+| #19 | 安装脚本 bug 问题 | bug | medium | PM | pending |
+| #21 | prompts 原则：禁止单一 pattern 式描述 | process | medium | PM | pending |
+
+## Gate 状态 (Issue #3 — 暂停)
+
+| Gate | 状态 | 说明 |
+|------|------|------|
+| Gate 0: Team Startup | ✅ 已完成 | 2026-04-21 重启 |
+| Gate 1: PRD Review | ✅ 历史通过 | v4.1 (2026-04-17) |
+| Gate 2: Tech Review | ⏸️ 暂停 | 待 Issue #20 完成后恢复 |
+| QA Case Design | ⏸️ 暂停 | — |
+| 文档 PR / HR#1 | ⏸️ 暂停 | — |
+| Gate 3: Implementation | ⏸️ 暂停 | — |
+| Gate 4: QA Validation | ⏸️ 暂停 | — |
+| 代码 PR / HR#2 | ⏸️ 暂停 | — |
+| Gate 5: Release | ⏸️ 暂停 | — |
 
 ## 启动会
 
-- 时间: 2026-04-16
+- 时间: 2026-04-21
 - 负责人: Team Lead
-- 结论: 全员角色补充完成，3个 open issues 已路由至 Engineer，等待 Human Review #1
+- 结论: 团队重启，6 个 Agent 初始化完成，当前聚焦 Issue #20 治理修复
+- 纪要: `docs/memo/kickoff_2026-04-21.md`
 
-## PM 合规审计记录（2026-04-17）
+## 历史审计记录（2026-04-17，Issue #3）
 
 **触发原因**：Human 对 PM 工作严重不满，Team Lead 要求 PMO 紧急介入
 

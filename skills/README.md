@@ -154,6 +154,8 @@ PM 通过 github_issue_sync.py 发布关闭请求 → Human 执行关闭
 - 文档 PR：PRD `Approved` + Tech Spec `Approved` + QA Case Design `Approved` + Gate 2 三签通过
 - 代码 PR：文档 PR 已合并 + 代码开发完成 + QA 测试报告完成 + 三方签字验收完成
 
+仅文档 PR 已创建不代表可进入 Implementation；必须文档 PR 已合并且 Human Review #1 已完成。
+
 ### PM 领取 Issue + Comment 规则
 
 > 完整 Comment 节点表格见 `prompts/002_develop_pipeline.md`「Issue Comment 强制要求」章节。以下为关键节点：

@@ -61,8 +61,9 @@
 
 ## 人工评审规则
 
-- 若当前 Issue 需要文档阶段 Human Review #1（对应文档 PR 创建），必须执行人工评审。
-- 人工评审 #1 未完成时，不得进入 技术评审。
+- 若当前 Issue 需要文档阶段 Human Review #1，应在 PRD、Tech、QA Case Design 齐备并形成文档 PR 后执行人工评审。
+- PRD Review 三方签字完成后，方可进入 技术评审。
+- 人工评审 #1 未完成时，不得进入 Implementation；纯文档交付场景下，不得进入 Release / Issue Close。
 - 人工评审 #1 结论必须写回 Issue 评论 或 评审 record。
 
 ## 结果
