@@ -59,14 +59,49 @@
 
 ### 流程启动顺序
 
+完整流程见 `prompts/002_develop_pipeline.md`（包含流程图 A/B/C）。
+
+以下是与 `skills/` 资产强关联的流程节点：
+
+#### 团队启动视角（流程图 C）
+
 ```
 Agent Team 启动
         │
         ▼
-PM 从已扫描的 open Issues 中领取 Issue（必须 Comment）
+扫描所有 open GitHub Issues
+        │
+        ▼
+对每个 Issue 根据当前状态继续对应流程节点：
+        │
+        ├── Issue 处于 Gate 1 阶段  →  继续 PRD Review
+        ├── Issue 处于 Gate 2 阶段  →  继续 Tech Review
+        ├── Issue 处于 QA Case Design →  继续 Case 签字
+        ├── Issue 处于文档 PR 阶段  →  继续 Human Review #1
+        ├── Issue 处于 Implementation →  继续开发
+        ├── Issue 处于 Gate 4 QA   →  继续 QA 验证
+        ├── Issue 处于代码 PR 阶段  →  继续 Human Review #2
+        └── Issue 处于 Gate 5 Release →  继续发布
+        │
+        ▼
+Human 随时可能创建新 Issue
+        │
+        └── 新 Issue 从"PM 领取"开始，进入单个 Issue 流程
+        │
+        ▼
+Team Lead 协调多角色并行工作
+```
+
+#### 单个 Issue 流程（流程图 A）
+
+```
+PM 领取 Issue（必须 Comment）
         │
         ▼
 PM 与 Human 讨论问题（Issue 含方案时必须回归问题本身讨论），每次讨论后必须 Comment 到 Issue
+        │
+        ▼
+Gate 0: Team Startup — 角色分配、目录骨架、启动会
         │
         ▼
 Gate 1: PRD Review（PM + Architect + QA 三方签字）
@@ -78,7 +113,7 @@ Gate 2: Tech Review（QA + Engineer + PM 三签）
 QA Case Design（PM + Architect + Engineer 三方签字）
         │
         ▼
-文档 PR（doc-{issue} 分支）— Human Review #1：文档 PR 合并 = 设计确认
+文档 PR（doc-{issue} 分支）— Human Review #1（文档 PR 合并 = 设计确认）
         │
         ▼
 Gate 3: Implementation（feature-{issue} 分支）
@@ -99,7 +134,7 @@ Gate 4: QA Validation
         │   • Engineer: 修复情况如何修复的
         │
         ▼ (三方签字通过)
-代码 PR（feature-{issue} 分支）— Human Review #2：代码 PR 合并 = 实现确认
+代码 PR（feature-{issue} 分支）— Human Review #2（代码 PR 合并 = 实现确认）
         │
         ▼
 Gate 5: Release — PM + Architect + Platform/SRE 三方放行
@@ -107,7 +142,7 @@ Gate 5: Release — PM + Architect + Platform/SRE 三方放行
         ▼
 PM 通过 github_issue_sync.py 发布关闭请求，Human 执行关闭
 
-打回规则：任意节点被 Human 打回 → 回滚到该节点编写阶段 → 修改文档（版本+1）→ 从该节点重新走完整流程
+打回规则：任意节点被打回 → 回滚到该节点编写阶段 → 修改文档（版本+1）→ 从该节点重新走完整流程
 ```
 
 ### 双 PR 分支策略
