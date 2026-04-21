@@ -75,17 +75,12 @@ QA 负责把 PRD 和 Tech 的承诺转成可验证路径，先基于 Case Design
 
 ## 完整流程
 
+为避免把 `流程 A` 和 `流程 C` 混在一起，README 也按与 `prompts/002_develop_pipeline.md` 相同的三视角来展示：
+
+### 流程 A：完整 Issue 交付流程（正向流程，从认领到关闭）
+
 ```text
-Agent Team 启动
-        │
-        ▼
-扫描所有 open GitHub Issues（Human 随时可能创建新 Issue）
-        │
-        ▼
 PM 领取 Issue → 与 Human 讨论问题（每次讨论后必须 Comment 到 Issue）
-        │
-        ▼
-PRD 产出 → Comment 到 Issue（含 PRD 链接）
         │
         ▼
 Gate 1: PRD Review（PM + Architect + QA 三方签字）
@@ -97,9 +92,10 @@ Gate 2: Tech Review（QA + Engineer + PM 三签）
 QA Case Design（PM + Architect + Engineer 三签）
         │
         ▼
-PM 创建 doc-{issue} 分支 → 提交文档 PR
-文档 PR（PRD + Tech + QA Case Design）
-Human Review #1 → 合并 = 设计确认
+文档 PR（doc-{issue} 分支）— Human Review #1
+        │
+        ▼
+文档 PR 合并 = 设计确认
         │
         ▼
 Gate 3: Implementation — 开发实现（feature-{issue} 分支）
@@ -109,29 +105,76 @@ Gate 4: QA Validation
         │
         ├── QA 根据 Case Design 开发测试代码（case 代码）
         ├── QA 运行 case 验证 Engineer 完成的代码质量
-        ├── 未通过：排查问题来源
-        │           • 代码问题 → Engineer 修复 → 重新验证
-        │           • Case 问题 → QA 修复 case → 重新验证
+        ├── 不合格 → 排查问题来源
+        │   • 代码问题 → Engineer 修复 → 重新验证
+        │   • Case 问题 → QA 修复 case → 重新验证
+        ├── 验证通过 → QA 编写测试报告（QA Report）
+        ├── PM + Architect + Engineer 三方评审测试报告并签字
+        │
+        ▼（通过）
+代码 PR（feature-{issue} 分支）— Human Review #2
         │
         ▼
-QA 编写测试报告（QA Report）
+代码 PR 合并 = 实现确认
         │
         ▼
-PM + Architect + Engineer 三方评审测试报告并签字
+Gate 5: Release — 发布
         │
         ▼
-Engineer 创建代码 PR（feature-{issue}）
-代码 PR（代码 + 测试报告）
-Human Review #2 → 合并 = 实现确认
-        │
-        ▼
-Gate 5: Release
-        │
-        ▼
-PM 发布关闭请求评论（github_issue_sync.py）→ Human 关闭
+PM 通过 github_issue_sync.py 发布关闭请求 → Human 执行关闭
 ```
 
-上图展示的是最核心的交付主线。除图中展示的主节点外，Issue Comment 也有强制回写要求：Issue 领取、问题讨论完成、PRD 产出、PRD 评审完成、Tech 产出、Tech Review 完成、QA Case Design 完成、文档 PR 创建、文档 PR 合并、开发完成、测试完成、代码 PR 创建、代码 PR 合并、Issue 关闭都必须回写到 Issue，未 Comment 视为未完成。
+### 流程 B：需求变更与打回流程（异常处理）
+
+```text
+任意节点被 Human 打回
+        │
+        ▼
+回滚到被打回节点的编写阶段
+        │
+        ▼
+修改文档（版本+1，如 v1.0 → v1.1）
+        │
+        ▼
+从该节点开始重新走完整流程（正向流程）
+        │
+        ▼
+继续后续节点直到通过
+
+特殊场景：
+• PRD 变更 → Tech Spec 需同步变更（版本+1）→ Case Design 需同步变更（版本+1）
+• Tech Spec 重大变更 → 回到 Gate 1 重新评审 PRD
+• 需求变更 = 回到 PRD 编写流程 → 按顺序重新走完整个流程
+```
+
+### 流程 C：Agent Team 启动后 Issue 扫描与路由（多 Issue 并行视角）
+
+```text
+Agent Team 启动
+        │
+        ▼
+扫描所有 open GitHub Issues
+        │
+        ▼
+对每个 Issue 根据当前状态继续对应流程节点：
+
+• Issue 处于 Gate 1 阶段 → 继续 PRD Review
+• Issue 处于 Gate 2 阶段 → 继续 Tech Review
+• Issue 处于 QA Case Design → 继续 Case 签字
+• Issue 处于文档 PR 阶段 → 继续 HR#1
+• Issue 处于 Implementation → 继续开发
+• Issue 处于 Gate 4 QA → 继续 QA 验证
+• Issue 处于代码 PR 阶段 → 继续 HR#2
+• Issue 处于 Gate 5 Release → 继续发布
+
+Human 随时可能创建新 Issue
+新 Issue 从“PM 领取”开始，进入流程 A
+        │
+        ▼
+Team Lead 协调多角色并行工作
+```
+
+除图中展示的主节点外，Issue Comment 也有强制回写要求：Issue 领取、问题讨论完成、PRD 产出、PRD 评审完成、Tech 产出、Tech Review 完成、QA Case Design 完成、文档 PR 创建、文档 PR 合并、开发完成、测试完成、代码 PR 创建、代码 PR 合并、Issue 关闭都必须回写到 Issue，未 Comment 视为未完成。
 
 几个常见场景可以这样理解：
 
