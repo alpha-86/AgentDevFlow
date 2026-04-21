@@ -68,11 +68,11 @@
 
 ## 签字最小要求
 
-- PRD：PM + Tech Lead
-- Tech：Tech Lead + QA + PM 确认
-- QA Case Design：QA 产出，PM + Tech Lead + Engineer 确认
-- QA：QA + PM
-- Release：PM + Tech Lead + Platform/SRE
+- PRD：PM + Architect + QA（均为必签）
+- Tech：QA + Engineer + PM（均为必签）
+- QA Case Design：PM + Architect + Engineer（均为必签）
+- QA Test Report：PM + Architect + Engineer（均为必签）
+- Release：PM + Architect + Platform/SRE
 
 ## 双阶段 PR 的最小确认条件
 
@@ -133,12 +133,12 @@ Team Lead 推动 Human 执行文档 PR 合并
 Human 执行 PR 合并（PR 合并是 Human 专属操作）
         │
         ▼
-Human 合并完成后，Human 通知 Engineer 开始实现
+文档 PR 合并 = 设计确认 ✅
         │
         ▼
-Engineer 收到通知，开始 Implementation（Gate 3）
+Engineer 可直接进入 Implementation（Gate 3）
 ```
 
-**PM 的职责到此结束（文档阶段交付完整）**，后续是 Human 和 Engineer 的工作。
+**注意**：文档 PR 合并后，Engineer 可进入 Implementation，"Human 通知 Engineer 开始实现"不再是必要前置。
 
 > 详细流程定义见 `prompts/002_develop_pipeline.md`。
