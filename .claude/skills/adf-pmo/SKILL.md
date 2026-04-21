@@ -74,7 +74,7 @@ PMO 在合规检查中必须验证此规则：若 PM 未在 Issue 下 Comment，
 
 ### Issue Comment 强制节点（V2.2.4）
 
-PMO 在每次检查中必须验证以下 13 个节点的 Comment 是否落地：
+PMO 在每次检查中必须验证以下 14 个节点的 Comment 是否落地：
 
 | 节点 | 执行者 | Comment 内容 |
 |------|--------|-------------|
@@ -91,6 +91,7 @@ PMO 在每次检查中必须验证以下 13 个节点的 Comment 是否落地：
 | 测试完成 | QA | 测试报告链接 |
 | 代码 PR 创建 | Engineer | PR 链接 + 测试报告 |
 | 代码 PR 合并 | Engineer | 合并确认 |
+| Issue 关闭 | PM | 关闭原因 + 关闭请求 |
 
 **强制规则**：未 Comment 视为未完成。PMO 发现节点 Comment 缺失时，必须记录为 fail 并提示纠正。
 
