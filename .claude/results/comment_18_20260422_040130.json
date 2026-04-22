@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 18,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T04:01:30Z\n**Source**: [Issue #18 Comment]()\n---\n\n## QA Case Design 三方评审发起\n\n**QA Case Draft**: `docs/qa/018_agent_issue_comment_retrieval_qa_2026-04-22.md`\n**版本**: v1 Draft\n**PM 评审结论**: Approved\n\n### PM 一句话理由\n统一命令、参数、输出格式、fallback 终止条件与禁止无限试错均已覆盖，可进入 PM + Architect + Engineer 三方评审。\n\n### 当前结论\n现正式发起 Issue #18 的 QA Case Design 三方评审。",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T04:01:30Z",
+  "status": "pending"
+}
