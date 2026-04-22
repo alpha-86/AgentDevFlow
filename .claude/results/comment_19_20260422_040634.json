@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 19,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T04:06:34Z\n**Source**: [Issue #19 Comment]()\n---\n\n## QA Case Design 三方评审发起\n\n**QA Case Draft**: `docs/qa/019_installation_script_doc_path_qa_2026-04-22.md`\n**版本**: v1 Draft\n**PM 评审结论**: Approved\n\n### PM 一句话理由\nQA Case 已覆盖安装目录映射、安装后引用解析、fallback 行为、ADF_DOC_ROOT 生命周期与 bootstrap-sync 协同验证，能够完整承接 PRD #019 与 Tech-19_v1.1。\n\n### 当前结论\n现正式发起 Issue #19 的 QA Case Design 三方评审，等待 Architect + Engineer 评审签字。",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T04:06:34Z",
+  "status": "pending"
+}
