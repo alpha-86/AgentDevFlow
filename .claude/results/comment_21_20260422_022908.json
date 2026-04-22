@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 21,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T02:29:08Z\n**Source**: [Issue #21 Comment]()\n---\n\nproject_id: alpha-86-AgentDevFlow\nissue_id: #21\n当前阶段: Gate 1: PRD Review\nowner: Product Manager\n\n## 问题理解\n\n#21 当前处理的是 AgentDevFlow 中 prompts 的描述规范问题：禁止仅使用单一 pattern 式描述（如\"读取你的 skill 文件：`.claude/skills/adf-{role}/SKILL.md`\"），要求采用\"pattern + 枚举\"组合方式，即 pattern 作为说明，下方必须放枚举式具体映射内容（如表格）。\n\n## 当前范围\n\n1. 在 CLAUDE.md 中沉淀\"pattern + 枚举\"原则\n2. 修改所有 skills 中的单一 pattern 式描述\n3. 确保所有 skill 调用、文档引用都遵循该规范\n\n## 当前非目标\n\n- 不在本 PRD 中直接修改所有 skill 文件\n- 不扩展到与描述规范无关的其他流程改造\n- 不把历史讨论直接作为当前有效交付物\n\n## 下一步\n\n1. 起草 #21 当前有效 PRD\n2. 以 PRD 作为 Gate 1 输入发起三方评审\n3. Gate 1 通过后再进入 Tech / QA / HR#1 正式链路",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T02:29:08Z",
+  "status": "pending"
+}
