@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 19,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T15:58:31Z\n**Source**: [Issue #19 Comment]()\n---\n\n**Agent**: product-manager  \n**Date**: 2026-04-22  \n---\n\n## QA Case Design 结论 — Issue #19\n\n**Issue**: #19 — 安装脚本 bug 问题  \n**QA 路径**: `docs/qa/019_installation_script_doc_path_qa_2026-04-22.md`  \n**版本**: QA-19_v2.0  \n**阶段**: QA Case Design\n\n### 评审结论\n\n| 角色 | 签字 | 备注 |\n|------|------|------|\n| PM | ✅ Approved | 测试追溯与主线范围一致 |\n| Architect | ✅ Approved | 技术覆盖与实现边界一致 |\n| Engineer | ✅ Approved | shared 检查口径与 JSON schema 已完成统一 |\n\n**QA Case 状态**: ✅ **Approved**\n\n### 收口说明\n\n- QA Case 已覆盖 PRD v2.0 / Tech v2.0 的当前有效范围\n- shared 检查口径与 JSON schema 已按最终一致方案收口，且不改变 #19 主线范围\n- 本 comment 仅补正式留痕，不改变既有评审结论\n\n### 下一动作\n\n- 以 PRD / Tech / QA 三份当前有效文档作为文档 PR 输入\n- 进入文档 PR / Human Review #1\n\n---\n*QA Case Design Conclusion | Issue #19 | Backfill trace only*",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T15:58:31Z",
+  "status": "pending"
+}
