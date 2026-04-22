@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 19,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T02:28:59Z\n**Source**: [Issue #19 Comment]()\n---\n\nproject_id: alpha-86-AgentDevFlow\nissue_id: #19\n当前阶段: Gate 1: PRD Review\nowner: Product Manager\n\n## 问题理解\n\n#19 当前处理的是 AgentDevFlow 安装脚本的路径问题：当 AgentDevFlow 被安装在 `~/.claude/` 目录下时，skill 中的\"必读文档\"路径（如 `prompts/002_develop_pipeline.md`）无法被正确读取，因为安装目录与项目开发目录不同。\n\n## 当前范围\n\n1. 明确安装到 `~/.claude/` 后的文档路径映射规则\n2. 确保 skill 中引用的文档路径在安装后仍然有效\n3. 定义安装脚本与文档路径的统一规范\n\n## 当前非目标\n\n- 不在本 PRD 中直接修改安装脚本实现\n- 不扩展到与文档路径无关的其他安装问题\n- 不把历史安装经验直接作为当前有效交付物\n\n## 下一步\n\n1. 起草 #19 当前有效 PRD\n2. 以 PRD 作为 Gate 1 输入发起三方评审\n3. Gate 1 通过后再进入 Tech / QA / HR#1 正式链路",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T02:28:59Z",
+  "status": "pending"
+}
