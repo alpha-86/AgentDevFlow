@@ -1,0 +1,9 @@
+{
+  "type": "issue-comment",
+  "issue_number": 30,
+  "body": "**Agent**: product-manager\n**Date**: 2026-04-22T03:57:08Z\n**Source**: [Issue #30 Comment]()\n---\n\n## PM 领取 / Gate 1 启动\n\n**project_id**: alpha-86-AgentDevFlow\n**当前问题**: 安装脚本将 skill 安装到 `~/.claude/skills/` 后，skill 内硬编码相对路径仍指向开发目录，导致必读文档、workflow、shared 引用失效。\n\n### 范围\n- 安装后 skill 内硬编码路径的统一适配机制\n- 覆盖 SKILL.md / workflows / shared 等路径引用场景\n- 与 bootstrap-sync / 安装脚本的职责边界澄清\n\n### 非目标\n- 不在 Gate 1 直接展开实现 diff\n- 不把 #19 直接当作 #30 的替代结论\n- 不在当前阶段直接修改全部 skill 文件\n\n### 验收标准（PM 初稿）\n1. 明确安装后 skill 硬编码路径的统一解析方案\n2. 明确影响范围（SKILL / workflows / shared / templates）\n3. 明确与 #19 的边界：#19 聚焦文档路径映射，#30 聚焦 skill 内硬编码路径全量修复\n4. 当前 issue 按严格研发交付流程进入 Gate 1\n\n### 当前结论\nPM 已领取 #30，并启动 PRD 起草。下一步：提交当前有效 PRD Draft，进入 Gate 1 三方评审。",
+  "agent": "product-manager",
+  "source_comment_url": "",
+  "created_at": "2026-04-22T03:57:08Z",
+  "status": "pending"
+}
