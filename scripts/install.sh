@@ -795,7 +795,7 @@ completeness_check() {
     local warning_missing=()
 
     # 收集所有 fail 类别的 missing items
-    for check in "$prompts_missing_arr" "$gov_missing_arr" "$plat_missing_arr" "$skill_missing_arr" "$wf_missing_arr" "$tmpl_missing_arr" "$scr_missing_arr"; do
+    for check in "${prompts_missing_arr[@]}" "${gov_missing_arr[@]}" "${plat_missing_arr[@]}" "${skill_missing_arr[@]}" "${wf_missing_arr[@]}" "${tmpl_missing_arr[@]}" "${scr_missing_arr[@]}"; do
         [[ -n "$check" ]] && critical_missing+=("$check")
     done
     if [[ "$shared_status" == "fail" ]]; then
