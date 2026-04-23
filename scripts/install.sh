@@ -43,6 +43,19 @@ UNINSTALL=false
 ADF_INSTALL_DIR="${TARGET_DIR}/AgentDevFlow"
 ADF_SKILLS_DIR="${TARGET_DIR}/skills"
 
+# ADF 管理的 skill 目录清单（用于安全卸载）
+ADF_MANAGED_SKILL_DIRS=(
+    "start-agent-team" "team-setup" "team-lead"
+    "product-manager" "architect" "qa-engineer"
+    "engineer" "platform-sre" "pmo" "pmo-review"
+    "agent-bootstrap" "create-agent"
+    "workflows" "templates" "shared"
+)
+ADF_MANAGED_SKILL_FILES=(
+    "README.md" "skill-protocol.md" "event-bus.md"
+    ".agentdevflow-version"
+)
+
 # 关键清单（Tech Spec §2.3-2.8 最小清单）
 PROMPTS_MINIMUM=(
     "001_team_topology.md"
@@ -891,9 +904,17 @@ do_uninstall() {
     fi
 
     echo ""
-    warn "即将删除以下目录："
-    echo "  ${ADF_SKILLS_DIR}/"
-    echo "  ${ADF_INSTALL_DIR}/"
+    warn "即将卸载 AgentDevFlow，以下 ADF 管理的 skill 和文件将被删除："
+    echo ""
+    info "Skill 目录（${ADF_SKILLS_DIR}/ 下）："
+    for sd in "${ADF_MANAGED_SKILL_DIRS[@]}"; do
+        [[ -d "${ADF_SKILLS_DIR}/${sd}" ]] && echo "  - ${sd}/"
+    done
+    echo ""
+    info "文档目录："
+    echo "  - ${ADF_INSTALL_DIR}/"
+    echo ""
+    warn "注意：${ADF_SKILLS_DIR}/ 下非 ADF 管理的 skill 不会被删除"
     echo ""
     warn "Shell profile 中的 ADF_DOC_ROOT 将被注释保留（不删除）"
     echo ""
@@ -903,13 +924,54 @@ do_uninstall() {
         return
     fi
 
-    # 删除 skills 目录
-    if [[ -d "${ADF_SKILLS_DIR}" ]]; then
-        rm -rf "${ADF_SKILLS_DIR}"
-        success "已删除: ${ADF_SKILLS_DIR}/"
+    # 交互式确认
+    read -r -p "确认卸载? [y/N] " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        info "已取消卸载"
+        return
     fi
 
-    # 删除 AgentDevFlow 文档目录
+    # 只删除 ADF 管理的 skill 目录（安全卸载，不碰用户其他 skill）
+    local removed_any=false
+    if [[ -d "${ADF_SKILLS_DIR}" ]]; then
+        for sd in "${ADF_MANAGED_SKILL_DIRS[@]}"; do
+            local skill_path="${ADF_SKILLS_DIR}/${sd}"
+            if [[ -d "$skill_path" ]]; then
+                rm -rf "$skill_path"
+                verbose "已删除 skill: ${sd}/"
+                removed_any=true
+            fi
+        done
+
+        # 删除 ADF 管理的根级文件
+        for sf in "${ADF_MANAGED_SKILL_FILES[@]}"; do
+            local file_path="${ADF_SKILLS_DIR}/${sf}"
+            if [[ -f "$file_path" ]]; then
+                rm -f "$file_path"
+                verbose "已删除文件: ${sf}"
+                removed_any=true
+            fi
+        done
+
+        # 若 skills/ 目录已空（无子目录且无文件），则删除目录本身
+        if $removed_any; then
+            local remaining_dirs
+            remaining_dirs=$(find "${ADF_SKILLS_DIR}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+            local remaining_files
+            remaining_files=$(find "${ADF_SKILLS_DIR}" -maxdepth 1 -type f 2>/dev/null | wc -l)
+            if [[ "$remaining_dirs" -eq 0 && "$remaining_files" -eq 0 ]]; then
+                rmdir "${ADF_SKILLS_DIR}" 2>/dev/null || true
+                verbose "已删除空目录: ${ADF_SKILLS_DIR}/"
+            else
+                info "保留非 ADF skill 和文件在 ${ADF_SKILLS_DIR}/"
+            fi
+            success "ADF 管理的 skill 已卸载"
+        else
+            warn "未找到 ADF 管理的 skill 目录"
+        fi
+    fi
+
+    # 删除 AgentDevFlow 文档目录（安全，ADF 专属）
     if [[ -d "${ADF_INSTALL_DIR}" ]]; then
         rm -rf "${ADF_INSTALL_DIR}"
         success "已删除: ${ADF_INSTALL_DIR}/"
