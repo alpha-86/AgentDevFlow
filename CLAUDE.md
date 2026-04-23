@@ -120,3 +120,69 @@ python scripts/github_issue_sync.py
 - task_router 脚本：`scripts/task_router.py`
 - github_issue_sync 脚本：`scripts/github_issue_sync.py`
 - task_update 脚本：`scripts/task_update.py`
+
+---
+
+## 安装目录打包规则
+
+### 打包目录清单
+
+安装脚本 `scripts/install.sh` 必须打包以下目录和文件：
+
+| 打包目录/文件 | 安装目标 | 准入理由 |
+|---|---|---|
+| `skills/*/SKILL.md` | `~/.claude/skills/<stable-skill>/SKILL.md` | 核心 skill 入口 |
+| `skills/README.md` | `~/.claude/skills/README.md` | 项目概述 |
+| `skills/skill-protocol.md` | `~/.claude/skills/skill-protocol.md` | 共享协议 |
+| `skills/event-bus.md` | `~/.claude/skills/event-bus.md` | 事件总线 |
+| `skills/workflows/*.md` | `~/.claude/skills/workflows/*.md` | 所有 workflow 文件 |
+| `skills/shared/` | `~/.claude/skills/shared/` | shared 安装能力位（当前可为空目录 + `.keep`） |
+| `skills/templates/*.md` | `~/.claude/skills/templates/*.md` | 所有 template 文件 |
+| `prompts/` | `~/.claude/AgentDevFlow/prompts/` | 所有 prompts 文件 |
+| `docs/governance/` | `~/.claude/AgentDevFlow/docs/governance/` | 治理文档 |
+| `docs/platforms/` | `~/.claude/AgentDevFlow/docs/platforms/` | 平台文档（含增强层） |
+| `scripts/*.py`, `scripts/*.sh` | `~/.claude/AgentDevFlow/scripts/` | 核心脚本 |
+| `README.md` | `~/.claude/AgentDevFlow/README.md` | 项目根 README |
+
+### 不应打包的目录（准出规则）
+
+| 目录 | 理由 |
+|---|---|
+| `.claude/` | 运行时生成目录 |
+| `docs/prd/`, `docs/tech/`, `docs/qa/` | 项目特定交付产物 |
+| `docs/memo/` | 运行期纪要目录，历史内容不分发 |
+| `docs/todo/` | 运行期状态目录，历史内容不分发 |
+| `docs/release/`, `docs/pmo/` | 项目特定交付产物 |
+| `.github/` | CI/CD 配置（非安装态必需） |
+
+### 目录依赖变更规则
+
+新增目录纳入打包范围必须：
+1. 经过 **Architect 评估 + Tech Review 签字**
+2. 同步更新 **安装脚本的复制逻辑**
+3. 同步更新 **完备性检查清单**
+4. 同步更新 **本章节（CLAUDE.md 打包规则）**
+
+### 开发态 vs 安装态区分
+
+| 环境 | 路径 | 命名空间 |
+|---|---|---|
+| 开发态（本仓自举） | `.claude/skills/adf-*/` | `adf-` 前缀 |
+| 安装态（外部用户） | `~/.claude/skills/` | 稳定版（无 `adf-` 前缀） |
+
+**禁止混淆**：安装态不要求 `adf-` 前缀，若安装后发现 `adf-*` 命名空间残留，应判定为路径模型错误。
+
+### 引用路径规范
+
+- Skill 中引用 prompts/docs/scripts 必须使用 `${ADF_DOC_ROOT}` 环境变量
+- `${ADF_DOC_ROOT}` 默认指向 `~/.claude/AgentDevFlow`
+- Skill 中引用 workflows/templates/shared 使用相对 skill 路径（`~/.claude/skills/` 下）
+- **禁止**硬编码开发目录相对路径（如 `../../docs/`、`prompts/xxx.md` 无前缀）
+
+### 安装脚本更新同步规则
+
+任何影响打包目录的变更必须同步更新：
+1. `scripts/install.sh` 的复制逻辑
+2. `scripts/install.sh` 的完备性检查最小清单
+3. `scripts/install.sh` 的 JSON 输出检查项
+4. 本章节（CLAUDE.md 打包规则）的目录清单
